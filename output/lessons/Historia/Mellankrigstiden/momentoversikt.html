@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mellankrigstiden - Momentöversikt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', sans-serif; background-color: #f0f0f0; color: #1a1a2e; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 940px; margin: 0 auto; padding: 1rem; }
+    .header { background-color: #1a1a2e; color: #f0f0f0; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .header .kurs { font-family: 'Sora', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #c4a35a; margin-bottom: 0.75rem; }
+    .header h1 { font-family: 'Sora', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+    .header .beskrivning { font-size: 1.05rem; max-width: 640px; margin: 0 auto 1.25rem; color: #c8c8d0; line-height: 1.5; }
+    .header .period { display: inline-block; background-color: rgba(255,255,255,0.1); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; color: #c4a35a; }
+    .angelagen-fraga { background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%); color: #f0f0f0; border-radius: 12px; padding: 1.75rem 1.5rem; margin: -1.5rem auto 1.5rem; max-width: 940px; text-align: center; box-shadow: 0 4px 16px rgba(26,26,46,0.3); }
+    .angelagen-fraga p.label { font-family: 'Sora', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #c4a35a; margin-bottom: 0.5rem; }
+    .angelagen-fraga p.fraga { font-family: 'Sora', sans-serif; font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 600; font-style: italic; line-height: 1.3; }
+    .larandemal { background-color: #fff; border-radius: 12px; padding: 2rem 1.5rem; margin: 0 auto 2rem; max-width: 940px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .larandemal h2 { font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 600; color: #1a1a2e; margin-bottom: 1rem; }
+    .larandemal ul { list-style: none; padding: 0; }
+    .larandemal li { padding: 0.5rem 0 0.5rem 1.5rem; position: relative; font-size: 1rem; }
+    .larandemal li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 8px; height: 8px; background-color: #c4a35a; border-radius: 50%; }
+    .lektioner-rubrik { font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 600; color: #1a1a2e; margin-bottom: 1.25rem; padding-top: 0.5rem; }
+    .lektioner-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2.5rem; }
+    .lektion-kort { background: #fff; border-radius: 10px; padding: 1.5rem; box-shadow: 0 1px 8px rgba(0,0,0,0.05); display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; transition: box-shadow 0.2s ease; }
+    .lektion-kort:hover { box-shadow: 0 3px 16px rgba(0,0,0,0.1); }
+    .lektion-nummer { font-family: 'Sora', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; background-color: #1a1a2e; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .lektion-innehall h3 { font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .lektion-datum { font-size: 0.85rem; color: #777; font-weight: 500; margin-bottom: 0.5rem; }
+    .lektion-beskrivning { font-size: 0.95rem; color: #4a4a4a; line-height: 1.55; }
+    .forberedelse { margin-top: 0.75rem; padding: 0.6rem 0.9rem; background-color: #faf6ee; border-left: 3px solid #c4a35a; border-radius: 0 6px 6px 0; font-size: 0.9rem; color: #5c5040; }
+    .forberedelse-label { font-weight: 600; color: #1a1a2e; }
+    .footer { text-align: center; padding: 1.5rem 1rem; font-size: 0.85rem; color: #888; border-top: 1px solid #ddd; }
+    @media (min-width: 768px) {
+      .container { padding: 1.5rem; }
+      .header { padding: 4rem 2rem 3rem; }
+      .angelagen-fraga { margin-top: -2rem; padding: 2rem; }
+      .larandemal { padding: 2.5rem 2rem; }
+      .lektioner-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+      .lektion-kort { grid-template-columns: 1fr; gap: 0; }
+      .lektion-nummer { margin-bottom: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <p class="kurs">Historia 1b</p>
+      <h1>Mellankrigstiden</h1>
+      <p class="beskrivning">Vi undersöker hur ekonomisk kris, nya ideologier och propaganda förvandlade Europas demokratier till diktaturer under åren mellan världskrigen.</p>
+      <span class="period">7 april - 25 april 2026</span>
+    </div>
+  </header>
+  <main class="container">
+    <section class="angelagen-fraga">
+      <p class="label">Momentets angelägna fråga</p>
+      <p class="fraga">"Varför blev demokratier diktaturer?"</p>
+    </section>
+    <section class="larandemal">
+      <h2>Det här ska du kunna efter momentet</h2>
+      <ul>
+        <li>Förklara varför demokratin föll i flera europeiska länder under mellankrigstiden - vilka kriser och faktorer som spelade in</li>
+        <li>Beskriva fascismens och nazismens kännetecken och förklara varför dessa rörelser lockade så många människor</li>
+        <li>Granska propagandamaterial kritiskt - förstå hur propaganda användes som maktmedel och vilka tekniker som användes</li>
+      </ul>
+    </section>
+    <h2 class="lektioner-rubrik">Lektionsplan</h2>
+    <div class="lektioner-grid">
+      <article class="lektion-kort">
+        <div class="lektion-nummer">1</div>
+        <div class="lektion-innehall">
+          <h3>Efterkrigstidens hopp och kris</h3>
+          <p class="lektion-datum">Tisdag 7 april</p>
+          <p class="lektion-beskrivning">Vad hände efter första världskriget? Vi undersöker hur Versaillesfreden, hyperinflation och den stora depressionen underminerade demokratin i Europa.</p>
+        </div>
+      </article>
+      <article class="lektion-kort">
+        <div class="lektion-nummer">2</div>
+        <div class="lektion-innehall">
+          <h3>Fascismens och nazismens framväxt</h3>
+          <p class="lektion-datum">Fredag 10 april</p>
+          <p class="lektion-beskrivning">Vilka rörelser fyllde tomrummet? Vi jämför fascismen och nazismen och diskuterar: blev Hitler diktator tack vare sin skicklighet eller samhällets kriser?</p>
+        </div>
+      </article>
+      <article class="lektion-kort">
+        <div class="lektion-nummer">3</div>
+        <div class="lektion-innehall">
+          <h3>Propagandans makt</h3>
+          <p class="lektion-datum">Tisdag 14 april</p>
+          <p class="lektion-beskrivning">Hur fick diktaturer vanliga människor att stödja dem? Vi analyserar propagandaaffischer och filmklipp med källkritiska verktyg.</p>
+        </div>
+      </article>
+      <article class="lektion-kort">
+        <div class="lektion-nummer">4</div>
+        <div class="lektion-innehall">
+          <h3>Vägen mot avgrunden</h3>
+          <p class="lektion-datum">Fredag 17 april</p>
+          <p class="lektion-beskrivning">Vi knyter ihop momentet och svarar på den stora frågan: varför blev demokratier diktaturer? Du visar dina kunskaper genom skriftlig analys.</p>
+          <div class="forberedelse">
+            <span class="forberedelse-label">Förbered:</span> Repetera dina anteckningar från de tre tidigare lektionerna
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+  <footer class="footer">
+    <p>Historia 1b - Genererad 2026-03-16</p>
+  </footer>
+</body>
+</html>

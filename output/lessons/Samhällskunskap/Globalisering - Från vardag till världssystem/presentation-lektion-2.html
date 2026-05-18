@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 2 — Globaliseringens fyra dimensioner | Sam 3 Globalisering</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f1a; --color-text: #e8e8f0; --color-heading: #ffffff;
+      --color-accent: #ff6b6b; --color-accent2: #4ecdc4; --color-accent3: #ffe66d;
+      --color-surface: rgba(255,255,255,0.06); --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+    .reveal { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 28px; color: var(--color-text); }
+    .reveal .slides section { background: var(--color-bg); text-align: left; }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--color-heading); text-transform: none; font-weight: 800; letter-spacing: -0.03em; }
+    .reveal h2 { font-size: 2em; margin-bottom: 0.6em; }
+    .reveal p, .reveal li { line-height: 1.6; }
+    .reveal ul, .reveal ol { display: block; text-align: left; }
+    .gradient-text { background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-2 { background: linear-gradient(135deg, var(--color-accent2), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glow { text-shadow: 0 0 40px rgba(255, 107, 107, 0.3); }
+    .glass-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.1em 1.4em; text-align: left; margin: 0.5em 0; }
+    .glass-card .card-icon { width: 28px; height: 28px; margin-bottom: 0.3em; display: block; }
+    .glass-card .card-icon svg { width: 100%; height: 100%; }
+    .glass-card strong { color: var(--color-accent); }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+    .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8em; margin-top: 0.8em; }
+    .dim-card { background: var(--color-surface); border-radius: 14px; padding: 1em; border-top: 4px solid var(--color-accent); }
+    .dim-card.eko { border-color: var(--color-accent); }
+    .dim-card.pol { border-color: var(--color-accent2); }
+    .dim-card.kul { border-color: var(--color-accent3); }
+    .dim-card.soc { border-color: #b39ddb; }
+    .dim-card .icon { width: 36px; height: 36px; margin-bottom: 0.4em; }
+    .dim-card .icon svg { width: 100%; height: 100%; }
+    .dim-card .name { font-size: 0.8em; font-weight: 800; margin-bottom: 0.3em; color: var(--color-heading); }
+    .dim-card .desc { font-size: 0.58em; color: var(--color-text); line-height: 1.4; }
+    .dim-card .ex { font-size: 0.52em; color: var(--color-muted); margin-top: 0.4em; font-style: italic; }
+    .quote-block { font-size: 1.2em; font-style: italic; border-left: 3px solid var(--color-accent); padding: 1em 1.4em; margin: 1.2em 0; background: var(--color-surface); border-radius: 0 14px 14px 0; color: var(--color-text); }
+    .discuss-badge { display: inline-flex; background: rgba(255,230,109,0.2); color: var(--color-accent3); padding: 0.3em 1em; border-radius: 24px; font-size: 0.6em; font-weight: 600; margin-bottom: 0.8em; text-transform: uppercase; letter-spacing: 0.1em; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; margin-top: 1em; }
+    .pill { display: inline-block; padding: 0.25em 0.8em; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 999px; font-size: 0.6em; color: var(--color-muted); margin: 0.15em 0.25em 0.15em 0; }
+    .pill.accent { background: rgba(255,107,107,0.15); color: var(--color-accent); border-color: rgba(255,107,107,0.4); }
+    .pill.accent2 { background: rgba(78,205,196,0.15); color: var(--color-accent2); border-color: rgba(78,205,196,0.4); }
+    .pill.accent3 { background: rgba(255,230,109,0.15); color: var(--color-accent3); border-color: rgba(255,230,109,0.4); }
+    .pill.soc { background: rgba(179,157,219,0.15); color: #d1c4e9; border-color: rgba(179,157,219,0.4); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook: exit ticket-data -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <span class="discuss-badge">Från förra lektionen</span>
+        <h2>Ni hittade <span class="gradient-text">en sak</span>.<br>Idag lägger vi till <span class="gradient-text-2">tre till</span>.</h2>
+        <p class="muted" style="font-size: 0.8em; margin-top: 1em;">
+          Exit ticket L1: "Vilken aspekt av globaliseringen påverkar ditt liv mest?"
+        </p>
+        <aside class="notes">
+          Öppna med en visualisering av L1:s exit ticket-fördelning (de 3 högarna). Om hög 1 (ekonomiskt fokus) dominerar: "Ni har hittat ekonomin. Idag lägger vi till tre till." Om flera aspekter är representerade: "Ni såg redan att globaliseringen har flera lager — idag får ni ett verktyg för att sortera dem."
+
+          Rita snabbt en enkel stapelgraf på tavlan medan du pratar.
+
+          Tid: ~2 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Målaktivering -->
+      <section data-background-color="#0f0f1a">
+        <h2>Ser ni bara <span class="gradient-text">pengar</span>?</h2>
+        <div class="quote-block">
+          "Om jag säger 'globalisering' — ser ni då bara pengar röra sig? Eller ser ni mer?"
+        </div>
+        <p style="font-size: 0.85em; color: var(--color-text); margin-top: 1em;">
+          Idag får ni ett <strong style="color: var(--color-accent3);">teoretiskt verktyg</strong> för att se fler lager.
+        </p>
+        <aside class="notes">
+          Den provocerande öppningsfrågan. Låt frågan hänga. Den är öppen — inte retorisk. Om några elever svarar ekonomiskt, bekräfta: "Ja, det är en del — men inte hela." Om några svarar kultur/politik, bekräfta också: "Bra — nu får vi språk för det ni redan ser."
+
+          Signalera målet: ett verktyg, inte en lista. De ska kunna ANVÄNDA det.
+
+          Tid: ~2 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Teorin bakom -->
+      <section data-background-color="#0f0f1a">
+        <h2>Verktyget: <span class="gradient-text">fyra dimensioner</span></h2>
+        <p style="font-size: 0.9em;">
+          Held, McGrew, Goldblatt & Perraton (1999) — <em>Global Transformations</em>.
+        </p>
+        <p style="font-size: 0.85em; margin-top: 0.8em;">
+          De argumenterade att globalisering inte är <strong>en</strong> sak, utan <strong>fyra</strong> — som ofta rör sig <strong style="color: var(--color-accent3);">olika fort</strong> och i <strong style="color: var(--color-accent3);">olika riktningar</strong>.
+        </p>
+        <p style="font-size: 0.75em; color: var(--color-muted); margin-top: 1em;">
+          Det är en <strong>deskriptiv teori</strong> — den beskriver, förklarar inte <em>varför</em>. Det kommer senare i momentet.
+        </p>
+        <aside class="notes">
+          Säg: "Held och hans kollegor är de som gav oss språket för att tänka om globalisering i flera lager. De påpekar att det ekonomiska kan gå snabbt medan det politiska kan gå långsamt, eller tvärtom. Dimensionerna är inte fack — de är linser."
+
+          Viktigt: signalera att detta är DESKRIPTIVT. Det beskriver vad som finns. Det förklarar inte varför, och det bedömer inte om det är bra/dåligt. Det kommer vi tillbaka till.
+
+          Tid: ~1,5 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Alla fyra dimensioner översikt -->
+      <section data-background-color="#0f0f1a">
+        <h2>De <span class="gradient-text">fyra</span> dimensionerna</h2>
+        <div class="four-col">
+          <div class="dim-card eko fragment">
+            <div class="icon" style="color: var(--color-accent);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
+            </div>
+            <div class="name">Ekonomisk</div>
+            <div class="desc">Varor, kapital, tjänster rör sig över gränser</div>
+            <div class="ex">T-shirten: bomull från Indien, sömnad i Bangladesh</div>
+          </div>
+          <div class="dim-card pol fragment">
+            <div class="icon" style="color: var(--color-accent2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M3 10h18M12 3L2 10h20L12 3zM6 10v11M10 10v11M14 10v11M18 10v11"/>
+              </svg>
+            </div>
+            <div class="name">Politisk</div>
+            <div class="desc">Överstatliga institutioner och regelverk</div>
+            <div class="ex">EU, FN, WTO, Parisavtalet</div>
+          </div>
+          <div class="dim-card kul fragment">
+            <div class="icon" style="color: var(--color-accent3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <div class="name">Kulturell</div>
+            <div class="desc">Värderingar, uttryck och idéer sprids</div>
+            <div class="ex">K-pop, Hollywood, TikTok, engelska</div>
+          </div>
+          <div class="dim-card soc fragment">
+            <div class="icon" style="color: #b39ddb;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/>
+                <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
+                <path d="M17 11a4 4 0 014 4v2"/>
+              </svg>
+            </div>
+            <div class="name">Social</div>
+            <div class="desc">Människor rör sig mellan länder och håller kontakt</div>
+            <div class="ex">Migration, turism, utbyten, diaspora</div>
+          </div>
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.7em; margin-top: 1.2em; text-align: center;">
+          Fyra linser på samma fenomen. Samma T-shirt syns olika genom var och en.
+        </p>
+        <aside class="notes">
+          Avslöja ett kort i taget. Läs upp varje dimension med betoning på exemplet.
+
+          Nyckelformulering: "Dimensionerna är inte fack — de är linser. Samma fenomen har alla fyra samtidigt."
+
+          Tid: ~3 minuter (en per dimension + lite sammanhållning).
+        </aside>
+      </section>
+
+      <!-- Slide 5: Ekonomisk dimension — T-shirten -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge" style="background: rgba(255,107,107,0.2); color: var(--color-accent);">Dimension 1</span>
+        <h2>Den <span class="gradient-text">ekonomiska</span> dimensionen</h2>
+        <p style="font-size: 0.85em;">
+          Det <strong>uppenbara</strong> lagret. Men även här finns nyanser.
+        </p>
+        <div class="glass-card fragment">
+          <strong>T-shirten:</strong> 79 kr. Värdet skapas längs hela kedjan.
+        </div>
+        <div class="glass-card fragment">
+          <strong>Vem tjänar mest?</strong> Inte fabriken. Inte bönderna. Utan <strong>varumärket</strong> och <strong>plattformen</strong> — de som äger designen och kundrelationen.
+        </div>
+        <div style="margin-top: 1em;">
+          <span class="pill accent">Offshoring</span>
+          <span class="pill accent">Värdekedja</span>
+          <span class="pill accent">Just-in-time</span>
+          <span class="pill accent">Frihandel</span>
+        </div>
+        <aside class="notes">
+          Öppna med: "Den ekonomiska dimensionen är den ni redan såg i L1. Men nu ska vi lägga till skärpa."
+
+          Fråga klassen: "Vem tror ni tjänar mest — fabriken i Bangladesh, bomullsodlaren i Indien, eller Shein-företaget?" Låt några svara.
+
+          Ge sedan svaret: "Varumärket och plattformen — de som äger designen och kundrelationen. Det är centralt för att förstå vem som har makt i globala värdekedjor."
+
+          Tid: ~2 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Politisk dimension -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge" style="background: rgba(78,205,196,0.2); color: var(--color-accent2);">Dimension 2</span>
+        <h2>Den <span class="gradient-text-2">politiska</span> dimensionen</h2>
+        <p style="font-size: 0.85em;">
+          Institutioner och avtal <strong>över</strong> nationalstaterna.
+        </p>
+        <div class="glass-card fragment">
+          <strong>EU</strong> bestämmer över en stor del av svensk lagstiftning — från livsmedel till GDPR till tullar.
+        </div>
+        <div class="glass-card fragment">
+          <strong>WTO</strong> reglerar världshandeln. Handelskrig (USA-Kina) utspelar sig inom och utanför WTO:s regler.
+        </div>
+        <div class="glass-card fragment">
+          <strong>Parisavtalet</strong> är ett försök att hantera klimat — ett problem ingen enskild stat kan lösa.
+        </div>
+        <div style="margin-top: 0.8em;">
+          <span class="pill accent2">Överstatlig</span>
+          <span class="pill accent2">Suveränitet</span>
+          <span class="pill accent2">Global styrning</span>
+        </div>
+        <aside class="notes">
+          Poängen: Sverige är inte ensam om sina lagar. En stor del av det vi lever med är EU-beslut.
+
+          Fråga: "Kan ni ge ett exempel på ett EU-beslut som påverkar er vardag?" (GDPR, roamingavgifter, engångsplast-regler.)
+
+          Om någon lyfter Brexit: använd det som exempel på att den politiska dimensionen också kan backa — globalisering är inte en enkelriktad process.
+
+          Tid: ~2,5 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Kulturell dimension -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge" style="background: rgba(255,230,109,0.2); color: var(--color-accent3);">Dimension 3</span>
+        <h2>Den <span class="gradient-text">kulturella</span> dimensionen</h2>
+        <p style="font-size: 0.85em;">
+          Hur värderingar, uttryck och idéer rör sig.
+        </p>
+        <div class="two-col">
+          <div class="glass-card fragment">
+            <strong>Homogenisering</strong><br>
+            <span style="font-size: 0.8em;">Samma Marvel-filmer, samma sneakers, samma burgarkedjor — amerikaniseringens kritik.</span>
+          </div>
+          <div class="glass-card fragment">
+            <strong>Hybridisering</strong><br>
+            <span style="font-size: 0.8em;">K-pop blandar amerikansk, japansk och koreansk musiktradition. Sushi-burritos. Spanglish.</span>
+          </div>
+        </div>
+        <p style="font-size: 0.7em; color: var(--color-muted); margin-top: 1em;">
+          Två motstridiga bilder — båda är sanna samtidigt. Frågan är <strong style="color: var(--color-accent3);">vem som vinner och förlorar</strong> på vad.
+        </p>
+        <aside class="notes">
+          Viktigt: detta är där debatten om globalisering är som hetast. "Amerikaniseras vi?" vs "Kulturer blandas och nya uppstår."
+
+          Säg: "Det finns två bilder: antingen förlorar lokala kulturer till det amerikanska, eller så blandas allt till nya former. Båda är sanna samtidigt — frågan är HUR och VAR."
+
+          K-pop är ett bra exempel eftersom det visar att kulturellt inflytande inte bara går från USA ut, utan också åt andra hållet.
+
+          Tid: ~2,5 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Social dimension -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge" style="background: rgba(179,157,219,0.2); color: #d1c4e9;">Dimension 4</span>
+        <h2>Den <span style="background: linear-gradient(135deg, #b39ddb, var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">sociala</span> dimensionen</h2>
+        <p style="font-size: 0.85em;">
+          Människor som rör sig — eller håller kontakt när de inte kan röra sig.
+        </p>
+        <div class="glass-card fragment">
+          <strong>Migration</strong> — arbetskraft, flyktingar, studenter. Sverige tog emot stora flyktingvågor 2015 och 2022.
+        </div>
+        <div class="glass-card fragment">
+          <strong>Diaspora</strong> — människor som bor i en kultur men lever i relation till en annan. WhatsApp-samtal varje söndag med familjen i ursprungslandet.
+        </div>
+        <div class="glass-card fragment">
+          <strong>Utbyten</strong> — Erasmus-studenter, au pairer, digitala nomader. Ni kan vara det imorgon.
+        </div>
+        <aside class="notes">
+          Här är dimensionen som många elever missar. Pengar och kultur är synliga — människor över gränser tänker vi mindre på.
+
+          Fråga: "Vem här har en släkting eller vän som bor i ett annat land och som ni pratar med regelbundet?" Nästan alla kommer att räcka upp handen. "Det är den sociala dimensionen."
+
+          Erasmus-poängen är viktig — för många i klassen är det en konkret möjlighet i framtiden.
+
+          Tid: ~2 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Overgång till fas 4 -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="text-align: center;">Nu får <span class="gradient-text">ni</span> jobba</h2>
+        <p style="text-align: center; font-size: 0.9em; color: var(--color-text); max-width: 760px; margin: 1em auto;">
+          <strong>Parvis Frayer-modell</strong> för en tilldelad dimension (10 min), sedan <strong>gemensam T-shirt-kartläggning</strong> i alla fyra kolumner (20 min).
+        </p>
+        <p style="text-align: center; font-size: 0.7em; color: var(--color-muted); margin-top: 1.5em;">
+          Definition • Egenskaper • Exempel • Icke-exempel
+        </p>
+        <aside class="notes">
+          Dela ut elevuppgiften (eller säg till eleverna att öppna den digitalt). Förklara Frayer-modellen kort — icke-exempel-rutan är den viktigaste.
+
+          Fördela dimensioner: säg vilka par som får vilken dimension så att alla fyra blir täckta av olika par.
+
+          Tid: ~1 minut på denna slide innan övergång.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Exit ticket-förvarning -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge">Exit ticket</span>
+        <h2>Vilken dimension dominerar i <span class="gradient-text">din mobil</span>?</h2>
+        <p style="font-size: 0.85em;">
+          Motivera kort med <strong>ett konkret exempel</strong>. 2-3 meningar.
+        </p>
+        <p style="color: var(--color-muted); font-size: 0.7em; margin-top: 1.5em;">
+          Skriv på en post-it. Lämna till mig när ni går ut.
+        </p>
+        <aside class="notes">
+          Exit ticket-frågan. Påminn eleverna: "Det handlar inte om vad som är rätt svar — det handlar om att ni kan MOTIVERA med ett konkret exempel."
+
+          Sortera svaren i 3 högar efter lektionen:
+          - Hög 1: pekar ut en dimension men svagt motiverad → behöver mer begreppsövning i L3
+          - Hög 2: pekar ut en dimension med tydligt exempel → grundförståelse finns
+          - Hög 3: pekar ut flera dimensioner och hur de väver samman → A-tänkande
+
+          Preview L3: "Nästa gång — produktionskedjan. Vi fortsätter med T-shirten och introducerar verktyg nummer 2: centrum och periferi."
+
+          Tid: ~2 minuter introduktion + 3 min skrivande.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true, slideNumber: 'c/t', width: 1280, height: 720,
+      margin: 0.05, transition: 'slide', transitionSpeed: 'default',
+      controls: true, progress: true
+    });
+  </script>
+</body>
+</html>

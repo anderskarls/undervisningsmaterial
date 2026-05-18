@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 3: Första världskrigets konsekvenser</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0d0d14;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #e8a838;
+      --color-accent2: #c45e3a;
+      --color-accent3: #8ecae6;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 28px; color: var(--color-text); }
+    .reveal .slides section { background: var(--color-bg); }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--color-heading); text-transform: none; font-weight: 800; letter-spacing: -0.03em; }
+    .reveal h2 { font-size: 2em; margin-bottom: 0.5em; }
+    .reveal p, .reveal li { line-height: 1.6; }
+    .reveal ul, .reveal ol { display: block; text-align: left; }
+
+    .gradient-text { background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glow { text-shadow: 0 0 40px rgba(232, 168, 56, 0.3); }
+
+    .glass-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.3em 1.5em; text-align: left; margin: 0.5em 0; transition: transform 0.3s, border-color 0.3s; }
+    .glass-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .glass-card .card-icon { width: 32px; height: 32px; margin-bottom: 0.4em; display: block; }
+    .glass-card .card-icon svg { width: 100%; height: 100%; }
+    .glass-card strong { color: var(--color-accent); }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .discuss-badge { display: inline-flex; align-items: center; gap: 0.4em; background: rgba(255,255,255,0.2); color: white; padding: 0.4em 1.2em; border-radius: 24px; font-size: 0.65em; font-weight: 600; margin-bottom: 1em; backdrop-filter: blur(10px); }
+    .pulse-dot { width: 8px; height: 8px; background: var(--color-accent3); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+
+    .big-stat { display: flex; flex-direction: column; align-items: center; gap: 0.3em; }
+    .stat-number { font-size: 7em; font-weight: 800; line-height: 1; background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 40px rgba(232,168,56,0.3)); }
+    .stat-label { font-size: 1.1em; max-width: 560px; text-align: center; color: var(--color-text); }
+    .stat-source { font-size: 0.65em; color: var(--color-muted); }
+
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin-top: 1em; }
+    .compare-col { background: var(--color-surface); backdrop-filter: blur(10px); border: 1px solid var(--color-border); padding: 1.5em; border-radius: 16px; border-top: 3px solid var(--color-accent); }
+    .compare-col:nth-child(2) { border-top-color: var(--color-accent2); }
+    .compare-col h3 { font-size: 1.1em; margin-bottom: 0.5em; color: var(--color-heading); }
+    .compare-col ul { font-size: 0.85em; }
+
+    .timeline-v { display: flex; flex-direction: column; gap: 0.4em; max-width: 780px; margin: 0 auto; }
+    .tl-row { display: flex; align-items: center; gap: 1em; }
+    .tl-year { font-size: 1.05em; font-weight: 800; color: var(--color-accent); min-width: 150px; text-align: right; text-shadow: 0 0 30px rgba(232,168,56,0.4); }
+    .tl-line { width: 3px; height: 38px; background: linear-gradient(to bottom, var(--color-accent), var(--color-accent2)); border-radius: 2px; }
+    .tl-text { font-size: 0.85em; color: var(--color-text); background: var(--color-surface); padding: 0.55em 1em; border-radius: 10px; border: 1px solid var(--color-border); flex: 1; }
+
+    .source-analysis { max-width: 820px; margin: 0 auto; }
+    .source-quote {
+      font-size: 1em; font-style: italic;
+      border-left: 3px solid var(--color-accent);
+      padding: 0.8em 1.2em; margin: 0.6em 0;
+      background: var(--color-surface);
+      border-radius: 0 12px 12px 0;
+      color: var(--color-text);
+      box-shadow: -3px 0 20px rgba(232,168,56,0.15);
+      text-align: left;
+    }
+    .source-meta { display: flex; gap: 1.5em; font-size: 0.72em; color: var(--color-muted); margin-bottom: 0.8em; justify-content: flex-start; padding-left: 1.2em; }
+    .source-questions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.8em; }
+    .source-questions .glass-card { margin: 0; padding: 0.7em 0.9em; font-size: 0.75em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.8em;" class="glow">
+          Skapade freden verkligen<br><span class="gradient-text">fred?</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em;">Versailles, 1919</p>
+        <aside class="notes">
+          Visa bild på undertecknandet av Versaillesfreden eller karta över Europa före/efter. "Kriget slutade 1918. Men skapade freden verkligen fred? Det ska vi undersöka idag - och svaret kommer att peka framåt mot nästa lektion." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Statistik - 17 miljoner -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="big-stat">
+          <span class="stat-number fragment">17 milj</span>
+          <span class="stat-label fragment">döda när kriget var över - soldater och civila</span>
+          <span class="stat-source fragment">Plus 20+ miljoner sårade, miljontals föräldralösa, hela generationer traumatiserade</span>
+        </div>
+        <aside class="notes">
+          Låt siffran sjunka in en kort stund. "Innan vi pratar om själva freden - så här såg verkligheten ut för segrarmakterna. Fransmännen hade förlorat 1,4 miljoner män. Britterna 900 000. Det formade vad de krävde av Tyskland." Detta sätter scenen för Versailles - varför Frankrike var så hårt. Tid: 30 sek.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Versaillesfreden -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad bestämdes i <span class="gradient-text">Versailles</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/>
+          </svg>
+          <strong>Krigsskulden (artikel 231)</strong> - Tyskland och dess allierade hålls ansvariga för hela kriget
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+          </svg>
+          <strong>132 miljarder guldmark i skadestånd</strong> - en summa Tyskland inte skulle slutbetala förrän år 2010
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Territorieförluster</strong> - 13% av Tysklands yta och alla kolonier - till Frankrike, Polen, Belgien m.fl.
+        </div>
+        <aside class="notes">
+          Bygg orsak-konsekvenskedja på tavlan parallellt. Betona att Tyskland inte fick vara med och förhandla - freden dikterades. "Tänk er att ni förlorar en match och motståndarlaget ensamma bestämmer alla regler för nästa säsong." Tyskland betalade verkligen av slutbetalningen år 2010 - 91 år efter fredsfördraget. Tid: 2 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Artikel 231 - kallanalys -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad stod det i <span class="gradient-text">krigsskuldsparagrafen</span>?</h2>
+        <div class="source-analysis">
+          <blockquote class="source-quote">
+            "De allierade och associerade regeringarna fastslår, och Tyskland erkänner, att Tyskland och dess allierade är ansvariga för att ha orsakat all den förlust och skada som de allierade och associerade regeringarna och deras medborgare har lidit till följd av det krig som påtvingats dem av Tysklands och dess allierades angrepp."
+          </blockquote>
+          <div class="source-meta">
+            <span>Versaillesfördraget, artikel 231</span>
+            <span>28 juni 1919 - fem år på dagen efter mordet i Sarajevo</span>
+          </div>
+          <div class="source-questions">
+            <div class="glass-card fragment">
+              <strong>Vem?</strong> Segrarmakterna - Frankrike, Storbritannien, USA, Italien - formulerade texten
+            </div>
+            <div class="glass-card fragment">
+              <strong>Hur?</strong> "Påtvingats" - ordvalet förutsätter att Tyskland var den aggressiva parten
+            </div>
+            <div class="glass-card fragment">
+              <strong>Effekt?</strong> Gav juridisk grund för skadestånden - och moralisk grund för tyskarnas ilska
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Läs citatet långsamt och tydligt. Betona ordet "erkänner" - Tyskland fick inte förhandla, de fick acceptera. Kallkritik: segrarens historia skrivs av segraren. Tyska historiker och politiker attackerade artikel 231 i decennier. Hitler använde den som propaganda från 1933 och framåt. Kontrollfråga: "Om ni var tyskar 1919 - hur skulle ni reagera på den här texten?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Militär begränsning -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur <span class="gradient-text">förödmjukades</span> Tyskland?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Max 100 000 soldater</strong> - Från miljonarmé till polisstyrka
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Inga tunga vapen</strong> - Förbud mot stridsvagnar, ubåtar, flygvapen. Rhenlandet demilitariseras
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>"En dolkstöt i ryggen"</strong> - Många tyskar trodde armén aldrig förlorade - att politiker och civila svek dem
+        </div>
+        <aside class="notes">
+          "Dolkstötslegenden" - farlig myt som växte fram efter 1918. Många tyskar vägrade acceptera att armén förlorat. De letade syndabockar - socialdemokrater, judar, civila ledare som skrivit under freden. Denna myt blev central propaganda för nazisterna från 1920-talet. Kontrollfråga: "Varför tror ni att Tyskland upplevde freden som orättvis?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Var Versaillesfreden rättvis?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Diskutera med din bänkgranne. Tänk på bådas perspektiv - Frankrike OCH Tyskland.
+        </p>
+        <aside class="notes">
+          Central diskussion. Frankrike hade förlorat 1,4 miljoner män och stora områden i norr var förstörda - de ville ha trygghet och kompensation. Tyskland kände sig förödmjukat och orättvist behandlat. Bägge hade rätt på sitt sätt. Samla 3-4 svar och lyft fram båda sidorna. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Tidslinje 1918-1920 -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur gick det <span class="gradient-text">steg för steg</span>?</h2>
+        <div class="timeline-v">
+          <div class="tl-row fragment">
+            <div class="tl-year">11 nov 1918</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Vapenstillestånd - kriget slutar. Tysklands kejsare har abdikerat två dagar tidigare</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">jan 1919</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Fredskonferensen i Paris inleds - segrarmakterna förhandlar. Tyskland och Ryssland är inte inbjudna</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">juni 1919</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Weimarrepubliken antar Tysklands första demokratiska författning</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">28 juni 1919</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Versaillesfördraget undertecknas - exakt fem år efter mordet i Sarajevo</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">jan 1920</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Nationernas förbund grundas - men utan USA, Tyskland och Sovjet</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Kort och viktig tidslinje. Poängen: freden var inte ett enstaka ögonblick utan en process. Symboliken i 28 juni - segrarmakterna valde medvetet dagen. Weimarrepubliken bildades samtidigt som freden tvingades på Tyskland - demokratin associerades därmed med förlusten. Det skulle visa sig fatalt. Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Kejsardömen faller -->
+      <section data-background-color="#0d0d14">
+        <h2>Vilka <span class="gradient-text">imperier</span> föll?</h2>
+        <div class="timeline-v">
+          <div class="tl-row fragment">
+            <div class="tl-year" style="color: var(--color-accent2);">Ryssland</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Revolution 1917 - tsaren störtas, Sovjetunionen föds</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year" style="color: var(--color-accent);">Österrike-Ungern</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Imperiet upplöses - Tjeckoslovakien, Jugoslavien, Ungern, Österrike bildas</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year" style="color: var(--color-accent3);">Osmanska</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Imperiet upplöses - Turkiet bildas, Mellanöstern ritas om av Storbritannien och Frankrike</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year" style="color: var(--color-accent2);">Tyskland</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Kejsar Wilhelm II abdikerar - Weimarrepubliken bildas i en skakig demokrati</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Visa på karta hur Europas gränser ritades om. "Fyra stora imperier som funnits i hundratals år - borta. Nya länder som aldrig funnits förut skapades. Och gränserna drogs av segrarmakterna - inte av folken själva. Flera av de nya gränserna blev nya konfliktlinjer." Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Tre typer av konsekvenser -->
+      <section data-background-color="#0d0d14">
+        <h2>Vilka typer av <span class="gradient-text">konsekvenser</span> fick kriget?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M2 18l3-12 5 6 2-8 2 8 5-6 3 12H2z"/><path d="M2 18h20v2H2z"/>
+          </svg>
+          <strong>Politiska</strong> - Kejsardömen föll, demokratier och diktaturer uppstod, USA blir stormakt
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+          </svg>
+          <strong>Ekonomiska</strong> - Skulder, inflation, massarbetslöshet. Tyskland, Frankrike och Storbritannien utarmade
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>Sociala</strong> - Miljontals döda, trauma, förändrade könsroller (kvinnor i arbetslivet)
+        </div>
+        <aside class="notes">
+          Skriv tre kolumner på tavlan: Politiska / Ekonomiska / Sociala. Fyll i parallellt. "Vi sorterar konsekvenserna i tre kategorier - detta är ett verktyg ni kan använda för alla historiska händelser, inte bara världskrigen." Lyft fram att kategorierna ofta överlappar - ekonomisk kris leder till politisk instabilitet. Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Nationernas förbund -->
+      <section data-background-color="#0d0d14">
+        <h2>Kunde <span class="gradient-text">Nationernas förbund</span> förhindra nya krig?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Idén</strong> - En organisation där länder löser konflikter fredligt. USA:s president Woodrow Wilson drev linjen
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Problemet</strong> - USA gick aldrig med (kongressen röstade emot). NF saknade militär makt
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Misslyckades</strong> - Kunde inte stoppa Japan (1931), Italien (1935) eller Tyskland (1936-39)
+        </div>
+        <aside class="notes">
+          "Nationernas förbund var en bra idé - men den hade inga muskler. Det är som att ha en ordningsvakt som inte får ingripa." Ironi: Wilson drev idén men hans egen kongress röstade emot amerikanskt deltagande. Utan USA föll organisationen ihop när den testades. Detta är en av anledningarna till att FN efter WW2 byggdes annorlunda. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 11: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 1 minut</span>
+        <h2 style="color: white; font-size: 1.8em;">Vilken konsekvens tror ni fick störst betydelse?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Politisk, ekonomisk eller social? Varför just den?
+        </p>
+        <aside class="notes">
+          Kort diskussion som förbereder för den skriftliga uppgiften. Eleverna ska kunna välja och argumentera. Samla 2-3 svar. Tid: 1 min diskussion + 30 sek genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 12: Konsekvenskedja - nyckelslide -->
+      <section data-background-color="#0d0d14">
+        <h2>Ser ni en <span class="gradient-text">kedja</span>?</h2>
+        <div class="glass-card fragment">
+          <strong>Versaillesfreden</strong> dikterade krigsskuld, 132 mrd i skadestånd, förlorat territorium
+        </div>
+        <div class="glass-card fragment" style="margin-left: 2em;">
+          <strong>Ilska i Tyskland</strong> - förödmjukelse, ekonomisk kris, dolkstötslegenden
+        </div>
+        <div class="glass-card fragment" style="margin-left: 4em;">
+          <strong>Nationalism växer</strong> - extrema rörelser lovar att "göra Tyskland starkt igen"
+        </div>
+        <p class="fragment" style="color: var(--color-accent); font-size: 0.85em; margin-top: 1em; margin-left: 4em;">Konsekvenser som blir orsaker...</p>
+        <aside class="notes">
+          Nyckelslide som lägger grunden för lektion 4. "Ser ni vad som händer? Konsekvenserna av WW1 skapar grogrunden för nästa krig. Det är den röda tråden i hela momentet - konsekvenser blir orsaker." Peka på varje kort och visa pilen. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 13: Sammanfattning -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad tar ni med er <span class="gradient-text">idag</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <strong>Versaillesfreden</strong> - krigsskuld, 132 mrd skadestånd, territorieförluster, förödmjukelse
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Tre typer av konsekvenser</strong> - politiska, ekonomiska, sociala
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.8em; margin-top: 1.5em;">Nu: EPA + skriftlig uppgift om konsekvenserna</p>
+        <aside class="notes">
+          Övergång till EPA-uppgiften. Kolumnerna på tavlan (politiska/ekonomiska/sociala) används som stöd. "Nästa lektion: hur dessa konsekvenser blev orsaker till nästa krig. Det är nyckellektionen för hela momentet." Tid: 30 sek.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 1: Aktör eller struktur? Den stora frågan</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #0a0806;
+    --bg-1: #1a1410;
+    --accent-warm: #d97757;
+    --accent-hot: #e85d4b;
+    --accent-gold: #c9a86a;
+    --text: #f5efe6;
+    --text-dim: #9b8f82;
+    --card-bg: rgba(255, 248, 240, 0.06);
+    --card-border: rgba(217, 119, 87, 0.25);
+  }
+  html, body { background: var(--bg-0); }
+  .reveal {
+    background: radial-gradient(ellipse at top, #1a1410 0%, #0a0806 60%);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    color: var(--text);
+  }
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: -0.02em;
+  }
+  .reveal h1 { font-size: 3.4rem; line-height: 1.1; }
+  .reveal h2 { font-size: 2.6rem; line-height: 1.15; }
+  .reveal h3 { font-size: 1.8rem; line-height: 1.2; }
+  .reveal p { font-size: 1.4rem; line-height: 1.5; color: var(--text); }
+  .reveal ul, .reveal ol { font-size: 1.3rem; }
+  .reveal li { margin-bottom: 0.6em; }
+
+  .gradient-text {
+    background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    margin: 1rem 0;
+  }
+  .card h3 { margin-top: 0; color: var(--accent-gold); }
+  .quote {
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    border-left: 4px solid var(--accent-warm);
+    padding: 1rem 1.5rem;
+    background: rgba(217, 119, 87, 0.08);
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+  }
+  .quote-attr { display: block; margin-top: 0.8rem; font-size: 1rem; color: var(--text-dim); font-style: normal; }
+  .discussion {
+    background: linear-gradient(135deg, #e85d4b 0%, #d97757 100%);
+    padding: 3rem;
+    border-radius: 24px;
+    text-align: center;
+  }
+  .discussion h2 { color: white; font-size: 2.4rem; margin-bottom: 1rem; }
+  .discussion p { color: rgba(255,255,255,0.95); font-size: 1.5rem; }
+  .time-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    padding: 0.5rem 1.3rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .big-number {
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(120deg, var(--accent-warm), var(--accent-hot));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .label-small {
+    font-size: 1rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 0 12px 12px 0;
+  }
+  .timeline-year {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--accent-gold);
+    min-width: 120px;
+  }
+  .reveal .slide-number { color: var(--text-dim); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1 class="gradient-text">Aktör eller struktur?</h1>
+        <p style="font-size: 1.6rem; color: var(--text-dim); margin-top: 1rem;">Den stora frågan — 1914-1945</p>
+
+      </section>
+      <section>
+        <h2 class="gradient-text">Den stora frågan</h2>
+        <div class="quote" style="font-size: 1.8rem; margin-top: 2rem;">
+          "Vem bär ansvaret för krigens katastrofer — människorna som fattade besluten, eller de krafter som drev dem?"
+        </div>
+        <p style="margin-top: 2rem; color: var(--text-dim);">Denna fråga ska vi bära med oss genom hela momentet.</p>
+        <aside class="notes">Läs frågan dramatiskt. Låt den sätta sig. Peka på skyttegravsbilden vid sidan.</aside>
+      </section>
+      <section>
+        <h2>Två perspektiv på historien</h2>
+        <ul>
+          <li><strong>Aktör</strong> — en person eller grupp som fattar medvetna beslut</li>
+          <li><strong>Struktur</strong> — de krafter som sätter ramarna: ekonomi, ideologi, institutioner, teknik</li>
+          <li>Båda är sanna samtidigt. Historia är alltid ett samspel.</li>
+        </ul>
+        <aside class="notes">Använd worked example: "Varför åt du frukost idag?" — aktör: jag valde. Struktur: schemat, vanor. Båda är sanna.</aside>
+      </section>
+      <section>
+        <h2>Exempel: Gavrilo Princip, 1914</h2>
+        
+          <div class="card">
+            <h3>Aktör</h3>
+            <p>Princip är 19 år och sköt ärkehertigen i Sarajevo. Ett val, en handling.</p>
+          </div>
+          <div class="card">
+            <h3>Struktur</h3>
+            <p>Han agerade inom en kontext av nationalism, imperialism och allianssystem som redan laddat Europa.</p>
+          </div>
+        <aside class="notes">Poäng: Även enskilda val sker inom strukturella ramar. Utan strukturerna hade Princip bara varit en mördare, inte en utlösning.</aside>
+      </section>
+      <section>
+        <div class="discussion">
+          <span class="time-badge">EPA - 8 min</span>
+          <h2>Vilka tre ord associerar ni med åren 1914-1945?</h2>
+        </div>
+        <aside class="notes">Gruppera orden på tavlan: händelser, personer, ideologier, känslor.</aside>
+      </section>
+      <section>
+        <h2>Periodöversikt 1914-1945</h2>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-year">1914-18</div><div>Första världskriget — "The Great War"</div></div>
+          <div class="timeline-item"><div class="timeline-year">1919-39</div><div>Mellankrigstid — demokratikris, totalitarism växer</div></div>
+          <div class="timeline-item"><div class="timeline-year">1939-45</div><div>Andra världskriget — 70 miljoner döda</div></div>
+          <div class="timeline-item"><div class="timeline-year">1941-45</div><div>Förintelsen — industriellt folkmord</div></div>
+        </div>
+        <aside class="notes">Zooma in på vart avsnitt under respektive lektion.</aside>
+      </section>
+      <section>
+        <div class="discussion">
+          <span class="time-badge">Guidad övning - 25 min</span>
+          <h2>Er uppgift nu: analysera fyra historiska fall med aktör/struktur-matrisen</h2>
+        </div>
+        <aside class="notes">Dela ut elevuppgift L1. Cirkulera och ställ fördjupningsfrågor.</aside>
+      </section>
+      <section>
+        <h2>Exit ticket</h2>
+        <div class="card">
+          <p style="font-size: 1.5rem;">Förklara med egna ord:</p>
+          <ol style="font-size: 1.4rem;">
+            <li>Vad är skillnaden mellan ett aktörs- och ett strukturperspektiv?</li>
+            <li>Ge ETT exempel på varje från perioden 1914-1945.</li>
+          </ol>
+        </div>
+        <aside class="notes">5 min skriftligt. Sortera i 3 högar efter lektionen: förstod / osäker / missade.</aside>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      controls: true,
+      progress: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 1 — T-shirten som karta | Sam 3 Globalisering</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f1a;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #ff6b6b;
+      --color-accent2: #4ecdc4;
+      --color-accent3: #ffe66d;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal .slides section {
+      background: var(--color-bg);
+      text-align: left;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--color-heading);
+      text-transform: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .reveal h2 {
+      font-size: 2em;
+      margin-bottom: 0.6em;
+    }
+
+    .reveal p, .reveal li {
+      line-height: 1.6;
+    }
+
+    .reveal ul, .reveal ol {
+      display: block;
+      text-align: left;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-2 {
+      background: linear-gradient(135deg, var(--color-accent2), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow {
+      text-shadow: 0 0 40px rgba(255, 107, 107, 0.3);
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.1em 1.4em;
+      text-align: left;
+      margin: 0.5em 0;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .glass-card .card-icon {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 0.3em;
+      display: block;
+    }
+
+    .glass-card .card-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .glass-card strong {
+      color: var(--color-accent);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .big-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    .stat-number {
+      font-size: 7em;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 40px rgba(255,107,107,0.3));
+    }
+
+    .stat-label {
+      font-size: 1em;
+      max-width: 600px;
+      text-align: center;
+      color: var(--color-text);
+    }
+
+    .stat-source {
+      font-size: 0.6em;
+      color: var(--color-muted);
+    }
+
+    .timeline-h {
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+      padding: 2em 0;
+      margin-top: 1em;
+    }
+
+    .timeline-h::before {
+      content: '';
+      position: absolute;
+      top: calc(2em + 8px);
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent2), var(--color-accent3));
+    }
+
+    .tl-h-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .tl-h-dot {
+      width: 18px;
+      height: 18px;
+      background: var(--color-accent2);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(78,205,196,0.6);
+      margin-bottom: 0.8em;
+    }
+
+    .tl-h-step {
+      font-size: 0.65em;
+      font-weight: 600;
+      color: var(--color-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.2em;
+    }
+
+    .tl-h-place {
+      font-size: 1.1em;
+      font-weight: 800;
+      color: var(--color-accent);
+      margin-bottom: 0.3em;
+    }
+
+    .tl-h-label {
+      font-size: 0.7em;
+      color: var(--color-text);
+      max-width: 160px;
+      text-align: center;
+    }
+
+    .scale-model {
+      display: grid;
+      grid-template-columns: 1fr 0.3fr 1fr 0.3fr 1fr;
+      gap: 0.5em;
+      align-items: center;
+      margin-top: 1.5em;
+    }
+
+    .scale-node {
+      background: var(--color-surface);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 1.2em 1em;
+      text-align: center;
+    }
+
+    .scale-node.individ { border-top: 3px solid var(--color-accent); }
+    .scale-node.sverige { border-top: 3px solid var(--color-accent2); }
+    .scale-node.varld { border-top: 3px solid var(--color-accent3); }
+
+    .scale-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 0.5em;
+      display: block;
+    }
+
+    .scale-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .scale-node .scale-title {
+      font-size: 0.9em;
+      font-weight: 800;
+      margin-bottom: 0.3em;
+      color: var(--color-heading);
+    }
+
+    .scale-node .scale-sub {
+      font-size: 0.6em;
+      color: var(--color-muted);
+    }
+
+    .scale-arrow {
+      font-size: 2em;
+      color: var(--color-muted);
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    .quote-block {
+      font-size: 1.3em;
+      font-style: italic;
+      border-left: 3px solid var(--color-accent);
+      padding: 1em 1.4em;
+      margin: 1.5em 0;
+      background: var(--color-surface);
+      border-radius: 0 14px 14px 0;
+      color: var(--color-text);
+      box-shadow: -3px 0 25px rgba(255,107,107,0.15);
+    }
+
+    .video-placeholder {
+      background: var(--color-surface);
+      border: 2px dashed var(--color-border);
+      border-radius: 16px;
+      padding: 2em;
+      text-align: center;
+    }
+
+    .video-placeholder .play-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 0.8em;
+      color: var(--color-accent);
+    }
+
+    .video-placeholder .play-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .discuss-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: rgba(255,230,109,0.2);
+      color: var(--color-accent3);
+      padding: 0.3em 1em;
+      border-radius: 24px;
+      font-size: 0.6em;
+      font-weight: 600;
+      margin-bottom: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5em;
+      margin-top: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.2em; text-align: center;" class="glow">
+          En T-shirt.<br><span class="gradient-text">Sjuttionio kronor.</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 0.85em; text-align: center;">
+          Vad döljer sig egentligen i ett plagg?
+        </p>
+        <aside class="notes">
+          Ta fram T-shirten (eller Shein-paketet) fysiskt. Håll upp den. Låt tystnaden landa 2-3 sekunder innan du säger något. Detta är lektionens första "hook" — ett fysiskt objekt som alla eleverna känner igen. Säg inget mer än priset — låt frågan hänga kvar. Övergången till nästa slide ska kännas som en avslöjande: "men det här är inte det du tror..."
+        </aside>
+      </section>
+
+      <!-- Slide 2: Priset -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="big-stat">
+          <span class="stat-number">79<span style="font-size: 0.4em; margin-left: 0.1em;">kr</span></span>
+          <span class="stat-label">Fast fashion från Shein, levererad hem till dig på några dagar</span>
+          <span class="stat-source">Exempelpris. Faktiska priser varierar.</span>
+        </div>
+        <aside class="notes">
+          Håll kvar uppmärksamheten på priset. Fråga eleverna: "Hur är det här ens möjligt? Tänk på bomullen som odlas, sys, transporteras, marknadsförs, säljs. Hur kan det landa på 79 kronor?"
+
+          Lyssna efter spontana förklaringar — de blir bränsle för hela resten av momentet. Skriv inte upp svaren, låt dem bara hänga.
+
+          Tid: ~1 minut på denna slide.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Frågan som öppnar lektionen -->
+      <section data-background-color="#0f0f1a">
+        <h2>Ett <span class="gradient-text">plagg</span>?<br>Eller en <span class="gradient-text-2">karta</span>?</h2>
+        <div class="quote-block">
+          "Den här T-shirten är mer än bara ett plagg.<br>
+          Det är en karta över hur världen är organiserad."
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.8em;">
+          — Lärarens think-aloud, lektion 1
+        </p>
+        <aside class="notes">
+          Här gör du din explicita "think-aloud" — visa eleverna hur en samhällsvetare tänker. Säg: "Jag tänker så här när jag håller den här tröjan: det här är inte bara bomull och tråd. Det är en karta över vårt globala system."
+
+          Viktigt: modellera TÄNKANDET, inte bara kunskapen. Säg saker som "Jag undrar...", "Jag frågar mig...", "Jag noterar att..." — det är dessa formuleringar eleverna behöver lära sig använda.
+
+          Tid: ~1,5 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Produktionskedjan - tidslinje -->
+      <section data-background-color="#0f0f1a">
+        <h2>T-shirtens <span class="gradient-text">resa</span></h2>
+        <div class="timeline-h">
+          <div class="tl-h-node fragment">
+            <div class="tl-h-dot"></div>
+            <div class="tl-h-step">Steg 1</div>
+            <div class="tl-h-place">Kina</div>
+            <div class="tl-h-label">Plagget designas av algoritmer och trendanalyser</div>
+          </div>
+          <div class="tl-h-node fragment">
+            <div class="tl-h-dot"></div>
+            <div class="tl-h-step">Steg 2</div>
+            <div class="tl-h-place">Indien</div>
+            <div class="tl-h-label">Råvaror — bomull — beställs och skickas vidare</div>
+          </div>
+          <div class="tl-h-node fragment">
+            <div class="tl-h-dot"></div>
+            <div class="tl-h-step">Steg 3</div>
+            <div class="tl-h-place">Bangladesh</div>
+            <div class="tl-h-label">Delarna sys ihop i en fabrik i Dhaka</div>
+          </div>
+          <div class="tl-h-node fragment">
+            <div class="tl-h-dot"></div>
+            <div class="tl-h-step">Steg 4</div>
+            <div class="tl-h-place">Sverige</div>
+            <div class="tl-h-label">Plagget säljs och landar i din garderob</div>
+          </div>
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.75em; margin-top: 1.5em; text-align: center;">
+          Fyra länder. Fyra kontinenter. Ett plagg. 79 kronor.
+        </p>
+        <aside class="notes">
+          Låt fragmenten avslöjas ett i taget. Kommentera varje:
+
+          Kina: "Det hela börjar här — inte med bomullen, utan med en algoritm. Shein scannar trender på TikTok och Instagram och låter AI designa plagget innan någon människa sett det. Designens tempo styr allt annat."
+
+          Indien: "Råvaran — bomullen — beställs från Indien. Ofta odlad av småbönder som har låg förhandlingsposition. Vem tjänar? Vem är beroende?"
+
+          Bangladesh: "Delarna sys ihop här, ofta av unga kvinnor. Sömmerskan kan tjäna 40-60 öre på din T-shirt. Villkoren är ett av de mest omdebatterade områdena i global handel."
+
+          Sverige: "Och här säljs det — till dig. Tre dagars leverans, 79 kronor, och i din garderob. Men nu har tröjan passerat tre kontinenter innan den nådde dig."
+
+          När hela tidslinjen är uppe, säg: "Fyra platser. Men också — fyra uppsättningar regler, löner, politiska system, kulturer. Det är kartan. Och notera: det börjar INTE med råvaran utan med designen. Det är nytt i globaliseringens historia."
+
+          Tid: ~3-4 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Vem tjänar, vem förlorar? -->
+      <section data-background-color="#0f0f1a">
+        <h2>Hur <span class="gradient-text">fördelar sig</span> pengarna?</h2>
+        <div class="two-col">
+          <div class="glass-card fragment">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+              <path d="M2 18l3-12 5 6 2-8 2 8 5-6 3 12H2z"/><path d="M2 18h20v2H2z"/>
+            </svg>
+            <strong>Vinnare</strong><br>
+            Märket. Återförsäljaren. Plattformen (Shein/Temu). Teknikföretag bakom algoritmerna.
+          </div>
+          <div class="glass-card fragment">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2);">
+              <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+            </svg>
+            <strong>Förlorare?</strong><br>
+            Sömmerskan i Dhaka. Bomullsodlaren i Indien. Miljön. Lokala textilindustrier (även Borås förr).
+          </div>
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.75em; margin-top: 1.5em; text-align: center;">
+          Det är inte självklart vem som är vem. Det är där analysen börjar.
+        </p>
+        <aside class="notes">
+          Här öppnar du för det kritiska perspektivet som kommer byggas ut genom hela momentet. Säg: "Men det är inte så enkelt som 'företaget = ond, arbetaren = god'. Sömmerskan i Dhaka skulle kanske sakna sitt jobb om fabriken stängde. Det är precis dessa komplikationer som gör detta till samhällsvetenskap, inte en moralfabel."
+
+          Eleverna ska börja känna: det finns inte ett enkelt svar. Det är meningen.
+
+          Tid: ~1,5 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Så hur analyserar vi det här? -->
+      <section data-background-color="#0f0f1a">
+        <h2>Så hur <span class="gradient-text">analyserar</span> vi det här?</h2>
+        <p style="font-size: 0.95em; color: var(--color-text); max-width: 800px;">
+          Vi behöver <strong>verktyg</strong>. Samhällsvetenskapliga verktyg.
+        </p>
+        <p style="font-size: 0.95em; color: var(--color-text); max-width: 800px; margin-top: 0.5em;">
+          Och vi behöver ett sätt att <strong>röra oss</strong> mellan det lilla (ditt plagg) och det stora (världssystemet).
+        </p>
+        <p style="color: var(--color-accent3); font-size: 0.85em; margin-top: 1.5em; font-weight: 600;">
+          Därför använder vi tre skalor genom hela momentet.
+        </p>
+        <aside class="notes">
+          Detta är övergången från "en konkret T-shirt" till "en analysmodell". Säg: "För att se T-shirten som karta behöver vi språket. Under de kommande 7 lektionerna bygger vi upp det. Idag börjar vi med strukturen."
+
+          Tid: ~30 sekunder — en kort broslide.
+        </aside>
+      </section>
+
+      <!-- Slide 7: 3-skalamodellen -->
+      <section data-background-color="#0f0f1a">
+        <h2>Momentets <span class="gradient-text">tre skalor</span></h2>
+        <div class="scale-model">
+          <div class="scale-node individ fragment">
+            <div class="scale-icon" style="color: var(--color-accent);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="7" r="4"/>
+                <path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/>
+              </svg>
+            </div>
+            <div class="scale-title">Individ</div>
+            <div class="scale-sub">Du. Din vardag. Ditt objekt.</div>
+          </div>
+          <div class="scale-arrow fragment">→</div>
+          <div class="scale-node sverige fragment">
+            <div class="scale-icon" style="color: var(--color-accent2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/>
+              </svg>
+            </div>
+            <div class="scale-title">Sverige</div>
+            <div class="scale-sub">Nationen. Marknaden. Politiken.</div>
+          </div>
+          <div class="scale-arrow fragment">→</div>
+          <div class="scale-node varld fragment">
+            <div class="scale-icon" style="color: var(--color-accent3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/>
+                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <div class="scale-title">Världen</div>
+            <div class="scale-sub">Globala system. Makt. Strömmar.</div>
+          </div>
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.8em; margin-top: 1.8em; text-align: center;">
+          Samma T-shirt. Tre zoom-nivåer. Vi rör oss genom dem i 8 lektioner.
+        </p>
+        <aside class="notes">
+          Rita denna modell samtidigt på tavlan så eleverna ser den både digitalt och analogt — den ska sitta kvar på tavlan resten av lektionen. Säg: "Idag är ni på individnivå — vad påverkar mig? Lektion 3-4 zoomar vi ut till Sverige. Lektion 5-6 till världen. Slutuppgiften rör sig genom alla tre med samma objekt."
+
+          Det här blir momentets röda tråd. Eleverna ska förstå att varje lektion är ett "zoom-steg".
+
+          Tid: ~2 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Övergång till filmklipp -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge">Titta och fundera</span>
+        <h2>Vi ser T-shirtens <span class="gradient-text-2">resa</span></h2>
+        <div class="video-placeholder">
+          <div class="play-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <p style="font-size: 0.85em; color: var(--color-text);">
+            Filmklipp (2-3 min)
+          </p>
+          <p style="font-size: 0.7em; color: var(--color-muted); margin-top: 0.5em;">
+            T-shirtens supply chain — från bomullsfält till butik
+          </p>
+        </div>
+        <aside class="notes">
+          Innan du spelar klippet, säg: "Titta och fundera på tre frågor medan ni ser — jag visar dem nu, och vi pratar om dem efteråt."
+
+          Visa nästa slide (tittarfrågor), läs dem högt, spela sedan klippet.
+
+          Om du inte hittat ett bra klipp — se förslag: UR.se har flera klipp om textilindustrin. ILO (International Labour Organization) har producerat material. Sök också "t-shirt supply chain explained" på YouTube (välj ett seriöst avsändare).
+
+          Tid: ~3 minuter totalt (introduktion + klipp).
+        </aside>
+      </section>
+
+      <!-- Slide 9: Frågor att fundera på -->
+      <section data-background-color="#0f0f1a">
+        <h2>Titta efter <span class="gradient-text">tre saker</span></h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <strong>1. Vilka länder</strong> nämns i kedjan? Kan du sätta dem på en karta?
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2);">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>2. Vilka aktörer</strong> är inblandade? Vem tar besluten, vem utför dem?
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3);">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>3. Något som förvånar dig</strong>? En siffra, en person, ett faktum du inte visste?
+        </div>
+        <aside class="notes">
+          Låt fragmenten avslöjas ett i taget. Läs varje fråga högt. Säg: "Det är OK att ni inte hinner skriva ner allt. Fokusera på det som fastnar."
+
+          Efter klippet: gå tillbaka till denna slide och kör en 1-minuts par-reflektion. "Vad fastnade? Vad förvånade?"
+
+          Tid: ~1 minut för introduktion, + 2-3 min klipp, + 1 min par-reflektion efter = ~5 min totalt.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Övergång till fas 4 -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="text-align: center;">Nu får <span class="gradient-text">ni</span> jobba</h2>
+        <p style="text-align: center; font-size: 0.9em; color: var(--color-text); max-width: 700px; margin: 1em auto;">
+          I nästa del: <strong>utility-value-skrivning</strong> — varför är detta relevant för dig? Och <strong>grupp-tankekarta</strong> — vem vinner, vem förlorar på ert objekt?
+        </p>
+        <p style="text-align: center; font-size: 0.7em; color: var(--color-muted); margin-top: 2em;">
+          Vi zoomar fortfarande på individnivå. Sverige kommer i lektion 3-4.
+        </p>
+        <aside class="notes">
+          Detta är överlämningsbilden till fas 4 (guidad övning). Säg: "Nu är det er tur. Ni ska först skriva kort om varför det här kan vara relevant för er — inte för provet, utan på riktigt. Sen får ni ett objekt i er grupp och ska göra en tankekarta."
+
+          Dela ut elevuppgiften och förklara kort. Det här är en naturlig paus — eleverna behöver resa på sig, byta mode.
+
+          Tid: ~30 sekunder på denna slide innan övergång.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

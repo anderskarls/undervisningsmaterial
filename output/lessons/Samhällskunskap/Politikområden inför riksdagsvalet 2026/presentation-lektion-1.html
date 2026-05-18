@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 1 — Ideologigrund</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f1a;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #ff6b6b;
+      --color-accent2: #4ecdc4;
+      --color-accent3: #ffe66d;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+      /* Ideologifärger */
+      --lib: #4ecdc4;
+      --soc: #ff6b6b;
+      --kons: #ffe66d;
+    }
+
+    .reveal {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal .slides section {
+      background: var(--color-bg);
+      text-align: left;
+    }
+
+    .reveal .slides section[data-centered] {
+      text-align: center;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--color-heading);
+      text-transform: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .reveal h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal h3 {
+      font-size: 1.3em;
+      margin-bottom: 0.3em;
+    }
+
+    .reveal p, .reveal li {
+      line-height: 1.6;
+    }
+
+    .reveal ul, .reveal ol {
+      display: block;
+      text-align: left;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow {
+      text-shadow: 0 0 40px rgba(255, 107, 107, 0.3);
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.3em 1.5em;
+      text-align: left;
+      margin: 0.5em 0;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .glass-card strong {
+      color: var(--color-accent);
+    }
+
+    .glass-card .card-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 0.4em;
+      display: block;
+    }
+
+    .glass-card .card-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Dekorativa blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    /* Diskussionsslide */
+    .discuss-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 0.4em 1.2em;
+      border-radius: 24px;
+      font-size: 0.65em;
+      font-weight: 600;
+      margin-bottom: 1em;
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent3);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    /* Jämförelse - tre kolumner */
+    .comparison-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.2em;
+      margin-top: 1em;
+    }
+
+    .ideology-col {
+      background: var(--color-surface);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--color-border);
+      padding: 1.2em;
+      border-radius: 16px;
+      border-top: 3px solid var(--lib);
+    }
+
+    .ideology-col.soc { border-top-color: var(--soc); }
+    .ideology-col.kons { border-top-color: var(--kons); }
+
+    .ideology-col h3 {
+      font-size: 1.1em;
+      margin-bottom: 0.3em;
+    }
+
+    .ideology-col .value-label {
+      font-size: 0.7em;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6em;
+      display: block;
+    }
+
+    .ideology-col ul {
+      font-size: 0.75em;
+      padding-left: 1em;
+      margin: 0.5em 0;
+    }
+
+    .ideology-col blockquote {
+      font-size: 0.7em;
+      font-style: italic;
+      color: var(--color-muted);
+      border-left: 2px solid currentColor;
+      padding-left: 0.8em;
+      margin: 0.8em 0 0 0;
+    }
+
+    .ideology-col.lib h3 { color: var(--lib); }
+    .ideology-col.soc h3 { color: var(--soc); }
+    .ideology-col.kons h3 { color: var(--kons); }
+
+    /* Spektrum/skala */
+    .spectrum {
+      position: relative;
+      height: 60px;
+      margin: 2em 0;
+      background: linear-gradient(90deg, var(--soc) 0%, var(--kons) 50%, var(--lib) 100%);
+      border-radius: 30px;
+      opacity: 0.85;
+    }
+
+    .spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7em;
+      margin-top: -3em;
+      padding: 0 1em;
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-weight: 700;
+      align-items: center;
+      height: 60px;
+    }
+
+    .spectrum-caption {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6em;
+      color: var(--color-muted);
+      margin-top: 0.5em;
+      padding: 0 1em;
+    }
+
+    /* Värderingar grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+      margin-top: 1em;
+    }
+
+    .value-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1em 1.2em;
+      backdrop-filter: blur(10px);
+    }
+
+    .value-card .value-word {
+      font-size: 1.4em;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.2em;
+    }
+
+    .value-card .value-desc {
+      font-size: 0.8em;
+      color: var(--color-muted);
+      line-height: 1.4;
+    }
+
+    /* Worked example - staplar */
+    .worked-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+      margin-top: 0.8em;
+    }
+
+    .worked-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid;
+      border-radius: 12px;
+      padding: 0.8em 1.2em;
+      font-size: 0.85em;
+    }
+
+    .worked-card.lib { border-left-color: var(--lib); }
+    .worked-card.soc { border-left-color: var(--soc); }
+    .worked-card.kons { border-left-color: var(--kons); }
+
+    .worked-card .label {
+      font-weight: 700;
+      font-size: 0.85em;
+      margin-right: 0.5em;
+    }
+
+    .worked-card.lib .label { color: var(--lib); }
+    .worked-card.soc .label { color: var(--soc); }
+    .worked-card.kons .label { color: var(--kons); }
+
+    /* Frayer-modell */
+    .frayer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.5em;
+      max-width: 700px;
+      margin: 0.8em auto;
+    }
+
+    .frayer-cell {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 0.8em 1em;
+      font-size: 0.75em;
+    }
+
+    .frayer-cell .frayer-label {
+      font-weight: 700;
+      color: var(--color-accent2);
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3em;
+    }
+
+    .big-question {
+      font-size: 2.2em;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .footnote {
+      font-size: 0.55em;
+      color: var(--color-muted);
+      margin-top: 1.5em;
+    }
+
+    .preview-card {
+      background: var(--color-surface);
+      border: 1px dashed var(--color-accent2);
+      border-radius: 12px;
+      padding: 1em 1.3em;
+      margin-top: 1em;
+      font-size: 0.8em;
+      max-width: 700px;
+    }
+
+    .preview-card .preview-label {
+      color: var(--color-accent2);
+      font-weight: 700;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3em;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook/Öppning -->
+      <section data-background-color="#0f0f1a" data-centered>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 class="big-question glow" style="margin-bottom: 0.3em;">
+          Vem hade du röstat<br>på <span class="gradient-text">idag?</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em; margin-top: 0.8em;">Och — framför allt — <em>varför?</em></p>
+        <p style="color: var(--color-muted); font-size: 0.7em; margin-top: 2em;">Lektion 1 av 7 · Samhällskunskap 1a1</p>
+        <aside class="notes">
+          Öppningsslide. Låt frågan hänga kvar på tavlan i 20 sekunder utan att säga något — låt dem tänka. Säg sedan: "Det är den här frågan som hela momentet bygger upp till. Om sju lektioner ska ni kunna svara på den med minst ett sakargument och en värderingsgrund. Idag börjar vi med grundramverket."
+          Tid: ca 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Fas 1 - Retrieval/brainstorm -->
+      <section data-background="linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%)" data-centered>
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter · par</span>
+        <h2 style="color: white; font-size: 2em;">Vad ska en stat<br>egentligen <span style="color: #ffe66d;">göra?</span></h2>
+        <p style="color: rgba(255,255,255,0.8); font-size: 0.75em; max-width: 600px; margin: 1em auto 0;">
+          Diskutera med din bänkgranne. Skriv ner minst tre saker ni är överens om — och en sak där ni är oense.
+        </p>
+        <aside class="notes">
+          Fas 1 — Retrieval review (5 min totalt inkl. uppsamling).
+          Par-brainstorm 2 min. Efter den samlar du in svar på tavlan och grupperar dem tematiskt (välfärd, frihet, försvar, rättvisa...). Poängen: det finns många olika svar — och det är DÄR ideologi kommer in.
+          Tid: 2 min diskussion + 3 min gemensam uppsamling.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Målet med idag -->
+      <section data-background-color="#0f0f1a">
+        <h2>Vad ska vi <span class="gradient-text">klara av</span> idag?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <strong>Förstå</strong> vad en politisk ideologi faktiskt är (och vad den inte är).
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M12 2v20M2 7l10 3 10-3M4 7l-2 8a5 5 0 008 0L8 7M16 7l-2 8a5 5 0 008 0l-2-8"/>
+          </svg>
+          <strong>Känna igen</strong> tre stora ideologier — liberalism, socialism, konservatism — och vilka värderingar de bygger på.
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M7 17l5-5 3 3 4-4"/><path d="M15 11h4v4"/>
+          </svg>
+          <strong>Placera dig själv</strong> någonstans på kartan — och kunna motivera varför.
+        </div>
+        <aside class="notes">
+          Fas 2 — Målaktivering (3 min).
+          Visa målen progressivt (fragments). Efter sista bilden: "Vi bygger ett ramverk idag som ni sedan kommer tillämpa på fyra politikområden. Ni behöver inte bestämma er för en ideologi idag — men ni ska kunna känna igen dem."
+          Tid: 3 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Varför ideologier? -->
+      <section data-background-color="#0f0f1a">
+        <h2>Varför är <span class="gradient-text">ideologier</span> viktiga?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Ideologier är kartor</strong> — de hjälper dig att läsa av komplexa samhällsfrågor snabbt.
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <strong>De visar vad politiker <em>värderar</em></strong> — inte bara vad de föreslår, utan varför.
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Utan ideologi blir politik godtycke</strong> — då är det bara "jag tycker" mot "jag tycker".
+        </div>
+        <aside class="notes">
+          Fas 3 — Explicit instruktion, intro (2 min av 12).
+          Poängtera: ideologier är INTE religioner, inte personligheter, inte identiteter. De är strukturerade svar på frågan "hur bör samhället organiseras?"
+          Nästa bild bygger upp värderingarna som fundamentet.
+        </aside>
+      </section>
+
+      <!-- Slide 5: De fyra grundvärderingarna -->
+      <section data-background-color="#0f0f1a">
+        <h2>Fyra <span class="gradient-text">värderingar</span> att hålla koll på</h2>
+        <div class="values-grid">
+          <div class="value-card fragment">
+            <div class="value-word">Frihet</div>
+            <div class="value-desc">Individens rätt att välja sitt eget liv utan att staten lägger sig i</div>
+          </div>
+          <div class="value-card fragment">
+            <div class="value-word">Jämlikhet</div>
+            <div class="value-desc">Alla ska ha samma möjligheter och reella livschanser</div>
+          </div>
+          <div class="value-card fragment">
+            <div class="value-word">Trygghet</div>
+            <div class="value-desc">Stabilitet, lag och ordning, förutsägbarhet i vardagen</div>
+          </div>
+          <div class="value-card fragment">
+            <div class="value-word">Solidaritet</div>
+            <div class="value-desc">Vi tar hand om varandra — särskilt dem som inte klarar sig själva</div>
+          </div>
+        </div>
+        <p class="footnote fragment">Ingen ideologi förnekar någon av dem. Skillnaden ligger i <em>vilken de sätter högst när de krockar</em>.</p>
+        <aside class="notes">
+          Fas 3 (4 min in i 12).
+          Nyckelpoäng: värderingarna ÄR inte exklusiva. En konservativ kan vara för jämlikhet, en liberal för trygghet. Men när två värderingar krockar — vilken går först? Det är där ideologierna skiljer sig.
+          Exempel att dra muntligt: "Tänk er förbud mot bilar i innerstaden. Frihet säger: nej, låt folk välja. Trygghet säger: ja, för barnen. Jämlikhet säger: bra, kollektivtrafik ska gynnas. Samma fråga — olika värderingar får olika svar."
+        </aside>
+      </section>
+
+      <!-- Slide 6: Höger-vänster-skalan -->
+      <section data-background-color="#0f0f1a">
+        <h2>Höger och vänster — <span class="gradient-text">vad betyder det?</span></h2>
+        <div class="spectrum-labels">
+          <span>SOCIALISM</span>
+          <span>KONSERVATISM</span>
+          <span>LIBERALISM</span>
+        </div>
+        <div class="spectrum"></div>
+        <div class="spectrum-caption">
+          <span>Mer statlig omfördelning</span>
+          <span>(tradition & ordning)</span>
+          <span>Mer individuell frihet</span>
+        </div>
+        <p style="font-size: 0.75em; margin-top: 1.5em; color: var(--color-muted);">
+          Skalan handlar framförallt om statens roll i ekonomin. Men verkligheten är mer komplex — många politiker blandar värderingar och lägger sig på olika platser beroende på fråga.
+        </p>
+        <aside class="notes">
+          Fas 3 (6 min in i 12).
+          Rita gärna på tavlan parallellt. Påpeka: konservatism passar inte riktigt in i skalan — den är mer en dimension av förhållande till FÖRÄNDRING än en position i ekonomin. Men den placeras ofta i mitten/höger i svensk kontext.
+          Varna: många elever tror att "höger = ond, vänster = god" eller tvärtom. Försök att återge att skalan är en teknisk beskrivning, inte moralisk.
+        </aside>
+      </section>
+
+      <!-- Slide 7: De tre ideologierna (sammanfattning) -->
+      <section data-background-color="#0f0f1a">
+        <h2>Tre sätt att tänka på <span class="gradient-text">samhället</span></h2>
+        <div class="comparison-3">
+          <div class="ideology-col lib fragment">
+            <span class="value-label">Värderar högst</span>
+            <h3>Liberalism</h3>
+            <p style="font-size: 0.9em; color: var(--color-text);"><strong style="color:var(--lib);">Frihet</strong></p>
+            <ul>
+              <li>Individens rätt att välja</li>
+              <li>Marknadsekonomi</li>
+              <li>Yttrandefrihet</li>
+            </ul>
+            <blockquote style="color: var(--lib);">"En stat som lovar dig allt kan också ta allt."</blockquote>
+          </div>
+          <div class="ideology-col soc fragment">
+            <span class="value-label">Värderar högst</span>
+            <h3>Socialism</h3>
+            <p style="font-size: 0.9em; color: var(--color-text);"><strong style="color:var(--soc);">Jämlikhet</strong></p>
+            <ul>
+              <li>Rättvis fördelning</li>
+              <li>Offentlig välfärd</li>
+              <li>Solidaritet & kollektiv</li>
+            </ul>
+            <blockquote style="color: var(--soc);">"Frihet utan jämlikhet är frihet bara för de starka."</blockquote>
+          </div>
+          <div class="ideology-col kons fragment">
+            <span class="value-label">Värderar högst</span>
+            <h3>Konservatism</h3>
+            <p style="font-size: 0.9em; color: var(--color-text);"><strong style="color:var(--kons);">Trygghet & tradition</strong></p>
+            <ul>
+              <li>Stegvis förändring</li>
+              <li>Lag och ordning</li>
+              <li>Respekt för institutioner</li>
+            </ul>
+            <blockquote style="color: var(--kons);">"Det som fungerat genom generationer ska inte överges lättvindigt."</blockquote>
+          </div>
+        </div>
+        <aside class="notes">
+          Fas 3 (8 min in i 12).
+          Kärnslide. Använd fragments för att presentera en ideologi i taget (ca 90 sek vardera). Dra konkreta svenska exempel där du kan — men håll det kort, du går djupare i worked example-sliden.
+          Citaten är generella formuleringar av klassiska tänkare, inte exakta citat — [VERIFIERA] om du vill använda dem som riktiga citat. Ersätt med svenska politiker om du hittar träffande sådana.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Worked example - arbetslöshet -->
+      <section data-background-color="#0f0f1a">
+        <h2>Worked example: <span class="gradient-text">arbetslöshet</span></h2>
+        <p style="font-size: 0.85em; color: var(--color-muted); margin-bottom: 0.5em;">Frågan: <em>"Ska staten ta ansvar för att alla har jobb?"</em></p>
+        <div class="worked-stack">
+          <div class="worked-card lib fragment">
+            <span class="label">LIBERAL</span>
+            Marknaden skapar jobb om den får arbeta. Statens uppgift är att undanröja hinder, inte att garantera jobb. Individens egna val spelar roll.
+          </div>
+          <div class="worked-card soc fragment">
+            <span class="label">SOCIALISTISK</span>
+            Arbetslöshet är ett samhällsproblem — inte ett individuellt. Staten ska garantera trygghet, utbildning och stödja dem som drabbas. Annars blir klassklyftorna större.
+          </div>
+          <div class="worked-card kons fragment">
+            <span class="label">KONSERVATIV</span>
+            Arbete är en del av samhällsordningen och den personliga värdigheten. Stödet ska finnas, men också krav. Stegvisa reformer som prövats.
+          </div>
+        </div>
+        <p class="footnote fragment">Tre olika svar. Alla tre bryr sig om den arbetslösa. Men de sätter olika värderingar högst.</p>
+        <aside class="notes">
+          Fas 3 (10 min in i 12) — worked example.
+          Läs varje stapel högt. Poängen: alla tre tar frågan på allvar. Ingen säger "jag bryr mig inte". Skillnaden ligger i VAD de värderar högst när de ska välja mellan lösningar.
+          Knyt till värderingarna: liberal prioriterar frihet > jämlikhet. Socialistisk prioriterar jämlikhet > frihet. Konservativ prioriterar trygghet/ordning > radikala förändringar.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Diskussions-/övergångsslide till fas 4 -->
+      <section data-background="linear-gradient(135deg, #4ecdc4 0%, #2c5282 100%)" data-centered>
+        <span class="discuss-badge"><span class="pulse-dot"></span> dags att jobba · 25 min</span>
+        <h2 style="color: white; font-size: 2em;">Nu testar vi<br><span style="color: #ffe66d;">ramverket</span></h2>
+        <p style="color: rgba(255,255,255,0.85); font-size: 0.9em; max-width: 650px; margin: 1em auto 0;">
+          Tre moment i par: <strong>Frayer-modell</strong> (10 min) → <strong>matchningsuppgift</strong> (10 min) → <strong>redovisning</strong> (5 min)
+        </p>
+        <aside class="notes">
+          Övergångsslide — markerar start av fas 4 (guidad övning, 25 min).
+          Läs upp de tre momenten tydligt. Dela ut Frayer-mallen och matchningsuppgiften. Eleverna arbetar i par.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Frayer-modell instruktion -->
+      <section data-background-color="#0f0f1a">
+        <h2>Frayer-modell för <span class="gradient-text">ideologi</span></h2>
+        <div class="frayer">
+          <div class="frayer-cell fragment">
+            <div class="frayer-label">Definition</div>
+            Hur beskriver ni ordet med egna ord?
+          </div>
+          <div class="frayer-cell fragment">
+            <div class="frayer-label">Egenskaper</div>
+            Vad kännetecknar en ideologi?
+          </div>
+          <div class="frayer-cell fragment">
+            <div class="frayer-label">Exempel</div>
+            Vilka är ideologier? (nämn minst 3)
+          </div>
+          <div class="frayer-cell fragment">
+            <div class="frayer-label">Icke-exempel</div>
+            Vad ser ut som ideologi men är det inte?
+          </div>
+        </div>
+        <p class="footnote fragment">Tips för icke-exempel: är <em>populism</em> en ideologi? Är <em>demokrati</em> det? Diskutera.</p>
+        <aside class="notes">
+          Fas 4 — Del A (10 min).
+          Eleverna arbetar i par med Frayer-mallen de har fått. Cirkulera och ställ fördjupande frågor: "Vad är skillnaden mellan en ideologi och en åsikt? Mellan en ideologi och en religion?"
+          Poängen med icke-exempel-rutan: det tvingar dem att avgränsa begreppet. Populism är ett bra gränsfall att diskutera.
+        </aside>
+      </section>
+
+      <!-- Slide 11: Matchningsuppgift -->
+      <section data-background-color="#0f0f1a">
+        <h2>Matcha <span class="gradient-text">påstående</span> till ideologi</h2>
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <p style="font-size: 0.9em;">Läs de <strong>12 politiska påståendena</strong> ni fått. Markera varje som:</p>
+          <div style="display: flex; gap: 1em; margin-top: 0.8em;">
+            <span style="color: var(--lib); font-weight: 700;">L</span> liberalism
+            <span style="color: var(--soc); font-weight: 700;">S</span> socialism
+            <span style="color: var(--kons); font-weight: 700;">K</span> konservatism
+          </div>
+        </div>
+        <p style="font-size: 0.8em; color: var(--color-muted); margin-top: 1em;">
+          Några av påståendena är <em>gränsfall</em> — det är helt OK att säga "både och" eller "osäker". Markera det.
+        </p>
+        <aside class="notes">
+          Fas 4 — Del B (10 min) och del C (5 min redovisning).
+          Matchningsuppgiften ska innehålla tydliga och gränsfall. Gränsfallen är PEDAGOGISKT SYFTE — de tvingar diskussion. Cirkulera och fråga: "Varför just den ideologin? Vilken värdering hör ni i påståendet?"
+          Efter 10 min — ta upp 3-4 av gränsfallen i helklass (del C). Be par förklara sin placering.
+        </aside>
+      </section>
+
+      <!-- Slide 12: Självständig övning - Min ideologi -->
+      <section data-background-color="#0f0f1a">
+        <h2>Placera <span class="gradient-text">dig själv</span></h2>
+        <div class="glass-card" style="max-width: 750px;">
+          <p style="margin-bottom: 0.8em;">Skriv ca 100 ord:</p>
+          <p style="font-size: 0.95em; border-left: 3px solid var(--color-accent); padding-left: 1em; font-style: italic;">
+            <em>Beskriv en ideologi och en värdering som ligger dig nära.<br>Motivera varför.</em>
+          </p>
+          <p style="font-size: 0.75em; color: var(--color-muted); margin-top: 1em;">
+            Ingen mall, inget rätt svar. Ditt svar ligger kvar hos dig — det är bara jag som läser.
+          </p>
+        </div>
+        <aside class="notes">
+          Fas 5 — Självständig övning (10 min).
+          Skriv på tavlan: "Det går bra att vara osäker. Då kan du beskriva vad du dras åt — och vad som håller dig tillbaka."
+          Det är viktigt att eleverna vet att det inte är ett prov. Det är en inre positioneringsövning som hjälper dem att känna igen sina egna värderingar. Jag läser dem som formativ data — inte för betyg.
+        </aside>
+      </section>
+
+      <!-- Slide 13: Exit ticket + preview -->
+      <section data-background-color="#0f0f1a">
+        <h2>Exit ticket — <span class="gradient-text">innan ni går</span></h2>
+        <div class="glass-card" style="border-left: 3px solid var(--color-accent); max-width: 800px;">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <p style="font-size: 0.95em;">
+            <strong>Förklara hur liberalism, socialism och konservatism skulle se olika på en konkret politisk fråga.</strong>
+          </p>
+          <p style="font-size: 0.8em; color: var(--color-muted); margin-top: 0.5em;">Välj frågan själv. Ca 4-5 meningar räcker.</p>
+        </div>
+        <div class="preview-card fragment">
+          <span class="preview-label">Nästa lektion</span>
+          <strong>Skatter och välfärd</strong> — första gången vi testar ramverket mot en riktig sakfråga. Ni kommer argumentera för båda sidor i ett strukturerat samtal.
+        </div>
+        <aside class="notes">
+          Fas 6 — Avslut (5 min).
+          Dela ut exit ticket-blanketter eller be dem skriva i ett digitalt formulär.
+          Viktigt: betona att ni använder deras svar för att planera L2 — det är inte ett prov utan en återkoppling till läraren.
+          Sortera svaren i tre högar (förstod / osäker / missade) efter lektionen. De vanligaste missuppfattningarna går in i L2:s retrieval review.
+        </aside>
+      </section>
+
+      <!-- Slide 14: Avslutning -->
+      <section data-background-color="#0f0f1a" data-centered>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 class="glow" style="font-size: 2.5em;">
+          Grundramverket<br><span class="gradient-text">är byggt</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 0.9em; margin-top: 1em;">
+          I nästa lektion börjar vi tillämpa det.
+        </p>
+        <aside class="notes">
+          Avslutning. Kort och visuellt. Signalera att grunden är lagd.
+          Om du vill: säg ett par meningar om vad du såg eleverna göra idag som var bra (namnge en eller två konkreta saker du observerade under fas 4). Gör det specifikt — inte bara "bra jobbat".
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

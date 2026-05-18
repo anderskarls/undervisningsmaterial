@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 5 — Människor i världssystemet | Sam 3 Globalisering</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Arkiv v2.1 — designtokens (uppgraderad: större och fetare text) ============ */
+    :root {
+      --ink: #1F1A15;
+      --ink-2: #4A3F33;
+      --paper: #F4EDE1;
+      --paper-2: #EBE1CF;
+      --rule: #2A221A;
+      --bordeaux: #7A2E2E;
+      --marin: #2C3E55;
+      --oliv: #5A6A3A;
+      --ocker: #B8862F;
+      --kritbla: #5A7A9A;
+      --mossgron: #3E5A3E;
+      --tegel: #C96442;
+      --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+      --sans: "Inter Tight", "Work Sans", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    html, body { background: var(--ink); }
+    .reveal { font-family: var(--sans); color: var(--ink); font-size: 28px; font-weight: 500; }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section { background: var(--paper); padding: 0; height: 100%; }
+    .reveal .slides section.present { display: flex !important; flex-direction: column; }
+
+    /* ============ Gemensam chrome (masthead/baseline) ============ */
+    .chrome {
+      width: 100%; height: 100%;
+      padding: 32px 56px 28px;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .chrome.paper { background: var(--paper); color: var(--ink); }
+    .chrome.dark { color: var(--paper); }
+    .chrome .masthead {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .chrome .baseline {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .chrome.paper .masthead { color: var(--ink-2); border-bottom: 2px solid var(--rule); padding-bottom: 12px; }
+    .chrome.paper .baseline { color: var(--ink-2); border-top: 2px solid var(--rule); padding-top: 12px; }
+    .chrome.dark .masthead { color: var(--paper); opacity: 0.7; border-bottom: 2px solid rgba(244,237,225,0.27); padding-bottom: 12px; }
+    .chrome.dark .baseline { color: var(--paper); opacity: 0.7; border-top: 2px solid rgba(244,237,225,0.27); padding-top: 12px; }
+    .chrome .body { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 32px 0; overflow: hidden; }
+
+    /* ============ Typografi v2.1 ============ */
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: var(--serif); color: inherit; font-weight: 600;
+      letter-spacing: -0.015em; text-transform: none; margin: 0;
+    }
+    .reveal h1 { line-height: 1; }
+    .reveal h3 {
+      font-family: var(--sans); font-size: 22px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+    }
+    .reveal em { font-style: italic; font-family: var(--serif); font-weight: 600; }
+    .reveal strong, .reveal b { font-weight: 800; }
+    .reveal mark {
+      background: rgba(184, 134, 47, 0.4);
+      color: inherit;
+      padding: 0 8px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+    .reveal u {
+      text-decoration: underline;
+      text-decoration-color: var(--bordeaux);
+      text-decoration-thickness: 4px;
+      text-underline-offset: 6px;
+      font-weight: 700;
+    }
+    .chrome.dark mark { background: rgba(184, 134, 47, 0.55); }
+    .chrome.dark u { text-decoration-color: var(--ocker); }
+
+    .eyebrow {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--bordeaux);
+    }
+    .eyebrow::before { content: "▸ "; }
+    .chrome.dark .eyebrow { color: var(--ocker); }
+
+    .lede {
+      font-family: var(--serif); font-style: italic; font-weight: 500;
+      font-size: 32px; line-height: 1.3; margin-top: 22px;
+      color: var(--ink-2); max-width: 32ch;
+    }
+    .chrome.dark .lede { color: var(--paper); opacity: 0.85; }
+
+    .body-text {
+      font-family: var(--sans); font-size: 28px; line-height: 1.45;
+      max-width: 32em; font-weight: 500;
+    }
+
+    /* ============ cover (Mönster D — ramad bordeaux) ============ */
+    section.cover-outer { background: var(--bordeaux) !important; padding: 36px !important; }
+    .cover-inner {
+      background: var(--paper); width: 100%; height: 100%;
+      padding: 56px 72px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .cover-inner .top {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 17px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); font-weight: 700;
+    }
+    .cover-inner .bottom {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+    .cover-inner h1 { font-size: 116px; line-height: 0.95; color: var(--ink); font-weight: 600; letter-spacing: -2px; }
+    .cover-inner .subtitle {
+      font-family: var(--serif); font-size: 36px; font-style: italic; font-weight: 500;
+      color: var(--ink-2); margin-top: 18px; max-width: 28ch;
+    }
+
+    /* ============ section (Mönster B — färgad helyta med stor siffra) ============ */
+    .section-slide { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; height: 100%; }
+    .section-slide .big-num {
+      font-family: var(--serif); font-size: 340px; font-weight: 500;
+      color: var(--paper); opacity: 0.2; line-height: 0.8; letter-spacing: -8px;
+    }
+    .section-slide .kapitel {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); margin-bottom: 20px; font-weight: 700;
+    }
+    .section-slide .kapitel::before { content: "§ "; }
+    .section-slide h1 { font-size: 96px; line-height: 0.98; color: var(--paper); max-width: 14ch; font-weight: 600; letter-spacing: -1.5px; }
+    .section-slide .lede { font-size: 32px; margin-top: 22px; max-width: 26ch; font-weight: 500; }
+
+    /* ============ question (Mönster B — mossgrön) ============ */
+    .question-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .question-slide h1 { font-size: 104px; line-height: 1; max-width: 15ch; color: var(--paper); font-weight: 600; letter-spacing: -1.5px; }
+    .question-slide .lede { font-size: 34px; margin-top: 32px; max-width: 38ch; font-weight: 500; }
+
+    /* ============ content (Mönster A — papper) ============ */
+    .content-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .content-slide h1 { font-size: 72px; line-height: 1; margin-bottom: 36px; max-width: 18ch; color: var(--ink); font-weight: 600; letter-spacing: -1px; }
+    .content-slide .body-text { font-size: 28px; line-height: 1.45; max-width: 32em; font-weight: 500; }
+    .bullets { margin-top: 28px; padding: 0; list-style: none; }
+    .bullets li {
+      display: grid; grid-template-columns: 44px 1fr; gap: 22px;
+      padding: 16px 0; border-top: 2px solid rgba(74, 63, 51, 0.2);
+      font-family: var(--sans); font-size: 28px; line-height: 1.4; font-weight: 500;
+    }
+    .bullets li:first-child { border-top: none; }
+    .bullets .index {
+      font-family: var(--mono); font-size: 24px; font-weight: 700;
+      color: var(--ocker); padding-top: 2px;
+    }
+
+    /* ============ content-highlight (Mönster C — 60/40 delad) ============ */
+    section.ch-outer { background: var(--paper) !important; }
+    .ch-grid { display: grid; grid-template-columns: 1.3fr 1fr; height: 100%; }
+    .ch-left {
+      background: var(--paper); padding: 32px 56px 28px;
+      display: flex; flex-direction: column;
+      color: var(--ink); font-family: var(--sans);
+    }
+    .ch-left .meta-top {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+      border-bottom: 2px solid var(--rule); padding-bottom: 12px;
+    }
+    .ch-left .content {
+      flex: 1; padding: 32px 0; display: flex; flex-direction: column; justify-content: center;
+    }
+    .ch-left h1 { font-size: 62px; line-height: 1; margin-bottom: 28px; max-width: 14ch; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .ch-left .body-text { font-size: 25px; line-height: 1.45; font-weight: 500; }
+    .ch-left .meta-bot {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+      border-top: 2px solid var(--rule); padding-top: 12px;
+    }
+    .ch-right {
+      padding: 32px 48px 28px; color: var(--paper); font-family: var(--sans);
+      display: flex; flex-direction: column;
+    }
+    .ch-right .meta-top {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); font-weight: 700;
+      border-bottom: 2px solid rgba(244, 237, 225, 0.27); padding-bottom: 12px;
+    }
+    .ch-right .stat {
+      flex: 1; display: flex; flex-direction: column; justify-content: center;
+    }
+    .ch-right .stat-label {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); margin-bottom: 14px; font-weight: 700;
+    }
+    .ch-right .stat-number {
+      font-family: var(--serif); font-size: 190px; font-weight: 600;
+      line-height: 0.9; letter-spacing: -4px; color: var(--paper);
+    }
+    .ch-right .stat-caption {
+      font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 500;
+      color: var(--paper); opacity: 0.92; margin-top: 18px; line-height: 1.35;
+    }
+    .ch-right .meta-bot {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--paper); opacity: 0.8; font-weight: 600;
+      border-top: 2px solid rgba(244, 237, 225, 0.27); padding-top: 12px; text-align: right;
+    }
+
+    /* ============ twocol (Mönster A/C) ============ */
+    .twocol-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .twocol-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 36px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .twocol { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 40px; align-items: start; }
+    .twocol .divider { background: var(--rule); height: 100%; min-height: 260px; }
+    .twocol .col-label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700; margin-bottom: 16px;
+    }
+    .twocol .col:nth-child(1) .col-label { color: var(--bordeaux); }
+    .twocol .col:nth-child(3) .col-label { color: var(--marin); }
+    .twocol .col-body { font-family: var(--sans); font-size: 26px; line-height: 1.45; color: var(--ink); font-weight: 500; }
+    .twocol-caption {
+      font-family: var(--serif); font-style: italic; font-size: 26px; font-weight: 500;
+      color: var(--ink-2); text-align: center; margin-top: 32px;
+    }
+
+    /* ============ timeline (Mönster A, ocker linje) ============ */
+    .timeline-slide { flex: 1; display: flex; flex-direction: column; }
+    .timeline-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 60px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .timeline-h { flex: 1; position: relative; display: flex; align-items: flex-start; }
+    .timeline-h::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 34px;
+      height: 4px; background: var(--ocker);
+    }
+    .timeline-h .events {
+      display: grid; grid-auto-columns: 1fr; grid-auto-flow: column;
+      width: 100%; gap: 20px;
+    }
+    .timeline-h .event { position: relative; padding-top: 60px; }
+    .timeline-h .dot {
+      position: absolute; left: 0; top: 24px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--paper); border: 5px solid var(--bordeaux);
+    }
+    .timeline-h .year {
+      font-family: var(--mono); font-size: 26px; color: var(--bordeaux);
+      font-weight: 700; letter-spacing: 1px;
+    }
+    .timeline-h .title {
+      font-family: var(--serif); font-size: 32px; font-style: italic;
+      font-weight: 600; color: var(--ink); margin-top: 8px; line-height: 1.1;
+    }
+    .timeline-h .note { font-size: 22px; color: var(--ink); margin-top: 12px; line-height: 1.4; font-weight: 500; }
+
+    /* ============ quote (Mönster B — bläck helyta) ============ */
+    .quote-slide {
+      flex: 1; position: relative; display: flex; flex-direction: column;
+      justify-content: center; padding-left: 96px;
+    }
+    .quote-slide .mark-open {
+      position: absolute; top: -40px; left: -10px;
+      font-family: var(--serif); font-size: 240px; line-height: 1;
+      color: var(--ocker); font-weight: 600;
+    }
+    .quote-slide blockquote {
+      margin: 0;
+      font-family: var(--serif); font-size: 62px; font-style: italic; font-weight: 600;
+      line-height: 1.2; color: var(--paper); max-width: 22ch; letter-spacing: -0.5px;
+    }
+    .quote-slide .attribution {
+      margin-top: 44px; font-size: 30px; font-weight: 700; color: var(--ocker);
+    }
+    .quote-slide .attribution::before { content: "— "; }
+    .quote-slide .context {
+      margin-top: 10px;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--paper); opacity: 0.8; font-weight: 600;
+    }
+
+    /* ============ callout (Mönster D — ramad) ============ */
+    section.callout-outer { padding: 36px !important; }
+    section.callout-outer.fakta { background: var(--marin) !important; }
+    section.callout-outer.tips { background: var(--oliv) !important; }
+    section.callout-outer.varning { background: var(--bordeaux) !important; }
+    section.callout-outer.kalla { background: var(--ink) !important; }
+    section.callout-outer.begrepp { background: var(--ocker) !important; }
+    .callout-inner {
+      background: var(--paper-2); width: 100%; height: 100%;
+      padding: 56px 72px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .callout-inner .top {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 800;
+    }
+    .callout-inner .bottom {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .callout-outer.fakta .callout-inner .top { color: var(--marin); }
+    .callout-outer.tips .callout-inner .top { color: var(--oliv); }
+    .callout-outer.varning .callout-inner .top { color: var(--bordeaux); }
+    .callout-outer.kalla .callout-inner .top { color: var(--ink); }
+    .callout-outer.begrepp .callout-inner .top { color: var(--ocker); }
+    .callout-inner .bottom.ink-meta { color: var(--ink-2); }
+    .callout-inner h1 {
+      font-family: var(--serif); font-size: 64px; font-style: italic;
+      font-weight: 600; line-height: 1.05; color: var(--ink); max-width: 22ch; margin: 0;
+    }
+    .callout-inner .body-text {
+      font-size: 30px; line-height: 1.45; color: var(--ink); font-weight: 500;
+      margin-top: 28px; max-width: 26em;
+    }
+
+    /* ============ table (Mönster A) ============ */
+    .table-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .table-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 32px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .arkiv-table { width: 100%; border-collapse: collapse; }
+    .arkiv-table thead tr { border-top: 1.5px solid var(--rule); border-bottom: 1.5px solid var(--rule); }
+    .arkiv-table th {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700; color: var(--ink-2);
+      text-align: left; padding: 14px 18px 14px 0;
+    }
+    .arkiv-table td {
+      font-family: var(--serif); font-size: 26px; padding: 16px 18px 16px 0;
+      color: var(--ink); line-height: 1.3; font-weight: 500;
+    }
+    .arkiv-table tbody tr { border-bottom: 1px solid var(--paper-2); }
+    .arkiv-table tbody tr:last-child { border-bottom: 1.5px solid var(--rule); }
+    .arkiv-table tbody td:first-child { font-weight: 700; }
+    .arkiv-table tbody td.mono { font-family: var(--mono); font-size: 22px; font-weight: 600; }
+    .arkiv-table td mark { background: rgba(184, 134, 47, 0.2); }
+
+    /* ============ discuss (Mönster B — mossgrön) ============ */
+    .discuss-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .discuss-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 40px; color: var(--paper); letter-spacing: -0.8px; font-weight: 600; }
+    .questions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+    .questions li {
+      display: grid; grid-template-columns: 60px 1fr; gap: 28px;
+      font-family: var(--sans); font-size: 30px; line-height: 1.35; color: var(--paper); font-weight: 500;
+    }
+    .questions .roman {
+      font-family: var(--serif); font-style: italic; font-size: 40px; font-weight: 600;
+      color: var(--ocker); padding-top: 4px;
+    }
+
+    /* ============ data (stor siffra) ============ */
+    .data-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .data-slide .d-eyebrow {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; font-weight: 700;
+    }
+    .data-slide .d-number {
+      font-family: var(--serif); font-size: 260px; line-height: 0.85;
+      font-weight: 600; letter-spacing: -6px; color: var(--bordeaux);
+    }
+    .data-slide.ocker .d-number { color: var(--ocker); }
+    .data-slide.tegel .d-number { color: var(--tegel); }
+    .data-slide .d-caption {
+      font-family: var(--serif); font-size: 46px; font-style: italic; font-weight: 600;
+      color: var(--ink); margin-top: 14px; max-width: 24ch; line-height: 1.15;
+    }
+    .data-slide .d-body {
+      font-size: 26px; color: var(--ink); margin-top: 22px; max-width: 36em; line-height: 1.5; font-weight: 500;
+    }
+
+    /* ============ close (Mönster A, färgade rutor) ============ */
+    .close-slide { flex: 1; display: flex; flex-direction: column; }
+    .close-slide h1 { font-size: 64px; line-height: 1; margin-bottom: 32px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .takeaways { list-style: none; padding: 0; margin: 0 0 40px; max-width: 42em; }
+    .takeaways li {
+      padding: 12px 0 12px 32px; position: relative;
+      font-family: var(--sans); font-size: 28px; line-height: 1.45; color: var(--ink); font-weight: 500;
+    }
+    .takeaways li::before {
+      content: "▪"; color: var(--bordeaux); position: absolute;
+      left: 0; top: 12px; font-size: 26px;
+    }
+    .next-steps {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: auto;
+    }
+    .next-box { background: var(--paper-2); padding: 24px 28px; border-left: 4px solid var(--ocker); }
+    .next-box:last-child { border-left-color: var(--marin); }
+    .next-box .label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-bottom: 12px; font-weight: 700;
+    }
+    .next-box .text {
+      font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 500;
+      color: var(--ink); line-height: 1.35;
+    }
+
+    /* ============ transition (bridge — custom from v1, kept) ============ */
+    .bridge { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .bridge h1 { font-size: 64px; line-height: 1; margin-bottom: 32px; font-weight: 600; letter-spacing: -0.8px; }
+    .bridge .para { font-size: 28px; line-height: 1.45; max-width: 36em; margin-top: 12px; font-weight: 500; }
+    .bridge .kicker {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); margin-top: 36px; font-weight: 700;
+    }
+    .bridge .kicker::before { content: "▸ "; }
+
+    /* ============ scale (3-skalor custom, kept from v1 but uppskalat) ============ */
+    .scale-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .scale-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 40px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .scale { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr; gap: 12px; align-items: stretch; }
+    .scale-card {
+      background: var(--paper-2); padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      border-top: 4px solid var(--bordeaux);
+    }
+    .scale-card.sverige { border-top-color: var(--marin); }
+    .scale-card.varld { border-top-color: var(--oliv); }
+    .scale-card .s-label {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 700;
+    }
+    .scale-card .s-title {
+      font-family: var(--serif); font-size: 40px; font-style: italic;
+      font-weight: 600; color: var(--ink);
+    }
+    .scale-card .s-sub { font-size: 22px; color: var(--ink); line-height: 1.4; font-weight: 500; }
+    .scale-arrow {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 48px; color: var(--ink-2); font-style: italic;
+    }
+
+    /* ============ video-block (kept from v1) ============ */
+    .video-slide { flex: 1; display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+    .video-slide h1 { font-size: 62px; line-height: 1; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .video-block {
+      background: var(--paper-2); border: 1.5px solid var(--rule);
+      padding: 40px 48px; width: 100%;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .video-block .v-label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); font-weight: 700;
+    }
+    .video-block .v-label::before { content: "● "; }
+    .video-block .v-title {
+      font-family: var(--serif); font-style: italic; font-size: 36px;
+      font-weight: 600; color: var(--ink);
+    }
+    .video-block .v-desc { font-family: var(--sans); font-size: 22px; color: var(--ink); font-weight: 500; }
+
+    /* ============ numeral (stor siffra inline) ============ */
+    .numeral { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .numeral .big {
+      font-family: var(--serif); font-size: 260px; line-height: 0.85;
+      font-weight: 600; letter-spacing: -6px; color: var(--bordeaux);
+    }
+    .numeral .big .unit {
+      font-size: 80px; color: var(--ink); margin-left: 10px; font-style: italic; font-weight: 600;
+    }
+    .numeral .label {
+      font-family: var(--serif); font-style: italic; font-size: 46px; font-weight: 600;
+      color: var(--ink); max-width: 22ch; line-height: 1.2;
+    }
+    .numeral .note {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+
+    /* ============ export bars (från v1, uppskalade till v2) ============ */
+    .bars-wrap { margin-top: 12px; max-width: 900px; }
+    .bar-row {
+      display: grid; grid-template-columns: 240px 1fr 100px; gap: 24px;
+      align-items: center; padding: 12px 0;
+      border-top: 1px solid rgba(74, 63, 51, 0.25);
+      font-family: var(--sans);
+    }
+    .bar-row:last-child { border-bottom: 1px solid rgba(74, 63, 51, 0.25); }
+    .bar-row .b-label { font-size: 20px; color: var(--ink); font-weight: 600; }
+    .bar-row .b-track { height: 18px; background: var(--paper-2); position: relative; }
+    .bar-row .b-fill { height: 100%; background: var(--bordeaux); }
+    .bar-row .b-val {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      color: var(--ink-2); text-align: right; font-weight: 600;
+    }
+    .bars-source {
+      font-family: var(--mono); font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-top: 18px; font-weight: 500;
+    }
+    .bars-source::before { content: "§ "; }
+
+    /* ============ pills (från v1, uppskalade) ============ */
+    .pill-row { margin-top: 20px; }
+    .pill {
+      display: inline-block; padding: 8px 18px;
+      background: var(--paper-2); border: 1.5px solid var(--rule);
+      font-family: var(--mono); font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink); margin: 0 8px 10px 0;
+      font-weight: 600;
+    }
+    .pill.bordeaux { background: transparent; border-color: var(--bordeaux); color: var(--bordeaux); }
+    .pill.marin { background: transparent; border-color: var(--marin); color: var(--marin); }
+    .pill.oliv { background: transparent; border-color: var(--oliv); color: var(--oliv); }
+    .chrome.dark .pill { background: rgba(244,237,225,0.1); border-color: rgba(244,237,225,0.3); color: var(--paper); }
+    .chrome.dark .pill.bordeaux { border-color: var(--ocker); color: var(--ocker); background: transparent; }
+    .chrome.dark .pill.marin { border-color: var(--kritbla); color: var(--paper); background: transparent; }
+    .chrome.dark .pill.oliv { border-color: var(--paper); color: var(--paper); background: transparent; }
+
+    /* ============ inline-quote (från v1, uppskalad) ============ */
+    .inline-quote {
+      margin-top: 36px; border-left: 4px solid var(--bordeaux);
+      padding: 10px 28px;
+      font-family: var(--serif); font-style: italic; font-size: 30px;
+      line-height: 1.3; max-width: 34ch; color: var(--ink);
+    }
+    .inline-quote .attribution {
+      display: block; margin-top: 16px;
+      font-family: var(--mono); font-style: normal; font-size: 13px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+    .chrome.dark .inline-quote { border-left-color: var(--ocker); color: var(--paper); }
+    .chrome.dark .inline-quote .attribution { color: var(--paper); opacity: 0.7; }
+
+    /* Reveal overrides */
+    .reveal .progress { color: var(--bordeaux); }
+    .reveal .controls { color: var(--ink-2); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1: SECTION/COVER (Mönster B — bordeaux helyta) -->
+      <section style="background: var(--bordeaux) !important;">
+        <div class="chrome dark" style="background: var(--bordeaux);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body section-slide">
+            <div class="big-num">05</div>
+            <div>
+              <div class="kapitel">Möte med människor</div>
+              <h1>Vi har sett <em>systemet</em>. Idag möter vi <mark>människorna</mark>.</h1>
+              <div class="lede">Fem personer. Fem positioner i världssystemet. <em>En</em> gemensam karta — och du står på den.</div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>01 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Öppna med L4:s exit ticket-fördelning. Visa de tre högarna: en teori med svag motivering / ser olika jobb / ser komplementaritet. Påminn om bron från Sverige (L4) till människor (L5).
+
+          Säg: "Hittills har vi rört oss från T-shirt till Sverige till världen. Idag möter vi människorna i samma system. Fem riktiga personer — och i slutet ska ni placera er själva på samma karta."
+
+          Tid: ~3 min.
+        </aside>
+      </section>
+
+      <!-- 2: QUESTION (Mönster B — mossgrön) -->
+      <section style="background: var(--mossgron) !important;">
+        <div class="chrome dark" style="background: var(--mossgron);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body question-slide">
+            <div class="eyebrow">Dagens fråga</div>
+            <h1>Vad ser man när man tittar på <em>system</em> genom en <u>persons</u> ögon?</h1>
+            <div class="lede">Idag tillämpar vi <strong>båda</strong> teorier — Held + Wallerstein — på fem verkliga liv.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>02 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Målaktivering. Säg uttryckligen: "Det här är fem personer som lever NU. Inte i en lärobok."
+
+          Poängen: teorier är inte abstrakta — de är verktyg för att se VAD som händer människor. Idag ska vi använda båda samtidigt.
+
+          Tid: ~1,5 min.
+        </aside>
+      </section>
+
+      <!-- 3: BRIDGE (Mönster A — papper) — vägen hittills -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body bridge">
+            <div class="eyebrow">Vägen hittills</div>
+            <h1>Från en <em>T-shirt</em> till en hel värld — och nu till människan</h1>
+            <ul class="bullets">
+              <li><span class="index">01</span><span><strong>Lektion 1</strong>: vardagsobjektet — T-shirten</span></li>
+              <li><span class="index">02</span><span><strong>Lektion 2</strong>: Helds <em>fyra</em> dimensioner</span></li>
+              <li><span class="index">03</span><span><strong>Lektion 3</strong>: Wallersteins centrum-periferi</span></li>
+              <li><span class="index">04</span><span><strong>Lektion 4</strong>: Sverige i systemet</span></li>
+              <li><span class="index">05</span><span><strong>Idag</strong>: människorna <mark>som lever i systemet</mark></span></li>
+            </ul>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>03 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Kort tillbakablick — ~30 sek. Eleverna behöver se rörelsen: objekt → teori → teori → land → människor.
+
+          Poängen: idag är inte en ny teori, utan en TILLÄMPNING av de två vi redan har. Djup, inte bredd.
+
+          Tid: ~1 min.
+        </aside>
+      </section>
+
+      <!-- 4: CONTENT/MAP (Mönster A — papper) — fem personer -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body table-slide">
+            <div class="eyebrow">Dagens fem personer</div>
+            <h1>Fem liv på <em>fem</em> platser</h1>
+            <table class="arkiv-table">
+              <thead>
+                <tr>
+                  <th>Person</th>
+                  <th>Land</th>
+                  <th>Position</th>
+                  <th>Dominerande dimension</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="fragment">
+                  <td>Reshma Begum</td>
+                  <td>Bangladesh</td>
+                  <td>Periferi</td>
+                  <td>Ekonomisk</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Therese</td>
+                  <td>Elfenbenskusten</td>
+                  <td>Periferi</td>
+                  <td>Ekonomisk + politisk</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Sheila Mabunga</td>
+                  <td>Filippinerna → Saudi</td>
+                  <td>Semi-periferi</td>
+                  <td>Social</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Nazma Akter</td>
+                  <td>Bangladesh</td>
+                  <td>Periferi → semi</td>
+                  <td>Politisk</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Joakim Ravemyr</td>
+                  <td>Sverige</td>
+                  <td>Centrum</td>
+                  <td>Ekonomisk + politisk</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="bars-source">Två i Bangladesh — <em>samma land, helt olika positioner</em>. Det är ingen tillfällighet.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>04 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Namnge utan kontext, eleverna ska bli nyfikna. Säg: "Reshma. Therese. Sheila. Nazma. Joakim. De finns alla. Idag möter ni dem och positionerar er själva i samma karta."
+
+          Markera Bangladesh två gånger som pedagogisk poäng — Reshma och Nazma är båda från Bangladesh men har helt olika positioner och agens. En överlevare från Rana Plaza, en fackledare för 70 000 sömmerskor.
+
+          Tid: ~3 min.
+        </aside>
+      </section>
+
+      <!-- 5: CONTENT (Mönster A — papper) — pre-reading-mallen -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body content-slide">
+            <div class="eyebrow">Så här arbetar vi</div>
+            <h1><em>Tre steg</em> när du möter en persons text</h1>
+            <ul class="bullets">
+              <li><span class="index">01</span><span><strong>Innan du läser</strong> — gissa position och Held-dimension</span></li>
+              <li><span class="index">02</span><span><strong>Medan du läser</strong> — stryk under aktörer + geografi</span></li>
+              <li><span class="index">03</span><span><strong>Efter du läst</strong> — kontrollera gissningen, tillämpa båda teorier, koppla till dig själv</span></li>
+            </ul>
+            <div class="inline-quote">
+              <em>Mallen scaffoldar <strong>vad</strong> du letar efter — inte <strong>hur svår</strong> texten är. Språknivån är kvar; din kompass är ny.</em>
+              <span class="attribution">Pedagogisk princip · L5</span>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>05 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Visa varför mallen finns. Kopplar till L4-fördjupningen som var svår — eleverna visste inte vad de skulle leta efter.
+
+          Säg: "Det här är inte enklare texter. Det är en kompass som hjälper er navigera SVÅRA texter. Ni ska veta VAD ni letar efter innan ni öppnar dokumentet."
+
+          Tre steg, tre frågor. Innan: gissning. Under: understrykning. Efter: kontroll + teori + jag själv.
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 6: SECTION (Mönster B — marin helyta) — worked example -->
+      <section style="background: var(--marin) !important;">
+        <div class="chrome dark" style="background: var(--marin);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body section-slide">
+            <div class="big-num">▸</div>
+            <div>
+              <div class="kapitel">Worked example</div>
+              <h1>Vi börjar med <em>Joakim</em>. <mark>Tillsammans</mark>.</h1>
+              <div class="lede">Modellering: Held + Wallerstein, steg för steg. Du ser <em>hur</em> innan du gör själv.</div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>06 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Signalera tydligt: detta är MODELLERING. Eleverna ska titta på proceduren, inte memorera fakta om Joakim.
+
+          Säg: "Jag tänker högt. Ni ser hur jag rör mig — gissning, läsning, kontroll, teori, jag själv. Det här är vad ni ska göra själva strax."
+
+          Tid: ~30 sek (övergångsslide).
+        </aside>
+      </section>
+
+      <!-- 7: CONTENT-HIGHLIGHT (Mönster C — 60/40, papper + marin) -->
+      <section style="background: var(--paper) !important;">
+        <div class="ch-grid">
+          <div class="ch-left">
+            <div class="meta-top">
+              <span>Person 5 · Sverige</span>
+              <span>Lektion 05 / 08</span>
+            </div>
+            <div class="content">
+              <div class="eyebrow">§ Vem är Joakim Ravemyr?</div>
+              <h1>Fackman på <em>Volvo</em> i <mark>Olofström</mark></h1>
+              <div class="body-text">Tjänstemannafack-ordförande Unionen. När 800 jobb försvann 2018 — flyttade kinesiska Geely produktionen till South Carolina och Kina.</div>
+            </div>
+            <div class="meta-bot">
+              <span>Källa: SVT, BLT, SR · 2018-2022</span>
+              <span>07 / 14</span>
+            </div>
+          </div>
+          <div class="ch-right" style="background: var(--marin);">
+            <div class="meta-top">
+              <span>Globaliseringens chock</span>
+              <span>Olofström</span>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Förlorade arbetstillfällen</div>
+              <div class="stat-number">800</div>
+              <div class="stat-caption"><em>på en bruksort om</em> 13 000 invånare</div>
+            </div>
+            <div class="meta-bot">Olofström · 2018</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Här fördjupar du Joakim. Säg: "Innan jag läser hans text — vad gissar jag? Sverige, fackman, Volvo. Centrum. Helds dominerande dimension: ekonomisk."
+
+          Stanna på siffran 800. Sätt den i förhållande till en bygd om 13 000 invånare. Det är 6% av befolkningen — en hel skola, en hel fotbollsklubb, en hel kyrka.
+
+          Geely är en transnationell aktör (Held). Olofström är på papperet centrum (Wallerstein) men i kapitalflödet en mottagare. Detta är dubbel position.
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 8: QUOTE (Mönster B — bläck/ink helyta) -->
+      <section style="background: var(--ink) !important;">
+        <div class="chrome dark" style="background: var(--ink);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body quote-slide">
+            <div class="mark-open">"</div>
+            <blockquote>Det <em>känns som ett hot</em> med nya fabriker i Kina och produktion som flyttar till USA.</blockquote>
+            <div class="attribution">Joakim Ravemyr, Unionen</div>
+            <div class="context">SVT Nyheter Blekinge · 2018</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>08 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Stanna här. Låt det landa. Sedan: "Det här är centrum-perspektivet. Sverige — ett rikt land — där en bygd ser sin framtid omformas av beslut i Hangzhou."
+
+          Poängen: även människor i centrum kan vara sårbara. Wallerstein beskrev inte denna dubbla position tydligt — det är en nyans som teorin behöver kompletteras med.
+
+          Held: ekonomisk dimension dominerar, men politisk är lika stark — vem som äger, vem som beslutar var.
+
+          Tid: ~1 min.
+        </aside>
+      </section>
+
+      <!-- 9: TWOCOL (Mönster A — papper) — analys av Joakim -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body twocol-slide">
+            <div class="eyebrow">Worked example · steg för steg</div>
+            <h1><em>Held</em> och Wallerstein på Joakim — <mark>samtidigt</mark></h1>
+            <div class="twocol">
+              <div class="col fragment">
+                <div class="col-label">Held's dimensioner</div>
+                <div class="col-body">
+                  <strong>Ekonomisk:</strong> kapitalets globala mobilitet — Geelys investeringskalkyl styr<br>
+                  <strong>Politisk:</strong> kinesiskt ägarskap, EU-arbetsrätt, USA-tullar<br>
+                  <strong>Kulturell:</strong> bruksortens identitet<br>
+                  <strong>Social:</strong> arbetarklassens villkor
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="col fragment">
+                <div class="col-label">Wallerstein</div>
+                <div class="col-body">
+                  Sverige = <strong>centrum</strong> (teknik, EU, arbetsrätt)<br>
+                  <em>Men</em> kapitalflödet flyttar — Olofström blir <u>mottagare</u><br>
+                  Dubbel position: <mark>centrum + sårbar</mark><br>
+                  <em>"Centrum kan vara sårbart"</em> — nyans
+                </div>
+              </div>
+            </div>
+            <div class="twocol-caption"><em>Båda teorier hjälper. Ingen räcker ensam.</em></div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>09 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Detta är **modelleringen**. Säg "se hur jag rör mig mellan teorierna" — eleverna ska göra detta själva strax.
+
+          Visa rörelsen: jag börjar med Helds fyra dimensioner. Sen växlar jag till Wallerstein och frågar VEM som är var. Sen ser jag att de inte säger samma sak — de svarar på olika frågor. Helds VAD. Wallersteins VEM.
+
+          Avsluta: "Det här är vad ni ska göra på er person. Inte memorera Joakim. SE HUR jag rör mig."
+
+          Tid: ~4 min — pedagogiskt central slide.
+        </aside>
+      </section>
+
+      <!-- 10: DISCUSS (Mönster B — mossgrön) — jigsaw-instruktion -->
+      <section style="background: var(--mossgron) !important;">
+        <div class="chrome dark" style="background: var(--mossgron);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body discuss-slide">
+            <div class="eyebrow">Nu er tur</div>
+            <h1><em>Jigsaw</em> — fyra steg</h1>
+            <ol class="questions">
+              <li><span class="roman">I.</span><span><strong>Expertgrupp</strong> (12 min) — läs er person, fyll i pre-reading + efter-läsning</span></li>
+              <li><span class="roman">II.</span><span><strong>Förbered presentation</strong> (2 min) till hemgruppen</span></li>
+              <li><span class="roman">III.</span><span><strong>Hemgrupp</strong> (15 min) — varje expert presenterar, sök <mark>mönster</mark></span></li>
+              <li><span class="roman">IV.</span><span><strong>Helklass</strong> (3 min) — vi plockar 2-3 observationer</span></li>
+            </ol>
+            <div style="font-family: var(--mono); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--paper); opacity: 0.8; margin-top: 28px; font-weight: 600;">§ Tilldelning är förbestämd · Skrivs på arbetsbladet</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>10 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Tydlig instruktion. Skriv tilldelning på tavlan eller läs upp grupperingen. 22 elever: 4-5 i varje expertgrupp, 5 hemgrupper (en grupp om 6 om udda antal).
+
+          Cirkulera särskilt i expertgrupperna. Lyssna efter: använder eleverna BEGREPP (centrum/semi/periferi, dimensioner, agens, transnationell aktör)? Eller bara vardagsord?
+
+          Om bara vardagsord — peka på begreppslistan i elevuppgiften: "Översätt det du säger till ett begrepp i listan."
+
+          Tid: ~1 min introduktion. 30 min arbete.
+        </aside>
+      </section>
+
+      <!-- 11: TABLE (Mönster A — papper) — sammanfattning av personerna -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body table-slide">
+            <div class="eyebrow">De fem · översikt</div>
+            <h1><em>Vem</em> är vem — och vart i <mark>systemet</mark></h1>
+            <table class="arkiv-table">
+              <thead>
+                <tr>
+                  <th>Namn</th>
+                  <th>Plats</th>
+                  <th>Vad gör hen</th>
+                  <th>Position</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="fragment">
+                  <td>Reshma Begum</td>
+                  <td>Bangladesh</td>
+                  <td>Rana Plaza-överlevare → hotellanställd</td>
+                  <td>Periferi</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Therese</td>
+                  <td>Elfenbenskusten</td>
+                  <td>Fairtrade-kakaobonde, kooperativ-medlem</td>
+                  <td>Periferi (med agens)</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Sheila Mabunga</td>
+                  <td>Filippinerna → Saudi</td>
+                  <td>Migrant-hushållsarbetare, kafala-systemet</td>
+                  <td>Semi-periferi</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Nazma Akter</td>
+                  <td>Bangladesh</td>
+                  <td>F.d. barnarbetare, idag fackledare 70 000 sömmerskor</td>
+                  <td>Periferi → transnationell</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Joakim Ravemyr</td>
+                  <td>Sverige</td>
+                  <td>Fack-ordförande Volvo Olofström</td>
+                  <td>Centrum (sårbart)</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="bars-source">Använd denna översikt när hemgrupperna samlas — efter expertgrupperna, inte före.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>11 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Visa NÄR hemgrupperna ska samla sig och få överblick. INTE för Fas 3 — efter expertgrupperna har var och en blivit expert på sin person.
+
+          Låt fragmenten avslöjas en i taget när varje hemgrupp-medlem har presenterat sin person. Det blir en visuell motsvarighet till deras presentationer.
+
+          Poäng: Reshma och Nazma båda från Bangladesh — men en utan agens, en med transnationell agens. Joakim i centrum men sårbar. Therese i periferi men med kollektiv organisering.
+
+          Tid: ~2 min — visa när hemgrupperna sätter sig.
+        </aside>
+      </section>
+
+      <!-- 12: DISCUSS (Mönster B — mossgrön) — hemgruppsfrågor -->
+      <section style="background: var(--mossgron) !important;">
+        <div class="chrome dark" style="background: var(--mossgron);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body discuss-slide">
+            <div class="eyebrow">I hemgruppen</div>
+            <h1><em>Tre</em> frågor när alla har presenterat</h1>
+            <ol class="questions">
+              <li><span class="roman">I.</span><span>Vilka <strong>mönster</strong> ser ni mellan personerna?</span></li>
+              <li><span class="roman">II.</span><span>Vilka är <strong>olikheterna</strong>?</span></li>
+              <li><span class="roman">III.</span><span>Vilken person <mark>utmanar</mark> mest er bild av globalisering?</span></li>
+            </ol>
+            <div style="font-family: var(--mono); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--paper); opacity: 0.8; margin-top: 32px; font-weight: 600;">§ 5 minuter efter presentationerna</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>12 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Cirkulera, kolla att alla får 2 min ostörd presentation. Filippiner-experten ska inte avbrytas av svensk-experten som vill jämföra. Lyssnande först — diskussion sen.
+
+          Mönster att lyssna efter: agens (vem kan handla?), kön (kvinnor i fyra av fem berättelser — varför?), kollektiv organisering (Therese, Nazma, Joakim — alla har fackliga/kollektiva strukturer), migration (Sheila, Reshma har flyttat).
+
+          Om någon hemgrupp blir snabb klar — utmana med ⭐-frågan: "Vilken röst SAKNAS i alla fem berättelser?"
+
+          Tid: ~5 min hemgruppsdiskussion.
+        </aside>
+      </section>
+
+      <!-- 13: BRIDGE (Mönster A — papper) — självpositionering -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body bridge">
+            <div class="eyebrow">Sista uppgiften</div>
+            <h1>Och <em>du</em>? Var står <mark>du</mark> på kartan?</h1>
+            <div class="para">Vilken av de fem personerna liknar din position <strong>mest</strong>? Vilken <strong>minst</strong>?</div>
+            <div class="para">Skriv 8-10 meningar. Använd skrivmallen.</div>
+            <div class="inline-quote">
+              <em>Att möta dessa människor har gjort mig medveten om...</em>
+              <span class="attribution">din avslutande mening</span>
+            </div>
+            <div class="kicker">Tid: 15 min · Skrivmall finns i elevuppgiften</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>13 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Var aktiv med stödmeningar. Skrivandet är fortsatt svagt i klassen — peka på mallen i elevuppgiften.
+
+          Om elever fastnar: "Du har precis hört fem personers historier. Tänk på dig själv från utsidan, som om du var en sjätte person på kartan. Var skulle du sitta?"
+
+          Differentiering uppåt: "Skriv samma reflektion igen, men ur perspektivet att du är 60 år. Hade din position sett annorlunda ut då?"
+
+          Tid: ~15 min skrivande.
+        </aside>
+      </section>
+
+      <!-- 14: CLOSE (Mönster A — papper) -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 05 / 08</span>
+          </div>
+          <div class="body close-slide">
+            <div class="eyebrow">Exit ticket + nästa lektion</div>
+            <h1>Innan du <em>går</em></h1>
+            <ul class="takeaways">
+              <li><strong>Exit ticket:</strong> Vilken av de fem personerna utmanade din bild av globalisering mest — och varför? <em>(3-4 meningar)</em></li>
+              <li><strong>Igår:</strong> möten med människor i världssystemet</li>
+              <li><strong>Imorgon:</strong> vetenskap i samhällsdebatten — hur används begrepp som <em>"globalisering"</em>, <em>"centrum"</em>, <em>"periferi"</em> i debattartiklar?</li>
+            </ul>
+            <div class="next-steps">
+              <div class="next-box">
+                <div class="label">Lämna</div>
+                <div class="text">Exit ticket + skriv på <em>post-it</em></div>
+              </div>
+              <div class="next-box">
+                <div class="label">Nästa lektion</div>
+                <div class="text">Lektion 6: <em>vetenskap i debatten</em> + start på slutuppgiften</div>
+              </div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>14 / 14</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Påminn om L6:s tema. Säg: "Igår mötte ni människor. Imorgon: hur PRATAR samhället OM människor som dem? Det är där begreppen blir politiska."
+
+          Sortera exit ticket-svaren i 3 högar:
+          (1) personlig reaktion utan koppling till teori
+          (2) kopplar till en teori
+          (3) kopplar till båda teorier
+
+          Datan styr L6:s öppning om hur begreppen vi använt används i den offentliga debatten.
+
+          Tid: 5 min skrivande exit ticket.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      transition: 'none',
+      progress: true,
+      slideNumber: false,
+      controls: true,
+      keyboard: true,
+      hash: true,
+      pdfSeparateFragments: false
+    });
+  </script>
+</body>
+</html>

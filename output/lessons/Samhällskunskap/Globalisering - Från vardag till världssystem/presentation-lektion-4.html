@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 4 — Sverige i världsekonomin | Sam 3 Globalisering</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Arkiv v2.1 — designtokens (uppgraderad: större och fetare text) ============ */
+    :root {
+      --ink: #1F1A15;
+      --ink-2: #4A3F33;
+      --paper: #F4EDE1;
+      --paper-2: #EBE1CF;
+      --rule: #2A221A;
+      --bordeaux: #7A2E2E;
+      --marin: #2C3E55;
+      --oliv: #5A6A3A;
+      --ocker: #B8862F;
+      --kritbla: #5A7A9A;
+      --mossgron: #3E5A3E;
+      --tegel: #C96442;
+      --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+      --sans: "Inter Tight", "Work Sans", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    html, body { background: var(--ink); }
+    .reveal { font-family: var(--sans); color: var(--ink); font-size: 28px; font-weight: 500; }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section { background: var(--paper); padding: 0; height: 100%; }
+    .reveal .slides section.present { display: flex !important; flex-direction: column; }
+
+    /* ============ Gemensam chrome (masthead/baseline) ============ */
+    .chrome {
+      width: 100%; height: 100%;
+      padding: 32px 56px 28px;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .chrome.paper { background: var(--paper); color: var(--ink); }
+    .chrome.dark { color: var(--paper); }
+    .chrome .masthead {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .chrome .baseline {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .chrome.paper .masthead { color: var(--ink-2); border-bottom: 2px solid var(--rule); padding-bottom: 12px; }
+    .chrome.paper .baseline { color: var(--ink-2); border-top: 2px solid var(--rule); padding-top: 12px; }
+    .chrome.dark .masthead { color: var(--paper); opacity: 0.7; border-bottom: 2px solid rgba(244,237,225,0.27); padding-bottom: 12px; }
+    .chrome.dark .baseline { color: var(--paper); opacity: 0.7; border-top: 2px solid rgba(244,237,225,0.27); padding-top: 12px; }
+    .chrome .body { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 32px 0; overflow: hidden; }
+
+    /* ============ Typografi v2.1 ============ */
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: var(--serif); color: inherit; font-weight: 600;
+      letter-spacing: -0.015em; text-transform: none; margin: 0;
+    }
+    .reveal h1 { line-height: 1; }
+    .reveal h3 {
+      font-family: var(--sans); font-size: 22px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+    }
+    .reveal em { font-style: italic; font-family: var(--serif); font-weight: 600; }
+    .reveal strong, .reveal b { font-weight: 800; }
+    .reveal mark {
+      background: rgba(184, 134, 47, 0.4);
+      color: inherit;
+      padding: 0 8px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+    .reveal u {
+      text-decoration: underline;
+      text-decoration-color: var(--bordeaux);
+      text-decoration-thickness: 4px;
+      text-underline-offset: 6px;
+      font-weight: 700;
+    }
+    .chrome.dark mark { background: rgba(184, 134, 47, 0.55); }
+    .chrome.dark u { text-decoration-color: var(--ocker); }
+
+    .eyebrow {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--bordeaux);
+    }
+    .eyebrow::before { content: "▸ "; }
+    .chrome.dark .eyebrow { color: var(--ocker); }
+
+    .lede {
+      font-family: var(--serif); font-style: italic; font-weight: 500;
+      font-size: 32px; line-height: 1.3; margin-top: 22px;
+      color: var(--ink-2); max-width: 32ch;
+    }
+    .chrome.dark .lede { color: var(--paper); opacity: 0.85; }
+
+    .body-text {
+      font-family: var(--sans); font-size: 28px; line-height: 1.45;
+      max-width: 32em; font-weight: 500;
+    }
+
+    /* ============ cover (Mönster D — ramad bordeaux) ============ */
+    section.cover-outer { background: var(--bordeaux) !important; padding: 36px !important; }
+    .cover-inner {
+      background: var(--paper); width: 100%; height: 100%;
+      padding: 56px 72px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .cover-inner .top {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 17px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); font-weight: 700;
+    }
+    .cover-inner .bottom {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+    .cover-inner h1 { font-size: 116px; line-height: 0.95; color: var(--ink); font-weight: 600; letter-spacing: -2px; }
+    .cover-inner .subtitle {
+      font-family: var(--serif); font-size: 36px; font-style: italic; font-weight: 500;
+      color: var(--ink-2); margin-top: 18px; max-width: 28ch;
+    }
+
+    /* ============ section (Mönster B — färgad helyta med stor siffra) ============ */
+    .section-slide { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; height: 100%; }
+    .section-slide .big-num {
+      font-family: var(--serif); font-size: 340px; font-weight: 500;
+      color: var(--paper); opacity: 0.2; line-height: 0.8; letter-spacing: -8px;
+    }
+    .section-slide .kapitel {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); margin-bottom: 20px; font-weight: 700;
+    }
+    .section-slide .kapitel::before { content: "§ "; }
+    .section-slide h1 { font-size: 96px; line-height: 0.98; color: var(--paper); max-width: 14ch; font-weight: 600; letter-spacing: -1.5px; }
+    .section-slide .lede { font-size: 32px; margin-top: 22px; max-width: 26ch; font-weight: 500; }
+
+    /* ============ question (Mönster B — mossgrön) ============ */
+    .question-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .question-slide h1 { font-size: 104px; line-height: 1; max-width: 15ch; color: var(--paper); font-weight: 600; letter-spacing: -1.5px; }
+    .question-slide .lede { font-size: 34px; margin-top: 32px; max-width: 38ch; font-weight: 500; }
+
+    /* ============ content (Mönster A — papper) ============ */
+    .content-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .content-slide h1 { font-size: 72px; line-height: 1; margin-bottom: 36px; max-width: 18ch; color: var(--ink); font-weight: 600; letter-spacing: -1px; }
+    .content-slide .body-text { font-size: 28px; line-height: 1.45; max-width: 32em; font-weight: 500; }
+    .bullets { margin-top: 28px; padding: 0; list-style: none; }
+    .bullets li {
+      display: grid; grid-template-columns: 44px 1fr; gap: 22px;
+      padding: 16px 0; border-top: 2px solid rgba(74, 63, 51, 0.2);
+      font-family: var(--sans); font-size: 28px; line-height: 1.4; font-weight: 500;
+    }
+    .bullets li:first-child { border-top: none; }
+    .bullets .index {
+      font-family: var(--mono); font-size: 24px; font-weight: 700;
+      color: var(--ocker); padding-top: 2px;
+    }
+
+    /* ============ content-highlight (Mönster C — 60/40 delad) ============ */
+    section.ch-outer { background: var(--paper) !important; }
+    .ch-grid { display: grid; grid-template-columns: 1.3fr 1fr; height: 100%; }
+    .ch-left {
+      background: var(--paper); padding: 32px 56px 28px;
+      display: flex; flex-direction: column;
+      color: var(--ink); font-family: var(--sans);
+    }
+    .ch-left .meta-top {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+      border-bottom: 2px solid var(--rule); padding-bottom: 12px;
+    }
+    .ch-left .content {
+      flex: 1; padding: 32px 0; display: flex; flex-direction: column; justify-content: center;
+    }
+    .ch-left h1 { font-size: 62px; line-height: 1; margin-bottom: 28px; max-width: 14ch; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .ch-left .body-text { font-size: 25px; line-height: 1.45; font-weight: 500; }
+    .ch-left .meta-bot {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+      border-top: 2px solid var(--rule); padding-top: 12px;
+    }
+    .ch-right {
+      padding: 32px 48px 28px; color: var(--paper); font-family: var(--sans);
+      display: flex; flex-direction: column;
+    }
+    .ch-right .meta-top {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); font-weight: 700;
+      border-bottom: 2px solid rgba(244, 237, 225, 0.27); padding-bottom: 12px;
+    }
+    .ch-right .stat {
+      flex: 1; display: flex; flex-direction: column; justify-content: center;
+    }
+    .ch-right .stat-label {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); margin-bottom: 14px; font-weight: 700;
+    }
+    .ch-right .stat-number {
+      font-family: var(--serif); font-size: 190px; font-weight: 600;
+      line-height: 0.9; letter-spacing: -4px; color: var(--paper);
+    }
+    .ch-right .stat-caption {
+      font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 500;
+      color: var(--paper); opacity: 0.92; margin-top: 18px; line-height: 1.35;
+    }
+    .ch-right .meta-bot {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--paper); opacity: 0.8; font-weight: 600;
+      border-top: 2px solid rgba(244, 237, 225, 0.27); padding-top: 12px; text-align: right;
+    }
+
+    /* ============ twocol (Mönster A/C) ============ */
+    .twocol-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .twocol-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 36px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .twocol { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 40px; align-items: start; }
+    .twocol .divider { background: var(--rule); height: 100%; min-height: 260px; }
+    .twocol .col-label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700; margin-bottom: 16px;
+    }
+    .twocol .col:nth-child(1) .col-label { color: var(--bordeaux); }
+    .twocol .col:nth-child(3) .col-label { color: var(--marin); }
+    .twocol .col-body { font-family: var(--sans); font-size: 26px; line-height: 1.45; color: var(--ink); font-weight: 500; }
+    .twocol-caption {
+      font-family: var(--serif); font-style: italic; font-size: 26px; font-weight: 500;
+      color: var(--ink-2); text-align: center; margin-top: 32px;
+    }
+
+    /* ============ timeline (Mönster A, ocker linje) ============ */
+    .timeline-slide { flex: 1; display: flex; flex-direction: column; }
+    .timeline-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 60px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .timeline-h { flex: 1; position: relative; display: flex; align-items: flex-start; }
+    .timeline-h::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 34px;
+      height: 4px; background: var(--ocker);
+    }
+    .timeline-h .events {
+      display: grid; grid-auto-columns: 1fr; grid-auto-flow: column;
+      width: 100%; gap: 20px;
+    }
+    .timeline-h .event { position: relative; padding-top: 60px; }
+    .timeline-h .dot {
+      position: absolute; left: 0; top: 24px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--paper); border: 5px solid var(--bordeaux);
+    }
+    .timeline-h .year {
+      font-family: var(--mono); font-size: 26px; color: var(--bordeaux);
+      font-weight: 700; letter-spacing: 1px;
+    }
+    .timeline-h .title {
+      font-family: var(--serif); font-size: 32px; font-style: italic;
+      font-weight: 600; color: var(--ink); margin-top: 8px; line-height: 1.1;
+    }
+    .timeline-h .note { font-size: 22px; color: var(--ink); margin-top: 12px; line-height: 1.4; font-weight: 500; }
+
+    /* ============ quote (Mönster B — bläck helyta) ============ */
+    .quote-slide {
+      flex: 1; position: relative; display: flex; flex-direction: column;
+      justify-content: center; padding-left: 96px;
+    }
+    .quote-slide .mark-open {
+      position: absolute; top: -40px; left: -10px;
+      font-family: var(--serif); font-size: 240px; line-height: 1;
+      color: var(--ocker); font-weight: 600;
+    }
+    .quote-slide blockquote {
+      margin: 0;
+      font-family: var(--serif); font-size: 62px; font-style: italic; font-weight: 600;
+      line-height: 1.2; color: var(--paper); max-width: 22ch; letter-spacing: -0.5px;
+    }
+    .quote-slide .attribution {
+      margin-top: 44px; font-size: 30px; font-weight: 700; color: var(--ocker);
+    }
+    .quote-slide .attribution::before { content: "— "; }
+    .quote-slide .context {
+      margin-top: 10px;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--paper); opacity: 0.8; font-weight: 600;
+    }
+
+    /* ============ callout (Mönster D — ramad) ============ */
+    section.callout-outer { padding: 36px !important; }
+    section.callout-outer.fakta { background: var(--marin) !important; }
+    section.callout-outer.tips { background: var(--oliv) !important; }
+    section.callout-outer.varning { background: var(--bordeaux) !important; }
+    section.callout-outer.kalla { background: var(--ink) !important; }
+    section.callout-outer.begrepp { background: var(--ocker) !important; }
+    .callout-inner {
+      background: var(--paper-2); width: 100%; height: 100%;
+      padding: 56px 72px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .callout-inner .top {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 800;
+    }
+    .callout-inner .bottom {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .callout-outer.fakta .callout-inner .top { color: var(--marin); }
+    .callout-outer.tips .callout-inner .top { color: var(--oliv); }
+    .callout-outer.varning .callout-inner .top { color: var(--bordeaux); }
+    .callout-outer.kalla .callout-inner .top { color: var(--ink); }
+    .callout-outer.begrepp .callout-inner .top { color: var(--ocker); }
+    .callout-inner .bottom.ink-meta { color: var(--ink-2); }
+    .callout-inner h1 {
+      font-family: var(--serif); font-size: 64px; font-style: italic;
+      font-weight: 600; line-height: 1.05; color: var(--ink); max-width: 22ch; margin: 0;
+    }
+    .callout-inner .body-text {
+      font-size: 30px; line-height: 1.45; color: var(--ink); font-weight: 500;
+      margin-top: 28px; max-width: 26em;
+    }
+
+    /* ============ table (Mönster A) ============ */
+    .table-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .table-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 32px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .arkiv-table { width: 100%; border-collapse: collapse; }
+    .arkiv-table thead tr { border-top: 1.5px solid var(--rule); border-bottom: 1.5px solid var(--rule); }
+    .arkiv-table th {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700; color: var(--ink-2);
+      text-align: left; padding: 14px 18px 14px 0;
+    }
+    .arkiv-table td {
+      font-family: var(--serif); font-size: 26px; padding: 16px 18px 16px 0;
+      color: var(--ink); line-height: 1.3; font-weight: 500;
+    }
+    .arkiv-table tbody tr { border-bottom: 1px solid var(--paper-2); }
+    .arkiv-table tbody tr:last-child { border-bottom: 1.5px solid var(--rule); }
+    .arkiv-table tbody td:first-child { font-weight: 700; }
+    .arkiv-table tbody td.mono { font-family: var(--mono); font-size: 22px; font-weight: 600; }
+    .arkiv-table td mark { background: rgba(184, 134, 47, 0.2); }
+
+    /* ============ discuss (Mönster B — mossgrön) ============ */
+    .discuss-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .discuss-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 40px; color: var(--paper); letter-spacing: -0.8px; font-weight: 600; }
+    .questions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+    .questions li {
+      display: grid; grid-template-columns: 60px 1fr; gap: 28px;
+      font-family: var(--sans); font-size: 30px; line-height: 1.35; color: var(--paper); font-weight: 500;
+    }
+    .questions .roman {
+      font-family: var(--serif); font-style: italic; font-size: 40px; font-weight: 600;
+      color: var(--ocker); padding-top: 4px;
+    }
+
+    /* ============ data (stor siffra) ============ */
+    .data-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .data-slide .d-eyebrow {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; font-weight: 700;
+    }
+    .data-slide .d-number {
+      font-family: var(--serif); font-size: 260px; line-height: 0.85;
+      font-weight: 600; letter-spacing: -6px; color: var(--bordeaux);
+    }
+    .data-slide.ocker .d-number { color: var(--ocker); }
+    .data-slide.tegel .d-number { color: var(--tegel); }
+    .data-slide .d-caption {
+      font-family: var(--serif); font-size: 46px; font-style: italic; font-weight: 600;
+      color: var(--ink); margin-top: 14px; max-width: 24ch; line-height: 1.15;
+    }
+    .data-slide .d-body {
+      font-size: 26px; color: var(--ink); margin-top: 22px; max-width: 36em; line-height: 1.5; font-weight: 500;
+    }
+
+    /* ============ close (Mönster A, färgade rutor) ============ */
+    .close-slide { flex: 1; display: flex; flex-direction: column; }
+    .close-slide h1 { font-size: 64px; line-height: 1; margin-bottom: 32px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .takeaways { list-style: none; padding: 0; margin: 0 0 40px; max-width: 42em; }
+    .takeaways li {
+      padding: 12px 0 12px 32px; position: relative;
+      font-family: var(--sans); font-size: 28px; line-height: 1.45; color: var(--ink); font-weight: 500;
+    }
+    .takeaways li::before {
+      content: "▪"; color: var(--bordeaux); position: absolute;
+      left: 0; top: 12px; font-size: 26px;
+    }
+    .next-steps {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: auto;
+    }
+    .next-box { background: var(--paper-2); padding: 24px 28px; border-left: 4px solid var(--ocker); }
+    .next-box:last-child { border-left-color: var(--marin); }
+    .next-box .label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-bottom: 12px; font-weight: 700;
+    }
+    .next-box .text {
+      font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 500;
+      color: var(--ink); line-height: 1.35;
+    }
+
+    /* ============ transition (bridge — custom from v1, kept) ============ */
+    .bridge { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .bridge h1 { font-size: 64px; line-height: 1; margin-bottom: 32px; font-weight: 600; letter-spacing: -0.8px; }
+    .bridge .para { font-size: 28px; line-height: 1.45; max-width: 36em; margin-top: 12px; font-weight: 500; }
+    .bridge .kicker {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); margin-top: 36px; font-weight: 700;
+    }
+    .bridge .kicker::before { content: "▸ "; }
+
+    /* ============ scale (3-skalor custom, kept from v1 but uppskalat) ============ */
+    .scale-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .scale-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 40px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .scale { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr; gap: 12px; align-items: stretch; }
+    .scale-card {
+      background: var(--paper-2); padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      border-top: 4px solid var(--bordeaux);
+    }
+    .scale-card.sverige { border-top-color: var(--marin); }
+    .scale-card.varld { border-top-color: var(--oliv); }
+    .scale-card .s-label {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 700;
+    }
+    .scale-card .s-title {
+      font-family: var(--serif); font-size: 40px; font-style: italic;
+      font-weight: 600; color: var(--ink);
+    }
+    .scale-card .s-sub { font-size: 22px; color: var(--ink); line-height: 1.4; font-weight: 500; }
+    .scale-arrow {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 48px; color: var(--ink-2); font-style: italic;
+    }
+
+    /* ============ video-block (kept from v1) ============ */
+    .video-slide { flex: 1; display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+    .video-slide h1 { font-size: 62px; line-height: 1; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .video-block {
+      background: var(--paper-2); border: 1.5px solid var(--rule);
+      padding: 40px 48px; width: 100%;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .video-block .v-label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); font-weight: 700;
+    }
+    .video-block .v-label::before { content: "● "; }
+    .video-block .v-title {
+      font-family: var(--serif); font-style: italic; font-size: 36px;
+      font-weight: 600; color: var(--ink);
+    }
+    .video-block .v-desc { font-family: var(--sans); font-size: 22px; color: var(--ink); font-weight: 500; }
+
+    /* ============ numeral (stor siffra inline) ============ */
+    .numeral { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .numeral .big {
+      font-family: var(--serif); font-size: 260px; line-height: 0.85;
+      font-weight: 600; letter-spacing: -6px; color: var(--bordeaux);
+    }
+    .numeral .big .unit {
+      font-size: 80px; color: var(--ink); margin-left: 10px; font-style: italic; font-weight: 600;
+    }
+    .numeral .label {
+      font-family: var(--serif); font-style: italic; font-size: 46px; font-weight: 600;
+      color: var(--ink); max-width: 22ch; line-height: 1.2;
+    }
+    .numeral .note {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+
+    /* ============ export bars (från v1, uppskalade till v2) ============ */
+    .bars-wrap { margin-top: 12px; max-width: 900px; }
+    .bar-row {
+      display: grid; grid-template-columns: 240px 1fr 100px; gap: 24px;
+      align-items: center; padding: 12px 0;
+      border-top: 1px solid rgba(74, 63, 51, 0.25);
+      font-family: var(--sans);
+    }
+    .bar-row:last-child { border-bottom: 1px solid rgba(74, 63, 51, 0.25); }
+    .bar-row .b-label { font-size: 20px; color: var(--ink); font-weight: 600; }
+    .bar-row .b-track { height: 18px; background: var(--paper-2); position: relative; }
+    .bar-row .b-fill { height: 100%; background: var(--bordeaux); }
+    .bar-row .b-val {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      color: var(--ink-2); text-align: right; font-weight: 600;
+    }
+    .bars-source {
+      font-family: var(--mono); font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-top: 18px; font-weight: 500;
+    }
+    .bars-source::before { content: "§ "; }
+
+    /* ============ pills (från v1, uppskalade) ============ */
+    .pill-row { margin-top: 20px; }
+    .pill {
+      display: inline-block; padding: 8px 18px;
+      background: var(--paper-2); border: 1.5px solid var(--rule);
+      font-family: var(--mono); font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink); margin: 0 8px 10px 0;
+      font-weight: 600;
+    }
+    .pill.bordeaux { background: transparent; border-color: var(--bordeaux); color: var(--bordeaux); }
+    .pill.marin { background: transparent; border-color: var(--marin); color: var(--marin); }
+    .pill.oliv { background: transparent; border-color: var(--oliv); color: var(--oliv); }
+    .chrome.dark .pill { background: rgba(244,237,225,0.1); border-color: rgba(244,237,225,0.3); color: var(--paper); }
+    .chrome.dark .pill.bordeaux { border-color: var(--ocker); color: var(--ocker); background: transparent; }
+    .chrome.dark .pill.marin { border-color: var(--kritbla); color: var(--paper); background: transparent; }
+    .chrome.dark .pill.oliv { border-color: var(--paper); color: var(--paper); background: transparent; }
+
+    /* ============ inline-quote (från v1, uppskalad) ============ */
+    .inline-quote {
+      margin-top: 36px; border-left: 4px solid var(--bordeaux);
+      padding: 10px 28px;
+      font-family: var(--serif); font-style: italic; font-size: 30px;
+      line-height: 1.3; max-width: 34ch; color: var(--ink);
+    }
+    .inline-quote .attribution {
+      display: block; margin-top: 16px;
+      font-family: var(--mono); font-style: normal; font-size: 13px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+    .chrome.dark .inline-quote { border-left-color: var(--ocker); color: var(--paper); }
+    .chrome.dark .inline-quote .attribution { color: var(--paper); opacity: 0.7; }
+
+    /* Reveal overrides */
+    .reveal .progress { color: var(--bordeaux); }
+    .reveal .controls { color: var(--ink-2); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1: SECTION (Mönster B — bordeaux helyta) -->
+      <section style="background: var(--bordeaux) !important;">
+        <div class="chrome dark" style="background: var(--bordeaux);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body section-slide">
+            <div class="big-num">04</div>
+            <div>
+              <div class="kapitel">Zoom-steget</div>
+              <h1>Vi har varit i <em>T-shirten</em>. Idag zoomar vi ut till <mark>Sverige</mark>.</h1>
+              <div class="lede">Är vi <strong>centrum</strong>? Semi-periferi? Eller något <em>annat</em>?</div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>01 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Öppna med en tydlig zoom-rörelse. Peka på 3-skalamodellen (individ → Sverige → värld). "Idag är vi här — på skalan Sverige. Vi använder det ni lärt er hittills på en ny nivå."
+
+          Visa L3:s exit ticket-resultat kort. Använd datan från fördelningen enligt lektionsplan.
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 2: QUESTION (Mönster B — mossgrön) -->
+      <section style="background: var(--mossgron) !important;">
+        <div class="chrome dark" style="background: var(--mossgron);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body question-slide">
+            <div class="eyebrow">Dagens fråga</div>
+            <h1>Var <em>står</em> Sverige i <u>världsekonomin</u>?</h1>
+            <div class="lede">Vi är ett litet land — men vi säljer <strong>bilar</strong>, stål och läkemedel till hela världen. Kan man vara både <em>liten</em> och <mark>central</mark>?</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>02 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Här gör du din explicita "think-aloud" — visa eleverna hur en samhällsvetare tänker. Säg: "Jag tänker så här när jag frågar mig var Sverige står: det räcker inte att titta på BNP. Jag frågar mig: vem är beroende av oss? Vem är VI beroende av? Vilka varor rör sig in och ut?"
+
+          Modellera TÄNKANDET, inte bara kunskapen. Säg saker som "Jag undrar...", "Jag frågar mig...", "Jag noterar att..." — det är dessa formuleringar eleverna behöver lära sig använda.
+
+          Tid: ~1,5 min.
+        </aside>
+      </section>
+
+      <!-- 3: CONTENT med bars (Mönster A — provokation varuexport) -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body content-slide">
+            <div class="eyebrow">Provokation · Varuexport</div>
+            <h1>Vad <em>säljer</em> Sverige till <mark>världen</mark>?</h1>
+            <div class="bars-wrap">
+              <div class="bar-row fragment"><span class="b-label">Kemi / läkemedel</span><div class="b-track"><div class="b-fill" style="width: 78%;"></div></div><span class="b-val">~15 %</span></div>
+              <div class="bar-row fragment"><span class="b-label">Fordon</span><div class="b-track"><div class="b-fill" style="width: 65%;"></div></div><span class="b-val">~13 %</span></div>
+              <div class="bar-row fragment"><span class="b-label">Maskiner</span><div class="b-track"><div class="b-fill" style="width: 60%;"></div></div><span class="b-val">~12 %</span></div>
+              <div class="bar-row fragment"><span class="b-label">Skogsprodukter</span><div class="b-track"><div class="b-fill" style="width: 50%;"></div></div><span class="b-val">~10 %</span></div>
+              <div class="bar-row fragment"><span class="b-label">Telekom / elektronik</span><div class="b-track"><div class="b-fill" style="width: 38%;"></div></div><span class="b-val">~7 %</span></div>
+              <div class="bar-row fragment"><span class="b-label">Järn / stål</span><div class="b-track"><div class="b-fill" style="width: 32%;"></div></div><span class="b-val">~6 %</span></div>
+            </div>
+            <div class="bars-source">SCB 2024–25. Blandning av <strong>hög-värde-teknik</strong> (läkemedel, telekom, fordon) och <em>råvaror</em>. Läkemedel växer snabbast.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>03 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Provokation: "Vad säger det här? Sverige är inte bara 'litet' — vi säljer bilar, stål, läkemedel. Vi är beroende av export — nästan 50% av BNP."
+
+          Fråga: "Var placerar ni Sverige i Wallersteins modell utifrån det här?" Låt några elever svara. Skriv upp svaren: centrum, semi-periferi, blandat.
+
+          VIKTIGT: siffrorna är ungefärliga. Påminn eleverna om att aktuella siffror finns hos SCB.
+
+          Tid: ~2,5 min.
+        </aside>
+      </section>
+
+      <!-- 4: CONTENT-HIGHLIGHT (Mönster C — papper/marin 60/40 — exportberoende som signaturstat) -->
+      <section style="background: var(--paper) !important;">
+        <div class="ch-grid">
+          <div class="ch-left">
+            <div class="meta-top">
+              <span>Samhällskunskap 3 · Globalisering</span>
+              <span>Lektion 04 / 08</span>
+            </div>
+            <div class="content">
+              <div class="eyebrow">§ Exportberoendet</div>
+              <h1>Nästan <strong>halva</strong> ekonomin går på <em>export</em></h1>
+              <div class="body-text">Sverige är djupt integrerat i världsekonomin. När världshandeln rör sig — <u>rör sig vi</u>. Det är därför tullar och handelskonflikter slår direkt mot svenska jobb, och varför <mark>elpriserna</mark> i Malmö påverkas av gasbristen i Tyskland.</div>
+            </div>
+            <div class="meta-bot">
+              <span>Arkiv · v2</span>
+              <span>04 / 11</span>
+            </div>
+          </div>
+          <div class="ch-right" style="background: var(--marin);">
+            <div class="meta-top">
+              <span>Andel av BNP · 2025</span>
+              <span>Ekonomifakta · SCB</span>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Total export (varor + tjänster)</div>
+              <div class="stat-number">52%</div>
+              <div class="stat-caption">Sverige säljer drygt <strong>halva</strong> sin produktion <u>utomlands</u>. Det gör oss till ett av Europas mest <em>export-beroende</em> länder.</div>
+            </div>
+            <div class="meta-bot">04 / 11</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Här fördjupar du provokationen från förra sliden. Säg: "Det här är det som gör Sveriges position så intressant. Vi är litet till befolkning men enormt beroende av omvärlden. Ekonomisk öppenhet är både en styrka och en sårbarhet."
+
+          Knyt till Helds dimensioner: det här visar den ekonomiska dimensionen av globalisering tydligt. Men påminn: det påverkar också politiken (vi måste samarbeta med EU), och kulturen (företag som Volvo blir identitetsfrågor).
+
+          Tid: ~1,5 min.
+        </aside>
+      </section>
+
+      <!-- 5: TWOCOL (Mönster A — dagens två case) -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body twocol-slide">
+            <div class="eyebrow">Dagens material</div>
+            <h1>Två <em>aktuella</em> case</h1>
+            <div class="twocol">
+              <div class="col fragment">
+                <div class="col-label">Case 01 · Tullar</div>
+                <div class="col-body"><strong>Trumps tullar</strong> mot EU, <mark>2025–26</mark>. Stål 50 %, bilar 15 %. <em>Volvo</em> tappade 11 mdr SEK Q2 2025. Deal i augusti — men stål kvar.</div>
+              </div>
+              <div class="divider"></div>
+              <div class="col fragment">
+                <div class="col-label">Case 02 · Iran-kriget</div>
+                <div class="col-body"><strong>Iran-kriget</strong> sedan feb 2026. <em>Hormuz</em> stängd → Brent <mark>72 → 108 USD/fat</mark>. <u>Diesel +38 %</u> i Sverige. Mat och ränta påverkas.</div>
+              </div>
+            </div>
+            <div class="twocol-caption">Båda casen är <strong>levande</strong> — debatten pågår just nu. Vi analyserar dem med <em>båda teorier</em> parallellt.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>05 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Introducera båda casen. Använd fakta-rutorna i elevuppgiften — låt eleverna veta att de kan läsa mer där.
+
+          Viktigt: eleverna ska välja ETT case att analysera. Båda finns på slide för att visa att Sverige påverkas på flera sätt samtidigt.
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 6: TABLE (Mönster A — worked example matrix) -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body table-slide">
+            <div class="eyebrow">Lärarens worked example · Trumps tullar</div>
+            <h1>Analys med <em>båda</em> teorier</h1>
+            <table class="arkiv-table">
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th>Sverige</th>
+                  <th>USA</th>
+                  <th>Kina</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="fragment">
+                  <td>Ekonomisk</td>
+                  <td>Ökade kostnader på export (fordon, stål)</td>
+                  <td>Förhandlingsvapen, stöd till egen industri</td>
+                  <td>Åskådare — ser EU försvagas</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Politisk</td>
+                  <td>Agerar via EU — inte ensam</td>
+                  <td>Använder makt <mark>utanför WTO</mark></td>
+                  <td>Tyst men strategisk</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Kulturell</td>
+                  <td>Debatt om "europeisk autonomi"</td>
+                  <td>"America first"-retorik</td>
+                  <td>"Det multipolära systemet"</td>
+                </tr>
+                <tr class="fragment">
+                  <td>Position</td>
+                  <td><strong>Hög-teknologisk semi-centrum</strong></td>
+                  <td>Centrum med militär + finans</td>
+                  <td>Semi-centrum / framväxande centrum</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="bars-source">Ekonomisk/politisk/kulturell följer <em>Held</em> · Position följer <em>Wallerstein</em></div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>06 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Think-aloud genom matrisen. Förklara att du använder BÅDA teorier samtidigt:
+
+          "På raden 'ekonomisk' använder jag Helds dimension — rörelse av varor och kapital. På raden 'position' använder jag Wallerstein — vem är vart i systemet?"
+
+          Poängtera: "Sverige är inte i periferin. Vi har hög-värde-export. Men vi är inte heller i centrum som USA — vi har inte militär dominans, inte plattformsmonopol. Vi är i 'semi-centrum'-området."
+
+          Tid: ~4 min — detta är en av lektionens mest pedagogiskt centrala slides.
+        </aside>
+      </section>
+
+      <!-- 7: TWOCOL (Mönster A — Iran-kedjan: krig långt borta → svensk vardag) -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body twocol-slide">
+            <div class="eyebrow">Case 02 · Kedjan från Hormuz</div>
+            <h1>Krig <em>långt borta</em> → din <mark>vardag</mark></h1>
+            <div class="twocol">
+              <div class="col fragment">
+                <div class="col-label">Krig i en fjärran region</div>
+                <div class="col-body"><strong>28 feb 2026:</strong> USA + Israel anfaller Iran. <em>2 mars:</em> Iran stänger <u>Hormuz</u> (~20 % av världens olja). <strong>War risk-premie</strong>: 0,125 % → 5 %.</div>
+              </div>
+              <div class="divider"></div>
+              <div class="col fragment">
+                <div class="col-label">Konsekvenser i Sverige</div>
+                <div class="col-body"><strong>Bensin ~19 kr/l</strong>. <strong>Diesel 23,40 kr/l</strong> (+38 %). Mat dyrare via gödsel. KI: inflation <mark>+0,6 pe</mark>. Riksbanken förbereder <em>räntehöjning</em>.</div>
+              </div>
+            </div>
+            <div class="twocol-caption">Sverige har <em>ingen</em> direktexponering — och drabbas <strong>ändå</strong>. Det är globaliseringen.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>07 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Detta är dagens centrala pedagogiska poäng: Sverige har inga direkta band till Iran, ingen militär närvaro, ingen handel av betydelse. Och ändå — bensinen, dieseln, brödet, bolåneräntan rör sig.
+
+          Tre länkar att rita på tavlan: (1) Hormuz stängd → globalt oljepris upp, (2) globalt oljepris → svensk pump och svensk inflation, (3) inflation → Riksbanken → bolåneräntan.
+
+          Wallerstein-poäng: Iran är semi-periferi men kontrollerar en *choke-point*. När den bryts förlorar centrumländerna sin "centrum-immunitet". Det är ett av de starkaste exemplen på att position i världssystemet inte handlar om rikedom utan om kontroll över infrastruktur.
+
+          Held-koppling: alla fyra dimensioner är aktiva — ekonomisk (olja), politisk (EU klassade IRGC som terror feb 2026), kulturell (Sveriges stöd till iranska protesterna), social (migration, demonstrationer).
+
+          KÄLLOR (verifierat 2026-04-28): Brent CNBC; KI inflationsbedömning mars 2026; bensinpriser News55/Finanstid. Snabbt föränderligt — kontrollera siffror dagen före.
+
+          Tid: ~3 min.
+        </aside>
+      </section>
+
+      <!-- 8: QUOTE (Mönster B — bläck helyta) -->
+      <section style="background: var(--ink) !important;">
+        <div class="chrome dark" style="background: var(--ink);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body quote-slide">
+            <div class="mark-open">"</div>
+            <blockquote>Nu har vi gått från huvudscenariot <u>begränsad påverkan</u> till scenariot <mark>påtaglig påverkan</mark> på svensk ekonomi.</blockquote>
+            <div class="attribution">Statsminister Ulf Kristersson</div>
+            <div class="context">Presskonferens 5 mars 2026 · regeringen.se</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>08 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Låt citatet landa en stund innan du kommenterar. Säg sedan: "Lyssna på orden. 'Begränsad' till 'påtaglig'. Vad säger statsministern egentligen? Att vi är en del av kriget — inte militärt, men ekonomiskt. Att vi inte kan välja bort konsekvenserna."
+
+          Brygga till LM 3 på nästa slide: ord som "påtaglig påverkan" är inte neutrala. De bär med sig en *teori* om hur ekonomier hänger ihop — och om vad regeringen kan eller inte kan göra åt det.
+
+          Tid: ~1 min.
+        </aside>
+      </section>
+
+      <!-- 9: CONTENT (Mönster A — LM 3 begrepp) -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body content-slide">
+            <div class="eyebrow">LM 3 · Första smaken</div>
+            <h1>Samma ord. <em>Olika</em> betydelse.</h1>
+            <ul class="bullets">
+              <li class="fragment"><span class="index">01</span><span><em>"Globaliseringen har gått för långt"</em> — vad menas? <strong>Beroendet</strong>? Kulturblandningen? Låga löner?</span></li>
+              <li class="fragment"><span class="index">02</span><span><em>"Vi måste skydda oss mot oljechocker"</em> — antar vad? Att vi <u>kan</u> skydda oss. <strong>Realism</strong> säger ja. <strong>Liberalism</strong> säger: genom <mark>samarbete</mark>. (Mer i L5.)</span></li>
+              <li class="fragment"><span class="index">03</span><span><em>"Europeisk strategisk autonomi"</em> — nytt begrepp i EU-debatten. Vad säger det om <strong>dimensionerna</strong>?</span></li>
+            </ul>
+            <p class="body-text" style="margin-top: 24px; color: var(--ink-2); font-style: italic; font-family: var(--serif); font-size: 24px;">§ Ett uttalande är inte <strong>neutralt</strong>. Det bär med sig en <em>teori</em> — ofta dold.</p>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>09 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Viktig övergång till LM 3 (kursens särskilda betoning). Lektion 6 djupare — här en "smak" så eleverna börjar tänka på det.
+
+          Säg: "När ni läser nyheter från och med nu, lyssna efter de här fraserna. Vad ANTAR någon som säger 'globaliseringen har gått för långt'?"
+
+          Koppla till uppgift 3 (valfritt i elevuppgiften) — läs en debattartikel om casen.
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 10: DISCUSS (Mönster B — mossgrön — överlämning till matrisarbete) -->
+      <section style="background: var(--mossgron) !important;">
+        <div class="chrome dark" style="background: var(--mossgron);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body discuss-slide">
+            <div class="eyebrow">Ni tar över · Jämförelsematris</div>
+            <h1>Välj <strong>ETT</strong> case. Fyll i <em>matrisen</em>.</h1>
+            <ol class="questions">
+              <li class="fragment"><span class="roman">I.</span><span>Jämför <strong>Sverige</strong>, <em>USA</em> och <em>Kina</em> — en rad per dimension.</span></li>
+              <li class="fragment"><span class="roman">II.</span><span>Placera varje land i <u>centrum-periferi</u>-modellen. Motivera.</span></li>
+              <li class="fragment"><span class="roman">III.</span><span>Vilka dimensioner väger <mark>tyngst</mark> i just ert case?</span></li>
+            </ol>
+            <div class="pill-row">
+              <span class="pill bordeaux">Ekonomisk</span>
+              <span class="pill marin">Politisk</span>
+              <span class="pill oliv">Kulturell</span>
+              <span class="pill">Social</span>
+              <span class="pill bordeaux">Position i centrum-periferi</span>
+            </div>
+            <div style="font-family: var(--mono); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--paper); opacity: 0.8; margin-top: 24px; font-weight: 600;">§ EPA · Enskilt 5 min → Par 15 min (byt med ett par som valt andra caset) → Helklass 10 min</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>10 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Dela ut elevuppgift om inte gjort. Påminn: när ni byter matris med ett annat par, SE EFTER vad de hittat som ni missat.
+
+          Cirkulera. Utmana snabba elever: "Kan ni lägga till ett fjärde land? Typ Indien, Tyskland?"
+
+          Tid: ~1 min introduktion. 30 min arbete.
+        </aside>
+      </section>
+
+      <!-- 11: CLOSE (Mönster A — skrivstöd + exit ticket + nästa) -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Lektion 04 / 08</span>
+          </div>
+          <div class="body close-slide">
+            <div class="eyebrow">Skrivstöd & exit ticket</div>
+            <h1>Sen: <em>skriv</em> det · <mark>8–12</mark> meningar</h1>
+            <ul class="takeaways">
+              <li class="fragment"><strong>Startmening:</strong> <em>"Sverige påverkas av [case] eftersom __________."</em></li>
+              <li class="fragment"><strong>Koppla minst:</strong> Två <u>dimensioner</u> · En position i <u>centrum-periferi</u> · Ett konkret exempel.</li>
+              <li class="fragment"><strong>Exit ticket:</strong> Vilken teori förklarar <em>bäst</em> — <mark>Held</mark> eller <mark>Wallerstein</mark>? 2-3 meningar på post-it.</li>
+            </ul>
+            <div class="next-steps">
+              <div class="next-box">
+                <div class="label">Nästa lektion</div>
+                <div class="text">Lektion 05 — <em>teoridebatt</em>. Realism mot liberalism. Ni får <strong>tilldelade</strong> sidor.</div>
+              </div>
+              <div class="next-box">
+                <div class="label">Varning</div>
+                <div class="text">Den <strong>mest krävande</strong> lektionen i momentet. <em>Strukturerad</em> debatt.</div>
+              </div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>11 / 11</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Betona: eleverna har redan gjort analysen. Nu är det bara att översätta till löpande text. Om någon sitter tom: "Peka på en ruta i din matris. Skriv den som en hel mening. Nästa ruta. Bind ihop."
+
+          Exit ticket: Sortera svaren i 3 högar enligt lektionsplan — datan styr L5 öppning.
+
+          Preview L5: viktigt att varna eleverna! "Nästa gång är den mest krävande lektionen i momentet. Vi kör en strukturerad debatt. Ni kommer få SIDOR tilldelade — ni argumenterar inte för egen åsikt, ni argumenterar för en position. Det är träning."
+
+          Tid: ~15 min skrivarbete + 1,5 min introduktion exit ticket + 5 min skrivande exit ticket.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: false,
+      width: 1280,
+      height: 720,
+      margin: 0,
+      transition: 'fade',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

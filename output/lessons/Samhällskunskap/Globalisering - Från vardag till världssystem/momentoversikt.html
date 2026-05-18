@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Globalisering — Från vardag till världssystem | Sam 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f1a;
+    --bg-soft: #171726;
+    --text: #e8e8f0;
+    --text-muted: rgba(255,255,255,0.55);
+    --heading: #ffffff;
+    --accent: #ff6b6b;
+    --accent2: #4ecdc4;
+    --accent3: #ffe66d;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --card-hover: rgba(255,255,255,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  header.hero {
+    position: relative;
+    padding: 3rem 2rem 3.5rem;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(78,205,196,0.04));
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  .hero::before { width: 400px; height: 400px; background: var(--accent); top: -100px; right: -100px; }
+  .hero::after { width: 300px; height: 300px; background: var(--accent2); bottom: -80px; left: -80px; }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.3em 1em;
+    background: rgba(255,230,109,0.15);
+    color: var(--accent3);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    color: var(--heading);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero h1 .grad {
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--text);
+    max-width: 700px;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  .hero-meta svg { width: 14px; height: 14px; stroke: var(--accent3); }
+
+  section { margin-bottom: 2.5rem; }
+
+  section h2 {
+    color: var(--heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+
+  section h2::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent3));
+    border-radius: 2px;
+  }
+
+  .summary {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    font-size: 1.02rem;
+  }
+
+  .goals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .goal {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .goal:hover { background: var(--card-hover); }
+
+  .goal.lm1 { border-left: 3px solid var(--accent); }
+  .goal.lm2 { border-left: 3px solid var(--accent2); }
+  .goal.lm3 { border-left: 3px solid var(--accent3); }
+  .goal.lm4 { border-left: 3px solid #b39ddb; }
+
+  .goal h3 {
+    color: var(--heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.4em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .goal.lm1 h3 { color: var(--accent); }
+  .goal.lm2 h3 { color: var(--accent2); }
+  .goal.lm3 h3 { color: var(--accent3); }
+  .goal.lm4 h3 { color: #d1c4e9; }
+
+  .goal p { font-size: 0.88rem; color: var(--text); }
+
+  .lessons {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .lesson {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    transition: background 0.2s;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  .lesson:hover { background: var(--card-hover); }
+
+  .lesson-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    color: var(--bg);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .lesson-body h4 {
+    color: var(--heading);
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: 0.25em;
+  }
+  .lesson-body p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .lesson-body .exit {
+    font-size: 0.82rem;
+    color: var(--accent3);
+    margin-top: 0.4em;
+    font-style: italic;
+  }
+
+  .lesson-date {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 0.3em 0.7em;
+    white-space: nowrap;
+  }
+
+  .theories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .theory {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .theory.t1 { border-top: 3px solid var(--accent); }
+  .theory.t2 { border-top: 3px solid var(--accent2); }
+  .theory.t3 { border-top: 3px solid var(--accent3); }
+
+  .theory h3 {
+    color: var(--heading);
+    font-size: 1rem;
+    margin-bottom: 0.3em;
+  }
+  .theory .func {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5em;
+  }
+  .theory p { font-size: 0.88rem; color: var(--text); }
+
+  .prep-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .prep-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .prep-card li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.92rem;
+    color: var(--text);
+    display: flex;
+    gap: 0.7em;
+  }
+
+  .prep-card li:last-child { border-bottom: none; }
+
+  .prep-card li::before {
+    content: '→';
+    color: var(--accent3);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .exam-block {
+    background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(78,205,196,0.04));
+    border: 1px solid rgba(255,107,107,0.2);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+  }
+
+  .exam-block p { font-size: 0.95rem; margin-bottom: 0.8em; }
+
+  .exam-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .exam-options { grid-template-columns: 1fr; }
+    .lesson { grid-template-columns: 50px 1fr; }
+    .lesson-date { grid-column: 2; justify-self: start; margin-top: 0.5em; }
+  }
+
+  .exam-option {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .exam-option h4 {
+    color: var(--heading);
+    font-size: 0.92rem;
+    margin-bottom: 0.3em;
+  }
+
+  .exam-option.a h4 { color: var(--accent); }
+  .exam-option.b h4 { color: var(--accent2); }
+
+  .exam-option p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0; }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--card-border);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 700px) {
+    body { padding: 1rem 0.7rem; }
+    header.hero { padding: 2rem 1.3rem 2.3rem; }
+    .hero h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-badge">Samhällskunskap 3 • Moment</div>
+    <h1>Globalisering<br><span class="grad">Från vardag till världssystem</span></h1>
+    <p class="hero-sub">Åtta lektioner där vi rör oss från en T-shirt i din hand till ett världssystem i rörelse. Teori möter vardag. Begrepp blir verktyg.</p>
+    <div class="hero-meta">
+      <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3M12 20a8 8 0 100-16 8 8 0 000 16z"/></svg> 8 lektioner × 80 min</span>
+      <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Deliberativ flerskalanalys</span>
+      <span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> Datum: datum kommer</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Kärnfråga</h2>
+    <div class="summary">
+      Globaliseringen är inte en abstrakt idé — den är i din kaffekopp, din T-shirt, ditt mobilabonnemang. I det här momentet bygger vi upp samhällsvetenskapliga verktyg för att se den: tre teorier, tre skalor, en slutuppgift där du väljer ditt eget objekt. Vi rör oss från <strong>konkret → abstrakt → examination</strong>. Målet är att du ska kunna använda de här verktygen även efter kursens slut.
+    </div>
+  </section>
+
+  <section>
+    <h2>Lärandemål</h2>
+    <div class="goals">
+      <div class="goal lm1">
+        <h3>LM 1</h3>
+        <p>Redogöra för och kritiskt diskutera tre teorier om globalisering — med styrkor och svagheter.</p>
+      </div>
+      <div class="goal lm2">
+        <h3>LM 2</h3>
+        <p>Tillämpa teorierna i flerskalanalys: individ → Sverige → värld.</p>
+      </div>
+      <div class="goal lm3">
+        <h3>LM 3 ⭐</h3>
+        <p>Ge exempel på hur vetenskapliga begrepp används i samhällsdebatten — kursens särskilda betoning.</p>
+      </div>
+      <div class="goal lm4">
+        <h3>LM 4</h3>
+        <p>Argumentera, värdera andras ståndpunkter, granska källor, presentera skriftligt eller muntligt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lektionsöversikt</h2>
+    <div class="lessons">
+      <div class="lesson">
+        <div class="lesson-num">1</div>
+        <div class="lesson-body">
+          <h4>Vardagsobjektet som förhandlingsbord</h4>
+          <p>Hook. En T-shirt från Shein. Utility-value-skrivning. Tre-skalamodellen introduceras.</p>
+          <div class="exit">Exit ticket: Vilken aspekt av globaliseringen påverkar ditt liv mest?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-num">2</div>
+        <div class="lesson-body">
+          <h4>Globaliseringens fyra dimensioner</h4>
+          <p>Teori 1: Held's dimensioner (ekonomisk, politisk, kulturell, social). Frayer-modeller parvis. T-shirten kartläggs.</p>
+          <div class="exit">Exit ticket: Vilken dimension dominerar i din egen mobil?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-num">3</div>
+        <div class="lesson-body">
+          <h4>Produktionskedjan — vem vinner, vem förlorar?</h4>
+          <p>Teori 2: Wallersteins centrum-periferi. Källanalys av två motstridiga perspektiv på textilindustrin.</p>
+          <div class="exit">Exit ticket: Vem är centrum, vem är periferi i T-shirtens kedja?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-num">4</div>
+        <div class="lesson-body">
+          <h4>Sverige i världsekonomin</h4>
+          <p>Aktuella case: Trumps tullar + elpriserna efter Ukrainakriget. Jämförelsematris Sverige/USA/Kina.</p>
+          <div class="exit">Exit ticket: Vilken teori förklarar bäst Sveriges roll?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-num">5</div>
+        <div class="lesson-body">
+          <h4>Varför agerar stater? Teoridebatt</h4>
+          <p>Teori 3: Realism vs liberalism. Strukturerad 15-min debatt med tilldelade positioner. Meta-reflektion.</p>
+          <div class="exit">Exit ticket: Vilken teori passar bäst med din egen syn?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-num">6</div>
+        <div class="lesson-body">
+          <h4>Vetenskap i debatten ⭐ + examinationsstart</h4>
+          <p>Hur används begrepp i verkliga debatter? Analys av debattinlägg. Val av objekt, format, frågeställning.</p>
+          <div class="exit">Exit ticket: Vilket objekt väljer du, vilken teori blir viktigast?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-num">7</div>
+        <div class="lesson-body">
+          <h4>Arbetslektion med handledning</h4>
+          <p>Individuellt arbete + peer-feedback + individuell lärarhandledning. Kort repetition av källhantering.</p>
+          <div class="exit">Exit ticket: Vilka två källor har du hittills?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-num">8</div>
+        <div class="lesson-body">
+          <h4>Presentation, inlämning och syntes</h4>
+          <p>Muntliga presentationer + textinlämning + syntessession kopplad till L1:s utility-value-övning.</p>
+          <div class="exit">Exit ticket: Vad visste du inte vid L1 som du vet nu?</div>
+        </div>
+        <div class="lesson-date">datum kommer</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Teorierna</h2>
+    <div class="theories">
+      <div class="theory t1">
+        <h3>Globaliseringsdimensioner</h3>
+        <div class="func">Held m.fl. — deskriptiv</div>
+        <p>Fyra dimensioner av globalisering: ekonomisk, politisk, kulturell, social. Verktyg för att sortera vad man ser.</p>
+      </div>
+      <div class="theory t2">
+        <h3>Centrum-periferi</h3>
+        <div class="func">Wallerstein — kritisk</div>
+        <p>Världssystemteori. Positioner med olika maktfördelning: centrum, semi-periferi, periferi. Fångar ojämlikhet.</p>
+      </div>
+      <div class="theory t3">
+        <h3>Realism &amp; liberalism</h3>
+        <div class="func">IR-teorier — förklarande</div>
+        <p>Varför agerar stater? Realism: säkerhet, makt, anarki. Liberalism: samarbete, institutioner, handel.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Inför momentet — så förbereder du dig</h2>
+    <div class="prep-card">
+      <ul>
+        <li>Ta med ett vardagsobjekt till L1 — en T-shirt, en mobil, en kaffekopp</li>
+        <li>Damma av anteckningarna från källkritikmomentet — vi bygger vidare på det</li>
+        <li>Följ gärna svensk nyhetsbevakning under momentet — nyheter blir diskussionsmaterial</li>
+        <li>Börja redan fundera: vilket objekt skulle du vilja analysera i slutuppgiften?</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Examination</h2>
+    <div class="exam-block">
+      <p>Du väljer själv format — men analyskraven är identiska. Tre skalor. Tre teorier. Minst två källor. Egen ståndpunkt.</p>
+      <div class="exam-options">
+        <div class="exam-option a">
+          <h4>Utredande text</h4>
+          <p>2-3 sidor. Skriftlig inlämning. Källhänvisningar löpande.</p>
+        </div>
+        <div class="exam-option b">
+          <h4>Muntlig presentation</h4>
+          <p>8-10 min + frågor. Inför klassen. Gärna med fysiskt objekt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Samhällskunskap 3 • Globalisering — Från vardag till världssystem • 8 lektioner • Version april 2026
+  </footer>
+
+</div>
+</body>
+</html>

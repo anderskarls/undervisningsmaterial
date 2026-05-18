@@ -8,6 +8,7 @@ Användning:
   python classroom.py key <course-id>                        # HTML-nyckel (alias -> namn)
   python classroom.py read <course-id> <work-id> <Elev N>    # Läs en elevs inlämning (Drive eller Forms)
   python classroom.py dump <course-id> <work-id>             # Läs hela klassens inlämningar (Drive eller Forms)
+  python classroom.py feedback <course-id> <work-id> --rubric <fil>   # AI-feedback per elev → POSTar till surveyappen
   python classroom.py cache --clear | --purge                # Hantera Drive-text-cache
 
 `read`/`dump` detekterar automatiskt om uppgiften är en Forms-uppgift och
@@ -90,6 +91,36 @@ def cmd_dump(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_feedback(args: argparse.Namespace) -> int:
+    from feedback import build_feedback, FeedbackError
+
+    try:
+        result = build_feedback(
+            course_id=args.course_id,
+            work_id=args.coursework_id,
+            rubric_path=Path(args.rubric),
+            feedback_title=args.title,
+            prompt_path=Path(args.prompt) if args.prompt else None,
+            send=args.send,
+            dry_run=args.dry_run,
+            limit=args.limit,
+        )
+    except FeedbackError as e:
+        print(f"FEL: {e}", file=sys.stderr)
+        return 1
+
+    print("", file=sys.stderr)
+    print(f"Klar. {result['succeeded']} feedback genererade, {result['failed']} fel.", file=sys.stderr)
+    print(f"Granskning: {result['review_path']}", file=sys.stderr)
+    if result["posted"]:
+        print("✓ POSTat till surveyappen.", file=sys.stderr)
+    elif args.send:
+        print("✗ Ingen POST gjord (inget att skicka).", file=sys.stderr)
+    else:
+        print("(körd utan --send — ingen POST gjord)", file=sys.stderr)
+    return 0
+
+
 def cmd_cache(args: argparse.Namespace) -> int:
     import cache
 
@@ -133,6 +164,43 @@ def main(argv: list[str] | None = None) -> int:
     p_dump.add_argument("-o", "--out", help="Skriv till fil istället för stdout")
     p_dump.add_argument("--no-cache", action="store_true", help="Hoppa över Drive-text-cache")
     p_dump.set_defaults(func=cmd_dump)
+
+    p_fb = sub.add_parser(
+        "feedback",
+        help="Generera AI-feedback per elev → POSTar till surveyappen",
+    )
+    p_fb.add_argument("course_id", help="Kurs-ID")
+    p_fb.add_argument("coursework_id", help="Uppgifts-ID")
+    p_fb.add_argument(
+        "--rubric",
+        required=True,
+        help="Path till bedömningsmatris-fil (markdown).",
+    )
+    p_fb.add_argument(
+        "--title",
+        required=True,
+        help="Rubrik för feedback-inlägget (visas för eleven i surveyappen).",
+    )
+    p_fb.add_argument(
+        "--prompt",
+        help="Override prompt-template (default: prompts/feedback-default.md).",
+    )
+    p_fb.add_argument(
+        "--send",
+        action="store_true",
+        help="POSTa till surveyappen efter generering (annars: bara dump till Brain/00-Inbox).",
+    )
+    p_fb.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Hoppa över claude-anrop, använd placeholder-feedback. För att testa flödet.",
+    )
+    p_fb.add_argument(
+        "--limit",
+        type=int,
+        help="Begränsa till första N elever (för pilot).",
+    )
+    p_fb.set_defaults(func=cmd_feedback)
 
     p_cache = sub.add_parser("cache", help="Hantera Drive-text-cache (cache/)")
     grp = p_cache.add_mutually_exclusive_group()

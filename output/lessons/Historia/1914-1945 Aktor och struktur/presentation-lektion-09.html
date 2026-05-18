@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 9: Förintelsen II: Aktörer i ondskan</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #0a0806;
+    --bg-1: #1a1410;
+    --accent-warm: #d97757;
+    --accent-hot: #e85d4b;
+    --accent-gold: #c9a86a;
+    --text: #f5efe6;
+    --text-dim: #9b8f82;
+    --card-bg: rgba(255, 248, 240, 0.06);
+    --card-border: rgba(217, 119, 87, 0.25);
+  }
+  html, body { background: var(--bg-0); }
+  .reveal {
+    background: radial-gradient(ellipse at top, #1a1410 0%, #0a0806 60%);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    color: var(--text);
+  }
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: -0.02em;
+  }
+  .reveal h1 { font-size: 3.4rem; line-height: 1.1; }
+  .reveal h2 { font-size: 2.6rem; line-height: 1.15; }
+  .reveal h3 { font-size: 1.8rem; line-height: 1.2; }
+  .reveal p { font-size: 1.4rem; line-height: 1.5; color: var(--text); }
+  .reveal ul, .reveal ol { font-size: 1.3rem; }
+  .reveal li { margin-bottom: 0.6em; }
+
+  .gradient-text {
+    background: linear-gradient(120deg, var(--accent-warm), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    margin: 1rem 0;
+  }
+  .card h3 { margin-top: 0; color: var(--accent-gold); }
+  .quote {
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    border-left: 4px solid var(--accent-warm);
+    padding: 1rem 1.5rem;
+    background: rgba(217, 119, 87, 0.08);
+    border-radius: 0 12px 12px 0;
+    color: var(--text);
+  }
+  .quote-attr { display: block; margin-top: 0.8rem; font-size: 1rem; color: var(--text-dim); font-style: normal; }
+  .discussion {
+    background: linear-gradient(135deg, #e85d4b 0%, #d97757 100%);
+    padding: 3rem;
+    border-radius: 24px;
+    text-align: center;
+  }
+  .discussion h2 { color: white; font-size: 2.4rem; margin-bottom: 1rem; }
+  .discussion p { color: rgba(255,255,255,0.95); font-size: 1.5rem; }
+  .time-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    padding: 0.5rem 1.3rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .big-number {
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(120deg, var(--accent-warm), var(--accent-hot));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .label-small {
+    font-size: 1rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 0 12px 12px 0;
+  }
+  .timeline-year {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--accent-gold);
+    min-width: 120px;
+  }
+  .reveal .slide-number { color: var(--text-dim); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1 class="gradient-text">Aktörer i ondskan</h1>
+        <p style="font-size: 1.6rem; color: var(--text-dim); margin-top: 1rem;">Förintelsen II — förövare, åskådare, offer</p>
+
+      </section>
+      <section>
+        <h2>Reservpolisbataljon 101</h2>
+        <div class="card">
+          <p style="font-size: 1.4rem;">500 medelålders poliser från Hamburg.</p>
+          <p style="font-size: 1.4rem;">Inte SS. Inte rasfanatiker. Inte "sanna troende".</p>
+          <p style="font-size: 1.4rem;">Vanliga arbetarklassmän med familjer.</p>
+          <p style="font-size: 1.4rem; margin-top: 1.5rem; color: var(--accent-warm);">Sommaren 1942: ordern att massaföra 1500 judar i Józefów.</p>
+        </div>
+        <aside class="notes">Kontexten är avgörande. Inte SS — vanliga poliser. Det är därför fallet är så chockerande.</aside>
+      </section>
+      <section>
+        <div style="text-align: center;">
+          <div class="big-number"><10%</div>
+          <div class="label-small">accepterade erbjudandet att avstå</div>
+        </div>
+        <aside class="notes">Befälhavaren erbjöd: vem som inte vill delta får avstå. Mindre än 10% tog erbjudandet.</aside>
+      </section>
+      <section>
+        <h2>Två historiker, två förklaringar</h2>
+        
+          <div class="card">
+            <h3>Browning (1992)</h3>
+            <p>De var vanliga män. KONFORMITET, LYDNAD, KAMRATSKAP, RUTIN — strukturer formade dem. Inte ideologi.</p>
+          </div>
+          <div class="card">
+            <h3>Goldhagen (1996)</h3>
+            <p>Nej, det var en specifikt tysk "eliminatorisk antisemitism" — ett djupt rotat kulturellt hat. IDEOLOGIN drev dem.</p>
+          </div>
+        <aside class="notes">Denna debatt är akademisk referens. De flesta historiker idag lutar åt Browning, med förbehåll.</aside>
+      </section>
+      <section>
+        <h2>Primo Levi: offrets röst</h2>
+        <div class="quote">
+          "Om detta är en människa: denne som arbetar i leran, som inte har fred, som slåss om ett halvt bröd, som dör för ett ja, för ett nej."
+          <span class="quote-attr">— Primo Levi, Om detta är en människa, 1947</span>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 1.2rem;">Levi var italiensk-judisk kemist. Överlevde Auschwitz 1944-45.</p>
+        <aside class="notes">Offret är inte bara ett offer. Levi ÄR en röst, en författare, en aktör med ord.</aside>
+      </section>
+      <section>
+        <h2>Åskådaren</h2>
+        <div class="quote">
+          "Vi hörde gråt. Vi hörde röster som ropade på vatten. Vi visste inte exakt vart de skulle, men vi visste att människor låstes in och skickades bort. Vi tittade bort. Vi ville inte veta."
+          <span class="quote-attr">— Vittnesmål från tysk civilbefolkning</span>
+        </div>
+        <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text-dim);">[VERIFIERA — konstruerat exempel]</p>
+        <aside class="notes">Är att "inte protestera" en aktiv eller passiv handling? Vem är moraliskt ansvarig?</aside>
+      </section>
+      <section>
+        <div class="discussion">
+          <span class="time-badge">EPA + rösträkning - 25 min</span>
+          <h2>Browning eller Goldhagen — vilken övertygar mest?</h2>
+        </div>
+        <aside class="notes">Inga rätta svar. Håll båda sidor respektabla. Låt 2-3 elever från varje läger argumentera.</aside>
+      </section>
+      <section>
+        <h2>Samma spänning — aktör vs struktur — återkommer</h2>
+        <ul>
+          <li>Sarajevo 1914 — var kriget Princips val eller strukturellt oundvikligt?</li>
+          <li>Weimar 1933 — var Hitler en aktör eller möjliggjord av strukturen?</li>
+          <li>Józefów 1942 — var förövarna fria aktörer eller fångna i strukturen?</li>
+        </ul>
+        <aside class="notes">Poängen för L10: samma analytiska verktyg, olika nivåer. Nu är eleverna redo att syntetisera.</aside>
+      </section>
+      <section>
+        <h2>Exit ticket</h2>
+        <div class="card">
+          <p style="font-size: 1.4rem;">Browning säger "vanliga män", Goldhagen säger "tysk antisemitism". Vilken förklaring övertygar dig mest?</p>
+          <p style="font-size: 1.2rem; margin-top: 1rem; color: var(--text-dim);">Motivera med minst ETT argument.</p>
+        </div>
+        <aside class="notes">Bedöm argumentationskvalitet. Lektion 10 är nästa — ingen ny undervisning, bara examination.</aside>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      controls: true,
+      progress: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>

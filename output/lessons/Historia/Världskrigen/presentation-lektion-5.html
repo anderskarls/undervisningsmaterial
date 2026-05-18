@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 5: Andra världskriget bryter ut</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0d0d14;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #e8a838;
+      --color-accent2: #c45e3a;
+      --color-accent3: #8ecae6;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 28px; color: var(--color-text); }
+    .reveal .slides section { background: var(--color-bg); }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--color-heading); text-transform: none; font-weight: 800; letter-spacing: -0.03em; }
+    .reveal h2 { font-size: 2em; margin-bottom: 0.5em; }
+    .reveal p, .reveal li { line-height: 1.6; }
+    .reveal ul, .reveal ol { display: block; text-align: left; }
+
+    .gradient-text { background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glow { text-shadow: 0 0 40px rgba(232, 168, 56, 0.3); }
+
+    .glass-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.3em 1.5em; text-align: left; margin: 0.5em 0; transition: transform 0.3s, border-color 0.3s; }
+    .glass-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .glass-card .card-icon { width: 32px; height: 32px; margin-bottom: 0.4em; display: block; }
+    .glass-card .card-icon svg { width: 100%; height: 100%; }
+    .glass-card strong { color: var(--color-accent); }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .discuss-badge { display: inline-flex; align-items: center; gap: 0.4em; background: rgba(255,255,255,0.2); color: white; padding: 0.4em 1.2em; border-radius: 24px; font-size: 0.65em; font-weight: 600; margin-bottom: 1em; backdrop-filter: blur(10px); }
+    .pulse-dot { width: 8px; height: 8px; background: var(--color-accent3); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+
+    .timeline-v { display: flex; flex-direction: column; gap: 0.6em; max-width: 700px; margin: 0 auto; }
+    .tl-row { display: flex; align-items: center; gap: 1.2em; }
+    .tl-year { font-size: 1.3em; font-weight: 800; color: var(--color-accent); min-width: 80px; text-align: right; text-shadow: 0 0 30px rgba(232,168,56,0.4); }
+    .tl-line { width: 3px; height: 45px; background: linear-gradient(to bottom, var(--color-accent), var(--color-accent2)); border-radius: 2px; }
+    .tl-text { font-size: 0.85em; color: var(--color-text); background: var(--color-surface); padding: 0.6em 1em; border-radius: 10px; border: 1px solid var(--color-border); }
+
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin-top: 1em; }
+    .compare-col { background: var(--color-surface); backdrop-filter: blur(10px); border: 1px solid var(--color-border); padding: 1.5em; border-radius: 16px; border-top: 3px solid var(--color-accent); }
+    .compare-col:nth-child(2) { border-top-color: var(--color-accent2); }
+    .compare-col h3 { font-size: 1.1em; margin-bottom: 0.5em; color: var(--color-heading); }
+    .compare-col ul { font-size: 0.85em; }
+
+    .source-analysis { max-width: 750px; margin: 0 auto; }
+    .source-quote { font-size: 1.1em; font-style: italic; border-left: 3px solid var(--color-accent); padding: 0.8em 1.2em; margin: 1em 0; background: var(--color-surface); border-radius: 0 12px 12px 0; color: var(--color-text); box-shadow: -3px 0 20px rgba(232,168,56,0.15); }
+    .source-meta { display: flex; gap: 1.5em; font-size: 0.75em; color: var(--color-muted); margin-bottom: 1em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.4em;" class="glow">
+          Varför stoppade ingen<br><span class="gradient-text">Hitler?</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em;">Nazitysklands expansion 1936-1939</p>
+        <aside class="notes">
+          Visa Europakarta med Nazitysklands expansion markerad. "Hitler tog land efter land utan att krig bröt ut. Varför stoppade ingen honom?" Koppla tillbaka: "Förra lektionen såg vi hur han tog makten. Nu ska vi se vad han gjorde med den." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Expansion steg för steg -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur växte <span class="gradient-text">Nazityskland</span>?</h2>
+        <div class="timeline-v">
+          <div class="tl-row fragment">
+            <div class="tl-year">1936</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Rhenlandet remilitariseras - bryter mot Versailles</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">1938</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Anschluss - Österrike annekteras</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">1938</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Sudetenland - Münchenavtalet: "fred i vår tid"</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">1939</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Polen invaderas 1 september - kriget börjar</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Peka på kartan för varje steg. "Varje gång protesterade omvärlden lite - men ingen agerade. Hitler lärde sig att han kunde komma undan." Kontrollfråga: "Varför tror ni att Storbritannien och Frankrike accepterade Münchenavtalet?" Tid: 2 min.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Münchenavtalet -->
+      <section data-background-color="#0d0d14">
+        <h2>Varför gav de efter i <span class="gradient-text">München</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Rädsla för nytt krig</strong> - Minnet av WW1 var fortfarande starkt
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>"Fred i vår tid"</strong> - Chamberlain trodde att Hitler var nöjd
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Appeaseement misslyckades</strong> - Att ge efter gjorde Hitler bara modigare
+        </div>
+        <aside class="notes">
+          "Appeasement - att ge vika för att undvika konflikt. Det kan fungera ibland, men mot en diktator som Hitler fungerade det inte. Varje gång de gav efter blev Hitler bara mer övertygad om att han kunde ta mer." Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Borde de ha stoppat Hitler redan 1936?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Vad hade hänt om Frankrike och Storbritannien agerat tidigare? Diskutera.
+        </p>
+        <aside class="notes">
+          Kontrafaktisk diskussion. "1936 hade Hitlers armé varit för svag att möta Frankrike. Men ingen visste ju vad som skulle komma." Samla 3-4 svar. Led mot insikten att det är lätt att vara efterklok. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Blixtkrig -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad var <span class="gradient-text">blixtkrig</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Snabbt och överraskande</strong> - Stridsvagnar, flygplan, snabb framryckning
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Land efter land föll</strong> - Danmark, Norge, Nederländerna, Belgien, Frankrike
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Helt annorlunda än WW1</strong> - Inget skyttegravskrig denna gång
+        </div>
+        <aside class="notes">
+          "Blixtkrig var motsatsen till WW1:s skyttegravar. Istället för att gräva ner sig slog man till snabbt med stridsvagnar och flygplan. Frankrike föll på sex veckor - i WW1 kämpade man i fyra år." Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Ockupation -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur var det att leva under <span class="gradient-text">ockupation</span>?</h2>
+        <div class="source-analysis">
+          <blockquote class="source-quote">
+            "Plötsligt var de överallt. Tyska soldater på våra gator, tyska flaggor på våra byggnader. Vi vågade knappt prata med varandra."
+          </blockquote>
+          <div class="source-meta">
+            <span>Vittne från ockuperat Frankrike</span>
+          </div>
+        </div>
+        <div class="glass-card fragment" style="margin-top: 1em;">
+          <strong>Ockupation</strong> - Att ett främmande land tar kontroll med militärmakt
+        </div>
+        <aside class="notes">
+          Läs citatet högt. "Föreställ er att en främmande armé plötsligt tar över er stad. Allt förändras - vem som bestämmer, vad ni får säga, vilka regler som gäller." Mänskligt nedslag som gör kriget konkret. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Jämförelse WW1 vs WW2 -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad skiljer <span class="gradient-text">WW1</span> från WW2?</h2>
+        <div class="comparison">
+          <div class="compare-col fragment">
+            <h3>WW1 (1914-1918)</h3>
+            <ul>
+              <li>Allianser drar in alla</li>
+              <li>Skyttegravskrig - dödläge</li>
+              <li>Utlöst av mord i Sarajevo</li>
+            </ul>
+          </div>
+          <div class="compare-col fragment">
+            <h3>WW2 (1939-1945)</h3>
+            <ul>
+              <li>En diktators aggression</li>
+              <li>Blixtkrig - snabb expansion</li>
+              <li>Utlöst av invasion av Polen</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          "Ser ni likheterna och skillnaderna? Båda handlar om nationalism och makt - men mekanismerna var helt olika." Detta förbereder för jämförelsetabellen i den guidade övningen. Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 1 minut</span>
+        <h2 style="color: white; font-size: 1.8em;">Vad är den största likheten - och den största skillnaden?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Mellan orsakerna till WW1 och WW2. Diskutera med din bänkgranne.
+        </p>
+        <aside class="notes">
+          Kort diskussion som förbereder för jämförelsetabellen. Samla 2-3 svar. Betona att båda krigen hade nationalism som grund men att WW2 handlade mer om en specifik diktators ambitioner. Tid: 1 min diskussion + 30 sek genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Kedjan fortsätter -->
+      <section data-background-color="#0d0d14">
+        <h2>Ser ni <span class="gradient-text">kedjan</span>?</h2>
+        <div class="glass-card fragment">
+          <strong>Nationalism</strong> skapade spänningar
+        </div>
+        <div class="glass-card fragment" style="margin-left: 1.5em;">
+          <strong>WW1</strong> bröt ut genom allianssystemet
+        </div>
+        <div class="glass-card fragment" style="margin-left: 3em;">
+          <strong>Versaillesfreden</strong> skapade ilska och kris
+        </div>
+        <div class="glass-card fragment" style="margin-left: 4.5em;">
+          <strong>Hitler tog makten</strong> genom att utnyttja krisen
+        </div>
+        <div class="glass-card fragment" style="margin-left: 6em;">
+          <strong>WW2</strong> bryter ut - expansion och blixtkrig
+        </div>
+        <aside class="notes">
+          "Hela kedjan från lektion 1 till nu. Varje steg ledde till nästa. Konsekvenser blev orsaker blev nya konsekvenser." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Cliffhanger -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.4em;" class="glow">
+          Men det värsta har<br><span class="gradient-text">inte hänt</span> än
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em;">Nästa lektion: Förintelsen - hur kunde det hända?</p>
+        <aside class="notes">
+          Allvarlig ton. "Kriget var hemskt. Men det som hände under kriget - det systematiska mordet på miljontals människor - det är något vi måste försöka förstå. Det gör vi nästa gång." Övergång till jämförelsetabellen. Tid: 30 sek.
+        </aside>
+      </section>
+
+      <!-- Slide 11: Sammanfattning -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad tar ni med er <span class="gradient-text">idag</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <strong>Stegvis expansion</strong> - Hitler testade gränser, ingen stoppade honom
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Blixtkrig</strong> - helt annorlunda krig än WW1
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.8em; margin-top: 1.5em;">Nu: Jämförelsetabell WW1 vs WW2</p>
+        <aside class="notes">
+          Dela ut jämförelsetabellen. Modellera en rad (bakomliggande orsaker) först. Sedan arbetar eleverna i par. Tid: 30 sek.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

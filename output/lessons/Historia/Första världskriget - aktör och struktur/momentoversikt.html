@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Första världskriget: Aktör och struktur — Momentöversikt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: #f5f0eb;
+      color: #2d2a26;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    /* --- Header --- */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 100%);
+      color: #f5f0eb;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .header .kurs {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e74c3c;
+      margin-bottom: 0.75rem;
+    }
+
+    .header h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .header .description {
+      font-size: 1.05rem;
+      color: #bdc3c7;
+      max-width: 600px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .header .period {
+      font-size: 0.9rem;
+      color: #95a5a6;
+      font-weight: 500;
+    }
+
+    /* --- Big Question --- */
+    .big-question {
+      background: #2c3e50;
+      border-left: 4px solid #e74c3c;
+      padding: 1.5rem 2rem;
+      margin: 2rem auto;
+      max-width: 940px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .big-question p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #ecf0f1;
+      font-style: italic;
+    }
+
+    .big-question .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e74c3c;
+      margin-bottom: 0.5rem;
+      font-style: normal;
+    }
+
+    /* --- Goals --- */
+    .goals {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 940px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .goals h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+    }
+
+    .goals ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .goals li {
+      padding: 0.6rem 0;
+      padding-left: 1.8rem;
+      position: relative;
+      font-size: 1rem;
+      border-bottom: 1px solid #f0ece6;
+    }
+
+    .goals li:last-child {
+      border-bottom: none;
+    }
+
+    .goals li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      background: #e74c3c;
+      border-radius: 50%;
+    }
+
+    /* --- Lessons --- */
+    .lessons {
+      max-width: 940px;
+      margin: 2rem auto;
+    }
+
+    .lessons h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+    }
+
+    .lesson-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 0;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+    }
+
+    .lesson-number {
+      background: #1a1a2e;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0.5rem;
+      min-height: 100%;
+    }
+
+    .lesson-number .num {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .lesson-number .label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #95a5a6;
+      margin-top: 0.2rem;
+    }
+
+    .lesson-content {
+      padding: 1.2rem 1.5rem;
+    }
+
+    .lesson-content h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.3rem;
+    }
+
+    .lesson-date {
+      font-size: 0.8rem;
+      color: #e74c3c;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .lesson-desc {
+      font-size: 0.95rem;
+      color: #5d6d7e;
+      line-height: 1.5;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #95a5a6;
+      font-size: 0.85rem;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .header {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      .big-question {
+        margin: 1.5rem 1rem;
+        padding: 1.2rem 1.5rem;
+      }
+
+      .goals, .lessons {
+        margin: 1.5rem 1rem;
+      }
+
+      .lesson-card {
+        grid-template-columns: 60px 1fr;
+      }
+
+      .lesson-number .num {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lesson-card {
+        grid-template-columns: 1fr;
+      }
+
+      .lesson-number {
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+        min-height: auto;
+      }
+
+      .lesson-number .num {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="kurs">Historia 1b</div>
+    <h1>Första världskriget: Aktör och struktur</h1>
+    <p class="description">Var kriget ett resultat av enskilda personers beslut - eller av krafter som ingen kunde kontrollera? Vi undersöker frågan med hjälp av historikernas verktyg.</p>
+    <p class="period">4 lektioner</p>
+  </header>
+
+  <div class="big-question">
+    <p class="label">Den stora frågan</p>
+    <p>"Var första världskriget oundvikligt - eller hade det kunnat stoppas av andra beslut?"</p>
+  </div>
+
+  <div class="container">
+
+    <section class="goals">
+      <h2>Det här ska du kunna efter momentet</h2>
+      <ul>
+        <li>Redogöra för första världskrigets orsaker och förlopp - vilka strukturer och aktörer som spelade roll</li>
+        <li>Förklara hur långsiktiga krafter (allianser, nationalism, imperialism) hängde ihop med enskilda personers beslut</li>
+        <li>Använda begreppen aktör och struktur som verktyg för att analysera historiska händelser</li>
+      </ul>
+    </section>
+
+    <section class="lessons">
+      <h2>Lektioner</h2>
+
+      <article class="lesson-card">
+        <div class="lesson-number">
+          <span class="num">1</span>
+          <span class="label">Lektion</span>
+        </div>
+        <div class="lesson-content">
+          <h3>Verktyg och kruttunnor</h3>
+          <div class="lesson-date">Datum meddelas</div>
+          <p class="lesson-desc">Vi lär oss begreppen aktör och struktur - historikernas viktigaste analysverktyg. Sedan kartlägger vi de fyra "kruttunnorna" som gjorde Europa redo för krig: allianssystemet, nationalismen, imperialismen och kapprustningen.</p>
+        </div>
+      </article>
+
+      <article class="lesson-card">
+        <div class="lesson-number">
+          <span class="num">2</span>
+          <span class="label">Lektion</span>
+        </div>
+        <div class="lesson-content">
+          <h3>Julikrisen - 37 dagar som förändrade världen</h3>
+          <div class="lesson-date">Datum meddelas</div>
+          <p class="lesson-desc">Vad hände egentligen sommaren 1914? Vi följer 37 dramatiska dagar - från mordet i Sarajevo till krigsutbrottet - och undersöker vilka aktörer som fattade de avgörande besluten och vilka strukturer som tvingade dem.</p>
+        </div>
+      </article>
+
+      <article class="lesson-card">
+        <div class="lesson-number">
+          <span class="num">3</span>
+          <span class="label">Lektion</span>
+        </div>
+        <div class="lesson-content">
+          <h3>Skyttegravarna och världen</h3>
+          <div class="lesson-date">Datum meddelas</div>
+          <p class="lesson-desc">Krigets verklighet: skyttegravarna, ny dödlig teknik, koloniala soldater från hela världen och en hemmafront som förändrades för alltid. Vi analyserar kriget ur tre perspektiv - soldatens, generalens och hemmafrontens.</p>
+        </div>
+      </article>
+
+      <article class="lesson-card">
+        <div class="lesson-number">
+          <span class="num">4</span>
+          <span class="label">Lektion</span>
+        </div>
+        <div class="lesson-content">
+          <h3>Var kriget oundvikligt?</h3>
+          <div class="lesson-date">Datum meddelas</div>
+          <p class="lesson-desc">Vi samlar ihop allt vi lärt oss och besvarar den stora frågan. Ni tar ställning - var det aktörerna eller strukturerna som avgjorde? Historiker är fortfarande oense, och nu är det er tur att argumentera.</p>
+        </div>
+      </article>
+
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <p>Historia 1b — Första världskriget: Aktör och struktur</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+topic,type,text,option1,option2,option3,option4,correctAnswer
+Definition,MULTIPLE_CHOICE,Vilken dimension handlar om handel kapital och varors flöde över gränser?,Ekonomisk,Politisk,Kulturell,Social,Ekonomisk
+Definition,MULTIPLE_CHOICE,Vilken dimension handlar om EU FN WTO och internationella avtal?,Ekonomisk,Politisk,Kulturell,Social,Politisk
+Definition,MULTIPLE_CHOICE,Vilken dimension handlar om film musik språk och matvanor som sprids?,Ekonomisk,Politisk,Kulturell,Social,Kulturell
+Definition,MULTIPLE_CHOICE,Vilken dimension handlar om människor som rör sig över gränser — migration turism släktband?,Ekonomisk,Politisk,Kulturell,Social,Social
+Identifiera,MULTIPLE_CHOICE,ICA importerar avokado från Peru till svenska butiker. Vilken dimension är detta främst?,Ekonomisk,Politisk,Kulturell,Social,Ekonomisk
+Identifiera,MULTIPLE_CHOICE,EU förhandlar fram ett nytt klimatavtal med USA Kina och Indien. Vilken dimension?,Ekonomisk,Politisk,Kulturell,Social,Politisk
+Identifiera,MULTIPLE_CHOICE,K-pop-fans i Sverige lär sig koreografier från BTS. Vilken dimension främst?,Ekonomisk,Politisk,Kulturell,Social,Kulturell
+Identifiera,MULTIPLE_CHOICE,En syrisk familj återförenas i Stockholm efter tio års separation. Vilken dimension främst?,Ekonomisk,Politisk,Kulturell,Social,Social
+Identifiera,MULTIPLE_CHOICE,Sverige skickar truppbidrag till NATO:s förstärkning av Baltikum. Vilken dimension främst?,Ekonomisk,Politisk,Kulturell,Social,Politisk
+Identifiera,MULTIPLE_CHOICE,En svensk universitetsstudent åker på utbyte till Tokyo. Vilken dimension främst?,Ekonomisk,Politisk,Kulturell,Social,Social
+Identifiera,MULTIPLE_CHOICE,T-shirt från Shein: bomull från Indien sömnad i Bangladesh design i Kina försäljning i Sverige. Vilken dimension är tydligast?,Ekonomisk,Politisk,Kulturell,Social,Ekonomisk
+Identifiera,MULTIPLE_CHOICE,Engelska har blivit lingua franca på svenska universitet — många kurser hålls helt på engelska. Vilken dimension främst?,Ekonomisk,Politisk,Kulturell,Social,Kulturell
+Tillämpning,FREE_TEXT,"Ta upp din mobiltelefon. Var kommer den ifrån — vem tjänar på den? Ge ett konkret exempel på den ekonomiska dimensionen i din mobil.",,,,,
+Tillämpning,FREE_TEXT,"Vilka regler eller avtal påverkar din mobil? Tänk GDPR EU-laddare importtullar dataöverföringsavtal. Ge ett konkret exempel på den politiska dimensionen.",,,,,
+Tillämpning,FREE_TEXT,"Vilket innehåll konsumerar du via din mobil som kommer från andra länder? Ge ett konkret exempel på den kulturella dimensionen.",,,,,
+Tillämpning,FREE_TEXT,"Vilka människor i andra länder håller du kontakt med via din mobil? Ge ett konkret exempel på den sociala dimensionen.",,,,,
+Fördjupning,FREE_TEXT,"McDonalds säljer paneer-burgare i Indien men inte i Sverige. Trump inför 60 % tull på kinesiska elbilar — Tesla flyttar produktion. Båda exemplen kombinerar minst två dimensioner. Välj ETT av dem och förklara: vilka dimensioner samverkar och vilken driver den andra?",,,,,
+Fördjupning,FREE_TEXT,Vilken av de fyra dimensionerna är mest osynlig i din mobil för en vanlig användare? Vilken dimension märker man tydligast? Motivera båda dina svar.,,,,,
+Fördjupning,FREE_TEXT,Hitta ETT eget exempel — utanför mobilen och T-shirten — där alla fyra dimensioner samverkar. Förklara hur var och en av dimensionerna kommer till uttryck i exemplet.,,,,,

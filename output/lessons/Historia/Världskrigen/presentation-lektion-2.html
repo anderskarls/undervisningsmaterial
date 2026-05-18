@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 2: Första världskriget bryter ut</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0d0d14;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #e8a838;
+      --color-accent2: #c45e3a;
+      --color-accent3: #8ecae6;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal .slides section {
+      background: var(--color-bg);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--color-heading);
+      text-transform: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .reveal h2 { font-size: 2em; margin-bottom: 0.5em; }
+    .reveal p, .reveal li { line-height: 1.6; }
+    .reveal ul, .reveal ol { display: block; text-align: left; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow { text-shadow: 0 0 40px rgba(232, 168, 56, 0.3); }
+
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.3em 1.5em;
+      text-align: left;
+      margin: 0.5em 0;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .glass-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .glass-card .card-icon { width: 32px; height: 32px; margin-bottom: 0.4em; display: block; }
+    .glass-card .card-icon svg { width: 100%; height: 100%; }
+    .glass-card strong { color: var(--color-accent); }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .discuss-badge {
+      display: inline-flex; align-items: center; gap: 0.4em;
+      background: rgba(255,255,255,0.2); color: white;
+      padding: 0.4em 1.2em; border-radius: 24px;
+      font-size: 0.65em; font-weight: 600; margin-bottom: 1em;
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse-dot {
+      width: 8px; height: 8px; background: var(--color-accent3);
+      border-radius: 50%; animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    .timeline-v { display: flex; flex-direction: column; gap: 0.4em; max-width: 760px; margin: 0 auto; }
+    .tl-row { display: flex; align-items: center; gap: 1em; }
+    .tl-year { font-size: 1.05em; font-weight: 800; color: var(--color-accent); min-width: 150px; text-align: right; text-shadow: 0 0 30px rgba(232,168,56,0.4); }
+    .tl-line { width: 3px; height: 38px; background: linear-gradient(to bottom, var(--color-accent), var(--color-accent2)); border-radius: 2px; }
+    .tl-text { font-size: 0.85em; color: var(--color-text); background: var(--color-surface); padding: 0.55em 1em; border-radius: 10px; border: 1px solid var(--color-border); flex: 1; }
+
+    .big-stat { display: flex; flex-direction: column; align-items: center; gap: 0.3em; }
+    .stat-number { font-size: 7em; font-weight: 800; line-height: 1; background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 40px rgba(232,168,56,0.3)); }
+    .stat-label { font-size: 1.1em; max-width: 560px; text-align: center; color: var(--color-text); }
+    .stat-source { font-size: 0.65em; color: var(--color-muted); }
+
+    .source-analysis { max-width: 820px; margin: 0 auto; }
+    .source-quote {
+      font-size: 1em; font-style: italic;
+      border-left: 3px solid var(--color-accent);
+      padding: 0.8em 1.2em; margin: 0.6em 0;
+      background: var(--color-surface);
+      border-radius: 0 12px 12px 0;
+      color: var(--color-text);
+      box-shadow: -3px 0 20px rgba(232,168,56,0.15);
+      text-align: left;
+    }
+    .source-quote ul { font-size: 0.9em; margin-top: 0.4em; padding-left: 1.2em; }
+    .source-quote li { font-style: normal; margin: 0.2em 0; }
+    .source-meta { display: flex; gap: 1.5em; font-size: 0.72em; color: var(--color-muted); margin-bottom: 0.8em; justify-content: flex-start; padding-left: 1.2em; }
+    .source-questions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.8em; }
+    .source-questions .glass-card { margin: 0; padding: 0.7em 0.9em; font-size: 0.75em; }
+
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin-top: 1em; }
+    .compare-col { background: var(--color-surface); backdrop-filter: blur(10px); border: 1px solid var(--color-border); padding: 1.5em; border-radius: 16px; border-top: 3px solid var(--color-accent); }
+    .compare-col:nth-child(2) { border-top-color: var(--color-accent2); }
+    .compare-col h3 { font-size: 1.1em; margin-bottom: 0.5em; color: var(--color-heading); }
+    .compare-col ul { font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.8em;" class="glow">
+          Hur kan ett mord starta ett<br><span class="gradient-text">världskrig?</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em;">Sarajevo, 28 juni 1914</p>
+        <aside class="notes">
+          Visa bilden på skotten i Sarajevo eller tidningsframsida. Låt frågan hänga i luften en stund. "Förra lektionen lärde ni er om orsakerna. Idag ser vi vad som tände stubintråden." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Mordet -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad hände i <span class="gradient-text">Sarajevo</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/>
+          </svg>
+          <strong>28 juni 1914</strong> - Ärkehertig Franz Ferdinand och hans hustru Sophie mördas i Sarajevo
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>Mördaren</strong> - Gavrilo Princip, 19 år, medlem i den serbiska nationalistgruppen "Unga Bosnien"
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Österrike-Ungern rasar</strong> - Ser chansen att krossa Serbien och försäkrar sig om Tysklands stöd
+        </div>
+        <aside class="notes">
+          Berätta dramatiskt: "En 19-åring med en pistol förändrade världshistorien." Franz Ferdinand var tronföljare i Österrike-Ungern. Mordet gav Österrike-Ungern den ursäkt de sökt för att agera mot Serbien. "Blancocheck" från Tyskland 5 juli - vi bekräftar detaljen i nästa slide. Kontrollfråga: "Varför var Österrike-Ungern så arga?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Ultimatum - kallanalys -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad krävde <span class="gradient-text">Österrike-Ungern</span> av Serbien?</h2>
+        <div class="source-analysis">
+          <blockquote class="source-quote">
+            "Serbien förbinder sig att undertrycka all propaganda mot Österrike-Ungern och att med alla medel stoppa sammanslutningar som bedriver sådan verksamhet. Därutöver kräver Österrike-Ungern:
+            <ul>
+              <li>Upplösning av nationalistgruppen "Narodna Odbrana"</li>
+              <li>Avsked för officerare som Österrike-Ungern namnger</li>
+              <li>Österrikiska tjänstemän får delta i utredningen på serbisk mark</li>
+            </ul>"
+          </blockquote>
+          <div class="source-meta">
+            <span>Utdrag ur Österrike-Ungerns ultimatum till Serbien</span>
+            <span>23 juli 1914</span>
+          </div>
+          <div class="source-questions">
+            <div class="glass-card fragment">
+              <strong>Vem?</strong> Österrike-Ungerns regering - med stöd av Tyskland sedan 5 juli
+            </div>
+            <div class="glass-card fragment">
+              <strong>När?</strong> Nästan en månad efter mordet - varför vänta så länge?
+            </div>
+            <div class="glass-card fragment">
+              <strong>Syfte?</strong> Krav så hårda att Serbien måste säga nej - då får Ö-U sin ursäkt för krig
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Poängen: ultimatumet var inte ett försök till diplomati - det var designat för att misslyckas. Serbien accepterade 9 av 10 krav, men inte det om österrikiska tjänstemän på serbisk mark - det kränkte deras suveränitet. Detta blev påskrift för krig. Kontrollfråga: "Varför tror ni att Ö-U ställde krav som var omöjliga att acceptera?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Dominoeffekten med datum -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur blev ett mord ett <span class="gradient-text">världskrig</span> på sex veckor?</h2>
+        <div class="timeline-v">
+          <div class="tl-row fragment">
+            <div class="tl-year">28 juni 1914</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Franz Ferdinand mördas i Sarajevo</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">23 juli</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Österrike-Ungern ställer ultimatum till Serbien</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">28 juli</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Österrike-Ungern förklarar krig mot Serbien</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">1 augusti</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Tyskland förklarar krig mot Ryssland (allierad med Serbien)</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">3 augusti</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Tyskland förklarar krig mot Frankrike, invaderar Belgien</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">4 augusti</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Storbritannien förklarar krig mot Tyskland - hela Europa i krig</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Nyckelslide. Rita parallellt på tavlan. "Sex veckor. Från ett mord till världskrig. Det var allianssystemet som vi pratade om förra lektionen - när en föll, föll alla." Kontrollfråga: "Varför kunde inte konflikten stanna mellan Österrike-Ungern och Serbien?" Betona mekaniken: allianserna var inte ett skydd utan en fälla. Tid: 2 min.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 1 minut</span>
+        <h2 style="color: white; font-size: 1.8em;">Vems fel var det egentligen att kriget bröt ut?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Princip? Österrike-Ungern? Allianssystemet? Något annat? Diskutera med din bänkgranne.
+        </p>
+        <aside class="notes">
+          Provocerande fråga utan enkelt svar. Syftet är att eleverna ska se att det inte var en enskild persons fel utan systemets - allianserna skapade en mekanism som gjorde krig nästan oundvikligt efter mordet. Samla 2-3 svar. Tid: 1 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Krigets karaktär -->
+      <section data-background-color="#0d0d14">
+        <h2>Varför blev det ett <span class="gradient-text">skyttegravskrig</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Ny teknik, gammal taktik</strong> - Kulsprutor kunde skjuta 500 skott per minut. Generalerna lärde sig aldrig
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M3 12h4l3-9 4 18 3-9h4"/>
+          </svg>
+          <strong>Dödläge på västfronten</strong> - 70 mil skyttegrav från Nordsjön till Schweiz
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Nya vapen</strong> - Gas (första gången 1915), stridsvagnar (1916), flygplan - men ingen kunde vinna
+        </div>
+        <aside class="notes">
+          Beskriv skyttegravskriget kort men levande: "Föreställ er att sitta i en lerig grop, meter från fienden, vecka efter vecka. Råttor, sjukdom, ständig beskjutning." Poängtera kontrasten: generalerna hade gammal taktik (anfall i täta formationer) men soldaterna mötte nya vapen. Första gasattacken: Ypres april 1915. Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Fronterna -->
+      <section data-background-color="#0d0d14">
+        <h2>Var utkämpades <span class="gradient-text">kriget</span>?</h2>
+        <div class="comparison">
+          <div class="compare-col fragment">
+            <h3>Västfronten</h3>
+            <ul>
+              <li>Frankrike och Belgien</li>
+              <li>Skyttegravskrig - dödläge i fyra år</li>
+              <li>Verdun 1916: ca 700 000 stupade</li>
+              <li>Somme 1916: över 1 miljon stupade</li>
+            </ul>
+          </div>
+          <div class="compare-col fragment">
+            <h3>Östfronten</h3>
+            <ul>
+              <li>Ryssland mot Tyskland/Österrike-Ungern</li>
+              <li>Mer rörligt krig, enorma områden</li>
+              <li>Ryska revolutionen 1917 - tsaren störtas</li>
+              <li>Freden i Brest-Litovsk 1918 - Ryssland ur</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          Visa på karta var fronterna låg. Västfronten var det mest kända - men östfronten var också enorm. "Ryssland drog sig ur 1917 efter revolutionen, men USA gick med samma år." Siffror för Verdun/Somme är sammanlagda dödstal för båda sidor. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Somme statistik -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="big-stat">
+          <span class="stat-number fragment">19 240</span>
+          <span class="stat-label fragment">brittiska soldater dog på en enda dag</span>
+          <span class="stat-source fragment">Första dagen av slaget vid Somme, 1 juli 1916</span>
+        </div>
+        <aside class="notes">
+          Låt siffran sjunka in. "Nittontusen på en enda dag. Det är mer än alla svenska soldater som dött i alla svenska krig sedan Karl XII sammanlagt." Slaget vid Somme pågick från juli till november - över 1 miljon totalt stupade för lite eller ingen markvinning. Detta är skyttegravskrigets vansinne konkretiserat. Tid: 30 sek.
+        </aside>
+      </section>
+
+      <!-- Slide 9: 17 miljoner -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-2"></div>
+        <div class="big-stat">
+          <span class="stat-number fragment">17 milj</span>
+          <span class="stat-label fragment">människor dog totalt i kriget - soldater och civila</span>
+          <span class="stat-source fragment">Fler dog av sjukdom och svält än av kulor</span>
+        </div>
+        <aside class="notes">
+          Låt siffran sjunka in. "17 miljoner - det är ungefär Sveriges befolkning + Norge + Finland tillsammans." Betona att många dog av sjukdom (spanska sjukan 1918-20 tog 50 miljoner världen över), svält och infektioner i skyttegravarna - inte direkt av strid. Tid: 30 sek.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Varför slutade de inte bara kriga?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Om ingen kunde vinna i skyttegravarna - varför fortsatte kriget i fyra år?
+        </p>
+        <aside class="notes">
+          Bra fråga för att utmana elevernas tänkande. Möjliga svar: prestige ("de som dött får inte ha dött förgäves"), allianser, ingen ville "ge sig", propaganda hemma, inbördes pusseltolitisk låsning. Samla svar och led mot avslutningen. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 11: Soldatbrev - kallanalys -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur var det att vara <span class="gradient-text">soldat</span>?</h2>
+        <div class="source-analysis">
+          <blockquote class="source-quote">
+            "Vi lever som djur. Råttorna springer över oss medan vi sover. Maten är äcklig och vattnet smakar lera. Jag vet inte längre varför vi kämpar."
+          </blockquote>
+          <div class="source-meta">
+            <span>Brev från soldat vid västfronten</span>
+            <span>1916</span>
+          </div>
+          <div class="source-questions">
+            <div class="glass-card fragment">
+              <strong>Vem?</strong> En enskild soldat - vi vet inte nation eller rang. Ett av miljoner liknande brev
+            </div>
+            <div class="glass-card fragment">
+              <strong>När?</strong> 1916 - mitt i kriget, skyttegravsdödläget som värst
+            </div>
+            <div class="glass-card fragment">
+              <strong>Syfte?</strong> Privat brev hem - inte propaganda. Därför får vi en ärlig bild
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Läs citatet högt, långsamt. Ge en kort paus - 15 sek tystnad. "Det här var verkligheten för miljontals unga män. Många var inte äldre än ni." Kallkritik: privata brev är ofta mer ärliga än offentliga texter eftersom de inte skrivs för censur eller propaganda. Samtidigt: vi har bara ett nedslag - inte hela bilden. Kontrollfråga: "Varför är detta brev mer pålitligt än en krigspropagandaaffisch - och vad kan det ändå ha för begränsningar?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 12: Krigets slut -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur slutade <span class="gradient-text">kriget</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/>
+          </svg>
+          <strong>1917: Vändpunkt</strong> - Ryssland ur kriget (revolution), USA går med på ententens sida
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>11 november 1918, kl 11</strong> - Vapenstillestånd träder i kraft. Kriget är slut
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Frågan</strong> - Men skapade freden verkligen fred?
+        </div>
+        <aside class="notes">
+          Avsluta med cliffhanger till nästa lektion. "Klockan elva, den elfte dagen, i den elfte månaden 1918 - tystnaden efter fyra år av kanoneld." Kriget slutade 1918, men freden som skrevs i Versailles skulle skapa nya problem. Det är nästa lektion. Övergång till EPA-uppgiften. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 13: Sammanfattning -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad har vi lärt oss <span class="gradient-text">idag</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <strong>Mordet i Sarajevo</strong> tände gnistan - sex veckor senare var hela Europa i krig
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Skyttegravskrig</strong> - ny teknik, gammal taktik, fyra års dödläge, 17 miljoner döda
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.8em; margin-top: 1.5em;">Nu: EPA-uppgift om orsakskedjan från Sarajevo till världskrig</p>
+        <aside class="notes">
+          Snabb sammanfattning, sedan övergång till EPA-uppgiften. "Förklara med egna ord: Hur kunde mordet i Sarajevo leda till ett världskrig? Använd begreppet allians." Tid: 30 sek.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 6: Förintelsen del 1 - hur kunde det hända?</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0d0d14;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #e8a838;
+      --color-accent2: #c45e3a;
+      --color-accent3: #8ecae6;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 28px; color: var(--color-text); }
+    .reveal .slides section { background: var(--color-bg); }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--color-heading); text-transform: none; font-weight: 800; letter-spacing: -0.03em; }
+    .reveal h2 { font-size: 2em; margin-bottom: 0.5em; }
+    .reveal p, .reveal li { line-height: 1.6; }
+    .reveal ul, .reveal ol { display: block; text-align: left; }
+
+    .gradient-text { background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glow { text-shadow: 0 0 40px rgba(232, 168, 56, 0.3); }
+
+    .glass-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.3em 1.5em; text-align: left; margin: 0.5em 0; transition: transform 0.3s, border-color 0.3s; }
+    .glass-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .glass-card .card-icon { width: 32px; height: 32px; margin-bottom: 0.4em; display: block; }
+    .glass-card .card-icon svg { width: 100%; height: 100%; }
+    .glass-card strong { color: var(--color-accent); }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .discuss-badge { display: inline-flex; align-items: center; gap: 0.4em; background: rgba(255,255,255,0.2); color: white; padding: 0.4em 1.2em; border-radius: 24px; font-size: 0.65em; font-weight: 600; margin-bottom: 1em; backdrop-filter: blur(10px); }
+    .pulse-dot { width: 8px; height: 8px; background: var(--color-accent3); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+
+    .timeline-v { display: flex; flex-direction: column; gap: 0.5em; max-width: 700px; margin: 0 auto; }
+    .tl-row { display: flex; align-items: center; gap: 1.2em; }
+    .tl-year { font-size: 1.2em; font-weight: 800; color: var(--color-accent); min-width: 80px; text-align: right; text-shadow: 0 0 30px rgba(232,168,56,0.4); }
+    .tl-line { width: 3px; height: 40px; background: linear-gradient(to bottom, var(--color-accent), var(--color-accent2)); border-radius: 2px; }
+    .tl-text { font-size: 0.85em; color: var(--color-text); background: var(--color-surface); padding: 0.5em 1em; border-radius: 10px; border: 1px solid var(--color-border); }
+
+    /* Escalation steps */
+    .escalation { display: flex; flex-direction: column; gap: 0.4em; max-width: 700px; margin: 0 auto; }
+    .esc-step { display: flex; align-items: center; gap: 1em; }
+    .esc-num { font-size: 1.8em; font-weight: 800; min-width: 50px; text-align: center; line-height: 1; }
+    .esc-arrow { width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 12px solid var(--color-accent2); margin: 0 auto; }
+    .esc-card { flex: 1; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 10px; padding: 0.6em 1em; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.2em;" class="glow">
+          Hur kunde ett modernt land<br>systematiskt <span class="gradient-text">mörda miljontals</span><br>människor?
+        </h2>
+        <p style="color: var(--color-muted); font-size: 0.9em;">Förintelsen - del 1</p>
+        <aside class="notes">
+          Saklig, lugn ton. "Det här är ett av de svåraste ämnena vi behandlar. Vi ska försöka FÖRSTÅ hur det kunde hända - inte för att ursäkta, utan för att det aldrig ska kunna ske igen." Ge eleverna en stund att ta in frågan. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Antisemitismens rötter -->
+      <section data-background-color="#0d0d14">
+        <h2>Varifrån kom <span class="gradient-text">hatet</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/>
+          </svg>
+          <strong>Antisemitism</strong> - Fördomar mot judar med hundratals år på nacken
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Syndabockar genom historien</strong> - Judar hade pekats ut under pest, kriser, konflikter
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Nazisterna förstärkte</strong> - Rasbiologi, "den ariska rasen", judar som fiender
+        </div>
+        <aside class="notes">
+          "Antisemitismen uppfanns inte av nazisterna. Den hade funnits i Europa i hundratals år. Men nazisterna tog den till en helt ny nivå genom att göra den till statsideologi." Betona att det handlar om fördomar som utnyttjades politiskt. Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Nazistisk ideologi -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad trodde <span class="gradient-text">nazisterna</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>Rasbiologi</strong> - Pseudovetenskap om "överlägsna" och "underlägsna" raser
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>
+          </svg>
+          <strong>"Den ariska rasen"</strong> - Tyskarna påstods vara överlägsna
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Judar som fiender</strong> - Fick skulden för allt: kriget, krisen, kommunismen
+        </div>
+        <aside class="notes">
+          "Rasbiologin var inte vetenskap - det var pseudovetenskap som användes för att rättfärdiga hat. Men det kläddes i vetenskapliga termer för att verka trovärdigt." Kontrollfråga: "Varför tror ni att det var effektivt att skylla på en grupp?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Varför är det så lockande att skylla på en grupp i tider av kris?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Diskutera med din bänkgranne. Tänk på mekanismen bakom syndabockar.
+        </p>
+        <aside class="notes">
+          Viktig diskussion om mekanismen bakom syndabockar. Det ger enkla svar, kanaliserar ilska, skapar vi-och-dom. Samla 3-4 svar. Var noga med saklig ton. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Eskaleringstrappan -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur eskalerade <span class="gradient-text">förföljelsen</span>?</h2>
+        <div class="timeline-v">
+          <div class="tl-row fragment">
+            <div class="tl-year" style="font-size: 1em; color: var(--color-accent3);">Steg 1</div>
+            <div class="tl-line" style="height: 35px;"></div>
+            <div class="tl-text"><strong style="color: var(--color-accent);">Diskriminering</strong> - Nürnberglagarna 1935: judar förlorar medborgarskap</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year" style="font-size: 1em; color: var(--color-accent3);">Steg 2</div>
+            <div class="tl-line" style="height: 35px;"></div>
+            <div class="tl-text"><strong style="color: var(--color-accent);">Förföljelse</strong> - Kristallnatten 1938: organiserat våld mot judar</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year" style="font-size: 1em; color: var(--color-accent3);">Steg 3</div>
+            <div class="tl-line" style="height: 35px;"></div>
+            <div class="tl-text"><strong style="color: var(--color-accent);">Isolering</strong> - Ghetton, t.ex. Warszawaghettot</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year" style="font-size: 1em; color: var(--color-accent2);">Steg 4</div>
+            <div class="tl-line" style="height: 35px;"></div>
+            <div class="tl-text"><strong style="color: var(--color-accent2);">Deportation</strong> - Transport till läger</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year" style="font-size: 1em; color: var(--color-accent2);">Steg 5</div>
+            <div class="tl-line" style="height: 35px;"></div>
+            <div class="tl-text"><strong style="color: var(--color-accent2);">Förintelse</strong> - Systematiskt massmord: Auschwitz, Treblinka</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Visa eskaleringstrappan på tavlan parallellt. "Varje steg möjliggjorde nästa. Varje steg normaliserade det som hade varit otänkbart. Det gick inte från noll till folkmord på en dag." Kontrollfråga: "Varför var eskaleringen stegvis - varför inte allt på en gång?" Tid: 2 min. Extra tid här - detta är kärninnehållet.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Wannseekonferensen -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad beslutades på <span class="gradient-text">Wannseekonferensen</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/>
+          </svg>
+          <strong>20 januari 1942</strong> - Höga nazister möts i en villa utanför Berlin
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/>
+          </svg>
+          <strong>"Den slutgiltiga lösningen"</strong> - Planen att mörda alla judar i Europa
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M3 12h4l3-9 4 18 3-9h4"/>
+          </svg>
+          <strong>Byråkratiskt mord</strong> - Diskuterades som ett logistikproblem
+        </div>
+        <aside class="notes">
+          "De satt och drack kaffe medan de planerade mordet på miljontals människor. Det behandlades som en administrativ fråga - transporter, kapacitet, tidsplaner. Det visar hur avhumaniseringen hade gått så långt att det inte längre handlade om människor i deras ögon." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Hur möjliggjordes det? -->
+      <section data-background-color="#0d0d14">
+        <h2>Vilka <span class="gradient-text">faktorer</span> möjliggjorde Förintelsen?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Propaganda</strong> - Goebbels avhumaniserade judar genom medier och kultur
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/>
+          </svg>
+          <strong>Byråkrati</strong> - Systemet utförde order: tågscheman, register, läger
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>Lydnad</strong> - "Jag följde bara order" - ansvaret spreds ut
+        </div>
+        <aside class="notes">
+          "Tre faktorer som samverkade: propaganda avhumaniserade, byråkratin effektiviserade, och lydnaden gjorde att vanliga människor deltog. Ingen enskild faktor räcker som förklaring - det var samspelet." Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Var fanns möjligheterna att stoppa utvecklingen?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Välj ett steg i eskaleringen. Vad hade kunnat göras annorlunda?
+        </p>
+        <aside class="notes">
+          Viktig diskussion. Möjliga svar: protestera mot Nürnberglagarna, reagera på Kristallnatten, vägra lyda order. Men rädsla, gradvis normalisering och propaganda försvårade motstånd. Samla 3-4 svar. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Gradvis normalisering -->
+      <section data-background-color="#0d0d14">
+        <h2>Varför reagerade inte <span class="gradient-text">fler</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M7 17l5-5 3 3 4-4"/><path d="M15 11h4v4"/>
+          </svg>
+          <strong>Gradvis eskalering</strong> - Varje steg var lite värre än det förra
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Rädsla</strong> - Den som protesterade riskerade sitt eget liv
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Normalisering</strong> - När alla accepterar blir det "normalt"
+        </div>
+        <aside class="notes">
+          "Det handlar om grodan i det varma vattnet. Höj temperaturen långsamt och grodan hoppar aldrig ut. Varje nytt steg var bara lite värre - och det förra hade redan blivit 'normalt'." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Statistik -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="big-stat">
+          <span class="stat-number fragment" style="font-size: 5em;">6 milj</span>
+          <span class="stat-label fragment">judar mördades under Förintelsen</span>
+          <span class="stat-source fragment">Plus romer, funktionsnedsatta, homosexuella, politiska fångar</span>
+        </div>
+        <aside class="notes">
+          Låt siffran sjunka in. Tystnad. "Sex miljoner. Bakom varje siffra finns ett namn, en familj, ett liv som aldrig fick levas klart. Nästa lektion möter vi några av dessa människor genom deras vittnesmål." Tid: 30 sek.
+        </aside>
+      </section>
+
+      <!-- Slide 11: Sammanfattning -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad tar ni med er <span class="gradient-text">idag</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <strong>Eskaleringstrappan</strong> - Diskriminering, förföljelse, isolering, deportation, förintelse
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Tre faktorer</strong> - Propaganda, byråkrati och lydnad samverkade
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.8em; margin-top: 1.5em;">Nu: EPA om eskaleringstrappan</p>
+        <aside class="notes">
+          Övergång till EPA-uppgiften med faktabladet. "Välj ett steg i eskaleringstrappan och förklara varför just det steget var viktigt." Tid: 30 sek.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

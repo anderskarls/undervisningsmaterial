@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Världskrigen - Historia 1a1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1B3A5C;
+      --accent: #C8A951;
+      --cream: #FAF7F2;
+      --card-bg: #FFFFFF;
+      --text: #2C2C3A;
+      --text-muted: #6B6B7B;
+      --border: #E8E2D8;
+      --tag-bg: #EDE8DF;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    header .course-tag {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+
+    header .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Goals section */
+    .goals {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .goals h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .goals ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .goals li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .goals li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* Lessons */
+    .lessons-header {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+    }
+
+    .lesson-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .lesson-card:hover {
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .lesson-card .lesson-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .lesson-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 2.2rem;
+      line-height: 1.3;
+    }
+
+    .lesson-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .lesson-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-left: 3.2rem;
+    }
+
+    .lesson-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+      margin-left: 3.2rem;
+    }
+
+    .lesson-tag {
+      background: var(--tag-bg);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    /* Exam card */
+    .lesson-card.exam {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .lesson-card.exam .lesson-number { color: var(--accent); }
+    .lesson-card.exam .lesson-title { color: #fff; }
+    .lesson-card.exam .lesson-desc { color: rgba(255,255,255,0.8); }
+    .lesson-card.exam .lesson-tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+
+    /* Section divider */
+    .section-divider {
+      text-align: center;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    .section-divider span {
+      background: var(--cream);
+      padding: 0 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 1rem 0.8rem; }
+      header { padding: 2rem 0.5rem 1.5rem; }
+      .goals { padding: 1.4rem 1.2rem; }
+      .lesson-card { padding: 1.2rem 1rem; }
+      .lesson-desc { margin-left: 0; margin-top: 0.4rem; }
+      .lesson-tags { margin-left: 0; }
+      .lesson-card .lesson-top { flex-direction: column; gap: 0.2rem; }
+      .lesson-number { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="course-tag">Historia 1a1</div>
+      <h1>Världskrigen</h1>
+      <p class="subtitle">I det här momentet studerar vi de båda världskrigen - varför de bröt ut, vad som hände och vilka konsekvenser de fick. Vi följer en röd tråd: hur konsekvenserna av ett krig blev orsaker till nästa.</p>
+    </header>
+
+    <section class="goals">
+      <h2>Det här ska du kunna efter momentet</h2>
+      <ul>
+        <li>Förklara varför de båda världskrigen bröt ut - vilka orsaker som låg bakom</li>
+        <li>Beskriva konsekvenser av krigen - vad de ledde till politiskt, ekonomiskt och för människor</li>
+        <li>Redogöra för Förintelsen och förklara hur den kunde ske</li>
+        <li>Använda historiska begrepp som nationalism, allians, diktatur och folkmord i dina resonemang</li>
+      </ul>
+    </section>
+
+    <h2 class="lessons-header">Lektioner</h2>
+
+    <div class="section-divider"><span>Första världskriget</span></div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">1</span>
+        <span class="lesson-title">Vägen till första världskriget - nationalism och allianser</span>
+      </div>
+      <p class="lesson-desc">Vi repeterar nationalism och imperialism och lär oss hur allianssystem och kapprustning skapade en krutdurk i Europa. Ni bygger en begreppskarta som visar hur orsakerna hänger ihop.</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Orsaker</span>
+        <span class="lesson-tag">Begrepp</span>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">2</span>
+        <span class="lesson-title">Första världskriget bryter ut</span>
+      </div>
+      <p class="lesson-desc">Hur kunde ett mord i Sarajevo starta ett världskrig? Vi följer dominoeffekten steg för steg och lär oss om skyttegravskrigets verklighet genom ett soldatbrev.</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Sarajevo</span>
+        <span class="lesson-tag">Dominoeffekten</span>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">3</span>
+        <span class="lesson-title">Första världskrigets konsekvenser</span>
+      </div>
+      <p class="lesson-desc">Vi studerar Versaillesfreden och sorterar konsekvenserna i tre kategorier: politiska, ekonomiska och sociala. Diskussionsfråga: var Versaillesfreden rättvis?</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Versaillesfreden</span>
+        <span class="lesson-tag">Konsekvenser</span>
+      </div>
+    </div>
+
+    <div class="section-divider"><span>Mellankrigstiden</span></div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">4</span>
+        <span class="lesson-title">Konsekvenser blir orsaker - mellankrigstiden</span>
+      </div>
+      <p class="lesson-desc">Nyckellektion! Vi ser hur WW1:s konsekvenser blev orsaker till WW2. Ekonomisk kris, politisk instabilitet och Hitlers väg till makten. Ni bygger ett fiskbensdiagram.</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Röda tråden</span>
+        <span class="lesson-tag">Hitler</span>
+      </div>
+    </div>
+
+    <div class="section-divider"><span>Andra världskriget</span></div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">5</span>
+        <span class="lesson-title">Andra världskriget bryter ut</span>
+      </div>
+      <p class="lesson-desc">Nazitysklands expansion, appeasement och krigets utbrott. Vi jämför orsaker till WW1 och WW2 i en jämförelsetabell - vad liknar varandra och vad skiljer sig?</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">WW2 orsaker</span>
+        <span class="lesson-tag">Jämförelse</span>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">6</span>
+        <span class="lesson-title">Förintelsen del 1 - hur kunde det hända?</span>
+      </div>
+      <p class="lesson-desc">Vi följer eskaleringen steg för steg: från diskriminering till folkmord. Vilka faktorer - propaganda, byråkrati, lydnad - möjliggjorde Förintelsen?</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Förintelsen</span>
+        <span class="lesson-tag">Eskalering</span>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">7</span>
+        <span class="lesson-title">Förintelsen del 2 - vittnesmål och ansvar</span>
+      </div>
+      <p class="lesson-desc">Vi möter människorna bakom siffrorna genom ett vittnesmål. Sedan reflekterar vi: varför agerade inte omvärlden kraftfullare?</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Vittnesmål</span>
+        <span class="lesson-tag">Omvärldens ansvar</span>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">8</span>
+        <span class="lesson-title">Andra världskrigets konsekvenser</span>
+      </div>
+      <p class="lesson-desc">Krigets slut, Nürnbergrättegångarna, FN och Europas delning. Ni bygger hela orsak-konsekvenskedjan - från nationalism till kalla kriget - i grupp.</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Konsekvenser</span>
+        <span class="lesson-tag">Hela kedjan</span>
+      </div>
+    </div>
+
+    <div class="section-divider"><span>Avslutning</span></div>
+
+    <div class="lesson-card">
+      <div class="lesson-top">
+        <span class="lesson-number">9</span>
+        <span class="lesson-title">Sammanfattning och provförberedelse</span>
+      </div>
+      <p class="lesson-desc">Vi repeterar hela momentet och övar på provfrågor. Ni får se skillnaden mellan ett E-svar och ett A-svar och öva på att skriva egna provsvar.</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Repetition</span>
+        <span class="lesson-tag">Provövning</span>
+      </div>
+    </div>
+
+    <div class="lesson-card exam">
+      <div class="lesson-top">
+        <span class="lesson-number">10</span>
+        <span class="lesson-title">Prov</span>
+      </div>
+      <p class="lesson-desc">Skriftligt prov i två delar: kortsvarsfrågor och en analysfråga. Täcker hela momentet - orsaker, konsekvenser, Förintelsen och begrepp.</p>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Del A: Kortsvar</span>
+        <span class="lesson-tag">Del B: Analys</span>
+      </div>
+    </div>
+
+    <footer>
+      <p>Historia 1a1 | Momentet: Världskrigen</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduktion: WTO + IMF | Sam 3 Globalisering</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Arkiv v2.1 — designtokens (uppgraderad: större och fetare text) ============ */
+    :root {
+      --ink: #1F1A15;
+      --ink-2: #4A3F33;
+      --paper: #F4EDE1;
+      --paper-2: #EBE1CF;
+      --rule: #2A221A;
+      --bordeaux: #7A2E2E;
+      --marin: #2C3E55;
+      --oliv: #5A6A3A;
+      --ocker: #B8862F;
+      --kritbla: #5A7A9A;
+      --mossgron: #3E5A3E;
+      --tegel: #C96442;
+      --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+      --sans: "Inter Tight", "Work Sans", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    html, body { background: var(--ink); }
+    .reveal { font-family: var(--sans); color: var(--ink); font-size: 28px; font-weight: 500; }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section { background: var(--paper); padding: 0; height: 100%; }
+    .reveal .slides section.present { display: flex !important; flex-direction: column; }
+
+    /* ============ Gemensam chrome (masthead/baseline) ============ */
+    .chrome {
+      width: 100%; height: 100%;
+      padding: 32px 56px 28px;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .chrome.paper { background: var(--paper); color: var(--ink); }
+    .chrome.dark { color: var(--paper); }
+    .chrome .masthead {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .chrome .baseline {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .chrome.paper .masthead { color: var(--ink-2); border-bottom: 2px solid var(--rule); padding-bottom: 12px; }
+    .chrome.paper .baseline { color: var(--ink-2); border-top: 2px solid var(--rule); padding-top: 12px; }
+    .chrome.dark .masthead { color: var(--paper); opacity: 0.7; border-bottom: 2px solid rgba(244,237,225,0.27); padding-bottom: 12px; }
+    .chrome.dark .baseline { color: var(--paper); opacity: 0.7; border-top: 2px solid rgba(244,237,225,0.27); padding-top: 12px; }
+    .chrome .body { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 32px 0; overflow: hidden; }
+
+    /* ============ Typografi v2.1 ============ */
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: var(--serif); color: inherit; font-weight: 600;
+      letter-spacing: -0.015em; text-transform: none; margin: 0;
+    }
+    .reveal h1 { line-height: 1; }
+    .reveal h3 {
+      font-family: var(--sans); font-size: 22px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+    }
+    .reveal em { font-style: italic; font-family: var(--serif); font-weight: 600; }
+    .reveal strong, .reveal b { font-weight: 800; }
+    .reveal mark {
+      background: rgba(184, 134, 47, 0.4);
+      color: inherit;
+      padding: 0 8px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+    .reveal u {
+      text-decoration: underline;
+      text-decoration-color: var(--bordeaux);
+      text-decoration-thickness: 4px;
+      text-underline-offset: 6px;
+      font-weight: 700;
+    }
+    .chrome.dark mark { background: rgba(184, 134, 47, 0.55); }
+    .chrome.dark u { text-decoration-color: var(--ocker); }
+
+    .eyebrow {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--bordeaux);
+    }
+    .eyebrow::before { content: "▸ "; }
+    .chrome.dark .eyebrow { color: var(--ocker); }
+
+    .lede {
+      font-family: var(--serif); font-style: italic; font-weight: 500;
+      font-size: 32px; line-height: 1.3; margin-top: 22px;
+      color: var(--ink-2); max-width: 32ch;
+    }
+    .chrome.dark .lede { color: var(--paper); opacity: 0.85; }
+
+    .body-text {
+      font-family: var(--sans); font-size: 28px; line-height: 1.45;
+      max-width: 32em; font-weight: 500;
+    }
+
+    /* ============ cover (Mönster D — ramad bordeaux) ============ */
+    section.cover-outer { background: var(--bordeaux) !important; padding: 36px !important; }
+    .cover-inner {
+      background: var(--paper); width: 100%; height: 100%;
+      padding: 56px 72px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .cover-inner .top {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 17px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); font-weight: 700;
+    }
+    .cover-inner .bottom {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+    .cover-inner h1 { font-size: 116px; line-height: 0.95; color: var(--ink); font-weight: 600; letter-spacing: -2px; }
+    .cover-inner .subtitle {
+      font-family: var(--serif); font-size: 36px; font-style: italic; font-weight: 500;
+      color: var(--ink-2); margin-top: 18px; max-width: 28ch;
+    }
+
+    /* ============ section (Mönster B — färgad helyta med stor siffra) ============ */
+    .section-slide { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; height: 100%; }
+    .section-slide .big-num {
+      font-family: var(--serif); font-size: 340px; font-weight: 500;
+      color: var(--paper); opacity: 0.2; line-height: 0.8; letter-spacing: -8px;
+    }
+    .section-slide .kapitel {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); margin-bottom: 20px; font-weight: 700;
+    }
+    .section-slide .kapitel::before { content: "§ "; }
+    .section-slide h1 { font-size: 96px; line-height: 0.98; color: var(--paper); max-width: 14ch; font-weight: 600; letter-spacing: -1.5px; }
+    .section-slide .lede { font-size: 32px; margin-top: 22px; max-width: 26ch; font-weight: 500; }
+
+    /* ============ question (Mönster B — mossgrön) ============ */
+    .question-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .question-slide h1 { font-size: 104px; line-height: 1; max-width: 15ch; color: var(--paper); font-weight: 600; letter-spacing: -1.5px; }
+    .question-slide .lede { font-size: 34px; margin-top: 32px; max-width: 38ch; font-weight: 500; }
+
+    /* ============ content (Mönster A — papper) ============ */
+    .content-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .content-slide h1 { font-size: 72px; line-height: 1; margin-bottom: 36px; max-width: 18ch; color: var(--ink); font-weight: 600; letter-spacing: -1px; }
+    .content-slide .body-text { font-size: 28px; line-height: 1.45; max-width: 32em; font-weight: 500; }
+    .bullets { margin-top: 28px; padding: 0; list-style: none; }
+    .bullets li {
+      display: grid; grid-template-columns: 44px 1fr; gap: 22px;
+      padding: 16px 0; border-top: 2px solid rgba(74, 63, 51, 0.2);
+      font-family: var(--sans); font-size: 28px; line-height: 1.4; font-weight: 500;
+    }
+    .bullets li:first-child { border-top: none; }
+    .bullets .index {
+      font-family: var(--mono); font-size: 24px; font-weight: 700;
+      color: var(--ocker); padding-top: 2px;
+    }
+
+    /* ============ content-highlight (Mönster C — 60/40 delad) ============ */
+    section.ch-outer { background: var(--paper) !important; }
+    .ch-grid { display: grid; grid-template-columns: 1.3fr 1fr; height: 100%; }
+    .ch-left {
+      background: var(--paper); padding: 32px 56px 28px;
+      display: flex; flex-direction: column;
+      color: var(--ink); font-family: var(--sans);
+    }
+    .ch-left .meta-top {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+      border-bottom: 2px solid var(--rule); padding-bottom: 12px;
+    }
+    .ch-left .content {
+      flex: 1; padding: 32px 0; display: flex; flex-direction: column; justify-content: center;
+    }
+    .ch-left h1 { font-size: 62px; line-height: 1; margin-bottom: 28px; max-width: 14ch; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .ch-left .body-text { font-size: 25px; line-height: 1.45; font-weight: 500; }
+    .ch-left .meta-bot {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+      border-top: 2px solid var(--rule); padding-top: 12px;
+    }
+    .ch-right {
+      padding: 32px 48px 28px; color: var(--paper); font-family: var(--sans);
+      display: flex; flex-direction: column;
+    }
+    .ch-right .meta-top {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); font-weight: 700;
+      border-bottom: 2px solid rgba(244, 237, 225, 0.27); padding-bottom: 12px;
+    }
+    .ch-right .stat {
+      flex: 1; display: flex; flex-direction: column; justify-content: center;
+    }
+    .ch-right .stat-label {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocker); margin-bottom: 14px; font-weight: 700;
+    }
+    .ch-right .stat-number {
+      font-family: var(--serif); font-size: 190px; font-weight: 600;
+      line-height: 0.9; letter-spacing: -4px; color: var(--paper);
+    }
+    .ch-right .stat-caption {
+      font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 500;
+      color: var(--paper); opacity: 0.92; margin-top: 18px; line-height: 1.35;
+    }
+    .ch-right .meta-bot {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--paper); opacity: 0.8; font-weight: 600;
+      border-top: 2px solid rgba(244, 237, 225, 0.27); padding-top: 12px; text-align: right;
+    }
+
+    /* ============ twocol (Mönster A/C) ============ */
+    .twocol-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .twocol-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 36px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .twocol { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 40px; align-items: start; }
+    .twocol .divider { background: var(--rule); height: 100%; min-height: 260px; }
+    .twocol .col-label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700; margin-bottom: 16px;
+    }
+    .twocol .col:nth-child(1) .col-label { color: var(--bordeaux); }
+    .twocol .col:nth-child(3) .col-label { color: var(--marin); }
+    .twocol .col-body { font-family: var(--sans); font-size: 26px; line-height: 1.45; color: var(--ink); font-weight: 500; }
+    .twocol-caption {
+      font-family: var(--serif); font-style: italic; font-size: 26px; font-weight: 500;
+      color: var(--ink-2); text-align: center; margin-top: 32px;
+    }
+
+    /* ============ timeline (Mönster A, ocker linje) ============ */
+    .timeline-slide { flex: 1; display: flex; flex-direction: column; }
+    .timeline-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 60px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .timeline-h { flex: 1; position: relative; display: flex; align-items: flex-start; }
+    .timeline-h::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 34px;
+      height: 4px; background: var(--ocker);
+    }
+    .timeline-h .events {
+      display: grid; grid-auto-columns: 1fr; grid-auto-flow: column;
+      width: 100%; gap: 20px;
+    }
+    .timeline-h .event { position: relative; padding-top: 60px; }
+    .timeline-h .dot {
+      position: absolute; left: 0; top: 24px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--paper); border: 5px solid var(--bordeaux);
+    }
+    .timeline-h .year {
+      font-family: var(--mono); font-size: 26px; color: var(--bordeaux);
+      font-weight: 700; letter-spacing: 1px;
+    }
+    .timeline-h .title {
+      font-family: var(--serif); font-size: 32px; font-style: italic;
+      font-weight: 600; color: var(--ink); margin-top: 8px; line-height: 1.1;
+    }
+    .timeline-h .note { font-size: 22px; color: var(--ink); margin-top: 12px; line-height: 1.4; font-weight: 500; }
+
+    /* ============ quote (Mönster B — bläck helyta) ============ */
+    .quote-slide {
+      flex: 1; position: relative; display: flex; flex-direction: column;
+      justify-content: center; padding-left: 96px;
+    }
+    .quote-slide .mark-open {
+      position: absolute; top: -40px; left: -10px;
+      font-family: var(--serif); font-size: 240px; line-height: 1;
+      color: var(--ocker); font-weight: 600;
+    }
+    .quote-slide blockquote {
+      margin: 0;
+      font-family: var(--serif); font-size: 62px; font-style: italic; font-weight: 600;
+      line-height: 1.2; color: var(--paper); max-width: 22ch; letter-spacing: -0.5px;
+    }
+    .quote-slide .attribution {
+      margin-top: 44px; font-size: 30px; font-weight: 700; color: var(--ocker);
+    }
+    .quote-slide .attribution::before { content: "— "; }
+    .quote-slide .context {
+      margin-top: 10px;
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--paper); opacity: 0.8; font-weight: 600;
+    }
+
+    /* ============ callout (Mönster D — ramad) ============ */
+    section.callout-outer { padding: 36px !important; }
+    section.callout-outer.fakta { background: var(--marin) !important; }
+    section.callout-outer.tips { background: var(--oliv) !important; }
+    section.callout-outer.varning { background: var(--bordeaux) !important; }
+    section.callout-outer.kalla { background: var(--ink) !important; }
+    section.callout-outer.begrepp { background: var(--ocker) !important; }
+    .callout-inner {
+      background: var(--paper-2); width: 100%; height: 100%;
+      padding: 56px 72px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .callout-inner .top {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 800;
+    }
+    .callout-inner .bottom {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .callout-outer.fakta .callout-inner .top { color: var(--marin); }
+    .callout-outer.tips .callout-inner .top { color: var(--oliv); }
+    .callout-outer.varning .callout-inner .top { color: var(--bordeaux); }
+    .callout-outer.kalla .callout-inner .top { color: var(--ink); }
+    .callout-outer.begrepp .callout-inner .top { color: var(--ocker); }
+    .callout-inner .bottom.ink-meta { color: var(--ink-2); }
+    .callout-inner h1 {
+      font-family: var(--serif); font-size: 64px; font-style: italic;
+      font-weight: 600; line-height: 1.05; color: var(--ink); max-width: 22ch; margin: 0;
+    }
+    .callout-inner .body-text {
+      font-size: 30px; line-height: 1.45; color: var(--ink); font-weight: 500;
+      margin-top: 28px; max-width: 26em;
+    }
+
+    /* ============ table (Mönster A) ============ */
+    .table-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .table-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 32px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .arkiv-table { width: 100%; border-collapse: collapse; }
+    .arkiv-table thead tr { border-top: 1.5px solid var(--rule); border-bottom: 1.5px solid var(--rule); }
+    .arkiv-table th {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700; color: var(--ink-2);
+      text-align: left; padding: 14px 18px 14px 0;
+    }
+    .arkiv-table td {
+      font-family: var(--serif); font-size: 26px; padding: 16px 18px 16px 0;
+      color: var(--ink); line-height: 1.3; font-weight: 500;
+    }
+    .arkiv-table tbody tr { border-bottom: 1px solid var(--paper-2); }
+    .arkiv-table tbody tr:last-child { border-bottom: 1.5px solid var(--rule); }
+    .arkiv-table tbody td:first-child { font-weight: 700; }
+    .arkiv-table tbody td.mono { font-family: var(--mono); font-size: 22px; font-weight: 600; }
+    .arkiv-table td mark { background: rgba(184, 134, 47, 0.2); }
+
+    /* ============ discuss (Mönster B — mossgrön) ============ */
+    .discuss-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .discuss-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 40px; color: var(--paper); letter-spacing: -0.8px; font-weight: 600; }
+    .questions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+    .questions li {
+      display: grid; grid-template-columns: 60px 1fr; gap: 28px;
+      font-family: var(--sans); font-size: 30px; line-height: 1.35; color: var(--paper); font-weight: 500;
+    }
+    .questions .roman {
+      font-family: var(--serif); font-style: italic; font-size: 40px; font-weight: 600;
+      color: var(--ocker); padding-top: 4px;
+    }
+
+    /* ============ data (stor siffra) ============ */
+    .data-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .data-slide .d-eyebrow {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; font-weight: 700;
+    }
+    .data-slide .d-number {
+      font-family: var(--serif); font-size: 260px; line-height: 0.85;
+      font-weight: 600; letter-spacing: -6px; color: var(--bordeaux);
+    }
+    .data-slide.ocker .d-number { color: var(--ocker); }
+    .data-slide.tegel .d-number { color: var(--tegel); }
+    .data-slide .d-caption {
+      font-family: var(--serif); font-size: 46px; font-style: italic; font-weight: 600;
+      color: var(--ink); margin-top: 14px; max-width: 24ch; line-height: 1.15;
+    }
+    .data-slide .d-body {
+      font-size: 26px; color: var(--ink); margin-top: 22px; max-width: 36em; line-height: 1.5; font-weight: 500;
+    }
+
+    /* ============ close (Mönster A, färgade rutor) ============ */
+    .close-slide { flex: 1; display: flex; flex-direction: column; }
+    .close-slide h1 { font-size: 64px; line-height: 1; margin-bottom: 32px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .takeaways { list-style: none; padding: 0; margin: 0 0 40px; max-width: 42em; }
+    .takeaways li {
+      padding: 12px 0 12px 32px; position: relative;
+      font-family: var(--sans); font-size: 28px; line-height: 1.45; color: var(--ink); font-weight: 500;
+    }
+    .takeaways li::before {
+      content: "▪"; color: var(--bordeaux); position: absolute;
+      left: 0; top: 12px; font-size: 26px;
+    }
+    .next-steps {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: auto;
+    }
+    .next-box { background: var(--paper-2); padding: 24px 28px; border-left: 4px solid var(--ocker); }
+    .next-box:last-child { border-left-color: var(--marin); }
+    .next-box .label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-bottom: 12px; font-weight: 700;
+    }
+    .next-box .text {
+      font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 500;
+      color: var(--ink); line-height: 1.35;
+    }
+
+    /* ============ transition (bridge — custom from v1, kept) ============ */
+    .bridge { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .bridge h1 { font-size: 64px; line-height: 1; margin-bottom: 32px; font-weight: 600; letter-spacing: -0.8px; }
+    .bridge .para { font-size: 28px; line-height: 1.45; max-width: 36em; margin-top: 12px; font-weight: 500; }
+    .bridge .kicker {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); margin-top: 36px; font-weight: 700;
+    }
+    .bridge .kicker::before { content: "▸ "; }
+
+    /* ============ scale (3-skalor custom, kept from v1 but uppskalat) ============ */
+    .scale-slide { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .scale-slide h1 { font-size: 62px; line-height: 1; margin-bottom: 40px; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .scale { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr; gap: 12px; align-items: stretch; }
+    .scale-card {
+      background: var(--paper-2); padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      border-top: 4px solid var(--bordeaux);
+    }
+    .scale-card.sverige { border-top-color: var(--marin); }
+    .scale-card.varld { border-top-color: var(--oliv); }
+    .scale-card .s-label {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 700;
+    }
+    .scale-card .s-title {
+      font-family: var(--serif); font-size: 40px; font-style: italic;
+      font-weight: 600; color: var(--ink);
+    }
+    .scale-card .s-sub { font-size: 22px; color: var(--ink); line-height: 1.4; font-weight: 500; }
+    .scale-arrow {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 48px; color: var(--ink-2); font-style: italic;
+    }
+
+    /* ============ video-block (kept from v1) ============ */
+    .video-slide { flex: 1; display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+    .video-slide h1 { font-size: 62px; line-height: 1; color: var(--ink); font-weight: 600; letter-spacing: -0.8px; }
+    .video-block {
+      background: var(--paper-2); border: 1.5px solid var(--rule);
+      padding: 40px 48px; width: 100%;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .video-block .v-label {
+      font-family: var(--mono); font-size: 18px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--bordeaux); font-weight: 700;
+    }
+    .video-block .v-label::before { content: "● "; }
+    .video-block .v-title {
+      font-family: var(--serif); font-style: italic; font-size: 36px;
+      font-weight: 600; color: var(--ink);
+    }
+    .video-block .v-desc { font-family: var(--sans); font-size: 22px; color: var(--ink); font-weight: 500; }
+
+    /* ============ numeral (stor siffra inline) ============ */
+    .numeral { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .numeral .big {
+      font-family: var(--serif); font-size: 260px; line-height: 0.85;
+      font-weight: 600; letter-spacing: -6px; color: var(--bordeaux);
+    }
+    .numeral .big .unit {
+      font-size: 80px; color: var(--ink); margin-left: 10px; font-style: italic; font-weight: 600;
+    }
+    .numeral .label {
+      font-family: var(--serif); font-style: italic; font-size: 46px; font-weight: 600;
+      color: var(--ink); max-width: 22ch; line-height: 1.2;
+    }
+    .numeral .note {
+      font-family: var(--mono); font-size: 16px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+
+    /* ============ export bars (från v1, uppskalade till v2) ============ */
+    .bars-wrap { margin-top: 12px; max-width: 900px; }
+    .bar-row {
+      display: grid; grid-template-columns: 240px 1fr 100px; gap: 24px;
+      align-items: center; padding: 12px 0;
+      border-top: 1px solid rgba(74, 63, 51, 0.25);
+      font-family: var(--sans);
+    }
+    .bar-row:last-child { border-bottom: 1px solid rgba(74, 63, 51, 0.25); }
+    .bar-row .b-label { font-size: 20px; color: var(--ink); font-weight: 600; }
+    .bar-row .b-track { height: 18px; background: var(--paper-2); position: relative; }
+    .bar-row .b-fill { height: 100%; background: var(--bordeaux); }
+    .bar-row .b-val {
+      font-family: var(--mono); font-size: 15px; letter-spacing: 2px;
+      color: var(--ink-2); text-align: right; font-weight: 600;
+    }
+    .bars-source {
+      font-family: var(--mono); font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink-2); margin-top: 18px; font-weight: 500;
+    }
+    .bars-source::before { content: "§ "; }
+
+    /* ============ pills (från v1, uppskalade) ============ */
+    .pill-row { margin-top: 20px; }
+    .pill {
+      display: inline-block; padding: 8px 18px;
+      background: var(--paper-2); border: 1.5px solid var(--rule);
+      font-family: var(--mono); font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ink); margin: 0 8px 10px 0;
+      font-weight: 600;
+    }
+    .pill.bordeaux { background: transparent; border-color: var(--bordeaux); color: var(--bordeaux); }
+    .pill.marin { background: transparent; border-color: var(--marin); color: var(--marin); }
+    .pill.oliv { background: transparent; border-color: var(--oliv); color: var(--oliv); }
+    .chrome.dark .pill { background: rgba(244,237,225,0.1); border-color: rgba(244,237,225,0.3); color: var(--paper); }
+    .chrome.dark .pill.bordeaux { border-color: var(--ocker); color: var(--ocker); background: transparent; }
+    .chrome.dark .pill.marin { border-color: var(--kritbla); color: var(--paper); background: transparent; }
+    .chrome.dark .pill.oliv { border-color: var(--paper); color: var(--paper); background: transparent; }
+
+    /* ============ inline-quote (från v1, uppskalad) ============ */
+    .inline-quote {
+      margin-top: 36px; border-left: 4px solid var(--bordeaux);
+      padding: 10px 28px;
+      font-family: var(--serif); font-style: italic; font-size: 30px;
+      line-height: 1.3; max-width: 34ch; color: var(--ink);
+    }
+    .inline-quote .attribution {
+      display: block; margin-top: 16px;
+      font-family: var(--mono); font-style: normal; font-size: 13px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+    }
+    .chrome.dark .inline-quote { border-left-color: var(--ocker); color: var(--paper); }
+    .chrome.dark .inline-quote .attribution { color: var(--paper); opacity: 0.7; }
+
+    /* Reveal overrides */
+    .reveal .progress { color: var(--bordeaux); }
+    .reveal .controls { color: var(--ink-2); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1: SECTION/COVER (Mönster B — bordeaux helyta) -->
+      <section style="background: var(--bordeaux) !important;">
+        <div class="chrome dark" style="background: var(--bordeaux);">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Introduktion · WTO + IMF</span>
+          </div>
+          <div class="body section-slide">
+            <div class="big-num">§§</div>
+            <div>
+              <div class="kapitel">Två institutioner</div>
+              <h1><em>WTO</em> och <em>IMF</em> — två institutioner, <mark>en världsordning</mark></h1>
+              <div class="lede">Innan vi möter människorna som drabbas: <em>vad</em> är dessa institutioner, <em>vad</em> gör de, och <em>varför</em> finns de?</div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>01 / 07</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Öppna lugnt, lågmält. Säg: "Innan ni möter Strive Masiyiwa nästa lektion, och Alicia Ceresoli lektionen efter, behöver ni veta vilka institutioner som griper in i deras liv."
+
+          Poängera: detta är inte en ny teori. Det är ramen — vad WTO och IMF är, vad de gör, varför de skapades. Helt kort. 5-7 minuter.
+
+          Säg: "Tänk på det som att se kartan innan vi går in i terrängen. Sex bilder. Sen är vi igång."
+
+          Tid: ~30 sek.
+        </aside>
+      </section>
+
+      <!-- 2: CONTENT (Mönster A — papper) — WTO i korthet -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Introduktion · WTO + IMF</span>
+          </div>
+          <div class="body content-slide">
+            <div class="eyebrow">Världshandelsorganisationen</div>
+            <h1>WTO reglerar global <em>handel</em> sedan <mark>1995</mark>.</h1>
+            <ul class="bullets">
+              <li class="fragment"><span class="index">01</span><span><strong>164 medlemsländer</strong> — efterföljare till GATT (1947)</span></li>
+              <li class="fragment"><span class="index">02</span><span>Beslutar genom <strong>konsensus</strong> — <em>en blockad räcker</em> för att stoppa beslut</span></li>
+              <li class="fragment"><span class="index">03</span><span>Viktigaste avtal: <u>TRIPS</u> (patent), GATS (tjänster), Anti-Dumping</span></li>
+              <li class="fragment"><span class="index">04</span><span>Tvistlösningsmekanism — <em>numera paralyserad</em> efter USA:s blockad sedan 2019</span></li>
+            </ul>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>02 / 07</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Säg: "WTO är världens regelmakare för handel. När länder ska byta varor och tjänster — vilka regler gäller? WTO."
+
+          Stanna vid konsensusprincipen. Säg: "164 länder. Allt måste enas. Det betyder att Indien kan blockera ett beslut. Eller USA. Eller EU. Det är inte en demokrati i vanlig mening — det är ett vetorättsystem."
+
+          Förklara TRIPS kort: "TRIPS är avtalet om patent. Det är detta avtal Strive Masiyiwa kommer kollidera med nästa lektion — när vaccinpatenten skyddade Pfizers monopol mitt under en pandemi."
+
+          Om eleverna frågar varför tvistlösningen är paralyserad: "USA har sedan 2019 vägrat godkänna nya domare till WTO:s appellationsorgan. Resultat: tvister kan inte avgöras. Institutionen är sjuk."
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 3: TWOCOL (Mönster A — papper) — TRIPS och GATS -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Introduktion · WTO + IMF</span>
+          </div>
+          <div class="body twocol-slide">
+            <div class="eyebrow">WTO:s två viktigaste avtal</div>
+            <h1>TRIPS och GATS — <em>i din vardag</em></h1>
+            <div class="twocol">
+              <div class="col">
+                <div class="col-label">TRIPS — Skydd för det immateriella</div>
+                <div class="col-body">
+                  <em>"Patent, copyright, varumärken"</em> i 20 år. Skapades 1995.<br><br>
+                  <p class="fragment"><strong>Pfizer-vaccinet</strong> — patenten gjorde att fattigare länder inte kunde tillverka kopior under pandemin (L6).</p>
+                  <p class="fragment"><strong>Spotify</strong> — när du strömmar en svensk artist i Brasilien får hen betalt tack vare TRIPS.</p>
+                  <p class="fragment"><strong>Generika-läkemedel</strong> — billigare kopior är <u>förbjudna</u> förrän originalpatentet löper ut.</p>
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="col">
+                <div class="col-label">GATS — Handel med tjänster</div>
+                <div class="col-body">
+                  <em>"Sänker hinder"</em> för tjänsteförsäljning över gränser.<br><br>
+                  <p class="fragment"><strong>Klarna i USA</strong> — svensk fintech kan sälja betaltjänst till amerikanska kunder.</p>
+                  <p class="fragment"><strong>Filippinska sjuksköterskor</strong> i Tyskland eller Saudiarabien (Sheila i L5) — arbetskraften som tjänst.</p>
+                  <p class="fragment"><strong>Indisk IT-konsult</strong> som arbetar för Volvo via Tata Consultancy.</p>
+                </div>
+              </div>
+            </div>
+            <div class="twocol-caption">Ditt <em>Spotify</em>, din <em>vaccindos</em>, din <em>Klarna</em>-betalning — alla rör sig inom WTO:s ramverk.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>03 / 07</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Säg: "WTO är inte abstrakt. Två av deras avtal styr ditt vardagsliv direkt."
+
+          Stanna vid generika. Säg: "Patentens 20-årsgräns är kritisk — det är därför nya mediciner är dyra och gamla blir billiga. När patentet går ut får alla tillverka kopior. Innan dess: monopol."
+
+          Stanna vid Sheila. Säg: "Hennes migration till Saudiarabien är inte en biologisk strömning av människor. Det är ett juridiskt avtal mellan länder — GATS Mode 4. Arbetskraften behandlas som en tjänst som kan handlas över gränser."
+
+          Pek på captionen: "Tre saker ni gjort denna vecka — strömmat musik, kanske tagit en värktablett, betalat med Klarna — alla regleras av WTO. Det är inte en avlägsen institution. Den finns i fickan."
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 4: CONTENT (Mönster A — papper) — IMF i korthet -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Introduktion · WTO + IMF</span>
+          </div>
+          <div class="body content-slide">
+            <div class="eyebrow">Internationella valutafonden</div>
+            <h1>IMF lånar ut till länder i <em>kris</em> sedan <mark>1944</mark>.</h1>
+            <ul class="bullets">
+              <li class="fragment"><span class="index">01</span><span><strong>190 medlemsländer</strong> — etablerad vid <em>Bretton Woods</em>-konferensen 1944</span></li>
+              <li class="fragment"><span class="index">02</span><span>Finansieras av medlemmar enligt <strong>kvoter</strong> — USA har <u>röstmajoritet</u></span></li>
+              <li class="fragment"><span class="index">03</span><span>Lån villkoras med <em>strukturanpassning</em>: skär statsutgifter, höj räntor, devalvera valuta</span></li>
+              <li class="fragment"><span class="index">04</span><span>Senaste mega-lån: <strong>Argentina april 2025</strong> — <mark>20 miljarder USD</mark></span></li>
+            </ul>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>04 / 07</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Säg: "WTO sätter regler. IMF lånar ut pengar. Två helt olika verktyg — men i samma byggnad: efterkrigstidens globala ekonomiska arkitektur."
+
+          Stanna vid kvotsystemet. Säg: "Detta är inte FN. I FN har varje land en röst. I IMF röstar du i förhållande till hur mycket du betalar in. USA har störst kvot — och därmed röstmajoritet i praktiken."
+
+          Förklara strukturanpassning konkret: "När ett land får lån måste det göra reformer. Skär ner pensioner. Avveckla subventioner. Höja räntor. Det är dessa reformer Alicia Ceresoli — 80 år, argentinsk pensionär — kommer att leva med på lektion 7."
+
+          Argentina april 2025: detta är aktuellt. Ett av de största IMF-lånen någonsin. Mileis åtstramningspolitik finansieras av detta lån.
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- 5: TWOCOL (Mönster A — papper) — jämförelse -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Introduktion · WTO + IMF</span>
+          </div>
+          <div class="body twocol-slide">
+            <div class="eyebrow">Jämförelse</div>
+            <h1>Två sorters <em>makt</em> — <mark>regelmakt</mark> och <mark>lånemakt</mark></h1>
+            <div class="twocol">
+              <div class="col">
+                <div class="col-label">WTO · regelmakt</div>
+                <div class="col-body">
+                  Sätter <strong>ramarna</strong> alla länder måste följa<br><br>
+                  <em>Konsensus</em> = 1 vetorätt per land<br><br>
+                  Tvistlösning kan <u>döma</u><br><br>
+                  Tvingar <strong>utifrån</strong> — genom regler
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="col">
+                <div class="col-label">IMF · lånemakt</div>
+                <div class="col-body">
+                  Ställer <strong>villkor</strong> mot pengar<br><br>
+                  <em>Röstmakt</em> efter ekonomisk storlek<br><br>
+                  Kontrollerar via <u>kreditavtal</u><br><br>
+                  Tvingar <strong>inifrån</strong> — genom budgeten
+                </div>
+              </div>
+            </div>
+            <div class="twocol-caption"><em>Båda</em> gör globaliseringens regelbok — men med olika verktyg.</div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>05 / 07</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Detta är slidens pedagogiska kärna. Säg: "Båda institutionerna har makt. Men makten ser olika ut."
+
+          Pek på vänster spalt: "WTO trycker på utifrån. Reglerna gäller alla — när Sydafrika ville producera billigare vaccin under pandemin, sa TRIPS-avtalet nej. Du ändrar inte WTO genom att be snällt. Du ändrar det genom att förhandla under konsensusregeln."
+
+          Pek på höger spalt: "IMF trycker på inifrån. När Argentina behöver pengar för att betala sina skulder, säger IMF: 'Visst — men du måste skära pensioner, avveckla subventioner, höja räntor.' Reformerna är skrivna i landets egen budget. Det är landet som verkställer dem."
+
+          Stanna vid caption: "Båda gör globaliseringens regelbok." Säg: "Tänk inte på det som två separata system. Tänk på det som två händer på samma kropp."
+
+          Om eleverna frågar varför USA har röstmajoritet: "IMF skapades 1944 när USA var ekonomins motor. Kvoterna sattes då. De har justerats sedan, men maktbalansen från Bretton Woods finns fortfarande där."
+
+          Tid: ~2 min — slidens kärna.
+        </aside>
+      </section>
+
+      <!-- 6: TIMELINE (Mönster A — papper, ocker linje) — Bretton Woods och vidare -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Introduktion · WTO + IMF</span>
+          </div>
+          <div class="body timeline-slide">
+            <div class="eyebrow">Hur byggdes systemet?</div>
+            <h1><em>Bretton Woods</em> och vidare</h1>
+            <div class="timeline-h">
+              <div class="events">
+                <div class="event fragment">
+                  <div class="dot"></div>
+                  <div class="year">1944</div>
+                  <div class="title">Bretton Woods-konferensen</div>
+                  <div class="note"><em>IMF</em> + Världsbanken etableras. Andra världskriget pågår — den globala arkitekturen ritas i en hotellkonferens i New Hampshire.</div>
+                </div>
+                <div class="event fragment">
+                  <div class="dot"></div>
+                  <div class="year">1947</div>
+                  <div class="title">GATT skapas</div>
+                  <div class="note">Allmänna tull- och handelsavtalet — WTO:s <em>föregångare</em>. Frihandelsdoktrinen får sin första formella institution.</div>
+                </div>
+                <div class="event fragment">
+                  <div class="dot"></div>
+                  <div class="year">1995</div>
+                  <div class="title">WTO ersätter GATT</div>
+                  <div class="note"><strong>TRIPS</strong>-avtalet börjar gälla — patent skyddas globalt. Detta är avtalet som möter Strive Masiyiwa 2020.</div>
+                </div>
+                <div class="event fragment">
+                  <div class="dot"></div>
+                  <div class="year">2019</div>
+                  <div class="title">USA blockerar Appellate Body</div>
+                  <div class="note">USA vägrar godkänna nya domare. WTO:s <u>tvistlösning paralyseras</u> — institutionell kris pågår fortfarande.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>06 / 07</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Tidslinjen är till för att placera institutionerna i historien — INTE för att eleverna ska memorera årtalen.
+
+          Säg: "Båda institutionerna är barn av andra världskriget. När bomberna fortfarande föll i Europa satt diplomaterna i ett hotell i New Hampshire och ritade om världsekonomin. Det är därifrån vi kommer."
+
+          Stanna vid 1995. Säg: "Det här är ert år — närmare. WTO ersätter den gamla handelspakten GATT. Men det viktiga är TRIPS — patentavtalet. Det är detta avtal som 25 år senare gör att Sydafrika inte kan tillverka eget vaccin under en pandemi."
+
+          Stanna vid 2019. Säg: "Lägg märke till att detta är en INSTITUTION I KRIS. WTO:s tvistlösning fungerar inte längre. Det är inte 'allt fungerar perfekt och vi går vidare'. Globaliseringens regelinstitutioner är själva ifrågasatta — av sin ursprungliga arkitekt."
+
+          Om eleverna frågar varför USA blockerar: "Blandade skäl — Trump-administrationen kritiserade att appellationsorganet 'lade till' regler. Biden lyfte inte blockaden. Det är en bipartisanfråga numera."
+
+          Tid: ~1,5 min.
+        </aside>
+      </section>
+
+      <!-- 7: CLOSE (Mönster A — papper) — vad vi möter härnäst -->
+      <section>
+        <div class="chrome paper">
+          <div class="masthead">
+            <span>Samhällskunskap 3 · Globalisering</span>
+            <span>Introduktion · WTO + IMF</span>
+          </div>
+          <div class="body close-slide">
+            <div class="eyebrow">Vad vi möter härnäst</div>
+            <h1>Från <em>institution</em> till <mark>människa</mark></h1>
+            <ul class="takeaways">
+              <li class="fragment"><strong>Institutioner är inte naturlagar</strong> — de är <em>byggda</em> av människor, vid en tidpunkt, för ett syfte</li>
+              <li class="fragment">Samma globalisering ser <strong>olika ut</strong> beroende på vilken regel eller vilket lån som griper in i ditt liv</li>
+              <li class="fragment">Teorierna (Held, Wallerstein) ska ni nu använda <em>på</em> institutionerna — inte bara på produktionen</li>
+            </ul>
+            <div class="next-steps">
+              <div class="next-box fragment">
+                <div class="label">Lektion 6 · WTO</div>
+                <div class="text">via <em>vaccinapartheid</em> — Strive Masiyiwa möter <u>patentens makt</u></div>
+              </div>
+              <div class="next-box fragment">
+                <div class="label">Lektion 7 · IMF</div>
+                <div class="text">via <em>Argentina</em> — en pensionärs vardag möter <u>strukturanpassningen</u></div>
+              </div>
+            </div>
+          </div>
+          <div class="baseline">
+            <span>Arkiv · v2</span>
+            <span>07 / 07</span>
+          </div>
+        </div>
+        <aside class="notes">
+          Avsluta lugnt. Säg: "Tre saker att ta med er när vi nu går in i lektion 6."
+
+          Stanna vid första punkten. Säg: "Det här är viktigare än det låter. WTO och IMF är inte naturlagar. De har inte alltid funnits. De byggdes 1944 och 1995 — av människor, i rum, med pennor. Det betyder också att de KAN byggas om. Det är poängen med att veta var de kommer ifrån."
+
+          Andra punkten: "Globaliseringen är inte EN sak. Den är en knippe regler och lån som griper in olika i olika liv. För Strive Masiyiwa är det patenten. För Alicia Ceresoli är det pensionsreformen. Samma system — olika verktyg."
+
+          Tredje punkten: "Hittills har ni använt Held och Wallerstein på en T-shirt och på fem personer. Nu lyfter vi upp dem på institutionerna själva. Vilken Held-dimension dominerar WTO? Var sitter centrum och periferi i IMF:s röstsystem?"
+
+          Pek på rutorna: "Nästa lektion: WTO genom vaccin. Lektionen efter: IMF genom Argentina. Ni har ramen. Nu går vi in."
+
+          Om tid finns: ställ frågan "Vilken av institutionerna känns mest abstrakt för er just nu?" — om det är WTO, betona att Strive Masiyiwa-berättelsen kommer göra den konkret.
+
+          Tid: ~1 min.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      transition: 'none',
+      progress: true,
+      slideNumber: false,
+      controls: true,
+      keyboard: true,
+      hash: true,
+      pdfSeparateFragments: false
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 1 — Worked example: Mitt vardagsobjekt | Sam 3 Globalisering</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f1a;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #ff6b6b;
+      --color-accent2: #4ecdc4;
+      --color-accent3: #ffe66d;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal .slides section {
+      background: var(--color-bg);
+      text-align: left;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--color-heading);
+      text-transform: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .reveal h2 { font-size: 1.9em; margin-bottom: 0.5em; }
+    .reveal h3 { font-size: 1.3em; margin-bottom: 0.4em; }
+    .reveal p, .reveal li { line-height: 1.6; }
+    .reveal ul, .reveal ol { display: block; text-align: left; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-2 {
+      background: linear-gradient(135deg, var(--color-accent2), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow { text-shadow: 0 0 40px rgba(255, 107, 107, 0.3); }
+
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.1em 1.4em;
+      text-align: left;
+      margin: 0.5em 0;
+    }
+
+    .glass-card .card-icon { width: 28px; height: 28px; margin-bottom: 0.3em; display: block; }
+    .glass-card .card-icon svg { width: 100%; height: 100%; }
+    .glass-card strong { color: var(--color-accent); }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .worked-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: rgba(78,205,196,0.2);
+      color: var(--color-accent2);
+      padding: 0.3em 1em;
+      border-radius: 24px;
+      font-size: 0.55em;
+      font-weight: 700;
+      margin-bottom: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      margin-bottom: 0.8em;
+    }
+
+    .step-number {
+      font-size: 2.2em;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      min-width: 1.2em;
+    }
+
+    .step-prompt {
+      font-size: 0.85em;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+    .model-answer {
+      background: var(--color-surface);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--color-accent2);
+      border-radius: 12px;
+      padding: 1em 1.4em;
+      margin: 0.8em 0;
+      font-size: 0.95em;
+    }
+
+    .model-answer .label {
+      display: block;
+      font-size: 0.6em;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent2);
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+
+    .thinking {
+      font-size: 0.75em;
+      color: var(--color-muted);
+      font-style: italic;
+      margin-top: 0.6em;
+      padding-top: 0.6em;
+      border-top: 1px dashed var(--color-border);
+    }
+
+    .thinking::before {
+      content: "💭 ";
+      font-style: normal;
+    }
+
+    .highlight-yellow {
+      background: linear-gradient(to bottom, transparent 55%, rgba(255, 230, 109, 0.3) 55%);
+      padding: 0 2px;
+    }
+
+    .highlight-pink {
+      background: linear-gradient(to bottom, transparent 55%, rgba(255, 107, 107, 0.25) 55%);
+      padding: 0 2px;
+    }
+
+    .highlight-teal {
+      background: linear-gradient(to bottom, transparent 55%, rgba(78, 205, 196, 0.25) 55%);
+      padding: 0 2px;
+    }
+
+    .paradox-star {
+      display: inline-block;
+      color: var(--color-accent3);
+      font-size: 1.4em;
+      filter: drop-shadow(0 0 12px rgba(255,230,109,0.6));
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8em;
+      margin-top: 0.8em;
+    }
+
+    .meta-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 0.7em 1em;
+      font-size: 0.8em;
+    }
+
+    .meta-item strong {
+      color: var(--color-accent2);
+      display: block;
+      margin-bottom: 0.3em;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Titel -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <span class="worked-badge">Worked example</span>
+        <h2 class="glow">Så här <span class="gradient-text">tänker</span> jag<br>när jag gör uppgift 3</h2>
+        <p style="color: var(--color-muted); font-size: 0.85em;">
+          En modellering av "Mitt eget vardagsobjekt" — steg för steg.<br>
+          Ni ser inte bara <em>vad</em> jag svarar, utan <em>hur</em> jag tänker.
+        </p>
+        <aside class="notes">
+          Inledning till worked example. Säg: "Innan ni börjar med er egen analys — låt mig visa hur en samhällsvetare tänker genom uppgiften. Jag ska göra uppgift 3 med mitt eget vardagsobjekt. Lyssna inte bara på vad jag säger — lyssna på HUR jag tänker. Det är det som är modellering."
+
+          Understryka: målet är inte att kopiera mitt svar. Målet är att ta efter mitt tänk-sätt och sedan tillämpa det på ditt eget objekt.
+
+          Tid: ~30 sekunder.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Mitt objekt -->
+      <section data-background-color="#0f0f1a">
+        <h2>Mitt <span class="gradient-text">objekt</span> idag</h2>
+        <div class="glass-card" style="border-left: 4px solid var(--color-accent); font-size: 1.1em;">
+          <strong>Min morgonkaffe</strong><br>
+          En kopp espresso från Lavazza, med mjölk, i en mugg från IKEA.
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.75em; margin-top: 1em;">
+          Så vardagligt att det nästan är osynligt — vilket är precis poängen.
+        </p>
+        <aside class="notes">
+          Håll upp en riktig kaffekopp om du har en i klassrummet — fysisk närvaro förstärker poängen. Säg: "Jag dricker det här varje morgon. Jag tänker aldrig på det. Men just därför är det ett bra objekt — det är inte självklart att en kaffekopp är globaliserad, men den är det."
+
+          Byt gärna ut objektet mot något ditt — dina sneakers, din lunch, ett klädesplagg, din mobil. Poängen är att välja något du verkligen bär eller använder idag.
+
+          Tid: ~45 sekunder.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Steg 1 -->
+      <section data-background-color="#0f0f1a">
+        <div class="step-header">
+          <span class="step-number">1</span>
+          <div>
+            <h3>Mitt objekt är...</h3>
+            <p class="step-prompt">Vad är det, konkret? Vilka delar består det av?</p>
+          </div>
+        </div>
+        <div class="model-answer">
+          <span class="label">Så här skriver jag</span>
+          <p>Mitt objekt är min <span class="highlight-yellow">morgonkaffe</span> — en Lavazza-espresso med mjölk, i en IKEA-mugg. Det är egentligen flera saker: <span class="highlight-pink">kaffebönor, mjölk, vatten, elektricitet</span> till kaffemaskinen, och <span class="highlight-pink">keramiken</span> i koppen.</p>
+          <div class="thinking">Jag försöker se objektet som en <em>uppsättning</em>, inte en enskild sak. Det blir mer att analysera.</div>
+        </div>
+        <aside class="notes">
+          Think-aloud: "Jag börjar med att bryta ner objektet. En kaffekopp är inte BARA en kaffekopp — det är kaffebönor, mjölk, vatten, el, keramik. Det är min första samhällsvetenskapliga rörelse: zooma in och se delarna."
+
+          Visa det visuellt — peka på koppen när du säger "det här är flera saker, inte en".
+
+          Tid: ~1 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Steg 2 -->
+      <section data-background-color="#0f0f1a">
+        <div class="step-header">
+          <span class="step-number">2</span>
+          <div>
+            <h3>Jag tror det kommer från...</h3>
+            <p class="step-prompt">Länder, råvaror, tillverkning</p>
+          </div>
+        </div>
+        <div class="model-answer">
+          <span class="label">Så här skriver jag</span>
+          <p>Jag <span class="highlight-yellow">tror</span> att kaffebönorna kommer från <span class="highlight-pink">Brasilien, Colombia eller Etiopien</span> — Lavazza blandar ofta bönor från flera länder. Rostningen sker troligen i <span class="highlight-pink">Italien</span>. Muggen är förmodligen tillverkad i <span class="highlight-pink">Kina</span>, eftersom IKEA producerar mycket där. Mjölken kommer från <span class="highlight-pink">svenska mjölkbönder</span> via Arla.</p>
+          <div class="thinking">"Jag tror" är viktigt — jag är inte helt säker. Det är OK att gissa så länge jag är öppen med det.</div>
+        </div>
+        <aside class="notes">
+          Viktig poäng här: modellera osäkerhet. Säg: "Jag är inte säker på vartenda detalj. Jag TROR bönorna kommer från Brasilien — jag har läst det i en artikel en gång. Det är OK att gissa så länge ni är ärliga med det. Samhällsvetenskap är inte att veta allt, det är att kunna MOTIVERA det man tror."
+
+          Detta är en central A-nivå-kvalitet: förmåga att formulera kvalificerade gissningar och vara transparent med osäkerhet.
+
+          Tid: ~1,5 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Steg 3 -->
+      <section data-background-color="#0f0f1a">
+        <div class="step-header">
+          <span class="step-number">3</span>
+          <div>
+            <h3>Människor som kan ha tjänat...</h3>
+            <p class="step-prompt">Vem fick pengar, makt eller möjligheter?</p>
+          </div>
+        </div>
+        <div class="model-answer">
+          <span class="label">Så här skriver jag</span>
+          <p>Människor som kan ha tjänat är <span class="highlight-pink">Lavazza-familjen och deras aktieägare, IKEA (familjen Kamprad), anställda i båda företagens Europa-kontor, svenska mjölkbönder genom Arla, transportföretag</span> som Maersk och DHL, och <span class="highlight-pink">elproducenter</span> i Sverige.</p>
+          <div class="thinking">Jag försöker täcka flera <em>nivåer</em> av vinnare — inte bara "företaget", utan också anställda, transport, infrastruktur.</div>
+        </div>
+        <aside class="notes">
+          Modellera bredd. Säg: "När jag tänker 'vem har tjänat' så nöjer jag mig inte med 'Lavazza'. Jag tänker i lager: familjen som äger företaget, aktieägarna, de anställda, transportföretaget, infrastrukturen. Det är ett bredare samhällsvetenskapligt grepp än det första svaret."
+
+          Förklara att detta är en E-C-rörelse: E-nivå ger ofta ETT svar, C-nivå ger flera, A-nivå ser hela kedjan.
+
+          Tid: ~1 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Steg 4 -->
+      <section data-background-color="#0f0f1a">
+        <div class="step-header">
+          <span class="step-number">4</span>
+          <div>
+            <h3>Människor som kan ha förlorat...</h3>
+            <p class="step-prompt">Vem fick sämre villkor, lägre löner, vilket område drabbades?</p>
+          </div>
+        </div>
+        <div class="model-answer">
+          <span class="label">Så här skriver jag</span>
+          <p>Människor som kan ha förlorat är <span class="highlight-teal">kaffebönder i Colombia och Etiopien</span> som ofta får väldigt lite av slutpriset, <span class="highlight-teal">fabriksarbetare i Kina</span> som gjort muggen under osäkra villkor, <span class="highlight-teal">miljön</span> genom CO2-utsläpp från transport och bevattning av kaffeplantager, och <span class="highlight-teal">mindre mejeriföretag i Sverige</span> som konkurrerats ut av storskalig Arla-produktion.</p>
+          <div class="thinking">Jag tar med <em>miljön</em> som en "förlorare" — det är en aktör som ofta glöms men som påverkas stort.</div>
+        </div>
+        <aside class="notes">
+          Kritisk pedagogisk poäng: visa att "förlorare" inte bara är människor. Miljön, framtida generationer, lokala ekosystem — alla är relevanta aktörer. Det här är en central A-nivå-rörelse: att se det som är osynligt.
+
+          Säg: "Om ni bara listar människor som förlorare missar ni den viktigaste förloraren — miljön. Samma fråga, större svar."
+
+          Tid: ~1 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Steg 5 -->
+      <section data-background-color="#0f0f1a">
+        <div class="step-header">
+          <span class="step-number">5</span>
+          <div>
+            <h3>En fråga jag har är...</h3>
+            <p class="step-prompt">Vad gör jag nyfiken? Vad vet jag inte?</p>
+          </div>
+        </div>
+        <div class="model-answer">
+          <span class="label">Så här skriver jag</span>
+          <p>En fråga jag har är: <span class="highlight-yellow">Varför ökar priset på kaffe i butiken, medan kaffebönderna ofta fortfarande är fattiga? Vem tar merparten av vinsten — företaget, handlaren, eller transportören?</span></p>
+          <div class="thinking">En bra fråga är <em>specifik</em> och avslöjar en paradox eller obalans. "Varför är världen orättvis" är för bred. "Vem tar vinsten i kaffekedjan" är analysbar.</div>
+        </div>
+        <aside class="notes">
+          Detta är kanske den viktigaste slide — visa vad som skiljer en bra fråga från en dålig.
+
+          Säg: "Frågan 'Varför är globaliseringen orättvis?' är för stor. Frågan 'Varför blir priset högre medan bönderna förblir fattiga' är MYCKET bättre — den pekar på en specifik paradox som går att undersöka. Det här är vad samhällsvetare gör: de spetsar sina frågor."
+
+          Visa också att en fråga inte behöver ha ett svar än. Det är bra att frågan förblir öppen.
+
+          Tid: ~1,5 minut.
+        </aside>
+      </section>
+
+      <!-- Slide 8: ⭐ Utmaningen -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="step-header">
+          <span class="step-number"><span class="paradox-star">⭐</span></span>
+          <div>
+            <h3>Kan objektet vara både bra och dåligt för <span class="gradient-text-2">samma person</span>?</h3>
+            <p class="step-prompt">Utmaning mot A — hitta paradoxen</p>
+          </div>
+        </div>
+        <div class="model-answer" style="border-left-color: var(--color-accent3);">
+          <span class="label" style="color: var(--color-accent3);">Så här skriver jag (A-nivå)</span>
+          <p>Ja. Ta <span class="highlight-yellow">en kaffebonde i Colombia</span>: globaliseringen ger henne en <em>marknad</em> hon aldrig hade utan den — möjlighet att sälja till hela världen. Samtidigt <em>pressar</em> samma globalisering priset så att hennes arbete knappt är lönsamt. Det är både räddningen och fällan. Inte antingen eller — utan <em>samma process</em>, med <em>motstridiga effekter</em>, på <em>samma person</em>.</p>
+          <div class="thinking">Det här är A-tänkande: samma fenomen har <em>motstridiga effekter</em> som lever sida vid sida.</div>
+        </div>
+        <aside class="notes">
+          Detta är nyckel-slide för A-nivån. Betona: paradoxen är inte "ibland bra, ibland dåligt". Det är "BÅDE bra OCH dåligt, SAMTIDIGT, för SAMMA person". Det är en mycket högre form av analys.
+
+          Säg: "Om ni bara kan säga 'det är både bra och dåligt' — det är C-nivå. Om ni kan säga 'samma process skapar båda effekterna samtidigt' — det är A."
+
+          Ge eleverna tid att landa detta. Den här typen av paradoxen-tänkande är svår men kraftfull.
+
+          Tid: ~2 minuter.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Meta-reflektion -->
+      <section data-background-color="#0f0f1a">
+        <h2>Vad gjorde jag som <span class="gradient-text">ni</span> kan ta med er?</h2>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <strong>Jag gissade — och var ärlig med det</strong>
+            "Jag tror" räcker. Samhällsvetare gissar kvalificerat.
+          </div>
+          <div class="meta-item">
+            <strong>Jag sökte det osynliga</strong>
+            Transporten, elen, miljön, algoritmen — inte bara de uppenbara.
+          </div>
+          <div class="meta-item">
+            <strong>Jag formulerade en fråga</strong>
+            Inte ett svar. En bra fråga är mer värd än ett dåligt svar.
+          </div>
+          <div class="meta-item">
+            <strong>Jag hittade paradoxer</strong>
+            När något är BÅDE bra och dåligt — där börjar analysen.
+          </div>
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.75em; margin-top: 1.4em; text-align: center;">
+          Nu är det er tur. Samma process — ert objekt.
+        </p>
+        <aside class="notes">
+          Meta-slide — avslutning på worked example. Säg: "Lägg märke till vad jag GJORDE, inte bara vad jag SKREV. Fyra saker ni kan ta med er: gissa ärligt, sök det osynliga, formulera frågor, hitta paradoxer. Det är inte en checklista — det är ett TÄNK-sätt."
+
+          Betona att modelleringen inte är en mall att kopiera. Eleverna ska göra EN EGEN version med sitt eget objekt, men med samma tänk-rörelser.
+
+          Övergång till fas 5: "Nu får ni 15 minuter. Ert objekt. Er analys. Jag cirkulerar om ni fastnar."
+
+          Tid: ~1 minut.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

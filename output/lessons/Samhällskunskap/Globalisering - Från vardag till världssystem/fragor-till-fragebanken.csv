@@ -1,0 +1,38 @@
+topic,type,text,option1,option2,option3,option4,option5,correct
+Globalisering_L2_Dimensioner,mcq,"Vilken av följande är INTE en av Held's fyra dimensioner av globalisering?","Ekonomisk","Politisk","Kulturell","Religiös","Social",4
+Globalisering_L2_Dimensioner,mcq,"Vilken dimension beskriver utbyten av idéer och uttryck som K-pop och Hollywood-filmer?","Ekonomisk","Politisk","Kulturell","Social","",3
+Globalisering_L2_Dimensioner,mcq,"Ett exempel på POLITISK globalisering är:","Att Volvo tillverkar i Kina","Att EU-domstolen kan ogiltigförklara svensk lag","Att K-pop blir populärt globalt","Att jag ringer min kusin i Tyskland","",2
+Globalisering_L2_Dimensioner,mcq,"Kulturell HYBRIDISERING är när...","Alla kulturer blir likadana","Lokala kulturer försvinner","Globala och lokala uttryck blandas till nya former","En kultur dominerar andra","",3
+Globalisering_L2_Dimensioner,mcq,"Vilken dimension berör migration och utbytesstudenter?","Ekonomisk","Politisk","Kulturell","Social","",4
+Globalisering_L3_Wallerstein,mcq,"I Wallersteins centrum-periferi-modell representerar CENTRUM:","Råvaruproducenter","Hög-värde-aktiviteter som design och kapital","Industriländer i väst","Länder med hög BNP","",2
+Globalisering_L3_Wallerstein,mcq,"Semi-periferin kännetecknas främst av:","Råvaruexport","Hög-teknologisk design","Industriproduktion med viss lokal makt","Rent monetär spekulation","",3
+Globalisering_L3_Wallerstein,mcq,"I T-shirtens produktionskedja är bomullsbonden i Indien ett tydligt exempel på:","Centrum","Semi-periferi","Periferi","Konsument","",3
+Globalisering_L3_Wallerstein,mcq,"Vad menas med OJÄMLIKT UTBYTE i Wallersteins teori?","Att vissa länder handlar mer än andra","Att värde systematiskt flödar från periferi till centrum","Att ekonomier växer i olika takt","Att vissa länder har tull-avtal","",2
+Globalisering_L3_Wallerstein,mcq,"Centrum och periferi är enligt Wallerstein:","Fasta länder","Dynamiska positioner","Endast ekonomiska begrepp","Kulturella kategorier","",2
+Globalisering_L4_Sverige,mcq,"Sveriges topp-exportvaror 2024 inkluderar främst:","Olja och gas","Fordon, maskiner, skog, kemi/läkemedel","Tjänster och turism","Livsmedel","",2
+Globalisering_L4_Sverige,mcq,"Strategisk autonomi i EU-debatten betyder:","Att EU ska klara sig helt utan handel","Att EU ska kunna agera utan stark beroende av andra stormakter","Att varje EU-land ska agera för sig","Att EU ska förbjuda import","",2
+Globalisering_L4_Sverige,mcq,"När Ryssland stoppade gasen 2022 steg svenska elpriser eftersom:","Sverige importerar rysk gas","Sverige är sammankopplat med europeiska elmarknaden via Nord Pool","Svensk elproduktion minskade","Kärnkraftverk stängdes","",2
+Globalisering_L4_Sverige,mcq,"Proteksjonism är motsatsen till:","Kapitalism","Frihandel","Demokrati","Globalisering","",2
+Globalisering_L5_Realism,mcq,"Ett centralt antagande i REALISMEN är:","Stater söker samarbete","Världen är anarkisk — ingen överstatlig auktoritet","Handel skapar fred","Institutioner stabiliserar relationer","",2
+Globalisering_L5_Realism,mcq,"Vad är ett SÄKERHETSDILEMMA?","När en stat blir militärt svag","När en stats upprustning tvingar andra rusta upp","När en stat förlorar allierade","När handel minskar","",2
+Globalisering_L5_Liberalism,mcq,"Ett centralt antagande i LIBERALISMEN är:","Stater är alltid rationella","Handel skapar fred och minskar konfliktrisk","Starka stater dominerar svaga","Maktbalans är oundviklig","",2
+Globalisering_L5_Liberalism,mcq,"DEMOKRATISK FRED-tesen innebär att:","Demokratier alltid fattar rätt beslut","Demokratier krigar inte med andra demokratier","Demokrati skyddar mot ekonomiska kriser","Alla stater vill bli demokratier","",2
+Globalisering_L5_Liberalism,mcq,"Joseph Nye myntade begreppet:","Säkerhetsdilemma","Mjuk makt (soft power)","Global värdekedja","Suveränitet","",2
+Globalisering_L5_Realism_Liberalism,mcq,"Vilken klassisk realist skrev 'Politics Among Nations'?","John Mearsheimer","Hans Morgenthau","Kenneth Waltz","Robert Keohane","",2
+Globalisering_L6_Begrepp,mcq,"Att ett akademiskt begrepp förändras när det används i debatt kallas:","Operationalisering","Politisering av begrepp","Paradigmskifte","Semantisk utveckling","",2
+Globalisering_L6_Begrepp,mcq,"Vilken retorisk figur signalerar att skribenten samlar läsaren med sig i en gemensam position?","Ironi","'Vi'-form","Metafor","Anafor","",2
+Globalisering_L6_Begrepp,mcq,"Ett IMPLICIT teoretiskt antagande i en debatttext är:","En teori som uttryckligen namnges","En teori som inte nämns men vars antaganden genomsyrar texten","En teori som kritiseras","En teori som refereras i fotnot","",2
+Globalisering_Allman,mcq,"När Ericsson tillverkar baseband i Sverige men produktionsenheter runt om i världen är det ett exempel på:","Offshoring","Global värdekedja","Importsubstitution","Frihandelsavtal","",2
+Globalisering_Allman,mcq,"JUST-IN-TIME-produktion är:","Att snabbt leverera ordrar","Produktion där varor görs precis när de behövs, kräver välfungerande transporter","En typ av offshoring","En politisk term","",2
+Globalisering_Allman,mcq,"EU, FN och WTO är exempel på:","Globala företag","Internationella NGO:er","Överstatliga organisationer","Regionala allianser","",3
+Globalisering_Allman,truefalse,"Globaliseringens fyra dimensioner (Held) rör sig alltid i samma riktning och tempo.","Sant","Falskt","","","",2
+Globalisering_Allman,truefalse,"Enligt Wallerstein kan ett land ha centrum- och periferiverksamhet samtidigt.","Sant","Falskt","","","",1
+Globalisering_Allman,truefalse,"Realismen anser att internationella institutioner som FN har stor självständig makt.","Sant","Falskt","","","",2
+Globalisering_Allman,truefalse,"Enligt liberalismen minskar handelsberoende risken för militär konflikt.","Sant","Falskt","","","",1
+Globalisering_Allman,truefalse,"Att analysera en fråga genom flera motstridiga perspektiv kallas partssammansatt analys.","Sant","Falskt","","","",1
+Globalisering_Allman,truefalse,"Mjuk makt innebär att påverka genom militärt tvång.","Sant","Falskt","","","",2
+Globalisering_Allman,short,"Nämn en av Held's fyra dimensioner av globalisering.","","","","","","Ekonomisk / Politisk / Kulturell / Social"
+Globalisering_Allman,short,"Vad kallas positionen mellan centrum och periferi i Wallersteins modell?","","","","","","Semi-periferi"
+Globalisering_Allman,short,"Vilken IR-teori antar att världen är anarkisk och att stater söker säkerhet?","","","","","","Realism"
+Globalisering_Allman,short,"Ge ett exempel på ett överstatligt organ.","","","","","","EU / FN / WTO / ICC / NATO"
+Globalisering_Allman,short,"Vilken teori gav vi för att analysera hur makt fördelas i globala värdekedjor?","","","","","","Centrum-periferi (Wallerstein)"

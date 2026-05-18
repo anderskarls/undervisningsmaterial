@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 1: Vägen till första världskriget</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0d0d14;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #e8a838;
+      --color-accent2: #c45e3a;
+      --color-accent3: #8ecae6;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal .slides section {
+      background: var(--color-bg);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--color-heading);
+      text-transform: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .reveal h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .reveal p, .reveal li {
+      line-height: 1.6;
+    }
+
+    .reveal ul, .reveal ol {
+      display: block;
+      text-align: left;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow {
+      text-shadow: 0 0 40px rgba(232, 168, 56, 0.3);
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.3em 1.5em;
+      text-align: left;
+      margin: 0.5em 0;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .glass-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .glass-card .card-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 0.4em;
+      display: block;
+    }
+
+    .glass-card .card-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .glass-card strong {
+      color: var(--color-accent);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .discuss-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 0.4em 1.2em;
+      border-radius: 24px;
+      font-size: 0.65em;
+      font-weight: 600;
+      margin-bottom: 1em;
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent3, #ffe66d);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    .timeline-v {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .tl-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2em;
+    }
+
+    .tl-year {
+      font-size: 1.4em;
+      font-weight: 800;
+      color: var(--color-accent);
+      min-width: 100px;
+      text-align: right;
+      text-shadow: 0 0 30px rgba(232,168,56,0.4);
+    }
+
+    .tl-line {
+      width: 3px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--color-accent), var(--color-accent2));
+      border-radius: 2px;
+    }
+
+    .tl-text {
+      font-size: 0.9em;
+      color: var(--color-text);
+      background: var(--color-surface);
+      padding: 0.6em 1em;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+    }
+
+    .big-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    .stat-number {
+      font-size: 7em;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 40px rgba(232,168,56,0.3));
+    }
+
+    .stat-label {
+      font-size: 1.1em;
+      max-width: 500px;
+      text-align: center;
+      color: var(--color-text);
+    }
+
+    .stat-source {
+      font-size: 0.65em;
+      color: var(--color-muted);
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      margin-top: 1em;
+    }
+
+    .compare-col {
+      background: var(--color-surface);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--color-border);
+      padding: 1.5em;
+      border-radius: 16px;
+      border-top: 3px solid var(--color-accent);
+    }
+
+    .compare-col:nth-child(2) {
+      border-top-color: var(--color-accent2);
+    }
+
+    .compare-col h3 {
+      font-size: 1.1em;
+      margin-bottom: 0.5em;
+      color: var(--color-heading);
+    }
+
+    .compare-col ul {
+      font-size: 0.85em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.8em;" class="glow">
+          Varför var Europa en<br><span class="gradient-text">krutdurk?</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em;">Vägen till första världskriget</p>
+        <aside class="notes">
+          Öppna med att visa Europakarta 1914. Fråga klassen: "Vad ser ni på kartan? Vilka länder verkar vara vänner, vilka verkar vara fiender?" Tid: 1 min. Syftet är att väcka nyfikenhet och aktivera förkunskaper från kolonialismmomentet.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Nationalism -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad är <span class="gradient-text">nationalism</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>
+          </svg>
+          <strong>Stolthet över sitt land</strong> - Känslan att ens nation är överlägsen andra
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Tävlan mellan nationer</strong> - Varje land ville vara störst, starkast, bäst
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Kopplat till imperialism</strong> - Kolonier visade nationens styrka
+        </div>
+        <aside class="notes">
+          Repetition från kolonialismmomentet. Eleverna har haft svårt med nationalism - gå långsamt. Använd Frayer-modell på tavlan: definition, egenskaper, exempel, icke-exempel. Kontrollfråga: "Tumme upp/ner - kan ni förklara nationalism med egna ord?" Tid: 2 min.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Imperialism -->
+      <section data-background-color="#0d0d14">
+        <h2>Varför tävlade länderna om <span class="gradient-text">kolonier</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Råvaror och marknader</strong> - Kolonier gav ekonomiska fördelar
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M2 18l3-12 5 6 2-8 2 8 5-6 3 12H2z"/><path d="M2 18h20v2H2z"/>
+          </svg>
+          <strong>Nationell prestige</strong> - Fler kolonier = mäktigare nation
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Rivalitet</strong> - Framför allt mellan Storbritannien, Frankrike och Tyskland
+        </div>
+        <aside class="notes">
+          Koppla till kolonialismmomentet: "Ni minns att Europa delade upp Afrika? Den tävlan skapade enorma spänningar - särskilt mellan Tyskland och de äldre kolonialmakterna." Kontrollfråga: "Ge ett exempel på imperialism." Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 1 minut</span>
+        <h2 style="color: white; font-size: 1.8em;">Om alla länder vill vara bäst - vad händer då?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Diskutera med din bänkgranne. Var beredd att dela.
+        </p>
+        <aside class="notes">
+          Kort EPA-paus. Syftet är att eleverna ska börja se kopplingen: nationalism + imperialism = rivalitet = spänningar. Samla 2-3 svar efteråt. Led mot nästa slide om allianser. Tid: 1 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Allianssystemen -->
+      <section data-background-color="#0d0d14">
+        <h2>Varför bildade länderna <span class="gradient-text">allianser</span>?</h2>
+        <div class="comparison">
+          <div class="compare-col fragment">
+            <h3>Trippelalliansen</h3>
+            <ul>
+              <li>Tyskland</li>
+              <li>Österrike-Ungern</li>
+              <li>Italien</li>
+            </ul>
+          </div>
+          <div class="compare-col fragment">
+            <h3>Trippelententen</h3>
+            <ul>
+              <li>Frankrike</li>
+              <li>Ryssland</li>
+              <li>Storbritannien</li>
+            </ul>
+          </div>
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.8em; margin-top: 1em;">Om ett land anfölls - alla i alliansen dras in</p>
+        <aside class="notes">
+          Visa på Europakarta vilka länder som tillhörde vilka allianser. Betona att allianserna skapades för skydd men blev en fälla: "Om ett land hamnar i konflikt dras alla in." Fråga: "Varför tror ni att detta var farligt?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Kapprustning -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad händer när alla <span class="gradient-text">rustar upp</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Säkerhetsdilemma</strong> - Du rustar för att skydda dig, grannen ser ett hot
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Alla bygger flottor och arméer</strong> - Tyskland utmanar Storbritanniens flotta
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M7 17l5-5 3 3 4-4"/><path d="M15 11h4v4"/>
+          </svg>
+          <strong>Spiral utan slut</strong> - Ju mer en rustar, desto mer rustar alla andra
+        </div>
+        <aside class="notes">
+          Förklara säkerhetsdilemmat med en vardagsanalogi: "Tänk om din granne börjar bygga höga staket och sätter upp kameror. Vad gör du? Du gör samma sak - även om ni egentligen inte är ovänner." Kontrollfråga: "Tumme upp/ner - varför är kapprustning farligt?" Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Vilken orsak tror ni var viktigast - och varför?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Nationalism, imperialism, allianser eller kapprustning? Diskutera med din bänkgranne.
+        </p>
+        <aside class="notes">
+          Viktig diskussion som förbereder för den skriftliga uppgiften. Eleverna ska inte bara kunna lista orsaker utan börja rangordna och argumentera. Samla 3-4 svar efteråt. Betona att det inte finns ett "rätt" svar - det viktiga är att kunna förklara varför. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Hur hänger allt ihop? -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur hänger orsakerna <span class="gradient-text">ihop</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>
+          </svg>
+          <strong>Nationalism</strong> skapade tävlan mellan länderna
+        </div>
+        <div class="glass-card fragment" style="margin-left: 2em;">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Imperialism</strong> förstärkte rivaliteten
+        </div>
+        <div class="glass-card fragment" style="margin-left: 4em;">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>Allianser + kapprustning</strong> gjorde att alla var redo för krig
+        </div>
+        <aside class="notes">
+          Visa hur orsakerna bygger på varandra - det är inte fyra separata saker utan en kedja. Modellera kopplingen: "Nationalism ledde till imperialism, som skapade rivalitet, som ledde till allianser och kapprustning. Allt hängde ihop." Detta är worked example för begreppskartan. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Krutdurken -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="big-stat">
+          <span class="stat-number fragment">1914</span>
+          <span class="stat-label fragment">Europa var en krutdurk - det behövdes bara en gnista</span>
+          <span class="stat-source fragment">Nästa lektion: gnistan som tände</span>
+        </div>
+        <aside class="notes">
+          Avslutande slide som kopplar tillbaka till öppningsfrågan. "Nu förstår ni varför Europa var en krutdurk. Nästa lektion ska vi se vad som tände stubintråden." Övergång till elevuppgiften: begreppskartan i par. Tid: 30 sek.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Sammanfattning -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad tar ni med er <span class="gradient-text">idag</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <strong>Fyra orsaker</strong> - Nationalism, imperialism, allianser, kapprustning
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>De förstärkte varandra</strong> - Tillsammans blev de explosiva
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.8em; margin-top: 1.5em;">Nu: Begreppskarta i par - rita pilar mellan orsakerna</p>
+        <aside class="notes">
+          Snabb sammanfattning. Dela ut A4-blad med fyra rutor och instruera för begreppskartan. "Ni ska rita pilar mellan rutorna och skriva på varje pil HUR de hänger ihop." Modellera en koppling först. Tid: 30 sek, sedan övergång till fas 4.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

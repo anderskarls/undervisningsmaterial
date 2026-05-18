@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lektion 7: Förintelsen del 2 - vittnesmål och ansvar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0d0d14;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #e8a838;
+      --color-accent2: #c45e3a;
+      --color-accent3: #8ecae6;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+
+    .reveal { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 28px; color: var(--color-text); }
+    .reveal .slides section { background: var(--color-bg); }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--color-heading); text-transform: none; font-weight: 800; letter-spacing: -0.03em; }
+    .reveal h2 { font-size: 2em; margin-bottom: 0.5em; }
+    .reveal p, .reveal li { line-height: 1.6; }
+    .reveal ul, .reveal ol { display: block; text-align: left; }
+
+    .gradient-text { background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glow { text-shadow: 0 0 40px rgba(232, 168, 56, 0.3); }
+
+    .glass-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.3em 1.5em; text-align: left; margin: 0.5em 0; transition: transform 0.3s, border-color 0.3s; }
+    .glass-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .glass-card .card-icon { width: 32px; height: 32px; margin-bottom: 0.4em; display: block; }
+    .glass-card .card-icon svg { width: 100%; height: 100%; }
+    .glass-card strong { color: var(--color-accent); }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .discuss-badge { display: inline-flex; align-items: center; gap: 0.4em; background: rgba(255,255,255,0.2); color: white; padding: 0.4em 1.2em; border-radius: 24px; font-size: 0.65em; font-weight: 600; margin-bottom: 1em; backdrop-filter: blur(10px); }
+    .pulse-dot { width: 8px; height: 8px; background: var(--color-accent3); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+
+    .big-stat { display: flex; flex-direction: column; align-items: center; gap: 0.3em; }
+    .stat-number { font-size: 6em; font-weight: 800; line-height: 1; background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 40px rgba(232,168,56,0.3)); }
+    .stat-label { font-size: 1.1em; max-width: 600px; text-align: center; color: var(--color-text); }
+    .stat-source { font-size: 0.65em; color: var(--color-muted); }
+
+    .source-analysis { max-width: 750px; margin: 0 auto; }
+    .source-quote { font-size: 1.1em; font-style: italic; border-left: 3px solid var(--color-accent); padding: 0.8em 1.2em; margin: 1em 0; background: var(--color-surface); border-radius: 0 12px 12px 0; color: var(--color-text); box-shadow: -3px 0 20px rgba(232,168,56,0.15); }
+    .source-meta { display: flex; gap: 1.5em; font-size: 0.75em; color: var(--color-muted); margin-bottom: 1em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Hook -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.4em;" class="glow">
+          Bakom siffrorna finns<br><span class="gradient-text">människor</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em;">Förintelsen del 2 - vittnesmål och ansvar</p>
+        <aside class="notes">
+          "Förra lektionen tittade vi på strukturerna - hur det kunde hända steg för steg. Idag möter vi människorna. Vi lyssnar på de som överlevde, och vi ställer frågan: vems ansvar var det?" Lugn, respektfull ton. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Siffror -->
+      <section data-background-color="#0d0d14">
+        <h2>Vilka drabbades av <span class="gradient-text">Förintelsen</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>6 miljoner judar</strong> - Största offergrupppen
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>Romer, funktionsnedsatta</strong> - Även de klassades som "ovärdiga"
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 11a4 4 0 014 4v2"/>
+          </svg>
+          <strong>Homosexuella, politiska fångar</strong> - Alla som inte passade in i nazisternas värld
+        </div>
+        <aside class="notes">
+          Visa Förintelsen i siffror projicerad. "Det var inte bara judar, även om de var den största offergrupppen. Alla som nazisterna ansåg 'ovärdiga' drabbades." Kort repetition från lektion 6. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Livet i lägren -->
+      <section data-background-color="#0d0d14">
+        <h2>Hur såg <span class="gradient-text">vardagen</span> ut i lägren?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M3 12h4l3-9 4 18 3-9h4"/>
+          </svg>
+          <strong>Systematisk avhumanisering</strong> - Namn ersattes med nummer, allt personligt togs bort
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Tvångsarbete och svält</strong> - Arbeta tills man inte orkade mer
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/>
+          </svg>
+          <strong>Selektion</strong> - Vid ankomsten bestämdes vem som fick leva och vem som dog
+        </div>
+        <aside class="notes">
+          Kort och saklig. "Syftet var att bryta ner människor - ta bort allt som gjorde dem till individer. Namn, kläder, hår, familj." Förbered eleverna på vittnesmålet. Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Vittnesmål -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad berättar de som <span class="gradient-text">överlevde</span>?</h2>
+        <div class="source-analysis">
+          <blockquote class="source-quote">
+            "De som inte har upplevt det kan aldrig förstå det. Och de som har upplevt det kan aldrig förklara det."
+          </blockquote>
+          <div class="source-meta">
+            <span>Elie Wiesel, överlevande från Auschwitz och Buchenwald</span>
+          </div>
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.85em; margin-top: 1.5em;">Trots det försökte de berätta - för att vi aldrig ska glömma</p>
+        <aside class="notes">
+          Läs citatet högt, långsamt. Ge 30 sekunders tystnad. "Elie Wiesel var 15 år när han kom till Auschwitz. Han tillbringade resten av sitt liv med att vittna om vad han upplevt." Övergång till det längre vittnesmålet som läses högt. Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Varför är det viktigt att lyssna på vittnesmål?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Vad tillför en personlig berättelse som siffror inte kan?
+        </p>
+        <aside class="notes">
+          Viktig diskussion om vittnesmålens funktion. Siffror visar omfattningen, men vittnesmål gör det mänskligt. Det hjälper oss att förstå vad som verkligen hände. Samla 3-4 svar. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Omvärldens ansvar -->
+      <section data-background-color="#0d0d14">
+        <h2>Visste <span class="gradient-text">omvärlden</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <strong>Information fanns</strong> - Rapporter om massmord nådde omvärlden redan 1942
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Eviankonferensen 1938</strong> - 32 länder möttes, nästan ingen ville ta emot flyktingar
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Passivitet</strong> - Förintelsen skedde inte i hemlighet - men för få agerade
+        </div>
+        <aside class="notes">
+          "Förintelsen skedde inte i ett vakuum. Omvärlden visste - kanske inte allt, men tillräckligt. Eviankonferensen är en skamfläck: 32 länder samlades, men nästan ingen öppnade sina gränser." Nyckelformulering: "Frågan är inte bara hur det kunde hända - utan varför ingen stoppade det." Tid: 1.5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Varför agerade man inte? -->
+      <section data-background-color="#0d0d14">
+        <h2>Varför agerade <span class="gradient-text">ingen</span> kraftfullare?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/>
+          </svg>
+          <strong>Egenintresse</strong> - Att ta emot flyktingar var politiskt impopulärt
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <strong>Kriget prioriterades</strong> - "Vi vinner kriget först, sedan tar vi hand om offren"
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent3)">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <strong>Antisemitism fanns överallt</strong> - Inte bara i Tyskland utan i hela Europa
+        </div>
+        <aside class="notes">
+          "Det vore bekvämt att skylla allt på nazisterna. Men fördomar mot judar fanns i hela Europa. Många länder stängde sina gränser. Det ansvar delar fler." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Discussion -->
+      <section data-background="linear-gradient(135deg, #c45e3a 0%, #8b3a25 50%, #0d0d14 100%)">
+        <span class="discuss-badge"><span class="pulse-dot"></span> 2 minuter</span>
+        <h2 style="color: white; font-size: 1.8em;">Hade Förintelsen kunnat stoppas?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">
+          Tänk på både inre faktorer (ideologi, byråkrati) och yttre (omvärldens passivitet).
+        </p>
+        <aside class="notes">
+          Nyckelsdiskussion. Ingen enkel svar. Stoppas helt? Kanske inte. Minskas i omfattning? Troligen ja - om fler gränser öppnats, om lägren bombats, om protester hade kommit tidigare. Samla 3-4 svar. Betona komplexiteten. Tid: 2 min diskussion + 1 min genomgång.
+        </aside>
+      </section>
+
+      <!-- Slide 9: Aldrig igen -->
+      <section data-background-color="#0d0d14">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.4em;" class="glow">
+          <span class="gradient-text">Aldrig igen</span>
+        </h2>
+        <p style="color: var(--color-text); font-size: 1em; max-width: 600px; margin: 0.5em auto;">Orden som världen sa efter Förintelsen. Men har vi hållit löftet?</p>
+        <aside class="notes">
+          "Efter Förintelsen sa världen 'aldrig igen'. Det ledde till FN:s förklaring om mänskliga rättigheter. Men folkmord har skett igen - Rwanda, Srebrenica, Darfur. Frågan är inte om det KAN hända igen, utan vad VI gör för att det inte SKA hända." Tid: 1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 10: Sammanfattning -->
+      <section data-background-color="#0d0d14">
+        <h2>Vad tar ni med er <span class="gradient-text">idag</span>?</h2>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent)">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <strong>Vittnesmål</strong> - Gör siffrorna mänskliga, hjälper oss förstå
+        </div>
+        <div class="glass-card fragment">
+          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent2)">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <strong>Omvärldens ansvar</strong> - Passivitet möjliggjorde Förintelsen
+        </div>
+        <p class="fragment" style="color: var(--color-muted); font-size: 0.8em; margin-top: 1.5em;">Nu: Skriftlig reflektion - "Hur kunde Förintelsen ske?"</p>
+        <aside class="notes">
+          Övergång till den skriftliga reflektionen. "Skriv med stöd av vittnesmålet och det ni lärt er. Använd minst två förklaringar." Dela ut skrivmall med stödstruktur. Tid: 30 sek.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controls: true,
+      progress: true
+    });
+  </script>
+</body>
+</html>

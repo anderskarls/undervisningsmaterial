@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worked example — Så börjar jag skriva | L6</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f1a; --color-text: #e8e8f0; --color-heading: #ffffff;
+      --color-accent: #ff6b6b; --color-accent2: #4ecdc4; --color-accent3: #ffe66d;
+      --color-surface: rgba(255,255,255,0.06); --color-muted: rgba(255,255,255,0.5);
+      --color-border: rgba(255,255,255,0.1);
+    }
+    .reveal { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 26px; color: var(--color-text); }
+    .reveal .slides section { background: var(--color-bg); text-align: left; }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--color-heading); text-transform: none; font-weight: 800; letter-spacing: -0.03em; }
+    .reveal h2 { font-size: 1.7em; margin-bottom: 0.5em; }
+    .reveal p, .reveal li { line-height: 1.5; }
+    .gradient-text { background: linear-gradient(135deg, var(--color-accent), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-2 { background: linear-gradient(135deg, var(--color-accent2), var(--color-accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glass-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1em 1.3em; text-align: left; margin: 0.5em 0; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+    .discuss-badge { display: inline-flex; background: rgba(255,230,109,0.2); color: var(--color-accent3); padding: 0.3em 1em; border-radius: 24px; font-size: 0.6em; font-weight: 600; margin-bottom: 0.8em; text-transform: uppercase; letter-spacing: 0.1em; }
+    .draft { background: rgba(255,255,255,0.04); border-left: 3px solid var(--color-accent); padding: 1em 1.3em; margin: 0.8em 0; font-size: 0.75em; line-height: 1.6; border-radius: 0 10px 10px 0; }
+    .draft.liberal { border-left-color: var(--color-accent2); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin-top: 1em; }
+    .annot { background: rgba(255,230,109,0.08); color: var(--color-accent3); font-size: 0.65em; padding: 0.3em 0.8em; border-radius: 6px; margin-top: 0.3em; font-style: italic; }
+    .hi { background: rgba(255,107,107,0.2); padding: 0 0.3em; border-radius: 3px; color: var(--color-accent3); }
+    .hi2 { background: rgba(78,205,196,0.2); padding: 0 0.3em; border-radius: 3px; color: var(--color-accent2); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1 -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <span class="discuss-badge">Worked example — L6</span>
+        <h2>Så <span class="gradient-text">börjar</span> jag skriva</h2>
+        <p style="font-size: 0.85em; margin-top: 1em;">
+          Ett gemensamt objekt. Två format. Samma analyskrav.
+        </p>
+        <p style="color: var(--color-muted); font-size: 0.7em; margin-top: 1.5em;">
+          Exempel: <strong>kaffekoppen</strong>. Frågeställning: Var placerar sig morgonkaffet i världssystemet — och vilka aktörer vinner respektive förlorar?
+        </p>
+        <aside class="notes">
+          Introducera worked example. Säg: "Jag tar ETT objekt — kaffekoppen — och visar er hur JAG skulle börja både en text och en muntlig presentation. Titta på strukturen, inte innehållet."
+
+          Tid: ~1 min.
+        </aside>
+      </section>
+
+      <!-- Slide 2: Strukturen -->
+      <section data-background-color="#0f0f1a">
+        <h2>Strukturen — <span class="gradient-text">samma för båda</span></h2>
+        <div class="glass-card">
+          <strong style="color: var(--color-accent);">1. Inledning</strong>: Objektet. Frågan. Varför den är relevant. Teorierna kort.
+        </div>
+        <div class="glass-card">
+          <strong style="color: var(--color-accent);">2. Huvudanalys</strong>: Flerskalanalys (individ → Sverige → värld) genom Held + Wallerstein + realism/liberalism.
+        </div>
+        <div class="glass-card">
+          <strong style="color: var(--color-accent);">3. Värdering</strong>: Styrkor och svagheter hos teorierna. Vad förklarade bäst, vad missade?
+        </div>
+        <div class="glass-card">
+          <strong style="color: var(--color-accent);">4. Slutsats</strong>: Svar på frågan. Egen ståndpunkt med argument.
+        </div>
+        <aside class="notes">
+          Visa strukturen. Säg: "Detta är samma struktur för text och muntligt. Skillnaden är HUR ni uttrycker er — inte VAD ni säger."
+
+          Tid: ~1,5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Skriftligt — inledning -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge">Skriftligt — inledning</span>
+        <h2>Så låter <span class="gradient-text">texten</span></h2>
+        <div class="draft">
+          <p>Varje morgon dricker jag en kopp kaffe. För mig är det ren rutin — 4 minuter vid spisen, knappt medveten om vad jag håller i. Men den här analysen utgår från att <span class="hi">kaffekoppen är ett världssystem komprimerat till 5 deciliter</span>. Kaffebönorna kommer från Etiopien eller Brasilien, koppen är tillverkad i Kina, mjölken är svensk, varumärket är amerikanskt eller svenskt.</p>
+          <p>Syftet med denna text är att analysera kaffekoppens roll genom tre skalor — <span class="hi2">individuell vardag, svensk kontext och global marknad</span> — med hjälp av tre samhällsvetenskapliga teorier: globaliseringsdimensioner (Held m.fl.), centrum-periferi-modellen (Wallerstein) samt realism och liberalism. Frågeställningen är: <em>Var placerar sig morgonkaffet i världssystemet, och vilka aktörer vinner respektive förlorar?</em></p>
+        </div>
+        <div class="annot">
+          Notera: konkret vardagsbild → akademiskt påstående → frågeställning + teorier. Tre drag.
+        </div>
+        <aside class="notes">
+          Läs texten högt. Peka på de tre dragen:
+          1. Konkret vardagsbild öppnar (engagerar läsaren)
+          2. Akademisk tes: "kaffekoppen är ett världssystem komprimerat" (signalerar analys)
+          3. Frågeställning + teorier explicit (strukturerat)
+
+          Säg: "Notera: jag börjar INTE med 'Globalisering är ett begrepp som betyder...' Det är svag inledning. Jag börjar med ett konkret ögonblick."
+
+          Tid: ~3 min.
+        </aside>
+      </section>
+
+      <!-- Slide 4: Skriftligt — första analysstycket -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge">Skriftligt — första analysstycket</span>
+        <h2>Och så <span class="gradient-text">analysen</span></h2>
+        <div class="draft">
+          <p>På den <span class="hi">individuella skalan</span> är kaffekoppen en vardaglig ritual. Men redan här finns globaliseringens ekonomiska dimension — jag betalar 32 kronor i caféet, och pengarna fördelas längs en värdekedja som sträcker sig flera kontinenter. Enligt <span class="hi2">Wallersteins centrum-periferi-modell</span> är jag som konsument i periferin av värdekedjan för tid (jag lägger 4 minuter) men i centrum för värdet (en stor del av 32 kronorna går till varumärket och caféägaren, inte till bonden).</p>
+          <p>På den <span class="hi">svenska skalan</span> blir den politiska dimensionen synlig. Kaffeimport regleras av EU:s handelsavtal — ett exempel på den <span class="hi2">överstatlighet</span> Held beskriver. När EU förhandlar om Cotonou- eller Lomé-avtalen med afrikanska kaffeproducenter är det ett exempel på institutionell liberalism i praktiken...</p>
+        </div>
+        <div class="annot">
+          Notera: varje stycke introducerar SKALAN + minst en DIMENSION + minst en TEORI-referens + konkret exempel.
+        </div>
+        <aside class="notes">
+          Läs texten. Peka på mönstret: SKALA → DIMENSION → TEORI → EXEMPEL. Det är strukturen för varje analysstycke.
+
+          Säg: "Notera också hur jag nämner teoretikerna explicit — Wallerstein, Held. Det är bra för kunskapskraven E-C."
+
+          Tid: ~3 min.
+        </aside>
+      </section>
+
+      <!-- Slide 5: Muntligt — öppning -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge">Muntligt — öppning</span>
+        <h2>Så låter det <span class="gradient-text-2">sagt</span></h2>
+        <div class="draft liberal">
+          <p>[Håller upp kaffekopp]</p>
+          <p>"<strong>Den här koppen kaffe.</strong> Jag dricker den i morse. 4 minuter. 32 kronor. Det är morgonens lilla lyx, men jag tänker sällan på vad som händer <em>runt</em> koppen."</p>
+          <p>[Paus — ser på publiken]</p>
+          <p>"Idag ska jag visa er att den här koppen är... ett <strong>helt världssystem</strong>. Komprimerat till 5 deciliter. Jag ska använda tre samhällsvetenskapliga teorier för att analysera kaffet — först på min egen nivå, sedan på Sverige, sedan globalt."</p>
+          <p>[Klickar till nästa slide: en kaffeböna i Etiopien]</p>
+          <p>"Det börjar på en höglänt farm i Etiopien..."</p>
+        </div>
+        <div class="annot">
+          Notera: fysiskt objekt + konkret siffra + paus + tes + övergång till konkret bild.
+        </div>
+        <aside class="notes">
+          Läs som en presentation — med pauser och gester. Säg: "Se hur muntligt har sin egen rytm. PAUSER är kraftfulla. Fysiska objekt likaså. Om ni har objekt — ta med det!"
+
+          Tid: ~3 min.
+        </aside>
+      </section>
+
+      <!-- Slide 6: Muntligt — struktur med slides -->
+      <section data-background-color="#0f0f1a">
+        <span class="discuss-badge">Muntligt — visuell stödstruktur</span>
+        <h2>Slides som <span class="gradient-text-2">stöd</span>, inte manus</h2>
+        <div class="two-col">
+          <div class="glass-card">
+            <strong style="color: var(--color-accent2);">Gör</strong><br>
+            <ul style="font-size: 0.7em; margin-top: 0.4em;">
+              <li>Stor bild per slide</li>
+              <li>Max 3 nyckelord</li>
+              <li>Kartor för världsskala</li>
+              <li>Citat som landmärken</li>
+            </ul>
+          </div>
+          <div class="glass-card">
+            <strong style="color: var(--color-accent);">Gör inte</strong><br>
+            <ul style="font-size: 0.7em; margin-top: 0.4em;">
+              <li>Läsa av texten</li>
+              <li>Mer än 30 ord per slide</li>
+              <li>Punktlistor med hela meningar</li>
+              <li>Små siffror i tabeller</li>
+            </ul>
+          </div>
+        </div>
+        <p style="color: var(--color-muted); font-size: 0.7em; margin-top: 1em;">
+          8-10 slides för en 8-10-min presentation. En bild per min som grov regel.
+        </p>
+        <aside class="notes">
+          Ge praktiska tips. Säg: "Om ni väljer muntligt — använd slides som landmärken. Inte som manus. Manuset finns i ert huvud."
+
+          Tid: ~2 min.
+        </aside>
+      </section>
+
+      <!-- Slide 7: Vad som skiljer och vad som delar -->
+      <section data-background-color="#0f0f1a">
+        <h2>Samma <span class="gradient-text">krav</span>, olika <span class="gradient-text-2">uttryck</span></h2>
+        <div class="two-col">
+          <div class="glass-card">
+            <strong>Båda kräver</strong>
+            <ul style="font-size: 0.7em; margin-top: 0.4em;">
+              <li>Alla 3 skalor</li>
+              <li>Alla 3 teorier använda</li>
+              <li>Minst 2 källor (1 akademisk/kvalitativ)</li>
+              <li>Styrkor/svagheter hos teori</li>
+              <li>Egen ståndpunkt med argument</li>
+            </ul>
+          </div>
+          <div class="glass-card">
+            <strong>Det som skiljer</strong>
+            <ul style="font-size: 0.7em; margin-top: 0.4em;">
+              <li>Text: 2-3 sidor, exakt språk, källhänvisning löpande</li>
+              <li>Muntligt: 8-10 min + frågor, tonfall, pauser, visuellt stöd</li>
+            </ul>
+          </div>
+        </div>
+        <p style="color: var(--color-accent3); font-size: 0.75em; margin-top: 1em;">
+          Samma analys. Olika röst.
+        </p>
+        <aside class="notes">
+          Tydliggör att kunskapskraven ÄR desamma. Skillnaden är format, inte innehåll.
+
+          Svara på förväntad fråga: "Men är inte muntligt lättare?" — Nej, det är bara annorlunda. Det är faktiskt svårare att hålla stringens i 10 min muntligt än i 2 sidor text.
+
+          Tid: ~1,5 min.
+        </aside>
+      </section>
+
+      <!-- Slide 8: Avslutning -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="text-align: center;">Nu är det <span class="gradient-text">er tur</span></h2>
+        <p style="text-align: center; font-size: 0.9em; color: var(--color-text); max-width: 700px; margin: 1em auto;">
+          Välj objekt. Välj format. Skriv frågeställning.<br>
+          <strong>Till L7: första utkast + 2 källor.</strong>
+        </p>
+        <p style="text-align: center; color: var(--color-muted); font-size: 0.7em; margin-top: 2em;">
+          Ni behöver inte ha allt klart. Ni behöver ha <strong style="color: var(--color-accent3);">något</strong>.
+        </p>
+        <aside class="notes">
+          Avsluta modelleringspresentationen. Eleverna har nu sett:
+          - Strukturen (4 delar)
+          - Hur en skriftlig inledning kan låta
+          - Hur en skriftlig analysdel kan låta
+          - Hur en muntlig öppning kan låta
+          - Tips för slides
+          - Vad som delas, vad som skiljer
+
+          Byt tillbaka till huvudpresentationen och fortsätt med fas 4 (parvis analys).
+
+          Tid: ~30 sek.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true, slideNumber: 'c/t', width: 1280, height: 720,
+      margin: 0.05, transition: 'slide', transitionSpeed: 'default',
+      controls: true, progress: true
+    });
+  </script>
+</body>
+</html>

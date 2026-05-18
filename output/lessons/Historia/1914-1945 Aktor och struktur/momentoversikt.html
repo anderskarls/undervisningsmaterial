@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historia 1b — 1914–1945 genom aktör- och strukturperspektivet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf6f0;
+    --surface: #ffffff;
+    --text: #2a1f18;
+    --text-dim: #6b5e54;
+    --accent: #c44536;
+    --accent-soft: #e8a889;
+    --accent-deep: #8b2d1e;
+    --border: #e8dccf;
+    --gold: #c9a86a;
+    --shadow: 0 2px 8px rgba(43, 29, 22, 0.06), 0 16px 40px rgba(43, 29, 22, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  header.hero {
+    background: linear-gradient(135deg, #2a1f18 0%, #5a2a1c 50%, #8b2d1e 100%);
+    color: #faf6f0;
+    padding: 3.5rem 1.5rem 3rem;
+    border-radius: 0 0 24px 24px;
+    margin: -2rem -1.5rem 3rem -1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 85% 20%, rgba(201, 168, 106, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-content {
+    max-width: 840px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  header.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 1rem;
+    color: #faf6f0;
+  }
+  header.hero p.lead {
+    font-size: 1.15rem;
+    max-width: 640px;
+    color: rgba(250, 246, 240, 0.9);
+    margin-bottom: 1.5rem;
+  }
+  header.hero .period {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    background: rgba(250, 246, 240, 0.12);
+    border: 1px solid rgba(201, 168, 106, 0.3);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .stora-fragan {
+    background: var(--surface);
+    border-left: 4px solid var(--accent);
+    padding: 1.75rem 1.75rem 1.75rem 2rem;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+  }
+  .stora-fragan .label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .stora-fragan p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--text);
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    color: var(--accent-deep);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  section h2::before {
+    content: '';
+    width: 6px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 3px;
+  }
+  .mal-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .mal-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .mal-nummer {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 2.5rem;
+  }
+  .mal-text {
+    flex: 1;
+    color: var(--text);
+  }
+  .lektion-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .lektion-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .lektion {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(43, 29, 22, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .lektion:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .lektion-head {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.85rem;
+  }
+  .lektion-nummer {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent);
+    width: 2.4rem;
+    height: 2.4rem;
+    background: linear-gradient(135deg, rgba(196, 69, 54, 0.1), rgba(232, 168, 137, 0.1));
+    border: 1px solid var(--accent-soft);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .lektion-datum {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    background: var(--bg);
+    padding: 0.25rem 0.65rem;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+  }
+  .lektion h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.65rem;
+    color: var(--text);
+    flex-grow: 0;
+  }
+  .lektion p.innehall {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 0.85rem;
+    flex-grow: 1;
+  }
+  .forberedelse {
+    background: rgba(201, 168, 106, 0.1);
+    border: 1px solid rgba(201, 168, 106, 0.3);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-top: auto;
+  }
+  .forberedelse strong {
+    color: var(--accent-deep);
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  footer .course {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .placeholder {
+    color: var(--accent);
+    font-style: italic;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="hero-content">
+      <span class="kicker">Historia 1b · Moment 10 av 10</span>
+      <h1>1914–1945 — Aktör och struktur</h1>
+      <p class="lead">Perioden 1914–1945 var den blodigaste i mänsklighetens historia. Två världskrig, Förintelsen, totalitära ideologier. Tillsammans ska vi försöka förstå varför — och vi ska göra det med ett verktyg som historiker själva använder.</p>
+      <span class="period"><span class="placeholder">[Fyll i startdatum – slutdatum]</span></span>
+    </div>
+  </header>
+
+  <div class="stora-fragan">
+    <div class="label">Den stora frågan</div>
+    <p>"Vem bär ansvaret för krigens katastrofer — människorna som fattade besluten, eller de krafter som drev dem?"</p>
+  </div>
+
+  <section>
+    <h2>Vad du ska kunna efter momentet</h2>
+    <div class="mal-grid">
+      <div class="mal-item">
+        <div class="mal-nummer">1</div>
+        <div class="mal-text">Berätta om vad som hände 1914–1945 — de två världskrigen, mellankrigstiden och Förintelsen — och hur händelserna hänger ihop.</div>
+      </div>
+      <div class="mal-item">
+        <div class="mal-nummer">2</div>
+        <div class="mal-text">Analysera varför krigen bröt ut, både genom att titta på enskilda personers beslut (aktörer) och de större krafterna som formade dem (strukturer).</div>
+      </div>
+      <div class="mal-item">
+        <div class="mal-nummer">3</div>
+        <div class="mal-text">Resonera om Förintelsen som en process — hur diskriminering stegvis blev till folkmord — och om förövares, åskådares och offers olika roller.</div>
+      </div>
+      <div class="mal-item">
+        <div class="mal-nummer">4</div>
+        <div class="mal-text">Använda historiska begrepp säkert: imperialism, nationalism, totalitarism, ideologi, appeasement, genocid.</div>
+      </div>
+      <div class="mal-item">
+        <div class="mal-nummer">5</div>
+        <div class="mal-text">Jämföra olika sätt att förklara historien — är det människorna eller krafterna som styr? — och ta ett eget ställningstagande.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lektionerna</h2>
+    <div class="lektion-grid">
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">1</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Aktör eller struktur? Den stora frågan</h3>
+        <p class="innehall">Vi bygger det analytiska verktyget vi ska använda hela momentet. Du får prova det på fyra konkreta historiska fall och en tidslinje över perioden.</p>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">2</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>FVK: Vägen till katastrofen 1914</h3>
+        <p class="innehall">Var FVK verkligen bara ett skott i Sarajevo? Vi undersöker imperialism, nationalism och allianssystemet — och läser kejsar Wilhelms "blankocheck".</p>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">3</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Kriget som maskin: teknik, kön, kolonier</h3>
+        <p class="innehall">FVK drog in grupper som sällan syns i historien: kvinnor i ammunitionsfabriker, senegalesiska soldater i Europa. Vi möter tre röster från fronten.</p>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">4</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Fredens villkor: Versailles 1919</h3>
+        <p class="innehall">Marskalk Foch sa: "Detta är inte en fred. Detta är ett vapenstillestånd för 20 år." Vi undersöker varför — och läser både Versaillesfördraget och Keynes protest.</p>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">5</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Mellankrigstid: demokratikris och totalitarism</h3>
+        <p class="innehall">Hur kunde en demokratisk republik förvandlas till en nazistisk diktatur på 14 år? Vi jämför nazism och stalinism och undersöker totalitarismens gemensamma struktur.</p>
+        <div class="forberedelse"><strong>Förbered</strong>Läs igenom ordlistan från tidigare lektioner.</div>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">6</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Vägen till AVK: aggression och appeasement</h3>
+        <p class="innehall">September 1938: Storbritannien kunde ha stoppat Hitler. Varför gjorde man det inte? Vi läser Chamberlains "peace for our time" och den hemliga Molotov-Ribbentrop-pakten.</p>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">7</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>AVK som global katastrof</h3>
+        <p class="innehall">FVK var europeiskt. AVK var ett verkligt världskrig. 70 miljoner döda. Vi zoomar in på Stalingrad och förstår varför kriget blev så mycket mer förödande.</p>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">8</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Förintelsen I: Från utanförskap till Vernichtung</h3>
+        <p class="innehall">Momentets tyngsta lektion. Vi följer den stegvisa radikaliseringen 1933–1942 och läser Wannsee-protokollet. Vi närmar oss ämnet med seriositet och respekt.</p>
+        <div class="forberedelse"><strong>Förbered dig känslomässigt</strong>Detta är ämnesmässigt krävande. Kom utvilad. Säg till om du känner obehag — det finns utrymme att pausa.</div>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">9</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Förintelsen II: Aktörer i ondskan</h3>
+        <p class="innehall">Reservpolisbataljon 101 — 500 vanliga män från Hamburg som mördade. Varför? Vi möter två historiker som är oense (Browning vs Goldhagen) och lyssnar på offrens röster (Primo Levi).</p>
+      </article>
+
+      <article class="lektion">
+        <div class="lektion-head">
+          <div class="lektion-nummer">10</div>
+          <span class="lektion-datum placeholder">[Datum]</span>
+        </div>
+        <h3>Syntes: Vem bär ansvaret?</h3>
+        <p class="innehall">Examination. Du besvarar den stora frågan med en skriftlig analys. Du använder allt du lärt dig — matrisen, begreppen, källorna.</p>
+        <div class="forberedelse"><strong>Förbered</strong>Ta med din aktör/struktur-matris och begreppsordlista från hela momentet. Repetera kort över helgen.</div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Så arbetar vi</h2>
+    <div class="mal-item" style="grid-column: 1 / -1;">
+      <div class="mal-text">
+        Varje lektion följer samma struktur: vi börjar med en <strong>återkoppling</strong> till förra lektionen, går igenom <strong>nytt innehåll</strong>, arbetar tillsammans med en <strong>primärkälla</strong> (ett dokument, bild eller vittnesmål från tiden), och avslutar med en <strong>exit ticket</strong> — en kort fråga som visar vad du förstått.
+        <br><br>
+        Under momentet fyller du på två verktyg som du bär med dig: en <strong>aktör/struktur-matris</strong> där du samlar din analys, och en <strong>begreppsordlista</strong> med dina egna definitioner av nyckelorden. Dessa blir dina bästa vänner i slutexaminationen.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="course">Historia 1b</div>
+    <div>MEK24B · <span class="placeholder">[Lärarens namn]</span></div>
+    <div style="margin-top: 0.8rem; font-size: 0.8rem;">Senast uppdaterad: april 2026</div>
+  </footer>
+</main>
+</body>
+</html>
