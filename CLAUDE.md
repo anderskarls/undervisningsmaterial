@@ -145,12 +145,16 @@ Använd `[[basnamn]]`-länkar (Obsidian löser dem på basnamn, inte sökväg). 
 output/
 ├── lessons/       Pedagogiska moment per ämne (samhällskunskap, historia, juridik, ...)
 │                  Varje moment = egen mapp med momentplan.md, lektion-N.md, presentation-N.html, etc.
+│                  _kursminne/ - momentplanering-pluginens kursminnen (en fil per kurs, syncas via vaultet)
 └── articles/      Publicerade eller drafter
 ```
 
 När en lektion produceras: använd kunskapen från wikin (concepts, topics, sources) som källa, men SKRIV INTE TILLBAKA till wikin från outputmappen. Wikin ackumuleras genom ingest av källor och nya synteser.
 
-**Filleverans:** När du skapar en fil på användarens begäran, ge full sökväg och öppna mappen i Finder: `open /sökväg/till/mapp`.
+**Filleverans:** När du skapar en fil på användarens begäran, ge full sökväg och öppna mappen i plattformens filhanterare:
+- macOS: `open /sökväg/till/mapp`
+- Linux: `xdg-open /sökväg/till/mapp`
+- Windows: `explorer C:\sökväg\till\mapp`
 
 ---
 
@@ -199,9 +203,9 @@ Skills (`/<namn>`):
 
 ## Konfiguration
 
-Vault-sökväg och systeminställningar laddas från `.claude/settings.md`:
-- `VAULT_BASE_PATH="/home/anders/Second brain/"`
-- Agenter och skills använder `$VAULT_BASE_PATH` för att kunna byta vault enkelt
+Vault-sökväg och systeminställningar laddas från `.claude/settings.md`.
+Filen är lokal per maskin (gitignored, ligger i hidden-mapp som Obsidian Sync inte rör) och syncas inte mellan installationer.
+Agenter och skills använder `$VAULT_BASE_PATH` så samma kod fungerar på alla maskiner.
 
 ---
 
@@ -211,3 +215,19 @@ Idén är besläktad med Vannevar Bushs Memex (1945): en personlig, kurerad kuns
 
 Användarens roll: kurera källor, styra analys, ställa goda frågor, fundera på vad det betyder.
 LLM:ns roll: allt annat.
+
+---
+
+## Agent skills
+
+### Issue tracker
+
+Issues spåras som lokal markdown under `.scratch/<feature>/` i repot. Se `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Standardetiketterna används (needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix). Se `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` + `docs/adr/` i repo-roten (skapas lazily vid behov). Se `docs/agents/domain.md`.
