@@ -51,6 +51,9 @@ wiki/
 - `log.md` — append-only operationslogg (`## [YYYY-MM-DD] type | Beskrivning`)
 - `CHANGELOG.md` — semantisk versionshistorik för wikin
 
+### 4. `elevdata/` — Elevlägesbilden (egen livscykel)
+Pseudonymiserad elevdata (elevakter, observationer, undantagssynteser). Ackumuleras INTE som wiki-kunskap — gallras vid läsårsslut (ADR 0002). Endast Elev-ID, aldrig klarnamn (ADR 0001); nyckelfilen i `.secrets/elevnyckel/` läses ALDRIG av LLM. Slutsatser, inte rådata (ADR 0003) — färsk signaldata hämtas via pseudonymiseringsbryggan i `resources/elevlagesbild/`. Se `elevdata/README.md`. Skills: `/undantagssyntes` (veckokörning), `/observation` (infångning).
+
 ### Övrigt
 - `output/` — artefakter genererade FRÅN wikin (lektioner, slides, artiklar). Wikin är källan; output är leveranser.
 - `templates/` — Obsidian-mallar för nya råkällor (reflektioner, planeringar)
