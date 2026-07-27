@@ -52,7 +52,9 @@ wiki/
 - `CHANGELOG.md` — semantisk versionshistorik för wikin
 
 ### 4. `elevdata/` — Elevlägesbilden (egen livscykel)
-Pseudonymiserad elevdata (elevakter, observationer, undantagssynteser). Ackumuleras INTE som wiki-kunskap — gallras vid läsårsslut (ADR 0002). Endast Elev-ID, aldrig klarnamn (ADR 0001); nyckelfilen i `.secrets/elevnyckel/` läses ALDRIG av LLM. Slutsatser, inte rådata (ADR 0003) — färsk signaldata hämtas via pseudonymiseringsbryggan i `resources/elevlagesbild/`. Se `elevdata/README.md`. Skills: `/undantagssyntes` (veckokörning), `/observation` (infångning).
+Pseudonymiserad elevdata (elevakter, observationer, undantagssynteser). Ackumuleras INTE som wiki-kunskap — gallras vid läsårsslut (ADR 0002). Endast Elev-ID, aldrig klarnamn (ADR 0001); nyckelfilen i `.secrets/elevnyckel/` läses ALDRIG av LLM. Slutsatser, inte rådata (ADR 0003). Se `elevdata/README.md`.
+
+> **Status 2026-07-27 (verifierad på huvudmaskinen, Linux):** allt från bygget 2026-07-22 FINNS här - `resources/elevlagesbild/` (brygga, fetchers, koppla_classroom, uppslagslista), skillsen `/undantagssyntes` + `/observation`, `elevdata/HT26/` och `.secrets/elevnyckel/` (mall + README; själva `nyckelfil.csv` är användarens manuella punkt). En tidigare not här hävdade motsatsen - den skrevs på en annan maskin dit `resources/`, `.claude/` och `.secrets/` inte syncats (Obsidian Sync tar inte dessa mappar). Regeln kvarstår: verifiera på disk innan du antar att bryggan finns, och improvisera ALDRIG en egen väg till källsystemen - hela bryggans syfte är att klarnamn aldrig når LLM:en.
 
 ### Övrigt
 - `output/` — artefakter genererade FRÅN wikin (lektioner, slides, artiklar). Wikin är källan; output är leveranser.

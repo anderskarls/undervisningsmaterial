@@ -11,7 +11,7 @@
       "namn": "MSA26B - Historia 1b",
       "grupp": "MSA26B",
       "classroom_course_id": null,
-      "survey_course_id": null
+      "survey_course_id": 12
     }
   ],
   "survey_cli": "/home/anders/go/bin/survey-platform-pp-cli",
