@@ -3,3 +3,7 @@ node_modules/
 .secrets/
 obsidianplugin/
 .scratch/
+
+# Python-cache från vaultets skript
+__pycache__/
+*.pyc

@@ -194,6 +194,7 @@ Skills (`/<namn>`):
 - `/auto-discovery`, `/deep-research` — autonoma flöden
 - `/refresh-index`, `/self-diagnostic` — underhåll
 - `/planera-moment`, `/docx`, `/pptx`, `/slides`, `/html-momentoversikt` — pedagogiska artefakter
+- `/receptkort` — privat: recept ur kokbokssamlingen till PDF i `output/recept/` (verktyg i `resources/receptkort/`)
 
 ---
 
