@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sveriges demokratisering - Från ståndsriksdag till allmän rösträtt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <style>
+    :root {
+      --color-bg: #fafaf8;
+      --color-text: #1a1a1a;
+      --color-heading: #1a5276;
+      --color-accent: #e74c3c;
+      --color-muted: #7f8c8d;
+      --color-surface: #ffffff;
+      --color-border: #e0e0e0;
+      --color-secondary: #2e86c1;
+    }
+
+    .reveal {
+      font-family: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      color: var(--color-heading);
+      text-transform: none;
+      letter-spacing: -0.02em;
+    }
+
+    .reveal h2 {
+      font-size: 1.8em;
+      margin-bottom: 0.6em;
+    }
+
+    .reveal p, .reveal li {
+      line-height: 1.6;
+    }
+
+    .reveal ul, .reveal ol {
+      display: block;
+      text-align: left;
+    }
+
+    /* Tidslinje */
+    .timeline {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      position: relative;
+      padding: 2em 0;
+      margin-top: 1em;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      height: 3px;
+      background: var(--color-border);
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      max-width: 200px;
+    }
+
+    .timeline-year {
+      font-size: 1.4em;
+      font-weight: 700;
+      color: var(--color-accent);
+      background: var(--color-bg);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      margin-bottom: 0.5em;
+    }
+
+    .timeline-content {
+      text-align: center;
+      font-size: 0.85em;
+      color: var(--color-text);
+      background: var(--color-surface);
+      padding: 0.5em;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* Källkritik */
+    .source-analysis {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .source-quote {
+      font-size: 1.1em;
+      font-style: italic;
+      border-left: 4px solid var(--color-accent);
+      padding: 0.8em 1.2em;
+      margin: 1em 0;
+      background: rgba(0,0,0,0.02);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .source-meta {
+      display: flex;
+      gap: 1.5em;
+      font-size: 0.8em;
+      color: var(--color-muted);
+      margin-bottom: 1em;
+    }
+
+    .source-questions p {
+      font-size: 0.85em;
+      margin: 0.4em 0;
+    }
+
+    /* Jämförelsekolumner */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      margin-top: 1em;
+    }
+
+    .compare-col {
+      background: var(--color-surface);
+      padding: 1.5em;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-top: 3px solid var(--color-accent);
+    }
+
+    .compare-col h3 {
+      font-size: 1.1em;
+      margin-bottom: 0.5em;
+      color: var(--color-heading);
+    }
+
+    .compare-col ul {
+      font-size: 0.85em;
+    }
+
+    /* Stor siffra */
+    .big-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    .stat-number {
+      font-size: 4em;
+      font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 1.1em;
+      max-width: 600px;
+      text-align: center;
+      color: var(--color-text);
+    }
+
+    .stat-source {
+      font-size: 0.7em;
+      color: var(--color-muted);
+    }
+
+    /* Quiz */
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+      max-width: 700px;
+      margin: 1.5em auto;
+    }
+
+    .quiz-option {
+      padding: 1em 1.5em;
+      font-size: 0.9em;
+      border: 2px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-surface);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--color-accent);
+      transform: translateX(4px);
+    }
+
+    .quiz-option.correct {
+      border-color: #27ae60;
+      background: #eafaf1;
+    }
+
+    .quiz-option.incorrect {
+      border-color: #e74c3c;
+      background: #fdedec;
+      opacity: 0.7;
+    }
+
+    .quiz-feedback {
+      margin-top: 1em;
+      font-size: 0.85em;
+      color: var(--color-muted);
+      min-height: 1.5em;
+    }
+
+    /* Ikoner via emoji */
+    .slide-icon {
+      font-size: 2em;
+      margin-bottom: 0.3em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: Hook - öppning -->
+      <section data-background-gradient="linear-gradient(135deg, #1a5276 0%, #154360 50%, #0e2f44 100%)">
+        <h2 style="color: white; font-size: 2.2em;">Vem fick bestämma i Sverige - och vem fick inte?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.9em;" class="fragment">Resan från ståndsriksdag till allmän rösträtt</p>
+        <aside class="notes">
+          Öppna med frågan och låt den hänga i luften ett par sekunder. Fråga eleverna: "Vad tror ni - hur länge har alla svenskar fått rösta?" Låt några gissa innan ni går vidare. Poängen är att demokratin i Sverige är förhållandevis ung.
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: Stor siffra - kontextsättning -->
+      <section>
+        <div class="big-stat">
+          <span class="stat-number fragment">105 år</span>
+          <span class="stat-label fragment">Så länge har alla vuxna i Sverige haft rösträtt - först 1921 fick kvinnor rösta</span>
+          <span class="stat-source fragment">Riksdagsförvaltningen</span>
+        </div>
+        <aside class="notes">
+          Betona att 105 år inte är särskilt lång tid. Elevernas morföräldrars morföräldrar levde i ett samhälle utan allmän rösträtt. Det sätter den demokratiska utvecklingen i perspektiv - demokrati är inget vi alltid har haft.
+        </aside>
+      </section>
+
+      <!-- SLIDE 3: Hur styrdes Sverige före demokratin? -->
+      <section>
+        <h2>Hur styrdes Sverige före demokratin?</h2>
+        <div class="comparison">
+          <div class="compare-col fragment">
+            <h3>Ståndsriksdagen (till 1866)</h3>
+            <ul>
+              <li>Fyra stånd: adel, präster, borgare, bönder</li>
+              <li>Bara ståndens representanter fick besluta</li>
+              <li>Arbetare och fattiga stod helt utanför</li>
+            </ul>
+          </div>
+          <div class="compare-col fragment">
+            <h3>Tvåkammarriksdagen (1866-1971)</h3>
+            <ul>
+              <li>Första och Andra kammaren</li>
+              <li>Rösträtt kopplad till inkomst och egendom</li>
+              <li>Gradvis utvidgning av rösträtten</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          Förklara att ståndsriksdagen var ett system där din födsel avgjorde ditt politiska inflytande. Tvåkammarriksdagen var ett steg framåt, men fortfarande kunde bara rika män rösta. Fråga eleverna: "Vilka grupper saknade inflytande?" - svar: kvinnor, fattiga, unga.
+        </aside>
+      </section>
+
+      <!-- SLIDE 4: Diskussion 1 -->
+      <section data-background-color="#e74c3c">
+        <h2 style="color: white;">Diskutera (2 min)</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.1em;">
+          Varför tror ni att rösträtten var kopplad till hur mycket pengar man hade?
+        </p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.8em;">
+          Diskutera med din granne. Var beredd att dela med klassen.
+        </p>
+        <aside class="notes">
+          Ge eleverna exakt 2 minuter. Cirkulera och lyssna. Vanliga elevsvar kan vara "de rika ville behålla makten" eller "de tyckte att fattiga inte kunde fatta kloka beslut". Båda är bra ingångar - lyft ett par svar innan ni går vidare.
+        </aside>
+      </section>
+
+      <!-- SLIDE 5: Tidslinje -->
+      <section>
+        <h2>Vilka var de avgörande stegen mot demokrati?</h2>
+        <div class="timeline">
+          <div class="timeline-item fragment" data-fragment-index="1">
+            <div class="timeline-year">1866</div>
+            <div class="timeline-content">Ståndsriksdagen avskaffas - tvåkammarriksdagen införs</div>
+          </div>
+          <div class="timeline-item fragment" data-fragment-index="2">
+            <div class="timeline-year">1909</div>
+            <div class="timeline-content">Allmän rösträtt för män till Andra kammaren</div>
+          </div>
+          <div class="timeline-item fragment" data-fragment-index="3">
+            <div class="timeline-year">1919</div>
+            <div class="timeline-content">Riksdagen beslutar om kvinnlig rösträtt</div>
+          </div>
+          <div class="timeline-item fragment" data-fragment-index="4">
+            <div class="timeline-year">1921</div>
+            <div class="timeline-content">Första valet med allmän och lika rösträtt</div>
+          </div>
+        </div>
+        <aside class="notes">
+          Klicka fram ett årtal i taget. Betona att det tog 55 år från tvåkammarriksdagen till allmän rösträtt - demokratisering var en långsam process med stort motstånd. 1909 fick männen rösträtt men med inkomstgraderad rösträtt till Första kammaren. 1919 fattades beslutet om kvinnlig rösträtt och det första lika valet hölls 1921.
+        </aside>
+      </section>
+
+      <!-- SLIDE 6: Vilka drev på förändringen? -->
+      <section>
+        <h2>Vilka kämpade för rösträtten?</h2>
+        <ul>
+          <li class="fragment"><strong>Arbetarrörelsen</strong> - Fackföreningar och socialdemokraterna organiserade strejker och demonstrationer</li>
+          <li class="fragment"><strong>Rösträttsrörelsen</strong> - LKPR (Landsföreningen för kvinnans politiska rösträtt) med ledare som Anna Whitlock</li>
+          <li class="fragment"><strong>Liberala reformister</strong> - Politiker som Karl Staaff drev frågan i riksdagen</li>
+        </ul>
+        <aside class="notes">
+          Lyft att demokratiseringen inte "bara hände" utan var resultatet av organiserat motstånd och politisk kamp. Storstrejken 1909 var en viktig markering. LKPR grundades 1903 och arbetade systematiskt i nästan 20 år. Fråga: "Varför behövdes det folkrörelser - räckte det inte med att politikerna ville förändra?"
+        </aside>
+      </section>
+
+      <!-- SLIDE 7: Quiz -->
+      <section>
+        <h2>Vilket år fick kvinnor rösta för första gången i Sverige?</h2>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="checkAnswer(this, false)">
+            1909 - samma år som männen fick allmän rösträtt
+          </button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">
+            1919 - när riksdagen fattade beslutet
+          </button>
+          <button class="quiz-option" onclick="checkAnswer(this, true)">
+            1921 - första valet med allmän och lika rösträtt
+          </button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <aside class="notes">
+          Låt eleverna klicka eller räcka upp handen. Vanligt misstag är att blanda ihop 1919 (beslutet) med 1921 (första valet). Poängtera skillnaden: beslut fattas ett år, men genomförs vid nästa val.
+        </aside>
+      </section>
+
+      <!-- SLIDE 8: Diskussion 2 -->
+      <section data-background-color="#e74c3c">
+        <h2 style="color: white;">Diskutera (2 min)</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.1em;">
+          Finns det grupper i Sverige idag som saknar politiskt inflytande - trots att de har rösträtt?
+        </p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.8em;">
+          Tänk på vem som faktiskt påverkar beslut. Diskutera med din granne.
+        </p>
+        <aside class="notes">
+          Denna fråga kopplar historien till nutid. Eleverna kan ta upp: ungdomar under 18, utländska medborgare utan svenskt medborgarskap, grupper med lågt valdeltagande. Målet är att visa att formell rösträtt inte automatiskt betyder lika inflytande. Samla 2-3 svar i helklass.
+        </aside>
+      </section>
+
+      <!-- SLIDE 9: Källkritisk övning -->
+      <section>
+        <h2>Vad säger denna källa oss?</h2>
+        <div class="source-analysis">
+          <blockquote class="source-quote">
+            "Att ge kvinnorna rösträtt vore att undergräva familjen och samhällets grundvalar. Kvinnan är skapad för hemmet, icke för det politiska livet."
+          </blockquote>
+          <div class="source-meta">
+            <span class="source-author">Ur riksdagsdebatt, motståndare till kvinnlig rösträtt, ca 1912</span>
+            <span class="source-context">Debatt i Andra kammaren</span>
+          </div>
+          <div class="source-questions fragment">
+            <p><strong>Vem?</strong> En manlig riksdagsledamot som argumenterar mot kvinnlig rösträtt</p>
+            <p><strong>När?</strong> Tidigt 1900-tal, mitt i rösträttsstriden</p>
+            <p><strong>Syfte?</strong> Att övertyga andra ledamöter att rösta nej till kvinnlig rösträtt</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Visa citatet först och låt eleverna läsa det. Fråga: "Vad tycker ni om det här?" - reaktionerna brukar vara starka. Klicka sedan fram de källkritiska frågorna. Diskutera: Är detta en pålitlig källa för att förstå hur man tänkte på den tiden? Ja - den visar tydligt vilka argument som användes. Men den säger inget om vad alla tyckte. Betona att källkritik handlar om att förstå KONTEXTEN, inte bara om källan är "sann" eller "falsk".
+        </aside>
+      </section>
+
+      <!-- SLIDE 10: Källkritisk fördjupning -->
+      <section>
+        <h2>Vad kan vi lära av denna källa?</h2>
+        <ul>
+          <li class="fragment"><strong>Tendens:</strong> Avsändaren har ett tydligt syfte - att stoppa rösträtten. Det färgar argumenten.</li>
+          <li class="fragment"><strong>Tidsanda:</strong> Visar vilka värderingar som var vanliga - men inte alla delade dem.</li>
+          <li class="fragment"><strong>Maktperspektiv:</strong> Vem tjänade på att kvinnor inte fick rösta?</li>
+        </ul>
+        <aside class="notes">
+          Koppla till källkritiska begrepp som eleverna ska kunna: tendens, avsändare, syfte, representativitet. Fråga: "Om vi bara hade den här källan, vilken bild skulle vi få av debatten?" - svar: en ensidig bild. Därför behöver vi fler källor för att förstå historien. Det här är kärnan i källkritiskt tänkande.
+        </aside>
+      </section>
+
+      <!-- SLIDE 11: Sammanfattning -->
+      <section data-background-gradient="linear-gradient(135deg, #1a5276 0%, #154360 50%, #0e2f44 100%)">
+        <h2 style="color: white;">Vad tar vi med oss?</h2>
+        <ul style="color: rgba(255,255,255,0.9);">
+          <li class="fragment">Demokratin i Sverige byggdes steg för steg under mer än 50 år</li>
+          <li class="fragment">Den krävde folkrörelser, politisk kamp och modiga individer</li>
+          <li class="fragment">Att ha rösträtt och att ha verkligt inflytande är inte samma sak</li>
+        </ul>
+        <p class="fragment" style="color: rgba(255,255,255,0.6); font-size: 0.8em; margin-top: 1.5em;">
+          Nästa steg: Elevaktivitet om demokratins utmaningar idag
+        </p>
+        <aside class="notes">
+          Åtgå till öppningsfrågan: "Vem fick bestämma?" Koppla samman: från fyra stånd till alla medborgare. Betona att demokrati inte är ett avslutat projekt utan kräver ständigt underhåll. Påminn om att rösta i nästa val! Ge sedan instruktioner för elevaktiviteten som följer.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      transition: 'fade',
+      transitionSpeed: 'fast',
+      controls: true,
+      progress: true,
+      plugins: []
+    });
+
+    function checkAnswer(el, correct) {
+      var options = el.parentElement.querySelectorAll('.quiz-option');
+      options.forEach(function(opt) { opt.disabled = true; });
+
+      if (correct) {
+        el.classList.add('correct');
+        el.closest('section').querySelector('.quiz-feedback').textContent = 'Rätt! 1921 var första valet där alla vuxna svenskar fick rösta.';
+      } else {
+        el.classList.add('incorrect');
+        options.forEach(function(opt) {
+          if (opt.getAttribute('onclick').includes('true')) {
+            opt.classList.add('correct');
+          }
+        });
+        el.closest('section').querySelector('.quiz-feedback').textContent = 'Inte riktigt - se det gröna alternativet.';
+      }
+    }
+  </script>
+</body>
+</html>

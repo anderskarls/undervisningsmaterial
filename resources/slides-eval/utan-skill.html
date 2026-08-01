@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sveriges demokratisering - Från ståndsriksdag till allmän rösträtt</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .slide {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 4vh 6vw;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .slide.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  /* Slide counter */
+  .slide-counter {
+    position: fixed;
+    bottom: 1.5vh;
+    right: 2vw;
+    font-size: 1.2vw;
+    color: #888;
+    z-index: 100;
+  }
+
+  /* Navigation arrows */
+  .nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5vw;
+    color: rgba(255,255,255,0.3);
+    cursor: pointer;
+    z-index: 100;
+    user-select: none;
+    padding: 2vh 1vw;
+    transition: color 0.3s;
+  }
+  .nav-arrow:hover { color: rgba(255,255,255,0.7); }
+  .nav-left { left: 0.5vw; }
+  .nav-right { right: 0.5vw; }
+
+  /* Title slide */
+  .title-slide { background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%); }
+  .title-slide h1 {
+    font-size: 4.5vw;
+    font-weight: 700;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 2vh;
+    line-height: 1.2;
+  }
+  .title-slide .subtitle {
+    font-size: 2vw;
+    color: #aabbdd;
+    text-align: center;
+    margin-bottom: 4vh;
+  }
+  .title-slide .meta {
+    font-size: 1.3vw;
+    color: #7788aa;
+    text-align: center;
+  }
+  .crown-icon {
+    font-size: 6vw;
+    margin-bottom: 2vh;
+  }
+
+  /* Content slides */
+  .content-slide {
+    background: linear-gradient(160deg, #16213e 0%, #1a1a2e 100%);
+    align-items: flex-start;
+    padding: 5vh 8vw;
+  }
+
+  .content-slide h2 {
+    font-size: 3.2vw;
+    color: #ffd700;
+    margin-bottom: 3vh;
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 1.5vh;
+  }
+
+  .content-slide ul {
+    list-style: none;
+    width: 100%;
+  }
+
+  .content-slide ul li {
+    font-size: 1.8vw;
+    line-height: 1.6;
+    margin-bottom: 1.8vh;
+    padding-left: 2vw;
+    position: relative;
+  }
+
+  .content-slide ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+  }
+
+  .content-slide p {
+    font-size: 1.8vw;
+    line-height: 1.7;
+    margin-bottom: 2vh;
+    width: 100%;
+  }
+
+  /* Two column layout */
+  .two-col {
+    display: flex;
+    gap: 4vw;
+    width: 100%;
+    flex: 1;
+    align-items: flex-start;
+  }
+  .two-col .col {
+    flex: 1;
+  }
+  .two-col .col h3 {
+    font-size: 2vw;
+    color: #64b5f6;
+    margin-bottom: 2vh;
+  }
+  .two-col .col ul li {
+    font-size: 1.6vw;
+  }
+
+  /* Timeline styles */
+  .timeline-slide {
+    background: linear-gradient(160deg, #16213e 0%, #1a1a2e 100%);
+    padding: 4vh 4vw;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .timeline-slide h2 {
+    font-size: 3vw;
+    color: #ffd700;
+    margin-bottom: 3vh;
+    text-align: center;
+  }
+
+  .timeline-container {
+    position: relative;
+    width: 88vw;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 2vw;
+    right: 2vw;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #64b5f6, #ffd700);
+    transform: translateY(-50%);
+  }
+
+  .timeline-events {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0 2vw;
+  }
+
+  .timeline-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 12vw;
+  }
+
+  .timeline-event.above .event-content {
+    order: -1;
+    margin-bottom: 2vh;
+  }
+  .timeline-event.below .event-content {
+    margin-top: 2vh;
+  }
+
+  .event-dot {
+    width: 1.5vw;
+    height: 1.5vw;
+    border-radius: 50%;
+    background: #ffd700;
+    border: 3px solid #16213e;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .event-content {
+    text-align: center;
+  }
+
+  .event-year {
+    font-size: 1.8vw;
+    font-weight: 700;
+    color: #ffd700;
+  }
+
+  .event-text {
+    font-size: 1.1vw;
+    color: #ccc;
+    max-width: 11vw;
+    line-height: 1.3;
+    margin-top: 0.5vh;
+  }
+
+  /* Discussion slide */
+  .discussion-slide {
+    background: linear-gradient(160deg, #1b2838 0%, #1a1a2e 100%);
+    padding: 5vh 8vw;
+    align-items: flex-start;
+  }
+
+  .discussion-slide h2 {
+    font-size: 3.2vw;
+    color: #ffd700;
+    margin-bottom: 3vh;
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 1.5vh;
+  }
+
+  .discussion-questions {
+    width: 100%;
+  }
+
+  .discussion-question {
+    background: rgba(100, 181, 246, 0.1);
+    border-left: 4px solid #64b5f6;
+    padding: 2vh 2vw;
+    margin-bottom: 2.5vh;
+    border-radius: 0 8px 8px 0;
+    font-size: 1.8vw;
+    line-height: 1.5;
+  }
+
+  .discussion-question .q-number {
+    color: #64b5f6;
+    font-weight: 700;
+    margin-right: 0.5vw;
+  }
+
+  .discussion-instruction {
+    font-size: 1.4vw;
+    color: #aaa;
+    margin-top: 2vh;
+    font-style: italic;
+  }
+
+  /* Quote / source slide */
+  .source-slide {
+    background: linear-gradient(160deg, #1e2d3d 0%, #1a1a2e 100%);
+    padding: 5vh 8vw;
+    align-items: flex-start;
+  }
+
+  .source-slide h2 {
+    font-size: 3.2vw;
+    color: #ffd700;
+    margin-bottom: 3vh;
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 1.5vh;
+  }
+
+  .quote-box {
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    padding: 3vh 3vw;
+    width: 100%;
+    margin-bottom: 3vh;
+    position: relative;
+  }
+
+  .quote-box::before {
+    content: '\201D';
+    font-size: 5vw;
+    color: rgba(255, 215, 0, 0.3);
+    position: absolute;
+    top: -1vh;
+    left: 1.5vw;
+    line-height: 1;
+  }
+
+  .quote-text {
+    font-size: 1.8vw;
+    font-style: italic;
+    line-height: 1.6;
+    padding-left: 2vw;
+    color: #e8e8e8;
+  }
+
+  .quote-attribution {
+    font-size: 1.3vw;
+    color: #aaa;
+    text-align: right;
+    margin-top: 1.5vh;
+    padding-right: 1vw;
+  }
+
+  .source-questions h3 {
+    font-size: 2vw;
+    color: #64b5f6;
+    margin-bottom: 1.5vh;
+  }
+
+  .source-questions ul li {
+    font-size: 1.6vw;
+    margin-bottom: 1.2vh;
+  }
+
+  /* Highlight boxes */
+  .highlight-box {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 10px;
+    padding: 2.5vh 2.5vw;
+    width: 100%;
+    margin: 1.5vh 0;
+  }
+
+  .highlight-box h3 {
+    color: #ffd700;
+    font-size: 2vw;
+    margin-bottom: 1vh;
+  }
+
+  /* Emoji labels */
+  .emoji-label {
+    font-size: 2vw;
+    margin-right: 0.5vw;
+  }
+
+  /* Summary slide */
+  .summary-slide {
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+    padding: 5vh 8vw;
+    align-items: flex-start;
+  }
+
+  .summary-slide h2 {
+    font-size: 3.2vw;
+    color: #ffd700;
+    margin-bottom: 3vh;
+    width: 100%;
+    text-align: center;
+  }
+
+  .takeaways {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .takeaway-card {
+    background: rgba(100, 181, 246, 0.1);
+    border: 1px solid rgba(100, 181, 246, 0.3);
+    border-radius: 12px;
+    padding: 2.5vh 2vw;
+    width: 26vw;
+    text-align: center;
+  }
+
+  .takeaway-card .card-icon {
+    font-size: 3vw;
+    margin-bottom: 1vh;
+  }
+
+  .takeaway-card h3 {
+    font-size: 1.6vw;
+    color: #64b5f6;
+    margin-bottom: 1vh;
+  }
+
+  .takeaway-card p {
+    font-size: 1.3vw;
+    line-height: 1.5;
+    color: #ccc;
+  }
+
+  /* Key term */
+  .key-term {
+    color: #ffd700;
+    font-weight: 600;
+  }
+
+  /* Stand boxes */
+  .stand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5vw;
+    width: 100%;
+    margin-top: 1vh;
+  }
+
+  .stand-box {
+    background: rgba(100, 181, 246, 0.08);
+    border: 1px solid rgba(100, 181, 246, 0.2);
+    border-radius: 10px;
+    padding: 2vh 1.5vw;
+    text-align: center;
+  }
+
+  .stand-box h3 {
+    font-size: 1.5vw;
+    color: #64b5f6;
+    margin-bottom: 0.8vh;
+  }
+
+  .stand-box p {
+    font-size: 1.2vw;
+    color: #bbb;
+    line-height: 1.4;
+  }
+
+  .stand-box .stand-icon {
+    font-size: 2.5vw;
+    margin-bottom: 0.5vh;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #64b5f6);
+    z-index: 200;
+    transition: width 0.4s ease;
+  }
+
+  /* Keyboard hint */
+  .keyboard-hint {
+    position: fixed;
+    bottom: 1.5vh;
+    left: 2vw;
+    font-size: 1vw;
+    color: #555;
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter"></div>
+<div class="nav-arrow nav-left" onclick="changeSlide(-1)">&#10094;</div>
+<div class="nav-arrow nav-right" onclick="changeSlide(1)">&#10095;</div>
+<div class="keyboard-hint">Piltangenter eller klicka for att navigera</div>
+
+<!-- SLIDE 1: Title -->
+<div class="slide title-slide active" id="slide-1">
+  <div class="crown-icon">&#x1F3DB;</div>
+  <h1>Sveriges demokratisering</h1>
+  <p class="subtitle">Fran standsriksdag till allman rostratt</p>
+  <p class="meta">Historia &mdash; Samhallsprogrammet arskurs 1</p>
+</div>
+
+<!-- SLIDE 2: Vad ar demokrati? -->
+<div class="slide content-slide" id="slide-2">
+  <h2>Vad menar vi med demokrati?</h2>
+  <div class="two-col">
+    <div class="col">
+      <h3>Grundprinciper</h3>
+      <ul>
+        <li><span class="key-term">Folkstyre</span> - makten utgår från folket</li>
+        <li><span class="key-term">Allmän rösträtt</span> - alla medborgare kan rösta</li>
+        <li><span class="key-term">Yttrandefrihet</span> - rätten att uttrycka åsikter</li>
+        <li><span class="key-term">Rättsstat</span> - lagar gäller alla lika</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Fundera på...</h3>
+      <ul>
+        <li>Vem fick bestämma i Sverige för 200 år sedan?</li>
+        <li>Var Sverige en demokrati år 1800?</li>
+        <li>När blev Sverige en demokrati?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: Ståndsriksdagen -->
+<div class="slide content-slide" id="slide-3">
+  <h2>Ståndsriksdagen (1435-1866)</h2>
+  <div class="highlight-box">
+    <h3>Fyra stånd bestämde</h3>
+    <p>Riksdagen bestod av fyra grupper som representerade olika delar av samhället - men långt ifrån alla.</p>
+  </div>
+  <div class="stand-grid">
+    <div class="stand-box">
+      <div class="stand-icon">&#9775;</div>
+      <h3>Adeln</h3>
+      <p>Jordägande aristokrater med ärftliga privilegier</p>
+    </div>
+    <div class="stand-box">
+      <div class="stand-icon">&#9769;</div>
+      <h3>Prästerna</h3>
+      <p>Svenska kyrkans företrädare</p>
+    </div>
+    <div class="stand-box">
+      <div class="stand-icon">&#9878;</div>
+      <h3>Borgarna</h3>
+      <p>Köpmän och hantverkare i städerna</p>
+    </div>
+    <div class="stand-box">
+      <div class="stand-icon">&#127807;</div>
+      <h3>Bönderna</h3>
+      <p>Självägande bönder - inte torpare eller drängar</p>
+    </div>
+  </div>
+  <p style="margin-top: 2vh; font-size: 1.6vw; color: #e8a0a0; text-align: center;">
+    Majoriteten av befolkningen - torpare, statare, pigor, drängar, fattiga - var helt utan representation.
+  </p>
+</div>
+
+<!-- SLIDE 4: Timeline -->
+<div class="slide timeline-slide" id="slide-4">
+  <h2>Tidslinje: Vägen till demokrati</h2>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    <div class="timeline-events">
+
+      <div class="timeline-event above">
+        <div class="event-content">
+          <div class="event-year">1809</div>
+          <div class="event-text">Ny regeringsform - kungen förlorar enväldsmakt</div>
+        </div>
+        <div class="event-dot"></div>
+      </div>
+
+      <div class="timeline-event below">
+        <div class="event-content">
+          <div class="event-year">1842</div>
+          <div class="event-text">Folkskolan införs - alla barn ska kunna läsa</div>
+        </div>
+        <div class="event-dot"></div>
+      </div>
+
+      <div class="timeline-event above">
+        <div class="event-content">
+          <div class="event-year">1866</div>
+          <div class="event-text">Tvåkammar-riksdag ersätter ståndsriksdagen</div>
+        </div>
+        <div class="event-dot"></div>
+      </div>
+
+      <div class="timeline-event below">
+        <div class="event-content">
+          <div class="event-year">1909</div>
+          <div class="event-text">Allmän rösträtt för män (till AK)</div>
+        </div>
+        <div class="event-dot"></div>
+      </div>
+
+      <div class="timeline-event above">
+        <div class="event-content">
+          <div class="event-year">1919</div>
+          <div class="event-text">Beslut om kvinnlig rösträtt</div>
+        </div>
+        <div class="event-dot"></div>
+      </div>
+
+      <div class="timeline-event below">
+        <div class="event-content">
+          <div class="event-year">1921</div>
+          <div class="event-text">Första valet med allmän och lika rösträtt</div>
+        </div>
+        <div class="event-dot"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: Riksdagsreformen 1866 -->
+<div class="slide content-slide" id="slide-5">
+  <h2>Riksdagsreformen 1866</h2>
+  <div class="two-col">
+    <div class="col">
+      <h3>Vad förändrades?</h3>
+      <ul>
+        <li>Ståndsriksdagen avskaffades</li>
+        <li>Ersattes av en <span class="key-term">tvåkammarriksdag</span></li>
+        <li>Första kammaren: valdes indirekt av landsting</li>
+        <li>Andra kammaren: direktval - men med inkomstkrav</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Vem fick rösta?</h3>
+      <ul>
+        <li>Män över 21 år</li>
+        <li>Med tillräckligt hög <span class="key-term">inkomst eller förmögenhet</span></li>
+        <li>Cirka <span class="key-term">20%</span> av befolkningen</li>
+        <li>Inga kvinnor, inga fattiga</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top: 2vh;">
+    <p style="font-size: 1.6vw; text-align: center;">Steg framåt - men fortfarande inte demokrati. Pengar avgjorde vem som hade politisk makt.</p>
+  </div>
+</div>
+
+<!-- SLIDE 6: Rösträttsrörelsen -->
+<div class="slide content-slide" id="slide-6">
+  <h2>Kampen för rösträtt</h2>
+  <ul>
+    <li><span class="key-term">Arbetarrörelsen</span> växte från 1880-talet - krävde politiska rättigheter för arbetare</li>
+    <li><span class="key-term">Liberaler</span> drev frågan om utvidgad rösträtt i riksdagen</li>
+    <li><span class="key-term">Storstrejken 1909</span> - 300 000 arbetare la ner arbetet, bland annat för rösträtt</li>
+    <li><span class="key-term">Kvinnorörelsen</span> organiserade sig - FKPR (Föreningen för kvinnans politiska rösträtt) bildades 1903</li>
+    <li>Internationellt tryck: demokratisering pågick i flera europeiska länder</li>
+    <li><span class="key-term">Första världskriget</span> och revolutioner i Europa 1917-18 skapade press på förändring</li>
+  </ul>
+</div>
+
+<!-- SLIDE 7: 1919-1921 -->
+<div class="slide content-slide" id="slide-7">
+  <h2>Genombrottet: 1919-1921</h2>
+  <div class="two-col">
+    <div class="col">
+      <h3>Vad hände?</h3>
+      <ul>
+        <li>1918: Hungerupplopp och oro i Sverige</li>
+        <li>Revolution i Tyskland och Ryssland</li>
+        <li>1919: Riksdagen beslutar om <span class="key-term">allmän och lika rösträtt</span> - även för kvinnor</li>
+        <li>1921: Första valet där alla vuxna svenskar får rösta</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Viktiga personer</h3>
+      <ul>
+        <li><span class="key-term">Hjalmar Branting</span> - socialdemokratisk ledare, drev rösträttsfrågan</li>
+        <li><span class="key-term">Nils Edén</span> - liberal statsminister som genomförde reformen</li>
+        <li><span class="key-term">Elin Wägner</span> - författare och rösträttsaktivist</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top: 2vh;">
+    <p style="font-size: 1.6vw; text-align: center;">
+      Notera: Rösträttsåldern var 23 år. Vissa grupper (t.ex. omyndigförklarade, personer med fattigvårdsunderstöd) var fortfarande utestängda.
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 8: Diskussion -->
+<div class="slide discussion-slide" id="slide-8">
+  <h2>Diskussion i par (3-4 minuter)</h2>
+  <div class="discussion-questions">
+    <div class="discussion-question">
+      <span class="q-number">1.</span> Varför tog det så lång tid att införa demokrati i Sverige? Vilka grupper hade intresse av att behålla det gamla systemet?
+    </div>
+    <div class="discussion-question">
+      <span class="q-number">2.</span> Tänk dig att du levde i Sverige år 1900. Skulle du haft rösträtt? Varför eller varför inte?
+    </div>
+    <div class="discussion-question">
+      <span class="q-number">3.</span> Kan vi ta demokratin för given idag? Finns det hot mot demokratin som vi borde vara uppmärksamma på?
+    </div>
+  </div>
+  <p class="discussion-instruction">Diskutera med din bänkkamrat. Var beredda att dela en tanke med klassen.</p>
+</div>
+
+<!-- SLIDE 9: Källkritisk övning - citatet -->
+<div class="slide source-slide" id="slide-9">
+  <h2>Källkritisk övning</h2>
+  <div class="quote-box">
+    <p class="quote-text">
+      "Att ge rösträtt åt den stora massan, som saknar bildning och egendom, vore att överlämna statens styrelse åt dem som minst förstå att sköta den. Folket behöver ledas, inte leda."
+    </p>
+    <p class="quote-attribution">
+      - Ur ett konservativt debattinlägg i Första kammaren, ca 1890-talet
+    </p>
+  </div>
+  <div class="source-questions">
+    <h3>Analysera citatet med dessa frågor:</h3>
+    <ul>
+      <li><span class="key-term">Vem</span> kan ha sagt detta? Vilken samhällsgrupp tillhörde personen troligen?</li>
+      <li><span class="key-term">Varför</span> sades det? Vilket syfte hade argumentet?</li>
+      <li><span class="key-term">Tendens</span> - Vilken politisk ståndpunkt avslöjar citatet?</li>
+      <li><span class="key-term">Relevans idag</span> - Finns liknande argument i dagens debatter? Var?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 10: Källkritiska begrepp -->
+<div class="slide content-slide" id="slide-10">
+  <h2>Källkritiska begrepp att använda</h2>
+  <div class="two-col">
+    <div class="col">
+      <h3>De fyra kriterierna</h3>
+      <ul>
+        <li><span class="key-term">Äkthet</span> - Är källan vad den utger sig för att vara?</li>
+        <li><span class="key-term">Tid</span> - Hur nära i tid ligger källan till händelsen?</li>
+        <li><span class="key-term">Beroende</span> - Är källan oberoende eller bygger den på andra källor?</li>
+        <li><span class="key-term">Tendens</span> - Har avsändaren ett eget intresse som färgar innehållet?</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Tillämpa på citatet</h3>
+      <ul>
+        <li>Representerar citatet en <span class="key-term">vanlig åsikt</span> i sin tid?</li>
+        <li>Vad berättar det om <span class="key-term">maktstrukturer</span>?</li>
+        <li>Hur skiljer sig denna syn från <span class="key-term">dagens</span> demokratisyn?</li>
+        <li>Vilka <span class="key-term">motargument</span> hade rösträttsrörelsen?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: Sammanfattning -->
+<div class="slide summary-slide" id="slide-11">
+  <h2>Sammanfattning</h2>
+  <div class="takeaways">
+    <div class="takeaway-card">
+      <div class="card-icon">&#x1F3DB;</div>
+      <h3>Lång process</h3>
+      <p>Demokratiseringen tog över 100 år - från ståndsriksdag (1435) via tvåkammarriksdag (1866) till allmän rösträtt (1921).</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="card-icon">&#9994;</div>
+      <h3>Kamp underifrån</h3>
+      <p>Arbetarrörelsen, liberaler och kvinnorörelsen kämpade för rättigheter som makthavarna inte ville ge.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="card-icon">&#128269;</div>
+      <h3>Kritiskt tänkande</h3>
+      <p>Historiska källor måste granskas - vem säger vad, varför, och i vilket syfte?</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = document.querySelectorAll('.slide').length;
+
+  function showSlide(n) {
+    document.querySelectorAll('.slide').forEach(s => {
+      s.classList.remove('active');
+    });
+    const slide = document.getElementById('slide-' + n);
+    if (slide) {
+      slide.classList.add('active');
+      currentSlide = n;
+    }
+    document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+    document.getElementById('progressBar').style.width = ((currentSlide / totalSlides) * 100) + '%';
+  }
+
+  function changeSlide(dir) {
+    let next = currentSlide + dir;
+    if (next < 1) next = 1;
+    if (next > totalSlides) next = totalSlides;
+    showSlide(next);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      changeSlide(1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      changeSlide(-1);
+    } else if (e.key === 'Home') {
+      showSlide(1);
+    } else if (e.key === 'End') {
+      showSlide(totalSlides);
+    }
+  });
+
+  // Touch support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  document.addEventListener('touchend', function(e) {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      changeSlide(diff > 0 ? 1 : -1);
+    }
+  });
+
+  // Initialize
+  showSlide(1);
+</script>
+
+</body>
+</html>

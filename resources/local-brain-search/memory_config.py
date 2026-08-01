@@ -64,6 +64,9 @@ MEMORY_CONFIG = {
             "resources", "kokboks-mcp", "Kod", "node_modules",
             "output",
             "meta/archive",
+            "elevdata",  # ADR 0001/0002: elevdata får aldrig bäddas in i indexet -
+                         # det skulle överleva gallringen vid läsårsslut. Tillagd på
+                         # Windows-maskinen 2026-07-27, saknades här; åtgärdad 2026-07-28.
         ],
         "include_patterns": ["*.md"],
     },

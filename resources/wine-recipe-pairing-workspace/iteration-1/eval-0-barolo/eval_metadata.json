@@ -1,0 +1,10 @@
+{
+  "eval_id": 0,
+  "eval_name": "barolo-pasta",
+  "prompt": "Vilket recept passar till en Barolo? Det är ett kraftigt rött vin från Piemonte i Italien, gjort på Nebbiolo-druvan. Hög syra, höga tanniner, smaker av körsbär, tjära och rosor.",
+  "assertions": [
+    {"text": "Svaret förklarar hur Barolos tanniner eller höga syra påverkar matchningen", "passed": false, "evidence": ""},
+    {"text": "Svaret nämner minst 2 specifika recept med namn och kokbok", "passed": false, "evidence": ""},
+    {"text": "Svaret förklarar varför just dessa rätter fungerar med Barolo — inte bara att de passar", "passed": false, "evidence": ""}
+  ]
+}

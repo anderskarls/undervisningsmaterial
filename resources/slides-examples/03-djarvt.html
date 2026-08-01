@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exempel 3: Djärvt</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #030014;
+      --color-text: #e0e0f0;
+      --color-heading: #ffffff;
+      --accent-1: #7c3aed;
+      --accent-2: #06b6d4;
+      --accent-3: #f59e0b;
+      --accent-4: #ec4899;
+      --color-surface: rgba(255,255,255,0.04);
+      --color-muted: rgba(255,255,255,0.4);
+    }
+
+    .reveal {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal .slides section {
+      background: var(--color-bg);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Sora', sans-serif;
+      color: var(--color-heading);
+      text-transform: none;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .reveal h2 { font-size: 2.2em; line-height: 1.1; }
+
+    /* Animated gradient bg */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animated-bg {
+      background: linear-gradient(-45deg, #030014, #1a0533, #0a1628, #030014);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    /* Neon gradient text */
+    .neon-text {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .neon-glow {
+      text-shadow: 0 0 60px rgba(124, 58, 237, 0.5), 0 0 120px rgba(6, 182, 212, 0.2);
+    }
+
+    /* Pill tags */
+    .pill {
+      display: inline-block;
+      padding: 0.3em 1em;
+      border-radius: 24px;
+      font-size: 0.6em;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .pill-purple { background: rgba(124,58,237,0.2); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3); }
+    .pill-cyan { background: rgba(6,182,212,0.2); color: #67e8f9; border: 1px solid rgba(6,182,212,0.3); }
+
+    /* Bold cards with border gradient */
+    .bold-card {
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      padding: 1.2em 1.5em;
+      text-align: left;
+      margin: 0.5em 0;
+      overflow: hidden;
+    }
+
+    .bold-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    }
+
+    .bold-card .card-num {
+      font-size: 2em;
+      font-weight: 800;
+      color: var(--accent-1);
+      opacity: 0.3;
+      position: absolute;
+      top: 8px;
+      right: 16px;
+    }
+
+    .bold-card strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* Horizontal timeline with glow nodes */
+    .tl-bold {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      padding: 3em 1em 1em;
+      margin-top: 1em;
+    }
+
+    .tl-bold::before {
+      content: '';
+      position: absolute;
+      top: calc(3em + 10px);
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-4));
+    }
+
+    .tl-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-node-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 20px rgba(6,182,212,0.6), 0 0 40px rgba(6,182,212,0.3);
+      margin-bottom: 1em;
+    }
+
+    .tl-node-year {
+      font-size: 1.6em;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tl-node-text {
+      font-size: 0.7em;
+      color: var(--color-muted);
+      max-width: 150px;
+      text-align: center;
+      margin-top: 0.4em;
+    }
+
+    /* Discuss - full screen bold */
+    .discuss-bold {
+      background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-4) 100%) !important;
+    }
+
+    .discuss-timer {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: rgba(0,0,0,0.2);
+      color: white;
+      padding: 0.4em 1.2em;
+      border-radius: 24px;
+      font-size: 0.6em;
+      font-weight: 700;
+      margin-bottom: 1em;
+      backdrop-filter: blur(10px);
+    }
+
+    .timer-ring {
+      width: 12px;
+      height: 12px;
+      border: 2px solid white;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Mega stat */
+    .mega-stat .number {
+      font-size: 9em;
+      font-weight: 800;
+      line-height: 0.9;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 60px rgba(124,58,237,0.4));
+    }
+
+    .mega-stat .label {
+      font-size: 1.1em;
+      color: var(--color-text);
+      max-width: 500px;
+      margin: 0.5em auto 0;
+    }
+
+    .mega-stat .source {
+      font-size: 0.6em;
+      color: var(--color-muted);
+      margin-top: 0.5em;
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--accent-1); top: -200px; right: -150px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--accent-2); bottom: -150px; left: -100px; }
+    .orb-3 { width: 300px; height: 300px; background: var(--accent-4); top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.08; }
+
+    .style-label {
+      position: fixed;
+      top: 12px;
+      right: 16px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-4));
+      color: white;
+      padding: 0.3em 1em;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 100;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="style-label">3/3 — Djärvt</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Hook -->
+      <section class="animated-bg" data-background-color="transparent">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <span class="pill pill-purple">Samhällskunskap</span>
+        <h2 style="font-size: 3em; margin-top: 0.3em;" class="neon-glow">
+          Vem bestämmer<br><span class="neon-text">egentligen?</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 0.9em;">Demokratins utveckling i Sverige</p>
+      </section>
+
+      <!-- Innehåll -->
+      <section data-background-color="#030014">
+        <div class="orb orb-3"></div>
+        <h2>Varför tog det så lång tid<br>att få <span class="neon-text">demokrati</span>?</h2>
+        <div class="bold-card fragment">
+          <span class="card-num">01</span>
+          <strong>Makt kostar att ge bort</strong><br>
+          <span style="color: var(--color-muted); font-size: 0.85em;">De som hade rösträtt ville behålla den</span>
+        </div>
+        <div class="bold-card fragment">
+          <span class="card-num">02</span>
+          <strong>Rädsla för "pöbeln"</strong><br>
+          <span style="color: var(--color-muted); font-size: 0.85em;">Överklassen tvivlade på vanligt folks omdöme</span>
+        </div>
+        <div class="bold-card fragment">
+          <span class="card-num">03</span>
+          <strong>Stegvis förändring</strong><br>
+          <span style="color: var(--color-muted); font-size: 0.85em;">Reformer kom genom kompromisser, inte revolution</span>
+        </div>
+      </section>
+
+      <!-- Tidslinje -->
+      <section data-background-color="#030014">
+        <h2>Hur utvecklades <span class="neon-text">rösträtten</span>?</h2>
+        <div class="tl-bold">
+          <div class="tl-node fragment">
+            <div class="tl-node-dot"></div>
+            <div class="tl-node-year">1866</div>
+            <div class="tl-node-text">Tvåkammar-riksdagen</div>
+          </div>
+          <div class="tl-node fragment">
+            <div class="tl-node-dot"></div>
+            <div class="tl-node-year">1909</div>
+            <div class="tl-node-text">Rösträtt för män (villkor)</div>
+          </div>
+          <div class="tl-node fragment">
+            <div class="tl-node-dot"></div>
+            <div class="tl-node-year">1919</div>
+            <div class="tl-node-text">Allmän rösträtt för män</div>
+          </div>
+          <div class="tl-node fragment">
+            <div class="tl-node-dot"></div>
+            <div class="tl-node-year">1921</div>
+            <div class="tl-node-text">Kvinnor röstar</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diskussion -->
+      <section class="discuss-bold" data-background-color="transparent">
+        <div class="discuss-timer"><div class="timer-ring"></div> 2 minuter</div>
+        <h2 style="font-size: 1.9em; color: white;">Tänk om bara de med universitetsutbildning fick rösta — vad skulle hända?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">Diskutera med din bänkgranne. Var beredd att dela.</p>
+      </section>
+
+      <!-- Statistik -->
+      <section class="animated-bg" data-background-color="transparent">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="mega-stat">
+          <span class="number fragment">87%</span>
+          <span class="label fragment">av svenskarna röstade i senaste riksdagsvalet</span>
+          <span class="source fragment">SCB, Valmyndigheten 2022</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true, slideNumber: 'c/t', width: 1280, height: 720,
+      margin: 0.05, transition: 'slide', transitionSpeed: 'default',
+      controls: true, progress: true
+    });
+  </script>
+</body>
+</html>

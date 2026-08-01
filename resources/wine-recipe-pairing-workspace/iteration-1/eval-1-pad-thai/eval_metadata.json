@@ -1,0 +1,10 @@
+{
+  "eval_id": 1,
+  "eval_name": "pad-thai-wine",
+  "prompt": "Vilket vin passar till Pad Thai? Det är en thailändsk nudelsrätt med risnudlar, ägg, räkor eller tofu, tamarindsås, fisksås och jordnötter. Söt, syrlig och lite kryddig.",
+  "assertions": [
+    {"text": "Svaret rekommenderar ett specifikt vin (druvsort eller region) — inte bara en kategori som 'vitt vin'", "passed": false, "evidence": ""},
+    {"text": "Svaret kopplar vinets egenskaper (syra, sötma, mineralitet etc.) till Pad Thais specifika smaker", "passed": false, "evidence": ""},
+    {"text": "Svaret inkluderar minst ett recept från kokboksdatabasen", "passed": false, "evidence": ""}
+  ]
+}

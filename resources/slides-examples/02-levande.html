@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exempel 2: Levande</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f1a;
+      --color-text: #e8e8f0;
+      --color-heading: #ffffff;
+      --color-accent: #ff6b6b;
+      --color-accent2: #4ecdc4;
+      --color-accent3: #ffe66d;
+      --color-surface: rgba(255,255,255,0.06);
+      --color-muted: rgba(255,255,255,0.5);
+    }
+
+    .reveal {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 28px;
+      color: var(--color-text);
+    }
+
+    .reveal .slides section {
+      background: var(--color-bg);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--color-heading);
+      text-transform: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .reveal h2 { font-size: 2em; margin-bottom: 0.5em; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Glowing accent */
+    .glow-accent {
+      text-shadow: 0 0 40px rgba(255, 107, 107, 0.3);
+    }
+
+    /* Cards med glassmorphism */
+    .glass-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.3em 1.5em;
+      text-align: left;
+      margin: 0.5em 0;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .glass-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .glass-card .card-icon {
+      font-size: 1.5em;
+      margin-bottom: 0.3em;
+      display: block;
+    }
+
+    .glass-card strong {
+      color: var(--color-accent);
+    }
+
+    /* Diskussion - gradient bg */
+    .discuss-bg {
+      background: linear-gradient(135deg, #e94560 0%, #c23152 50%, #0f3460 100%) !important;
+    }
+
+    .discuss-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 0.4em 1.2em;
+      border-radius: 24px;
+      font-size: 0.65em;
+      font-weight: 600;
+      margin-bottom: 1em;
+      backdrop-filter: blur(10px);
+    }
+
+    .discuss-badge .pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent3);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    /* Tidslinje - vertikal med glow */
+    .timeline-v {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .tl-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2em;
+    }
+
+    .tl-year {
+      font-size: 1.4em;
+      font-weight: 800;
+      color: var(--color-accent);
+      min-width: 100px;
+      text-align: right;
+      text-shadow: 0 0 30px rgba(255,107,107,0.4);
+    }
+
+    .tl-line {
+      width: 3px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--color-accent), var(--color-accent2));
+      border-radius: 2px;
+    }
+
+    .tl-text {
+      font-size: 0.9em;
+      color: var(--color-text);
+      background: var(--color-surface);
+      padding: 0.6em 1em;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Big stat */
+    .big-stat-v2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .big-stat-v2 .number {
+      font-size: 7em;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 40px rgba(255,107,107,0.3));
+    }
+
+    .big-stat-v2 .label {
+      font-size: 1.1em;
+      color: var(--color-text);
+      max-width: 500px;
+      margin-top: 0.3em;
+    }
+
+    .big-stat-v2 .source {
+      font-size: 0.65em;
+      color: var(--color-muted);
+      margin-top: 0.5em;
+    }
+
+    /* Decorative blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .blob-1 { width: 400px; height: 400px; background: var(--color-accent); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--color-accent2); bottom: -80px; left: -80px; }
+
+    .style-label {
+      position: fixed;
+      top: 12px;
+      right: 16px;
+      background: var(--color-accent);
+      color: white;
+      padding: 0.3em 1em;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 100;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="style-label">2/3 — Levande</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Hook -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 style="font-size: 2.8em;" class="glow-accent">
+          Vem bestämmer<br><span class="gradient-text">egentligen?</span>
+        </h2>
+        <p style="color: var(--color-muted); font-size: 1em; margin-top: 0.5em;">Demokratins utveckling i Sverige</p>
+      </section>
+
+      <!-- Innehåll -->
+      <section data-background-color="#0f0f1a">
+        <h2>Varför tog det så lång tid<br>att få <span class="gradient-text">demokrati</span>?</h2>
+        <div class="glass-card fragment">
+          <span class="card-icon">👑</span>
+          <strong>Makt kostar att ge bort</strong> — De som hade rösträtt ville behålla den
+        </div>
+        <div class="glass-card fragment">
+          <span class="card-icon">😨</span>
+          <strong>Rädsla för "pöbeln"</strong> — Överklassen tvivlade på vanligt folks omdöme
+        </div>
+        <div class="glass-card fragment">
+          <span class="card-icon">🤝</span>
+          <strong>Stegvis förändring</strong> — Reformer kom genom kompromisser, inte revolution
+        </div>
+      </section>
+
+      <!-- Tidslinje -->
+      <section data-background-color="#0f0f1a">
+        <h2>Hur utvecklades <span class="gradient-text">rösträtten</span>?</h2>
+        <div class="timeline-v">
+          <div class="tl-row fragment">
+            <div class="tl-year">1866</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Tvåkammarriksdagen ersätter ståndsriksdagen</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">1909</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Rösträtt för alla män (med villkor)</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">1919</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Allmän och lika rösträtt för män</div>
+          </div>
+          <div class="tl-row fragment">
+            <div class="tl-year">1921</div>
+            <div class="tl-line"></div>
+            <div class="tl-text">Kvinnor får rösta för första gången</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diskussion -->
+      <section class="discuss-bg" data-background-color="transparent">
+        <div class="discuss-badge"><div class="pulse"></div> 2 minuter</div>
+        <h2 style="font-size: 1.8em; color: white;">Tänk om bara de med universitetsutbildning fick rösta — vad skulle hända?</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85em;">Diskutera med din bänkgranne. Var beredd att dela.</p>
+      </section>
+
+      <!-- Statistik -->
+      <section data-background-color="#0f0f1a">
+        <div class="blob blob-1"></div>
+        <div class="big-stat-v2">
+          <span class="number fragment">87%</span>
+          <span class="label fragment">av svenskarna röstade i senaste riksdagsvalet</span>
+          <span class="source fragment">SCB, Valmyndigheten 2022</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true, slideNumber: 'c/t', width: 1280, height: 720,
+      margin: 0.05, transition: 'slide', transitionSpeed: 'default',
+      controls: true, progress: true
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "eval_id": 2,
+  "eval_name": "gruner-veltliner-food",
+  "prompt": "Vad ska jag laga till en Grüner Veltliner? Det är ett österrikiskt vitt vin — torrt, mediumkropp, hög syra, smaktoner av vit peppar, citrus, örter och gröna äpplen.",
+  "assertions": [
+    {"text": "Svaret tar upp Grüner Veltliners peppriga/örtig karaktär som en del av pairingrationaliseringen", "passed": false, "evidence": ""},
+    {"text": "Svaret nämner minst 2 specifika recept med namn och källa", "passed": false, "evidence": ""},
+    {"text": "Svaret förklarar mekanismen bakom matchningen — inte bara listar recept", "passed": false, "evidence": ""}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "skill_name": "planera-moment",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Jag vill planera ett moment i samhällskunskap 1b om demokrati och mänskliga rättigheter, typ 5 lektioner à 60 minuter",
+      "expected_output": "Skillen ska erbjuda en grill-session efter kursval. Om läraren tackar ja ska den ställa fokuserade frågor en/två åt gången om syfte, elevgrupp, vinkel etc. Insikterna ska sedan informera val av centralt innehåll och tema.",
+      "files": []
+    }
+  ]
+}

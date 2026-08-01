@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "slides", "runs": [{"id": "eval-demokratisering-with_skill", "prompt": "G\u00f6r slides till en lektion om Sveriges demokratisering. Lektionen handlar om hur Sverige gick fr\u00e5n st\u00e5ndsriksdag till allm\u00e4n r\u00f6str\u00e4tt. Eleverna g\u00e5r i \u00e5k 1 p\u00e5 samh\u00e4llsprogrammet. Presentationen ska vara ca 15 minuter och inneh\u00e5lla en tidslinje \u00f6ver viktiga \u00e5rtal, en diskussion, och en k\u00e4llkritisk \u00f6vning med ett historiskt citat.", "eval_id": 0, "outputs": [{"name": "sveriges-demokratisering.html", "type": "text", "content": "<!DOCTYPE html>\n<html lang=\"sv\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Sveriges demokratisering - Fr\u00e5n st\u00e5ndsriksdag till allm\u00e4n r\u00f6str\u00e4tt</title>\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link href=\"https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@400;600;700&display=swap\" rel=\"stylesheet\">\n  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css\">\n  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css\">\n  <style>\n    :root {\n      --color-bg: #fafaf8;\n      --color-text: #1a1a1a;\n      --color-heading: #1a5276;\n      --color-accent: #e74c3c;\n      --color-muted: #7f8c8d;\n      --color-surface: #ffffff;\n      --color-border: #e0e0e0;\n      --color-secondary: #2e86c1;\n    }\n\n    .reveal {\n      font-family: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;\n      font-size: 28px;\n      color: var(--color-text);\n    }\n\n    .reveal h1, .reveal h2, .reveal h3 {\n      font-family: 'Source Serif 4', Georgia, serif;\n      color: var(--color-heading);\n      text-transform: none;\n      letter-spacing: -0.02em;\n    }\n\n    .reveal h2 {\n      font-size: 1.8em;\n      margin-bottom: 0.6em;\n    }\n\n    .reveal p, .reveal li {\n      line-height: 1.6;\n    }\n\n    .reveal ul, .reveal ol {\n      display: block;\n      text-align: left;\n    }\n\n    /* Tidslinje */\n    .timeline {\n      display: flex;\n      justify-content: space-around;\n      align-items: flex-start;\n      position: relative;\n      padding: 2em 0;\n      margin-top: 1em;\n    }\n\n    .timeline::before {\n      content: '';\n      position: absolute;\n      top: 50%;\n      left: 5%;\n      right: 5%;\n      height: 3px;\n      background: var(--color-border);\n    }\n\n    .timeline-item {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      position: relative;\n      z-index: 1;\n      max-width: 200px;\n    }\n\n    .timeline-year {\n      font-size: 1.4em;\n      font-weight: 700;\n      color: var(--color-accent);\n      background: var(--color-bg);\n      padding: 0.2em 0.5em;\n      border-radius: 4px;\n      margin-bottom: 0.5em;\n    }\n\n    .timeline-content {\n      text-align: center;\n      font-size: 0.85em;\n      color: var(--color-text);\n      background: var(--color-surface);\n      padding: 0.5em;\n      border-radius: 6px;\n      box-shadow: 0 2px 8px rgba(0,0,0,0.08);\n    }\n\n    /* K\u00e4llkritik */\n    .source-analysis {\n      max-width: 750px;\n      margin: 0 auto;\n    }\n\n    .source-quote {\n      font-size: 1.1em;\n      font-style: italic;\n      border-left: 4px solid var(--color-accent);\n      padding: 0.8em 1.2em;\n      margin: 1em 0;\n      background: rgba(0,0,0,0.02);\n      border-radius: 0 6px 6px 0;\n    }\n\n    .source-meta {\n      display: flex;\n      gap: 1.5em;\n      font-size: 0.8em;\n      color: var(--color-muted);\n      margin-bottom: 1em;\n    }\n\n    .source-questions p {\n      font-size: 0.85em;\n      margin: 0.4em 0;\n    }\n\n    /* J\u00e4mf\u00f6relsekolumner */\n    .comparison {\n      display: grid;\n      grid-template-columns: 1fr 1fr;\n      gap: 2em;\n      margin-top: 1em;\n    }\n\n    .compare-col {\n      background: var(--color-surface);\n      padding: 1.5em;\n      border-radius: 8px;\n      box-shadow: 0 2px 8px rgba(0,0,0,0.06);\n      border-top: 3px solid var(--color-accent);\n    }\n\n    .compare-col h3 {\n      font-size: 1.1em;\n      margin-bottom: 0.5em;\n      color: var(--color-heading);\n    }\n\n    .compare-col ul {\n      font-size: 0.85em;\n    }\n\n    /* Stor siffra */\n    .big-stat {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      gap: 0.3em;\n    }\n\n    .stat-number {\n      font-size: 4em;\n      font-weight: 700;\n      color: var(--color-accent);\n      line-height: 1;\n    }\n\n    .stat-label {\n      font-size: 1.1em;\n      max-width: 600px;\n      text-align: center;\n      color: var(--color-text);\n    }\n\n    .stat-source {\n      font-size: 0.7em;\n      color: var(--color-muted);\n    }\n\n    /* Quiz */\n    .quiz-options {\n      display: flex;\n      flex-direction: column;\n      gap: 0.8em;\n      max-width: 700px;\n      margin: 1.5em auto;\n    }\n\n    .quiz-option {\n      padding: 1em 1.5em;\n      font-size: 0.9em;\n      border: 2px solid var(--color-border);\n      border-radius: 8px;\n      background: var(--color-surface);\n      cursor: pointer;\n      transition: all 0.2s;\n      text-align: left;\n      font-family: inherit;\n    }\n\n    .quiz-option:hover {\n      border-color: var(--color-accent);\n      transform: translateX(4px);\n    }\n\n    .quiz-option.correct {\n      border-color: #27ae60;\n      background: #eafaf1;\n    }\n\n    .quiz-option.incorrect {\n      border-color: #e74c3c;\n      background: #fdedec;\n      opacity: 0.7;\n    }\n\n    .quiz-feedback {\n      margin-top: 1em;\n      font-size: 0.85em;\n      color: var(--color-muted);\n      min-height: 1.5em;\n    }\n\n    /* Ikoner via emoji */\n    .slide-icon {\n      font-size: 2em;\n      margin-bottom: 0.3em;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"reveal\">\n    <div class=\"slides\">\n\n      <!-- SLIDE 1: Hook - \u00f6ppning -->\n      <section data-background-gradient=\"linear-gradient(135deg, #1a5276 0%, #154360 50%, #0e2f44 100%)\">\n        <h2 style=\"color: white; font-size: 2.2em;\">Vem fick best\u00e4mma i Sverige - och vem fick inte?</h2>\n        <p style=\"color: rgba(255,255,255,0.7); font-size: 0.9em;\" class=\"fragment\">Resan fr\u00e5n st\u00e5ndsriksdag till allm\u00e4n r\u00f6str\u00e4tt</p>\n        <aside class=\"notes\">\n          \u00d6ppna med fr\u00e5gan och l\u00e5t den h\u00e4nga i luften ett par sekunder. Fr\u00e5ga eleverna: \"Vad tror ni - hur l\u00e4nge har alla svenskar f\u00e5tt r\u00f6sta?\" L\u00e5t n\u00e5gra gissa innan ni g\u00e5r vidare. Po\u00e4ngen \u00e4r att demokratin i Sverige \u00e4r f\u00f6rh\u00e5llandevis ung.\n        </aside>\n      </section>\n\n      <!-- SLIDE 2: Stor siffra - kontexts\u00e4ttning -->\n      <section>\n        <div class=\"big-stat\">\n          <span class=\"stat-number fragment\">105 \u00e5r</span>\n          <span class=\"stat-label fragment\">S\u00e5 l\u00e4nge har alla vuxna i Sverige haft r\u00f6str\u00e4tt - f\u00f6rst 1921 fick kvinnor r\u00f6sta</span>\n          <span class=\"stat-source fragment\">Riksdagsf\u00f6rvaltningen</span>\n        </div>\n        <aside class=\"notes\">\n          Betona att 105 \u00e5r inte \u00e4r s\u00e4rskilt l\u00e5ng tid. Elevernas morf\u00f6r\u00e4ldrars morf\u00f6r\u00e4ldrar levde i ett samh\u00e4lle utan allm\u00e4n r\u00f6str\u00e4tt. Det s\u00e4tter den demokratiska utvecklingen i perspektiv - demokrati \u00e4r inget vi alltid har haft.\n        </aside>\n      </section>\n\n      <!-- SLIDE 3: Hur styrdes Sverige f\u00f6re demokratin? -->\n      <section>\n        <h2>Hur styrdes Sverige f\u00f6re demokratin?</h2>\n        <div class=\"comparison\">\n          <div class=\"compare-col fragment\">\n            <h3>St\u00e5ndsriksdagen (till 1866)</h3>\n            <ul>\n              <li>Fyra st\u00e5nd: adel, pr\u00e4ster, borgare, b\u00f6nder</li>\n              <li>Bara st\u00e5ndens representanter fick besluta</li>\n              <li>Arbetare och fattiga stod helt utanf\u00f6r</li>\n            </ul>\n          </div>\n          <div class=\"compare-col fragment\">\n            <h3>Tv\u00e5kammarriksdagen (1866-1971)</h3>\n            <ul>\n              <li>F\u00f6rsta och Andra kammaren</li>\n              <li>R\u00f6str\u00e4tt kopplad till inkomst och egendom</li>\n              <li>Gradvis utvidgning av r\u00f6str\u00e4tten</li>\n            </ul>\n          </div>\n        </div>\n        <aside class=\"notes\">\n          F\u00f6rklara att st\u00e5ndsriksdagen var ett system d\u00e4r din f\u00f6dsel avgjorde ditt politiska inflytande. Tv\u00e5kammarriksdagen var ett steg fram\u00e5t, men fortfarande kunde bara rika m\u00e4n r\u00f6sta. Fr\u00e5ga eleverna: \"Vilka grupper saknade inflytande?\" - svar: kvinnor, fattiga, unga.\n        </aside>\n      </section>\n\n      <!-- SLIDE 4: Diskussion 1 -->\n      <section data-background-color=\"#e74c3c\">\n        <h2 style=\"color: white;\">Diskutera (2 min)</h2>\n        <p style=\"color: rgba(255,255,255,0.9); font-size: 1.1em;\">\n          Varf\u00f6r tror ni att r\u00f6str\u00e4tten var kopplad till hur mycket pengar man hade?\n        </p>\n        <p style=\"color: rgba(255,255,255,0.6); font-size: 0.8em;\">\n          Diskutera med din granne. Var beredd att dela med klassen.\n        </p>\n        <aside class=\"notes\">\n          Ge eleverna exakt 2 minuter. Cirkulera och lyssna. Vanliga elevsvar kan vara \"de rika ville beh\u00e5lla makten\" eller \"de tyckte att fattiga inte kunde fatta kloka beslut\". B\u00e5da \u00e4r bra ing\u00e5ngar - lyft ett par svar innan ni g\u00e5r vidare.\n        </aside>\n      </section>\n\n      <!-- SLIDE 5: Tidslinje -->\n      <section>\n        <h2>Vilka var de avg\u00f6rande stegen mot demokrati?</h2>\n        <div class=\"timeline\">\n          <div class=\"timeline-item fragment\" data-fragment-index=\"1\">\n            <div class=\"timeline-year\">1866</div>\n            <div class=\"timeline-content\">St\u00e5ndsriksdagen avskaffas - tv\u00e5kammarriksdagen inf\u00f6rs</div>\n          </div>\n          <div class=\"timeline-item fragment\" data-fragment-index=\"2\">\n            <div class=\"timeline-year\">1909</div>\n            <div class=\"timeline-content\">Allm\u00e4n r\u00f6str\u00e4tt f\u00f6r m\u00e4n till Andra kammaren</div>\n          </div>\n          <div class=\"timeline-item fragment\" data-fragment-index=\"3\">\n            <div class=\"timeline-year\">1919</div>\n            <div class=\"timeline-content\">Riksdagen beslutar om kvinnlig r\u00f6str\u00e4tt</div>\n          </div>\n          <div class=\"timeline-item fragment\" data-fragment-index=\"4\">\n            <div class=\"timeline-year\">1921</div>\n            <div class=\"timeline-content\">F\u00f6rsta valet med allm\u00e4n och lika r\u00f6str\u00e4tt</div>\n          </div>\n        </div>\n        <aside class=\"notes\">\n          Klicka fram ett \u00e5rtal i taget. Betona att det tog 55 \u00e5r fr\u00e5n tv\u00e5kammarriksdagen till allm\u00e4n r\u00f6str\u00e4tt - demokratisering var en l\u00e5ngsam process med stort motst\u00e5nd. 1909 fick m\u00e4nnen r\u00f6str\u00e4tt men med inkomstgraderad r\u00f6str\u00e4tt till F\u00f6rsta kammaren. 1919 fattades beslutet om kvinnlig r\u00f6str\u00e4tt och det f\u00f6rsta lika valet h\u00f6lls 1921.\n        </aside>\n      </section>\n\n      <!-- SLIDE 6: Vilka drev p\u00e5 f\u00f6r\u00e4ndringen? -->\n      <section>\n        <h2>Vilka k\u00e4mpade f\u00f6r r\u00f6str\u00e4tten?</h2>\n        <ul>\n          <li class=\"fragment\"><strong>Arbetarr\u00f6relsen</strong> - Fackf\u00f6reningar och socialdemokraterna organiserade strejker och demonstrationer</li>\n          <li class=\"fragment\"><strong>R\u00f6str\u00e4ttsr\u00f6relsen</strong> - LKPR (Landsf\u00f6reningen f\u00f6r kvinnans politiska r\u00f6str\u00e4tt) med ledare som Anna Whitlock</li>\n          <li class=\"fragment\"><strong>Liberala reformister</strong> - Politiker som Karl Staaff drev fr\u00e5gan i riksdagen</li>\n        </ul>\n        <aside class=\"notes\">\n          Lyft att demokratiseringen inte \"bara h\u00e4nde\" utan var resultatet av organiserat motst\u00e5nd och politisk kamp. Storstrejken 1909 var en viktig markering. LKPR grundades 1903 och arbetade systematiskt i n\u00e4stan 20 \u00e5r. Fr\u00e5ga: \"Varf\u00f6r beh\u00f6vdes det folkr\u00f6relser - r\u00e4ckte det inte med att politikerna ville f\u00f6r\u00e4ndra?\"\n        </aside>\n      </section>\n\n      <!-- SLIDE 7: Quiz -->\n      <section>\n        <h2>Vilket \u00e5r fick kvinnor r\u00f6sta f\u00f6r f\u00f6rsta g\u00e5ngen i Sverige?</h2>\n        <div class=\"quiz-options\">\n          <button class=\"quiz-option\" onclick=\"checkAnswer(this, false)\">\n            1909 - samma \u00e5r som m\u00e4nnen fick allm\u00e4n r\u00f6str\u00e4tt\n          </button>\n          <button class=\"quiz-option\" onclick=\"checkAnswer(this, false)\">\n            1919 - n\u00e4r riksdagen fattade beslutet\n          </button>\n          <button class=\"quiz-option\" onclick=\"checkAnswer(this, true)\">\n            1921 - f\u00f6rsta valet med allm\u00e4n och lika r\u00f6str\u00e4tt\n          </button>\n        </div>\n        <div class=\"quiz-feedback\"></div>\n        <aside class=\"notes\">\n          L\u00e5t eleverna klicka eller r\u00e4cka upp handen. Vanligt misstag \u00e4r att blanda ihop 1919 (beslutet) med 1921 (f\u00f6rsta valet). Po\u00e4ngtera skillnaden: beslut fattas ett \u00e5r, men genomf\u00f6rs vid n\u00e4sta val.\n        </aside>\n      </section>\n\n      <!-- SLIDE 8: Diskussion 2 -->\n      <section data-background-color=\"#e74c3c\">\n        <h2 style=\"color: white;\">Diskutera (2 min)</h2>\n        <p style=\"color: rgba(255,255,255,0.9); font-size: 1.1em;\">\n          Finns det grupper i Sverige idag som saknar politiskt inflytande - trots att de har r\u00f6str\u00e4tt?\n        </p>\n        <p style=\"color: rgba(255,255,255,0.6); font-size: 0.8em;\">\n          T\u00e4nk p\u00e5 vem som faktiskt p\u00e5verkar beslut. Diskutera med din granne.\n        </p>\n        <aside class=\"notes\">\n          Denna fr\u00e5ga kopplar historien till nutid. Eleverna kan ta upp: ungdomar under 18, utl\u00e4ndska medborgare utan svenskt medborgarskap, grupper med l\u00e5gt valdeltagande. M\u00e5let \u00e4r att visa att formell r\u00f6str\u00e4tt inte automatiskt betyder lika inflytande. Samla 2-3 svar i helklass.\n        </aside>\n      </section>\n\n      <!-- SLIDE 9: K\u00e4llkritisk \u00f6vning -->\n      <section>\n        <h2>Vad s\u00e4ger denna k\u00e4lla oss?</h2>\n        <div class=\"source-analysis\">\n          <blockquote class=\"source-quote\">\n            \"Att ge kvinnorna r\u00f6str\u00e4tt vore att undergr\u00e4va familjen och samh\u00e4llets grundvalar. Kvinnan \u00e4r skapad f\u00f6r hemmet, icke f\u00f6r det politiska livet.\"\n          </blockquote>\n          <div class=\"source-meta\">\n            <span class=\"source-author\">Ur riksdagsdebatt, motst\u00e5ndare till kvinnlig r\u00f6str\u00e4tt, ca 1912</span>\n            <span class=\"source-context\">Debatt i Andra kammaren</span>\n          </div>\n          <div class=\"source-questions fragment\">\n            <p><strong>Vem?</strong> En manlig riksdagsledamot som argumenterar mot kvinnlig r\u00f6str\u00e4tt</p>\n            <p><strong>N\u00e4r?</strong> Tidigt 1900-tal, mitt i r\u00f6str\u00e4ttsstriden</p>\n            <p><strong>Syfte?</strong> Att \u00f6vertyga andra ledam\u00f6ter att r\u00f6sta nej till kvinnlig r\u00f6str\u00e4tt</p>\n          </div>\n        </div>\n        <aside class=\"notes\">\n          Visa citatet f\u00f6rst och l\u00e5t eleverna l\u00e4sa det. Fr\u00e5ga: \"Vad tycker ni om det h\u00e4r?\" - reaktionerna brukar vara starka. Klicka sedan fram de k\u00e4llkritiska fr\u00e5gorna. Diskutera: \u00c4r detta en p\u00e5litlig k\u00e4lla f\u00f6r att f\u00f6rst\u00e5 hur man t\u00e4nkte p\u00e5 den tiden? Ja - den visar tydligt vilka argument som anv\u00e4ndes. Men den s\u00e4ger inget om vad alla tyckte. Betona att k\u00e4llkritik handlar om att f\u00f6rst\u00e5 KONTEXTEN, inte bara om k\u00e4llan \u00e4r \"sann\" eller \"falsk\".\n        </aside>\n      </section>\n\n      <!-- SLIDE 10: K\u00e4llkritisk f\u00f6rdjupning -->\n      <section>\n        <h2>Vad kan vi l\u00e4ra av denna k\u00e4lla?</h2>\n        <ul>\n          <li class=\"fragment\"><strong>Tendens:</strong> Avs\u00e4ndaren har ett tydligt syfte - att stoppa r\u00f6str\u00e4tten. Det f\u00e4rgar argumenten.</li>\n          <li class=\"fragment\"><strong>Tidsanda:</strong> Visar vilka v\u00e4rderingar som var vanliga - men inte alla delade dem.</li>\n          <li class=\"fragment\"><strong>Maktperspektiv:</strong> Vem tj\u00e4nade p\u00e5 att kvinnor inte fick r\u00f6sta?</li>\n        </ul>\n        <aside class=\"notes\">\n          Koppla till k\u00e4llkritiska begrepp som eleverna ska kunna: tendens, avs\u00e4ndare, syfte, representativitet. Fr\u00e5ga: \"Om vi bara hade den h\u00e4r k\u00e4llan, vilken bild skulle vi f\u00e5 av debatten?\" - svar: en ensidig bild. D\u00e4rf\u00f6r beh\u00f6ver vi fler k\u00e4llor f\u00f6r att f\u00f6rst\u00e5 historien. Det h\u00e4r \u00e4r k\u00e4rnan i k\u00e4llkritiskt t\u00e4nkande.\n        </aside>\n      </section>\n\n      <!-- SLIDE 11: Sammanfattning -->\n      <section data-background-gradient=\"linear-gradient(135deg, #1a5276 0%, #154360 50%, #0e2f44 100%)\">\n        <h2 style=\"color: white;\">Vad tar vi med oss?</h2>\n        <ul style=\"color: rgba(255,255,255,0.9);\">\n          <li class=\"fragment\">Demokratin i Sverige byggdes steg f\u00f6r steg under mer \u00e4n 50 \u00e5r</li>\n          <li class=\"fragment\">Den kr\u00e4vde folkr\u00f6relser, politisk kamp och modiga individer</li>\n          <li class=\"fragment\">Att ha r\u00f6str\u00e4tt och att ha verkligt inflytande \u00e4r inte samma sak</li>\n        </ul>\n        <p class=\"fragment\" style=\"color: rgba(255,255,255,0.6); font-size: 0.8em; margin-top: 1.5em;\">\n          N\u00e4sta steg: Elevaktivitet om demokratins utmaningar idag\n        </p>\n        <aside class=\"notes\">\n          \u00c5tg\u00e5 till \u00f6ppningsfr\u00e5gan: \"Vem fick best\u00e4mma?\" Koppla samman: fr\u00e5n fyra st\u00e5nd till alla medborgare. Betona att demokrati inte \u00e4r ett avslutat projekt utan kr\u00e4ver st\u00e4ndigt underh\u00e5ll. P\u00e5minn om att r\u00f6sta i n\u00e4sta val! Ge sedan instruktioner f\u00f6r elevaktiviteten som f\u00f6ljer.\n        </aside>\n      </section>\n\n    </div>\n  </div>\n  <script src=\"https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js\"></script>\n  <script>\n    Reveal.initialize({\n      hash: true,\n      slideNumber: 'c/t',\n      width: 1280,\n      height: 720,\n      margin: 0.05,\n      transition: 'fade',\n      transitionSpeed: 'fast',\n      controls: true,\n      progress: true,\n      plugins: []\n    });\n\n    function checkAnswer(el, correct) {\n      var options = el.parentElement.querySelectorAll('.quiz-option');\n      options.forEach(function(opt) { opt.disabled = true; });\n\n      if (correct) {\n        el.classList.add('correct');\n        el.closest('section').querySelector('.quiz-feedback').textContent = 'R\u00e4tt! 1921 var f\u00f6rsta valet d\u00e4r alla vuxna svenskar fick r\u00f6sta.';\n      } else {\n        el.classList.add('incorrect');\n        options.forEach(function(opt) {\n          if (opt.getAttribute('onclick').includes('true')) {\n            opt.classList.add('correct');\n          }\n        });\n        el.closest('section').querySelector('.quiz-feedback').textContent = 'Inte riktigt - se det gr\u00f6na alternativet.';\n      }\n    }\n  </script>\n</body>\n</html>"}], "grading": {"run_id": "eval-0-with_skill", "expectations": [{"text": "Uses reveal.js as the presentation framework", "passed": true, "evidence": "Found reveal.js references: CDN links to reveal.js@5 (reveal.css, white.css theme, reveal.js script)"}, {"text": "Contains a timeline with at least 3 historical dates/years", "passed": true, "evidence": "Found 4 timeline dates in .timeline component: 1866, 1909, 1919, 1921"}, {"text": "Has at least one discussion slide prompting student discussion", "passed": true, "evidence": "Found 3 slides containing 'Diskutera' - two dedicated discussion slides (slides 4 and 8) with red background and timed discussion prompts"}, {"text": "Contains a source criticism exercise with a historical quote", "passed": true, "evidence": "Slide 9 has a blockquote with a historical quote about women's suffrage (ca 1912 riksdag debate), followed by source-critical questions (Vem? N\u00e4r? Syfte?). Slide 10 continues with source analysis (Tendens, Tidsanda, Maktperspektiv)"}, {"text": "No slide has more than 3 bullet points in a list", "passed": true, "evidence": "Maximum bullet points in any single list: 3. All ul/ol elements across all sections have 3 or fewer direct li children"}, {"text": "At least half of slide titles are phrased as questions", "passed": true, "evidence": "8/10 h2 titles are questions (80%). Questions include 'Vem fick best\u00e4mma i Sverige - och vem fick inte?', 'Hur styrdes Sverige f\u00f6re demokratin?', etc. Only 2 non-questions: 'Diskutera (2 min)' x2"}, {"text": "Uses reveal.js fragments for progressive disclosure", "passed": true, "evidence": "Found 21 elements with class='fragment' across multiple slides, including timeline items, comparison columns, list items, and stat elements"}, {"text": "Speaker notes present on at least half of content slides", "passed": true, "evidence": "Found 11 <aside class=\"notes\"> elements across 11 sections (100% coverage). Every slide has speaker notes"}, {"text": "Single HTML file with no local file dependencies", "passed": true, "evidence": "All resources loaded from CDNs (jsdelivr for reveal.js, Google Fonts) or inline. No relative path references found"}, {"text": "Base font size is at least 24px for projector readability", "passed": true, "evidence": "Font size on .reveal: 28px (exceeds 24px minimum)"}]}}, {"id": "eval-demokratisering-without_skill", "prompt": "G\u00f6r slides till en lektion om Sveriges demokratisering. Lektionen handlar om hur Sverige gick fr\u00e5n st\u00e5ndsriksdag till allm\u00e4n r\u00f6str\u00e4tt. Eleverna g\u00e5r i \u00e5k 1 p\u00e5 samh\u00e4llsprogrammet. Presentationen ska vara ca 15 minuter och inneh\u00e5lla en tidslinje \u00f6ver viktiga \u00e5rtal, en diskussion, och en k\u00e4llkritisk \u00f6vning med ett historiskt citat.", "eval_id": 0, "outputs": [{"name": "sveriges-demokratisering.html", "type": "text", "content": "<!DOCTYPE html>\n<html lang=\"sv\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Sveriges demokratisering - Fr\u00e5n st\u00e5ndsriksdag till allm\u00e4n r\u00f6str\u00e4tt</title>\n<style>\n  * { margin: 0; padding: 0; box-sizing: border-box; }\n\n  body {\n    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;\n    background: #1a1a2e;\n    color: #e0e0e0;\n    overflow: hidden;\n    height: 100vh;\n    width: 100vw;\n  }\n\n  .slide {\n    display: none;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n    width: 100vw;\n    padding: 4vh 6vw;\n    position: absolute;\n    top: 0; left: 0;\n    opacity: 0;\n    transition: opacity 0.5s ease;\n  }\n\n  .slide.active {\n    display: flex;\n    opacity: 1;\n  }\n\n  /* Slide counter */\n  .slide-counter {\n    position: fixed;\n    bottom: 1.5vh;\n    right: 2vw;\n    font-size: 1.2vw;\n    color: #888;\n    z-index: 100;\n  }\n\n  /* Navigation arrows */\n  .nav-arrow {\n    position: fixed;\n    top: 50%;\n    transform: translateY(-50%);\n    font-size: 2.5vw;\n    color: rgba(255,255,255,0.3);\n    cursor: pointer;\n    z-index: 100;\n    user-select: none;\n    padding: 2vh 1vw;\n    transition: color 0.3s;\n  }\n  .nav-arrow:hover { color: rgba(255,255,255,0.7); }\n  .nav-left { left: 0.5vw; }\n  .nav-right { right: 0.5vw; }\n\n  /* Title slide */\n  .title-slide { background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%); }\n  .title-slide h1 {\n    font-size: 4.5vw;\n    font-weight: 700;\n    color: #ffd700;\n    text-align: center;\n    margin-bottom: 2vh;\n    line-height: 1.2;\n  }\n  .title-slide .subtitle {\n    font-size: 2vw;\n    color: #aabbdd;\n    text-align: center;\n    margin-bottom: 4vh;\n  }\n  .title-slide .meta {\n    font-size: 1.3vw;\n    color: #7788aa;\n    text-align: center;\n  }\n  .crown-icon {\n    font-size: 6vw;\n    margin-bottom: 2vh;\n  }\n\n  /* Content slides */\n  .content-slide {\n    background: linear-gradient(160deg, #16213e 0%, #1a1a2e 100%);\n    align-items: flex-start;\n    padding: 5vh 8vw;\n  }\n\n  .content-slide h2 {\n    font-size: 3.2vw;\n    color: #ffd700;\n    margin-bottom: 3vh;\n    width: 100%;\n    border-bottom: 2px solid rgba(255, 215, 0, 0.3);\n    padding-bottom: 1.5vh;\n  }\n\n  .content-slide ul {\n    list-style: none;\n    width: 100%;\n  }\n\n  .content-slide ul li {\n    font-size: 1.8vw;\n    line-height: 1.6;\n    margin-bottom: 1.8vh;\n    padding-left: 2vw;\n    position: relative;\n  }\n\n  .content-slide ul li::before {\n    content: '\u25b8';\n    position: absolute;\n    left: 0;\n    color: #ffd700;\n  }\n\n  .content-slide p {\n    font-size: 1.8vw;\n    line-height: 1.7;\n    margin-bottom: 2vh;\n    width: 100%;\n  }\n\n  /* Two column layout */\n  .two-col {\n    display: flex;\n    gap: 4vw;\n    width: 100%;\n    flex: 1;\n    align-items: flex-start;\n  }\n  .two-col .col {\n    flex: 1;\n  }\n  .two-col .col h3 {\n    font-size: 2vw;\n    color: #64b5f6;\n    margin-bottom: 2vh;\n  }\n  .two-col .col ul li {\n    font-size: 1.6vw;\n  }\n\n  /* Timeline styles */\n  .timeline-slide {\n    background: linear-gradient(160deg, #16213e 0%, #1a1a2e 100%);\n    padding: 4vh 4vw;\n    align-items: center;\n    justify-content: flex-start;\n  }\n\n  .timeline-slide h2 {\n    font-size: 3vw;\n    color: #ffd700;\n    margin-bottom: 3vh;\n    text-align: center;\n  }\n\n  .timeline-container {\n    position: relative;\n    width: 88vw;\n    flex: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n  }\n\n  .timeline-line {\n    position: absolute;\n    top: 50%;\n    left: 2vw;\n    right: 2vw;\n    height: 4px;\n    background: linear-gradient(90deg, #ffd700, #64b5f6, #ffd700);\n    transform: translateY(-50%);\n  }\n\n  .timeline-events {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    position: relative;\n    padding: 0 2vw;\n  }\n\n  .timeline-event {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    position: relative;\n    width: 12vw;\n  }\n\n  .timeline-event.above .event-content {\n    order: -1;\n    margin-bottom: 2vh;\n  }\n  .timeline-event.below .event-content {\n    margin-top: 2vh;\n  }\n\n  .event-dot {\n    width: 1.5vw;\n    height: 1.5vw;\n    border-radius: 50%;\n    background: #ffd700;\n    border: 3px solid #16213e;\n    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);\n    z-index: 2;\n    flex-shrink: 0;\n  }\n\n  .event-content {\n    text-align: center;\n  }\n\n  .event-year {\n    font-size: 1.8vw;\n    font-weight: 700;\n    color: #ffd700;\n  }\n\n  .event-text {\n    font-size: 1.1vw;\n    color: #ccc;\n    max-width: 11vw;\n    line-height: 1.3;\n    margin-top: 0.5vh;\n  }\n\n  /* Discussion slide */\n  .discussion-slide {\n    background: linear-gradient(160deg, #1b2838 0%, #1a1a2e 100%);\n    padding: 5vh 8vw;\n    align-items: flex-start;\n  }\n\n  .discussion-slide h2 {\n    font-size: 3.2vw;\n    color: #ffd700;\n    margin-bottom: 3vh;\n    width: 100%;\n    border-bottom: 2px solid rgba(255, 215, 0, 0.3);\n    padding-bottom: 1.5vh;\n  }\n\n  .discussion-questions {\n    width: 100%;\n  }\n\n  .discussion-question {\n    background: rgba(100, 181, 246, 0.1);\n    border-left: 4px solid #64b5f6;\n    padding: 2vh 2vw;\n    margin-bottom: 2.5vh;\n    border-radius: 0 8px 8px 0;\n    font-size: 1.8vw;\n    line-height: 1.5;\n  }\n\n  .discussion-question .q-number {\n    color: #64b5f6;\n    font-weight: 700;\n    margin-right: 0.5vw;\n  }\n\n  .discussion-instruction {\n    font-size: 1.4vw;\n    color: #aaa;\n    margin-top: 2vh;\n    font-style: italic;\n  }\n\n  /* Quote / source slide */\n  .source-slide {\n    background: linear-gradient(160deg, #1e2d3d 0%, #1a1a2e 100%);\n    padding: 5vh 8vw;\n    align-items: flex-start;\n  }\n\n  .source-slide h2 {\n    font-size: 3.2vw;\n    color: #ffd700;\n    margin-bottom: 3vh;\n    width: 100%;\n    border-bottom: 2px solid rgba(255, 215, 0, 0.3);\n    padding-bottom: 1.5vh;\n  }\n\n  .quote-box {\n    background: rgba(255, 215, 0, 0.08);\n    border: 1px solid rgba(255, 215, 0, 0.3);\n    border-radius: 12px;\n    padding: 3vh 3vw;\n    width: 100%;\n    margin-bottom: 3vh;\n    position: relative;\n  }\n\n  .quote-box::before {\n    content: '\\201D';\n    font-size: 5vw;\n    color: rgba(255, 215, 0, 0.3);\n    position: absolute;\n    top: -1vh;\n    left: 1.5vw;\n    line-height: 1;\n  }\n\n  .quote-text {\n    font-size: 1.8vw;\n    font-style: italic;\n    line-height: 1.6;\n    padding-left: 2vw;\n    color: #e8e8e8;\n  }\n\n  .quote-attribution {\n    font-size: 1.3vw;\n    color: #aaa;\n    text-align: right;\n    margin-top: 1.5vh;\n    padding-right: 1vw;\n  }\n\n  .source-questions h3 {\n    font-size: 2vw;\n    color: #64b5f6;\n    margin-bottom: 1.5vh;\n  }\n\n  .source-questions ul li {\n    font-size: 1.6vw;\n    margin-bottom: 1.2vh;\n  }\n\n  /* Highlight boxes */\n  .highlight-box {\n    background: rgba(255, 215, 0, 0.1);\n    border: 1px solid rgba(255, 215, 0, 0.3);\n    border-radius: 10px;\n    padding: 2.5vh 2.5vw;\n    width: 100%;\n    margin: 1.5vh 0;\n  }\n\n  .highlight-box h3 {\n    color: #ffd700;\n    font-size: 2vw;\n    margin-bottom: 1vh;\n  }\n\n  /* Emoji labels */\n  .emoji-label {\n    font-size: 2vw;\n    margin-right: 0.5vw;\n  }\n\n  /* Summary slide */\n  .summary-slide {\n    background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);\n    padding: 5vh 8vw;\n    align-items: flex-start;\n  }\n\n  .summary-slide h2 {\n    font-size: 3.2vw;\n    color: #ffd700;\n    margin-bottom: 3vh;\n    width: 100%;\n    text-align: center;\n  }\n\n  .takeaways {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 2vw;\n    width: 100%;\n    justify-content: center;\n  }\n\n  .takeaway-card {\n    background: rgba(100, 181, 246, 0.1);\n    border: 1px solid rgba(100, 181, 246, 0.3);\n    border-radius: 12px;\n    padding: 2.5vh 2vw;\n    width: 26vw;\n    text-align: center;\n  }\n\n  .takeaway-card .card-icon {\n    font-size: 3vw;\n    margin-bottom: 1vh;\n  }\n\n  .takeaway-card h3 {\n    font-size: 1.6vw;\n    color: #64b5f6;\n    margin-bottom: 1vh;\n  }\n\n  .takeaway-card p {\n    font-size: 1.3vw;\n    line-height: 1.5;\n    color: #ccc;\n  }\n\n  /* Key term */\n  .key-term {\n    color: #ffd700;\n    font-weight: 600;\n  }\n\n  /* Stand boxes */\n  .stand-grid {\n    display: grid;\n    grid-template-columns: repeat(4, 1fr);\n    gap: 1.5vw;\n    width: 100%;\n    margin-top: 1vh;\n  }\n\n  .stand-box {\n    background: rgba(100, 181, 246, 0.08);\n    border: 1px solid rgba(100, 181, 246, 0.2);\n    border-radius: 10px;\n    padding: 2vh 1.5vw;\n    text-align: center;\n  }\n\n  .stand-box h3 {\n    font-size: 1.5vw;\n    color: #64b5f6;\n    margin-bottom: 0.8vh;\n  }\n\n  .stand-box p {\n    font-size: 1.2vw;\n    color: #bbb;\n    line-height: 1.4;\n  }\n\n  .stand-box .stand-icon {\n    font-size: 2.5vw;\n    margin-bottom: 0.5vh;\n  }\n\n  /* Progress bar */\n  .progress-bar {\n    position: fixed;\n    top: 0;\n    left: 0;\n    height: 4px;\n    background: linear-gradient(90deg, #ffd700, #64b5f6);\n    z-index: 200;\n    transition: width 0.4s ease;\n  }\n\n  /* Keyboard hint */\n  .keyboard-hint {\n    position: fixed;\n    bottom: 1.5vh;\n    left: 2vw;\n    font-size: 1vw;\n    color: #555;\n    z-index: 100;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"progress-bar\" id=\"progressBar\"></div>\n<div class=\"slide-counter\" id=\"slideCounter\"></div>\n<div class=\"nav-arrow nav-left\" onclick=\"changeSlide(-1)\">&#10094;</div>\n<div class=\"nav-arrow nav-right\" onclick=\"changeSlide(1)\">&#10095;</div>\n<div class=\"keyboard-hint\">Piltangenter eller klicka for att navigera</div>\n\n<!-- SLIDE 1: Title -->\n<div class=\"slide title-slide active\" id=\"slide-1\">\n  <div class=\"crown-icon\">&#x1F3DB;</div>\n  <h1>Sveriges demokratisering</h1>\n  <p class=\"subtitle\">Fran standsriksdag till allman rostratt</p>\n  <p class=\"meta\">Historia &mdash; Samhallsprogrammet arskurs 1</p>\n</div>\n\n<!-- SLIDE 2: Vad ar demokrati? -->\n<div class=\"slide content-slide\" id=\"slide-2\">\n  <h2>Vad menar vi med demokrati?</h2>\n  <div class=\"two-col\">\n    <div class=\"col\">\n      <h3>Grundprinciper</h3>\n      <ul>\n        <li><span class=\"key-term\">Folkstyre</span> - makten utg\u00e5r fr\u00e5n folket</li>\n        <li><span class=\"key-term\">Allm\u00e4n r\u00f6str\u00e4tt</span> - alla medborgare kan r\u00f6sta</li>\n        <li><span class=\"key-term\">Yttrandefrihet</span> - r\u00e4tten att uttrycka \u00e5sikter</li>\n        <li><span class=\"key-term\">R\u00e4ttsstat</span> - lagar g\u00e4ller alla lika</li>\n      </ul>\n    </div>\n    <div class=\"col\">\n      <h3>Fundera p\u00e5...</h3>\n      <ul>\n        <li>Vem fick best\u00e4mma i Sverige f\u00f6r 200 \u00e5r sedan?</li>\n        <li>Var Sverige en demokrati \u00e5r 1800?</li>\n        <li>N\u00e4r blev Sverige en demokrati?</li>\n      </ul>\n    </div>\n  </div>\n</div>\n\n<!-- SLIDE 3: St\u00e5ndsriksdagen -->\n<div class=\"slide content-slide\" id=\"slide-3\">\n  <h2>St\u00e5ndsriksdagen (1435-1866)</h2>\n  <div class=\"highlight-box\">\n    <h3>Fyra st\u00e5nd best\u00e4mde</h3>\n    <p>Riksdagen bestod av fyra grupper som representerade olika delar av samh\u00e4llet - men l\u00e5ngt ifr\u00e5n alla.</p>\n  </div>\n  <div class=\"stand-grid\">\n    <div class=\"stand-box\">\n      <div class=\"stand-icon\">&#9775;</div>\n      <h3>Adeln</h3>\n      <p>Jord\u00e4gande aristokrater med \u00e4rftliga privilegier</p>\n    </div>\n    <div class=\"stand-box\">\n      <div class=\"stand-icon\">&#9769;</div>\n      <h3>Pr\u00e4sterna</h3>\n      <p>Svenska kyrkans f\u00f6retr\u00e4dare</p>\n    </div>\n    <div class=\"stand-box\">\n      <div class=\"stand-icon\">&#9878;</div>\n      <h3>Borgarna</h3>\n      <p>K\u00f6pm\u00e4n och hantverkare i st\u00e4derna</p>\n    </div>\n    <div class=\"stand-box\">\n      <div class=\"stand-icon\">&#127807;</div>\n      <h3>B\u00f6nderna</h3>\n      <p>Sj\u00e4lv\u00e4gande b\u00f6nder - inte torpare eller dr\u00e4ngar</p>\n    </div>\n  </div>\n  <p style=\"margin-top: 2vh; font-size: 1.6vw; color: #e8a0a0; text-align: center;\">\n    Majoriteten av befolkningen - torpare, statare, pigor, dr\u00e4ngar, fattiga - var helt utan representation.\n  </p>\n</div>\n\n<!-- SLIDE 4: Timeline -->\n<div class=\"slide timeline-slide\" id=\"slide-4\">\n  <h2>Tidslinje: V\u00e4gen till demokrati</h2>\n  <div class=\"timeline-container\">\n    <div class=\"timeline-line\"></div>\n    <div class=\"timeline-events\">\n\n      <div class=\"timeline-event above\">\n        <div class=\"event-content\">\n          <div class=\"event-year\">1809</div>\n          <div class=\"event-text\">Ny regeringsform - kungen f\u00f6rlorar env\u00e4ldsmakt</div>\n        </div>\n        <div class=\"event-dot\"></div>\n      </div>\n\n      <div class=\"timeline-event below\">\n        <div class=\"event-content\">\n          <div class=\"event-year\">1842</div>\n          <div class=\"event-text\">Folkskolan inf\u00f6rs - alla barn ska kunna l\u00e4sa</div>\n        </div>\n        <div class=\"event-dot\"></div>\n      </div>\n\n      <div class=\"timeline-event above\">\n        <div class=\"event-content\">\n          <div class=\"event-year\">1866</div>\n          <div class=\"event-text\">Tv\u00e5kammar-riksdag ers\u00e4tter st\u00e5ndsriksdagen</div>\n        </div>\n        <div class=\"event-dot\"></div>\n      </div>\n\n      <div class=\"timeline-event below\">\n        <div class=\"event-content\">\n          <div class=\"event-year\">1909</div>\n          <div class=\"event-text\">Allm\u00e4n r\u00f6str\u00e4tt f\u00f6r m\u00e4n (till AK)</div>\n        </div>\n        <div class=\"event-dot\"></div>\n      </div>\n\n      <div class=\"timeline-event above\">\n        <div class=\"event-content\">\n          <div class=\"event-year\">1919</div>\n          <div class=\"event-text\">Beslut om kvinnlig r\u00f6str\u00e4tt</div>\n        </div>\n        <div class=\"event-dot\"></div>\n      </div>\n\n      <div class=\"timeline-event below\">\n        <div class=\"event-content\">\n          <div class=\"event-year\">1921</div>\n          <div class=\"event-text\">F\u00f6rsta valet med allm\u00e4n och lika r\u00f6str\u00e4tt</div>\n        </div>\n        <div class=\"event-dot\"></div>\n      </div>\n\n    </div>\n  </div>\n</div>\n\n<!-- SLIDE 5: Riksdagsreformen 1866 -->\n<div class=\"slide content-slide\" id=\"slide-5\">\n  <h2>Riksdagsreformen 1866</h2>\n  <div class=\"two-col\">\n    <div class=\"col\">\n      <h3>Vad f\u00f6r\u00e4ndrades?</h3>\n      <ul>\n        <li>St\u00e5ndsriksdagen avskaffades</li>\n        <li>Ersattes av en <span class=\"key-term\">tv\u00e5kammarriksdag</span></li>\n        <li>F\u00f6rsta kammaren: valdes indirekt av landsting</li>\n        <li>Andra kammaren: direktval - men med inkomstkrav</li>\n      </ul>\n    </div>\n    <div class=\"col\">\n      <h3>Vem fick r\u00f6sta?</h3>\n      <ul>\n        <li>M\u00e4n \u00f6ver 21 \u00e5r</li>\n        <li>Med tillr\u00e4ckligt h\u00f6g <span class=\"key-term\">inkomst eller f\u00f6rm\u00f6genhet</span></li>\n        <li>Cirka <span class=\"key-term\">20%</span> av befolkningen</li>\n        <li>Inga kvinnor, inga fattiga</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"highlight-box\" style=\"margin-top: 2vh;\">\n    <p style=\"font-size: 1.6vw; text-align: center;\">Steg fram\u00e5t - men fortfarande inte demokrati. Pengar avgjorde vem som hade politisk makt.</p>\n  </div>\n</div>\n\n<!-- SLIDE 6: R\u00f6str\u00e4ttsr\u00f6relsen -->\n<div class=\"slide content-slide\" id=\"slide-6\">\n  <h2>Kampen f\u00f6r r\u00f6str\u00e4tt</h2>\n  <ul>\n    <li><span class=\"key-term\">Arbetarr\u00f6relsen</span> v\u00e4xte fr\u00e5n 1880-talet - kr\u00e4vde politiska r\u00e4ttigheter f\u00f6r arbetare</li>\n    <li><span class=\"key-term\">Liberaler</span> drev fr\u00e5gan om utvidgad r\u00f6str\u00e4tt i riksdagen</li>\n    <li><span class=\"key-term\">Storstrejken 1909</span> - 300 000 arbetare la ner arbetet, bland annat f\u00f6r r\u00f6str\u00e4tt</li>\n    <li><span class=\"key-term\">Kvinnor\u00f6relsen</span> organiserade sig - FKPR (F\u00f6reningen f\u00f6r kvinnans politiska r\u00f6str\u00e4tt) bildades 1903</li>\n    <li>Internationellt tryck: demokratisering p\u00e5gick i flera europeiska l\u00e4nder</li>\n    <li><span class=\"key-term\">F\u00f6rsta v\u00e4rldskriget</span> och revolutioner i Europa 1917-18 skapade press p\u00e5 f\u00f6r\u00e4ndring</li>\n  </ul>\n</div>\n\n<!-- SLIDE 7: 1919-1921 -->\n<div class=\"slide content-slide\" id=\"slide-7\">\n  <h2>Genombrottet: 1919-1921</h2>\n  <div class=\"two-col\">\n    <div class=\"col\">\n      <h3>Vad h\u00e4nde?</h3>\n      <ul>\n        <li>1918: Hungerupplopp och oro i Sverige</li>\n        <li>Revolution i Tyskland och Ryssland</li>\n        <li>1919: Riksdagen beslutar om <span class=\"key-term\">allm\u00e4n och lika r\u00f6str\u00e4tt</span> - \u00e4ven f\u00f6r kvinnor</li>\n        <li>1921: F\u00f6rsta valet d\u00e4r alla vuxna svenskar f\u00e5r r\u00f6sta</li>\n      </ul>\n    </div>\n    <div class=\"col\">\n      <h3>Viktiga personer</h3>\n      <ul>\n        <li><span class=\"key-term\">Hjalmar Branting</span> - socialdemokratisk ledare, drev r\u00f6str\u00e4ttsfr\u00e5gan</li>\n        <li><span class=\"key-term\">Nils Ed\u00e9n</span> - liberal statsminister som genomf\u00f6rde reformen</li>\n        <li><span class=\"key-term\">Elin W\u00e4gner</span> - f\u00f6rfattare och r\u00f6str\u00e4ttsaktivist</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"highlight-box\" style=\"margin-top: 2vh;\">\n    <p style=\"font-size: 1.6vw; text-align: center;\">\n      Notera: R\u00f6str\u00e4tts\u00e5ldern var 23 \u00e5r. Vissa grupper (t.ex. omyndigf\u00f6rklarade, personer med fattigv\u00e5rdsunderst\u00f6d) var fortfarande utest\u00e4ngda.\n    </p>\n  </div>\n</div>\n\n<!-- SLIDE 8: Diskussion -->\n<div class=\"slide discussion-slide\" id=\"slide-8\">\n  <h2>Diskussion i par (3-4 minuter)</h2>\n  <div class=\"discussion-questions\">\n    <div class=\"discussion-question\">\n      <span class=\"q-number\">1.</span> Varf\u00f6r tog det s\u00e5 l\u00e5ng tid att inf\u00f6ra demokrati i Sverige? Vilka grupper hade intresse av att beh\u00e5lla det gamla systemet?\n    </div>\n    <div class=\"discussion-question\">\n      <span class=\"q-number\">2.</span> T\u00e4nk dig att du levde i Sverige \u00e5r 1900. Skulle du haft r\u00f6str\u00e4tt? Varf\u00f6r eller varf\u00f6r inte?\n    </div>\n    <div class=\"discussion-question\">\n      <span class=\"q-number\">3.</span> Kan vi ta demokratin f\u00f6r given idag? Finns det hot mot demokratin som vi borde vara uppm\u00e4rksamma p\u00e5?\n    </div>\n  </div>\n  <p class=\"discussion-instruction\">Diskutera med din b\u00e4nkkamrat. Var beredda att dela en tanke med klassen.</p>\n</div>\n\n<!-- SLIDE 9: K\u00e4llkritisk \u00f6vning - citatet -->\n<div class=\"slide source-slide\" id=\"slide-9\">\n  <h2>K\u00e4llkritisk \u00f6vning</h2>\n  <div class=\"quote-box\">\n    <p class=\"quote-text\">\n      \"Att ge r\u00f6str\u00e4tt \u00e5t den stora massan, som saknar bildning och egendom, vore att \u00f6verl\u00e4mna statens styrelse \u00e5t dem som minst f\u00f6rst\u00e5 att sk\u00f6ta den. Folket beh\u00f6ver ledas, inte leda.\"\n    </p>\n    <p class=\"quote-attribution\">\n      - Ur ett konservativt debattinl\u00e4gg i F\u00f6rsta kammaren, ca 1890-talet\n    </p>\n  </div>\n  <div class=\"source-questions\">\n    <h3>Analysera citatet med dessa fr\u00e5gor:</h3>\n    <ul>\n      <li><span class=\"key-term\">Vem</span> kan ha sagt detta? Vilken samh\u00e4llsgrupp tillh\u00f6rde personen troligen?</li>\n      <li><span class=\"key-term\">Varf\u00f6r</span> sades det? Vilket syfte hade argumentet?</li>\n      <li><span class=\"key-term\">Tendens</span> - Vilken politisk st\u00e5ndpunkt avsl\u00f6jar citatet?</li>\n      <li><span class=\"key-term\">Relevans idag</span> - Finns liknande argument i dagens debatter? Var?</li>\n    </ul>\n  </div>\n</div>\n\n<!-- SLIDE 10: K\u00e4llkritiska begrepp -->\n<div class=\"slide content-slide\" id=\"slide-10\">\n  <h2>K\u00e4llkritiska begrepp att anv\u00e4nda</h2>\n  <div class=\"two-col\">\n    <div class=\"col\">\n      <h3>De fyra kriterierna</h3>\n      <ul>\n        <li><span class=\"key-term\">\u00c4kthet</span> - \u00c4r k\u00e4llan vad den utger sig f\u00f6r att vara?</li>\n        <li><span class=\"key-term\">Tid</span> - Hur n\u00e4ra i tid ligger k\u00e4llan till h\u00e4ndelsen?</li>\n        <li><span class=\"key-term\">Beroende</span> - \u00c4r k\u00e4llan oberoende eller bygger den p\u00e5 andra k\u00e4llor?</li>\n        <li><span class=\"key-term\">Tendens</span> - Har avs\u00e4ndaren ett eget intresse som f\u00e4rgar inneh\u00e5llet?</li>\n      </ul>\n    </div>\n    <div class=\"col\">\n      <h3>Till\u00e4mpa p\u00e5 citatet</h3>\n      <ul>\n        <li>Representerar citatet en <span class=\"key-term\">vanlig \u00e5sikt</span> i sin tid?</li>\n        <li>Vad ber\u00e4ttar det om <span class=\"key-term\">maktstrukturer</span>?</li>\n        <li>Hur skiljer sig denna syn fr\u00e5n <span class=\"key-term\">dagens</span> demokratisyn?</li>\n        <li>Vilka <span class=\"key-term\">motargument</span> hade r\u00f6str\u00e4ttsr\u00f6relsen?</li>\n      </ul>\n    </div>\n  </div>\n</div>\n\n<!-- SLIDE 11: Sammanfattning -->\n<div class=\"slide summary-slide\" id=\"slide-11\">\n  <h2>Sammanfattning</h2>\n  <div class=\"takeaways\">\n    <div class=\"takeaway-card\">\n      <div class=\"card-icon\">&#x1F3DB;</div>\n      <h3>L\u00e5ng process</h3>\n      <p>Demokratiseringen tog \u00f6ver 100 \u00e5r - fr\u00e5n st\u00e5ndsriksdag (1435) via tv\u00e5kammarriksdag (1866) till allm\u00e4n r\u00f6str\u00e4tt (1921).</p>\n    </div>\n    <div class=\"takeaway-card\">\n      <div class=\"card-icon\">&#9994;</div>\n      <h3>Kamp underifr\u00e5n</h3>\n      <p>Arbetarr\u00f6relsen, liberaler och kvinnor\u00f6relsen k\u00e4mpade f\u00f6r r\u00e4ttigheter som makthavarna inte ville ge.</p>\n    </div>\n    <div class=\"takeaway-card\">\n      <div class=\"card-icon\">&#128269;</div>\n      <h3>Kritiskt t\u00e4nkande</h3>\n      <p>Historiska k\u00e4llor m\u00e5ste granskas - vem s\u00e4ger vad, varf\u00f6r, och i vilket syfte?</p>\n    </div>\n  </div>\n</div>\n\n<script>\n  let currentSlide = 1;\n  const totalSlides = document.querySelectorAll('.slide').length;\n\n  function showSlide(n) {\n    document.querySelectorAll('.slide').forEach(s => {\n      s.classList.remove('active');\n    });\n    const slide = document.getElementById('slide-' + n);\n    if (slide) {\n      slide.classList.add('active');\n      currentSlide = n;\n    }\n    document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;\n    document.getElementById('progressBar').style.width = ((currentSlide / totalSlides) * 100) + '%';\n  }\n\n  function changeSlide(dir) {\n    let next = currentSlide + dir;\n    if (next < 1) next = 1;\n    if (next > totalSlides) next = totalSlides;\n    showSlide(next);\n  }\n\n  document.addEventListener('keydown', function(e) {\n    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {\n      e.preventDefault();\n      changeSlide(1);\n    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {\n      e.preventDefault();\n      changeSlide(-1);\n    } else if (e.key === 'Home') {\n      showSlide(1);\n    } else if (e.key === 'End') {\n      showSlide(totalSlides);\n    }\n  });\n\n  // Touch support\n  let touchStartX = 0;\n  document.addEventListener('touchstart', function(e) {\n    touchStartX = e.changedTouches[0].screenX;\n  });\n  document.addEventListener('touchend', function(e) {\n    const diff = touchStartX - e.changedTouches[0].screenX;\n    if (Math.abs(diff) > 50) {\n      changeSlide(diff > 0 ? 1 : -1);\n    }\n  });\n\n  // Initialize\n  showSlide(1);\n</script>\n\n</body>\n</html>\n"}], "grading": {"run_id": "eval-0-without_skill", "expectations": [{"text": "Uses reveal.js as the presentation framework", "passed": false, "evidence": "No reveal.js reference found. The presentation uses a custom HTML/CSS/JS implementation with manual slide navigation (div.slide elements, custom showSlide/changeSlide functions)."}, {"text": "Contains a timeline with at least 3 historical dates/years", "passed": true, "evidence": "Slide 4 contains a visual timeline component with 6 dates: 1809, 1842, 1866, 1909, 1919, 1921. Uses dedicated CSS classes (timeline-slide, timeline-container, timeline-line, timeline-event, event-dot, event-year)."}, {"text": "Has at least one discussion slide prompting student discussion", "passed": true, "evidence": "Slide 8 (id='slide-8') is a dedicated discussion slide with class 'discussion-slide', titled 'Diskussion i par (3-4 minuter)' containing 3 discussion questions and the instruction 'Diskutera med din b\u00e4nkkamrat. Var beredda att dela en tanke med klassen.'"}, {"text": "Contains a source criticism exercise with a historical quote", "passed": true, "evidence": "Slide 9 (id='slide-9') contains a quote box with the historical quote 'Att ge r\u00f6str\u00e4tt \u00e5t den stora massan...' attributed to 'Ur ett konservativt debattinl\u00e4gg i F\u00f6rsta kammaren, ca 1890-talet', followed by 4 source-critical analysis questions (Vem, Varf\u00f6r, Tendens, Relevans idag)."}, {"text": "No slide has more than 3 bullet points in a list", "passed": false, "evidence": "Multiple slides exceed 3 bullet points per list. Slide 2 left column: 4 <li>. Slide 5 left column: 4 <li>. Slide 5 right column: 4 <li>. Slide 6: 6 <li>. Slide 7 left column: 4 <li>. Slide 9 source-questions: 4 <li>. Slide 10 left column: 4 <li>. Slide 10 right column: 4 <li>."}, {"text": "At least half of slide titles are phrased as questions", "passed": false, "evidence": "Only 1 out of 10 h2 titles ends with '?': 'Vad menar vi med demokrati?' (10%). The other 9 are statements: 'St\u00e5ndsriksdagen (1435-1866)', 'Tidslinje: V\u00e4gen till demokrati', 'Riksdagsreformen 1866', 'Kampen f\u00f6r r\u00f6str\u00e4tt', 'Genombrottet: 1919-1921', 'Diskussion i par (3-4 minuter)', 'K\u00e4llkritisk \u00f6vning', 'K\u00e4llkritiska begrepp att anv\u00e4nda', 'Sammanfattning'."}, {"text": "Uses reveal.js fragments for progressive disclosure", "passed": false, "evidence": "No elements with class='fragment' found anywhere in the HTML. The presentation has no progressive disclosure mechanism."}, {"text": "Speaker notes present on at least half of content slides", "passed": false, "evidence": "No <aside class='notes'> elements found in the HTML. Zero speaker notes across all 11 slides."}, {"text": "Single HTML file with no local file dependencies", "passed": true, "evidence": "All CSS is embedded in a <style> block, all JavaScript is inline in a <script> block. No external stylesheets, scripts, images, or fonts are referenced. The file is fully self-contained."}, {"text": "Base font size is at least 24px for projector readability", "passed": false, "evidence": "No explicit px-based font-size is set on body or a .reveal container. Body has no font-size declaration. All font sizes use viewport-relative units (vw): content text at 1.8vw (about 19px on a 1080p screen), headings at 3.2vw. The requirement for a base font-size of at least 24px is not met."}]}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "slides", "skill_path": "<path/to/skill>", "executor_model": "<model-name>", "analyzer_model": "<model-name>", "timestamp": "2026-03-18T10:34:00Z", "evals_run": [], "runs_per_configuration": 3}, "runs": [], "run_summary": {"delta": {"pass_rate": "+0.00", "time_seconds": "+0.0", "tokens": "+0"}}, "notes": []}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server — but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable — no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete — include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) — download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>
