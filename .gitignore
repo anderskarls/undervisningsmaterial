@@ -45,3 +45,13 @@ resources/guardian-mcp/
 resources/sam3-globalisering-vardag-till-varldssystem/
 resources/sh1a1-politikomraden-valet-2026/
 resources/survey-platform/
+Kod/
+
+# LibreOffice-låsfiler
+.~lock.*#
+
+# Personligt ansökningsmaterial - hör inte hemma i ett publikt repo
+resources/Anders*CV*
+resources/Anders*Personligt brev*
+resources/personligt-brev-*
+resources/ansokan-*/
