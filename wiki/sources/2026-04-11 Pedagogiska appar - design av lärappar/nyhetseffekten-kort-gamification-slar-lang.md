@@ -1,9 +1,9 @@
 ---
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-07-11
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 tags: [pedagogik, larappar, gamification, novelty-effect, motivation]
 source: Pedagogiska appar design research report 2026-04-11
 ---
@@ -24,6 +24,10 @@ Det här förklarar varför stora appar som Duolingo har en till synes välfunge
 
 ## Koppling till survey-platform
 Här är en smart designfigur: bygg appen utan gamification som default, men ge läraren verktyg att *opt-in* en kortvarig utmaning ("denna vecka kör vi poäng på klassens frågor om franska revolutionen"). Läraren bestämmer när nyhetseffekten ska användas. Det är mer autonomistöd, mer flexibelt och undviker permanenta anti-mönster.
+
+## Koppling till escape rooms
+
+Escape rooms är strukturellt sett en *engångshändelse* snarare än ett permanent system - vilket, om nyhetseffektens logik stämmer, borde vara en styrka: novelty decay hinner aldrig sätta in. Detta stärker argumentet för att använda escape rooms sparsamt (ett par gånger per termin) snarare än som återkommande veckorutin, se [[tidskostnad-och-brusrisk-escape-rooms-kontra-direktundervisning]]. Samma logik gäller formatvalet: [[fjarrformat-underpresterar-synkrona-format-vinner-over-asynkrona]] visar att escape rooms tappar effekt när de görs asynkrona/oövervakade (t.ex. en läxa-länk) - ett annat sätt att förlora den "engångshändelse"-kvalitet som gör formatet motivationsmässigt kraftfullt i första hand.
 
 ## Källa
 - Zeng, J. et al. (2024). "Exploring the impact of gamification on students' academic performance: meta-analysis 2008-2023." *British Journal of Educational Technology*.

@@ -1,9 +1,9 @@
 ---
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-07-11
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 source: Aktivering-Elevdeltagande-Research-Report-2026-05-17
 tags: [aktivering, aktivt-larande, freeman, sweet-spot, effektstorlek, gymnasium]
 type: permanent
@@ -27,9 +27,14 @@ Tänk på aktivering som krydda, inte huvudrätt. En 60-minuters lektion klarar 
 ## Spänningar / Kontraintuitivt
 Bryter mot den implicita "mer aktivering = bättre"-progressionen i mycket fortbildning. Bryter också mot Lemov-traditionens "ratio"-fokus, där maximerad elevtid är dygd. Empirin säger att maximering är fel optimum. Detta resonerar med Rosenshines klassiska sex-fas-modell där lärarexposen har en formaliserad plats.
 
+## Escape rooms som gränsfall för sweet spot-principen
+
+En 60-90-minuters escape room är per definition ett enda, oavbrutet aktiveringsblock - motsatsen till "krydda, inte huvudrätt". [[tidskostnad-och-brusrisk-escape-rooms-kontra-direktundervisning]] resonerar kring detta: escape rooms kan inte brytas upp i 3-5-minutersintervall utan att förlora sin narrativa/spelmässiga logik, vilket gör dem strukturellt oförenliga med sweet spot-principen om de körs varje vecka. Det talar för att behandla escape rooms som ett medvetet, sällsynt undantag (ett par gånger per termin, som ett höjdpunktsmoment) snarare än en regelbunden aktiveringsteknik i samma kategori som turn-and-talk eller mini-whiteboards.
+
 ## Kopplingar
 - [[minimumsekvens-aktivering-sex-steg]] - operativ struktur som respekterar sweet spot
 - [[desirable-difficulty-sweet-spot-60-till-85-procent]] - parallellt mönster: optimum är inte maximum
 - [[ramverk-momentdesign-utkast-2]] - integrera sweet spot-principen på momentnivå
 - [[exit-ticket-planering-aterkopplingsslinga]] - aktivering som länkar utan att fragmentera
 - [[think-pair-share-gymnasium-effektstorlek-161]] - hög-värde-aktiveringen att prioritera
+- [[tidskostnad-och-brusrisk-escape-rooms-kontra-direktundervisning]] - escape rooms som ett aktiveringsblock som bryter sweet spot-logiken

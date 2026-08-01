@@ -1,9 +1,9 @@
 ---
 created: 2026-04-22
-updated: 2026-04-22
+updated: 2026-06-15
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 tags: [historiematerialism, ekomarxism, malm, industrihistoria, fossila-branslen, arbetarkontroll]
 source: "historiematerialism-research-report-2026-04-22.md"
 ---
@@ -42,6 +42,12 @@ Detta illustrerar en **generell historiematerialistisk metodprincip**: tekniska 
 - [[metabolisk-spricka-foster-kapital-mot-ekologi]]
 - [[politisk-marxism-wood-brenner-marknadstvang]]
 - [[mau-mute-compulsion-strukturell-makt]]
+
+**Historisk föregångare (2026-06-15):** [[slavhandeln-som-tidig-atlantisk-kapitalism]] (Rediker) - samma logik (kapital kräver ett externt exploaterat objekt för att ackumulera) 150 år före kolet, med afrikanska kroppar i stället.
+
+**Industrialiseringens makrobild (2026-06-15):** [[hobsbawm-industriella-revolutionen-bomull-och-kapital]] - bomull/slaveri/järnväg som strukturell ram; Malm tar vid med kolets politik.
+
+**Idé-motpositionen (2026-06-15):** [[mokyr-vs-malm-ideer-mot-arbetskontroll]] - Mokyr vänder Malms förklaring rakt emot: inte arbetskontroll utan upplysningens nyttiga kunskap (industrial enlightenment) drev industrialiseringen. Trepartsparet Malm/Hobsbawm/Mokyr (arbetskontroll / struktur / idéer) är nu komplett - se [[MOC - Revolutionernas tidsålder (amerikanska, franska, industriella)]] sektion 4.
 
 ## Taggar
 #historiematerialism #ekomarxism #malm #industrihistoria #arbetarkontroll

@@ -1,9 +1,9 @@
 ---
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-07-11
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 source: Aktivering-Elevdeltagande-Research-Report-2026-05-17
 tags: [aktivering, elevdeltagande, equity, dialogisk-undervisning, howe, gymnasium]
 type: permanent
@@ -28,9 +28,14 @@ Bygg in equity-tracking i din egen lektionsobservation. En enkel rutin: notera p
 ## Spänningar / Kontraintuitivt
 Det vanliga oro-arguemntet mot fokus på tysta elever är att vokala elever "tappar tempo". Empirin säger nej - de skiftar bara från kvantitet till kvalitet, vilket är den önskade riktningen ändå. Att låta vokala elever hålla sitt monopol är inte att tjäna dem; det är att underskatta deras kapacitet att fördjupa.
 
+## Samma equity-risk i escape room-gruppobservation
+
+Samma princip - att lärarens uppmärksamhet måste riktas medvetet för att fånga tysta elevers bidrag, annars osynliggörs de - gäller sannolikt escape room-lag lika mycket som helklassdialog. [[escape-rooms-som-formativ-bedomning-med-observationsprotokoll]] noterar att samarbete i escape rooms "sällan är fokus för formell utvärdering": utan ett observationsprotokoll som explicit spårar *vem* i gruppen som bidrar med vad, riskerar en högljudd "problemlösare" att dominera bedömningsbilden av ett lag på samma sätt som vokala elever annars dominerar en helklassdiskussion.
+
 ## Kopplingar
 - [[dialogisk-undervisning-eef-rct-tva-manaders-progression]] - mästertraditionen denna intervention förfinade
 - [[cold-calling-minskar-gender-gap-frivilligt-deltagande]] - oberoende parallellt fynd: equity-strukturer lyfter de tystnade
 - [[howe-2024-elever-som-bygger-pa-varandras-ideer]] - vad utvidgade bidrag består av
 - [[warm-call-loser-cold-call-debatten]] - operativ teknik för att rikta till tysta
 - [[accountable-talk-tre-pelare-resnick]] - normativt ramverk för dialogkvalitet
+- [[escape-rooms-som-formativ-bedomning-med-observationsprotokoll]] - samma equity-risk i gruppbaserad bedömning

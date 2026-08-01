@@ -1,9 +1,9 @@
 ---
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - ai-feedback
   - feedback-literacy
@@ -33,6 +33,7 @@ Designimplikation for quiz-plattform: bygg in explicit stod for feedback-literac
 
 - [[sjalvbedomning-kalibrering-kravs-traning]] - Feedback-literacy ar en utökning av sjalvbedomningstraning
 - [[metakognitiva-fragor-sjalvreglerat-larande]] - Metakognitiva promptar ar samma princip tillämpad pa AI-feedback-kontexten
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - samma bristande formaga att vikta en maskinutsaga, uppmatt hos lararen
 
 ## Kalla
 

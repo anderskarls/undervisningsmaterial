@@ -1,9 +1,9 @@
 ---
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags: [pedagogik, larappar, AI, fuskdetektion, rattvisa]
 source: Pedagogiska appar design research report 2026-04-11
 ---
@@ -34,3 +34,10 @@ Detta förenklar ditt scope radikalt. Du slipper bygga proctoring, fuskdetektion
 - Frontiers in Education (2024). "Students are using large language models and AI detectors can often [not] detect their use." https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2024.1374889/full
 - Inside Higher Ed (2024). "Students and professors expect more cheating thanks to AI."
 - EU AI Act, Annex III. https://artificialintelligenceact.eu/annex/3/
+
+
+## Kopplingar
+
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - ytterligare ett skal att inte bygga detektion: siffran paverkar bedomaren aven nar hon vet att den ar opalitlig
+- [[eu-ai-forordningen-vad-den-praktiskt-binder-for-en-larare]] - fristerna efter Digital Omnibus
+- [[detektionsparadigmets-sammanbrott-2024-2026]] - den samlade empirin mot detektion

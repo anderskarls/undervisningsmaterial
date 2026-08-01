@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-06-15
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, historiebruk, kollektivt-minne, moraliska-roller, skolforskningsinstitutet, nordgren]
@@ -60,3 +60,6 @@ Fokus: hur utvecklas elevers förmåga att **orientera sig i osäker värld** vi
 - [[nordgren-2024-decolonize-history-eurocentrisk-kritik]] - Vilka roller finns inte?
 - [[interruptive-democracy-edling-2025-svensk-laroplan]] - Störa rollfördelningen
 - [[andra-ordningens-begrepp-historisk-frageteknik]] - Signifikans och perspektiv
+- [[morka-medeltiden-som-uppfunnen-myt]] - "Den mörka medeltiden" som lärobokscase i historiebruk (The Bright Ages)
+- [[MOC - Medeltiden (innehåll och historiebruk)]] - Medeltidsdomänen
+**Tidigmoderna historiebruksfall (2026-06-15):** [[la-malinche-omtolkning-som-historiebruk]] (1800-talsnationalism), [[brooks-diagrammet-abolitionismens-bildpolitik]] (abolitionismens bildpolitik) och [[chimalpahin-och-den-inhemska-historieskrivningen]] (bevarande som moralisk handling).

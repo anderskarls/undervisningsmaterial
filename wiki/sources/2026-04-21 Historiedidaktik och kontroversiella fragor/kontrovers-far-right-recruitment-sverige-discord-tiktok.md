@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-06-08
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Kontroversiella-fragor-Research-Report-2026-04-21.md
 tags: [extremism, radikalisering, sverige, discord, tiktok, normalisering, active-club]
@@ -61,3 +61,5 @@ Kombineras naturligt med [[kontrovers-jerome-konspirationsteorier-motstridiga-st
 - [[kontrovers-prebunking-inokulering-tre-typer]] - teknik-baserad inokulering är relevant
 - [[kontrovers-demokratistegen-skolverket-2024]] - svenskt strukturstöd
 - [[visuella-medier-blinda-flacken-svensk-skola]] - visuell/meme-literacy saknas
+- [[morka-medeltiden-som-uppfunnen-myt]] - Vit makt-appropriering av medeltiden (The Bright Ages)
+- [[rasbegreppets-medeltida-rotter]] - Den historiska berättelse rekryterarna åberopar

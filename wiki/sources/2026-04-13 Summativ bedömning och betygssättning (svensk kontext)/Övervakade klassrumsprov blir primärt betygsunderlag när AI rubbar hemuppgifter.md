@@ -1,9 +1,9 @@
 ---
 created: 2026-04-13
-updated: 2026-04-13
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - bedömning
   - AI
@@ -35,3 +35,5 @@ För samhällskunskap och historia blir den rekommenderade kombinationen provtil
 - [[AI har accelererat behovet av centralt rättade slutprov snarare än bromsat det]]
 - [[Validitet och reliabilitet är fiender i bedömning av komplexa förmågor]]
 - [[Lärarens dubbla roll som coach och domare är ett olöst dilemma]]
+- [[sverige-valde-manskliga-bedomare-framfor-ai-rattning]] - staten drog samma slutsats i provsystemet: manniskor rattar, inte modeller
+- [[detektionsparadigmets-sammanbrott-2024-2026]] - varfor hemarbeten inte kan barga validiteten forensiskt

@@ -1,9 +1,9 @@
 ---
 created: 2026-03-07
-updated: 2026-04-23
+updated: 2026-07-11
 created_by: claude-sonnet-4-6
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 tags:
   - pedagogik
   - historia
@@ -88,6 +88,12 @@ Designa minst en fråga per lektionsenhet från varje kategori som är relevant 
 
 ---
 
+## Tillämpning i escape room-narrativ
+
+De sex kategorierna ger en konkret checklista för att designa escape room-pussel i historia som faktiskt kräver disciplinärt tänkande, inte bara faktaåtergivning. [[karaktarsperspektiv-som-narrativ-teknik-i-historia-escape-rooms]] föreslår att låta eleven "bli" en historisk aktör och journalföra ur den karaktärens perspektiv - ett pussel byggt på "perspektiv och historisk empati"-kategorin ovan. Men samma varning som gäller frågeteknik i klassrummet gäller escape room-pussel: ett pussel som bara kräver att eleven *låtsas* vara en historisk person utan att faktiskt behöva resonera om kausalitet, evidens eller signifikans stannar vid ytlig rollspel snarare än andra ordningens tänkande - se [[choklad-overdragen-brokkoli-pussel-maste-vara-blooms-matta]] för samma risk i generell pusseldesign.
+
+---
+
 ## Kopplingar till kunskapsbas
 
 - [[Historiskt tänkande kräver diskussion - klassrummet som historiskt laboratorium]] - Forskning som bekräftar lärardialogens roll
@@ -96,6 +102,7 @@ Designa minst en fråga per lektionsenhet från varje kategori som är relevant 
 - [[IRE-mönstret dominerar klassrum - och blockerar lärande]] - Andraordningsfrågor kan inte hanteras med IRE-strukturen
 - [[Andra ordningens begrepp är historiedidaktikens svar på bedömning av komplexa förmågor]] - Samma teoretiska verktyg applicerade på *bedömningsdesign* istället för frågeteknik. Tillsammans täcker noterna både fas 3-4 (frågor) och separat bedömning i sexfasstrukturen
 - [[Historielärare saknar ankarprov och måste bygga sin egen kalibreringsbas]] - Den praktiska konsekvensen för historieläraren när varken ankarprov eller etablerad FA-forskning finns
+- [[karaktarsperspektiv-som-narrativ-teknik-i-historia-escape-rooms]] - de sex kategorierna som checklista för escape room-pusseldesign i historia
 - [[MOC - Bedömning och betygssättning]]
 
 ---

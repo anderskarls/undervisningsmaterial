@@ -1,9 +1,9 @@
 ---
 created: 2026-04-15
-updated: 2026-04-15
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - AI-bedomning
   - ICC
@@ -17,6 +17,8 @@ source: questioning-for-learning-research-report-2026-04-15
 
 # AI-bedömning av essäer når mänsklig inter-rater-nivå (ICC 0.94-0.97) - men bara för formativ användning
 
+> **Generaliseringen är villkorad 2026-07-28.** Sidan bygger på **en** studie med 15 EFL-lärare och drar av den slutsatsen att ett strukturellt skifte har skett. En forskningssyntes över **65 studier januari 2022 - augusti 2025** - alltså exakt det tidsfönster som här kallas ett skifte - finner att samstämmigheten mestadels ligger mellan **QWK 0,30 och 0,80**, och att de höga värdena uppnås av specialiserade och finjusterade system snarare än av generella chattmodeller. Yavuz-resultatet ligger alltså i den övre svansen av en bred fördelning, inte på dess mittpunkt. Tre systematiska bias som inte nämns nedan har dessutom dokumenterats sedan dess: self-enhancement bias (AI-genererad text får högre betyg än mänskligt skriven), verbositetsbias och proportionell bias. Se [[llm-bedomarreliabilitet-spannet-030-080]] innan rekommendationen i "Varför det spelar roll" tillämpas.
+
 Yavuz med flera (2025, British Journal of Educational Technology, DOI 10.1111/bjet.13494) jämförde 15 erfarna EFL-lärare med ChatGPT (default och fine-tuned) och Bard på rubrik-baserad essäbedömning. Resultaten är häpnadsväckande: ChatGPT default ICC = 0.947, ChatGPT fine-tuned ICC = 0.972, Bard ICC = 0.919. Alla tre LLM presterar *lika bra eller bättre* än paneler av mänskliga bedömare. Detta är i nivå med god inter-human reliability och överstiger den vanliga tröskeln för "excellent agreement".
 
 Ett strukturellt skifte har skett någon gång mellan 2022 och 2025. Tidigare studier visade LLM som under mänsklig nivå; 2024-2025 års studier visar LLM *i nivå med eller över*. Bannan med flera (2026, medicinsk kontext) genomförde tre iterationer av GPT-4-bedömning mellan april 2024 och februari 2025 och förbättrade kappa från 0.65-0.75 till 0.88-0.94 ("nästan perfekt") - och nyckeln var *iterativ rubrikrefinering mot AI-feedback*, inte modellbytet i sig.
@@ -27,7 +29,7 @@ Den operationella gränsen i slutet av 2025 är klar: AI-bedömning är tillräc
 
 ## Varför det spelar roll
 
-Du kan använda AI som andra bedömare för att kalibrera din egen rättning. Skriv en rubrik, låt AI rätta en essä, jämför med din egen bedömning och identifiera dimensioner där ni skiljer er åt. Det är en form av kollegial kalibrering utan kollega - och just det som iterativ rubrikrefinering handlar om. För summativa moment: använd AI som "första läsning" och låt eleverna få snabbare formativ feedback före slutversion, men rätta själv det som blir betyg.
+Du kan använda AI som andra bedömare för att kalibrera din egen rättning. Skriv en rubrik, låt AI rätta en essä, jämför med din egen bedömning och identifiera dimensioner där ni skiljer er åt. **Två villkor tillkomna 2026-07-28:** gör din egen bedömning *först* och öppna maskinens efteråt - annars ankras du av den ([[automation-bias-hos-larare-experimentellt-bekraftad]]) - och betrakta samstämmigheten som en okänd storhet i spannet 0,30-0,80 tills du mätt den i din egen kontext. Det är en form av kollegial kalibrering utan kollega - och just det som iterativ rubrikrefinering handlar om. För summativa moment: använd AI som "första läsning" och låt eleverna få snabbare formativ feedback före slutversion, men rätta själv det som blir betyg.
 
 ## Källa
 
@@ -37,6 +39,8 @@ AutoSCORE authors (2025). AutoSCORE: Enhancing Automated Scoring with Multi-Agen
 
 ## Kopplingar
 
+- [[llm-bedomarreliabilitet-spannet-030-080]] — syntes över 65 studier som villkorar hela denna sida
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] — varför ordningen mellan din bedömning och maskinens spelar roll
 - [[iterativ-rubrikrefinering-mot-ai-hojer-kappa-fran-065-till-094]]
 - [[rubrikkalibrering-ar-villkoret-for-reliabel-bedomning-i-tolkande-amnen]]
 - [[ai-genererade-fragor-31-procent-forkastningstakt]]

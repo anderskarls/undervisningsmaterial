@@ -1,9 +1,9 @@
 ---
 created: 2026-04-22
-updated: 2026-04-22
+updated: 2026-06-15
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 tags: [historiematerialism, historiesyner, metod, historiografi, korsch, produktionsforhallanden]
 source: "historiematerialism-research-report-2026-04-22.md"
 ---
@@ -62,6 +62,10 @@ Eleverna får pröva styrkor och svagheter. Exemplariskt för [[alven-historia-o
 - [[malm-fossil-capital-kolets-politiska-historia]]
 - [[kontrovers-alven-historia-ontologiska-third-order-koncept]]
 - [[mau-mute-compulsion-strukturell-makt]]
+
+**Praktikexempel (2026-06-15):** [[slavskeppet-som-maskin-fabrik-och-fangelse]] och [[slavhandeln-som-tidig-atlantisk-kapitalism]] (Rediker) - slavhandelns grymhet förklarad via kapitalets strukturella krav, inte individuell ondska.
+
+**Praktikexempel makrohistoria (2026-06-15):** [[hobsbawm-historiematerialism-i-praktiken]] och [[hobsbawm-dubbelrevolutionen-som-tes]] - historiematerialismen tillämpad på revolutionernas tidsålder.
 
 ## Taggar
 #historiematerialism #historiesyner #metod #historiografi #korsch

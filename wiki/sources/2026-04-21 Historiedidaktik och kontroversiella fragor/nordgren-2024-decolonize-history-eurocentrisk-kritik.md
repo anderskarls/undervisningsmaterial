@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-06-15
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, dekolonisering, postkolonialt, nordgren, samisk-historia, eurocentrism]
@@ -45,3 +45,6 @@ Dekolonisering är inte att "lägga till perspektiv" utan att **bryta den centra
 - [[sjolund-ahsberg-2024-tolerant-nation-narrativ-sverige.md|sjolund-ahsberg-2024-tolerant-nation-narrativ-sverige]] - Elevers reproduktion av tolerans-narrativ
 - [[klimatkris-didaktik-nordgren-kalsas-planetar-historia]] - Kolonialism-klimat-länken
 - [[andra-ordningens-begrepp-historisk-frageteknik]] - Signifikans-begreppet (vems historia räknas?)
+- [[morka-medeltiden-som-uppfunnen-myt]] - "Västerlandet"/"Western Civilization" som uppfinning (The Bright Ages)
+- [[rasbegreppets-medeltida-rotter]] - Eurocentrismens och rasbegreppets medeltida rötter
+**Konkreta fallexempel (2026-06-15):** [[dekolonisering-som-historiografisk-praktik]] (Townsend, nahuatl-annalerna), [[myten-om-den-vite-conquistadoren]] (Restall) och [[historia-underifran-sjomannen-som-vittne]] (Rediker) ger empirisk tyngd åt Nordgrens abstrakta kritik.

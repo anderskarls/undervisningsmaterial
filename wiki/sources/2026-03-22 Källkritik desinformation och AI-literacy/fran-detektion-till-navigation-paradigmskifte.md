@@ -1,9 +1,9 @@
 ---
 created: 2026-03-22
-updated: 2026-03-22
+updated: 2026-06-15
 created_by: claude-opus-4-6-20250605
-updated_by: claude-opus-4-6-20250605
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 ---
 
 # Fran detektion till navigation - paradigmskifte i kallkritik
@@ -30,6 +30,9 @@ Detta paradigmskifte manifesteras på flera nivaer:
 - [[Lateral lasning - faktakollares strategi som slår akademiker]]
 - [[Kritisk ignorering - den tredje digitala kompetensen]]
 - [[Inokulationsteori - prebunking forbattrar urskiljning utan att skapa cyniker]]
+- [[medeltida-kallor-ar-retorik-inte-fonster]] - Källkritik på medeltida källor: läs mot avsikten (The Bright Ages)
+
+**Historiskt parallellfall (2026-06-15):** [[rykten-och-bruits-publics-som-opinion]] och [[nyhetscykeln-som-politiskt-verktyg-anekdoten-som-grundenhet]] (Darnton) - rykten och opinion i 1700-talets Paris som proto-medielandskap.
 
 ## Kallor
 - Kozyreva, A. et al. (2024). *Nature Human Behaviour*, 8, 1044-1052.

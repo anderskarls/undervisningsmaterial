@@ -1,9 +1,9 @@
 ---
 created: 2026-04-13
-updated: 2026-04-13
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - bedömning
   - lärarprofession
@@ -34,3 +34,5 @@ Den praktiska implikationen är att **tid som läggs på ämnesfördjupning är 
 - [[Den tysta bedömarkunskapen är viktigare än tydligare kriterier]]
 - [[Andra ordningens begrepp är historiedidaktikens svar på bedömning av komplexa förmågor]]
 - [[Historielärare saknar ankarprov och måste bygga sin egen kalibreringsbas]]
+- [[llm-bedomarreliabilitet-spannet-030-080]] - sidans forutsagelse om ytmarkorer bekraftad empiriskt: modellen premierar ordforrad, struktur och langd
+- [[lararnas-upphovsratt-som-ai-traningsdata]] - det som matas in i verktygen ar just denna amneskunskap

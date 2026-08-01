@@ -1,9 +1,9 @@
 ---
 created: 2026-04-15
-updated: 2026-04-15
+updated: 2026-06-08
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: permanent
 tags:
   - desirable-difficulties
@@ -28,6 +28,7 @@ Van den Broek med flera (2024, npj Science of Learning) skärper begränsningen:
 **Source**: Pyke, W., Lunau, J., & Javadi, A.-H. (2025). Does difficulty moderate learning? A comparative analysis of the desirable difficulties framework and cognitive load theory. *Quarterly Journal of Experimental Psychology*. DOI: 10.1177/17470218241308143. — Van den Broek, G., et al. (2024). Retrieval practice is costly and is beneficial only when working memory capacity is abundant. *npj Science of Learning*.
 
 **Related concepts**:
+- [[desirable-difficulties-bjork-karnparadoxen]] - begreppets ursprung (Bjork) i *Make It Stick*; denna note är den operativa kalibreringen ovanpå det
 - [[pretesting-effekten-d-06-till-12-aven-med-fordrojd-feedback]]
 - [[mc-och-fritext-likvardig-retention-men-olika-diagnostik]] - format mindre viktigt än kalibrering
 - [[arbetsminne-som-gransvarde-for-hogre-ordningens-retrieval]]

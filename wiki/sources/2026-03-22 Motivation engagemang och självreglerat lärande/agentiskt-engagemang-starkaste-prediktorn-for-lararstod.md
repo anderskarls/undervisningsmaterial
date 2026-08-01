@@ -1,9 +1,9 @@
 ---
 created: 2026-03-22
-updated: 2026-03-22
+updated: 2026-07-11
 created_by: claude-opus-4-6-20250605
-updated_by: claude-opus-4-6-20250605
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 ---
 
 # Agentiskt engagemang - starkaste prediktorn för lärarsupport
@@ -31,9 +31,14 @@ Att lära elever att utöva agency (ställa frågor, be om hjälp, ge feedback) 
 
 Kognitivt engagemang visade sig sakna specialiserad funktion, utan opererar som en "generell" engagemangsform. Det utmanar antagandet att djuptänkande automatiskt leder till specifika utfall.
 
+## Ett konkret klassrumsverktyg som operationaliserar agency: ledtrådsmekaniker i escape rooms
+
+En "ring en vän"-ledtrådsmekanik i pedagogiska escape rooms är agentiskt engagemang gjort konkret och regelbundet: eleven måste själv initiera en begäran om stöd istället för att passivt vänta på att läraren cirkulerar. Se [[inkrementellt-icke-bestraffande-ledtradssystem-escape-rooms]] för hur ett icke-bestraffande, opt-in ledtrådssystem kan fungera som ett återkommande, lågstakes träningstillfälle för just den typ av proaktiv hjälpbegäran som denna metaanalys visar är den starkaste prediktorn för lärarstöd.
+
 ## Kopplingar
 - [[Cold calling jämnar ut könsfördelningen i klassrumsdeltagande]] - Agency kräver att alla elever får utrymme
 - [[QFT - elevgenererade frågor ger djupare lärande]] - QFT som konkret verktyg för agentiskt engagemang
+- [[inkrementellt-icke-bestraffande-ledtradssystem-escape-rooms]] - ledtrådsmekaniker som återkommande träning i agentiskt engagemang
 
 ## Källor
 - Bizimana et al. (2025). Specialized purpose of each type of student engagement: A meta-analysis. *Educational Psychology Review*. 652 effektstorlekar, N = 32 403.

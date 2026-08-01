@@ -1,9 +1,9 @@
 ---
 created: 2026-03-22
-updated: 2026-03-22
+updated: 2026-07-28
 created_by: claude-opus-4-6-20250605
-updated_by: claude-opus-4-6-20250605
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 ---
 
 # Lararfortbildning - 80% anser det viktigt, 20% kanns forberedda
@@ -22,8 +22,12 @@ Forskning om AI-literacy i lararutbildningen (Frontiers in Education, 2025) visa
 **Implikation for gymnasielarare:** Du ar inte immun mot desinformation - och att erkanna det ar styrka, inte svaghet. Onskat: fortbildning i samma strategier du ska undervisa (lateral lasning, SIFT, inokulering). Sak garna kollegialt larande kring Mediemyndighetens kommande webbkurs.
 
 ## Kopplingar
-- [[Deepfakes - larare ar mer sarbara an elever]]
-- [[Skolinspektionen 2024 - 25 av 30 gymnasieskolor brister i källkritikundervisning]]
+- [[deepfakes-larare-mer-sarbara-an-elever]]
+- [[skolinspektionen-2024-kallkritik-brister]]
+- [[fortbildningsluckan-ai-som-amne-inte-ai-i-amnet]] - den svenska 2026-motsvarigheten: enda statliga AI-kursen gar till matematik- och tekniklarare
+- [[kompetensramverk-och-fortbildning-normativt-inte-effektprovat]] - ingen effektstudie finns av nagot AI-fortbildningsprogram
+- [[leverantorsdrivna-pseudo-communities-och-ambassadorsprogram]] - vem som fyller fortbildningstomrummet
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - sarbarhetsgapet gors matbart
 
 ## Kallor
 - Media Literacy Now survey (2020).

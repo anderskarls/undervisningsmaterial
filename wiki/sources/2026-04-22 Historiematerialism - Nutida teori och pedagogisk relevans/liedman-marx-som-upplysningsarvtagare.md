@@ -1,9 +1,9 @@
 ---
 created: 2026-04-22
-updated: 2026-04-22
+updated: 2026-06-15
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 tags: [historiematerialism, liedman, marx, sverige, idehistoria, upplysning]
 source: "historiematerialism-research-report-2026-04-22.md"
 ---
@@ -64,6 +64,7 @@ Centrala lärande: marxism som *teori* (analys av kapitalism) är inte samma sak
 - [[gy11-marxism-i-centralt-innehall-sh2]]
 - [[historiematerialism-som-metod-mot-andra-historiesyner]]
 - [[therborn-plural-historiematerialism-nlr-145]]
+**Upplysningskällan (2026-06-15):** [[lyckan-som-upplysningens-samlande-tema]] och [[upplysningens-forsvar-mot-kritikerna]] (Robertson) - vad Marx ärvde (eudemonism, frigörelseprojekt) och vad upplysningen i sig försvaras mot (Adorno/Horkheimer).
 
 ## Taggar
 #historiematerialism #liedman #marx #sverige #idehistoria

@@ -1,9 +1,9 @@
 ---
 created: 2026-03-22
-updated: 2026-03-22
+updated: 2026-07-11
 created_by: claude-opus-4-6-20250605
-updated_by: claude-opus-4-6-20250605
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 type: moc
 tags:
   - moc
@@ -102,7 +102,18 @@ Formativ bedomning ur ett motivationsperspektiv:
 
 ---
 
-## 9. Effektstorlekar - snabbreferens
+## 9. Escape rooms som SDT-fallstudie (2026-07-11)
+
+Escape room-domänen (22 noter, [[wiki/sources/2026-07-11 Designa escaperooms|2026-07-11 Designa escaperooms]]) fungerar som en konkret, tillämpad fallstudie av flera principer ovan snarare än en egen motivationsteori:
+
+- [[inkrementellt-icke-bestraffande-ledtradssystem-escape-rooms]] - ett opt-in ledtrådssystem är i praktiken hög-autonomi-hög-struktur (se punkt 3) omsatt i pusseldesign, och "ring en vän"-mekaniken en konkret tränare av agentiskt engagemang (se punkt 2).
+- [[civics-escape-room-hojer-motivation-kritiskt-tankande-flow]] - den enda kontrollerade civics-studien (Chen et al. 2025): motivation, kritiskt tänkande och flow ökade signifikant.
+- [[larparadoxen-escape-rooms-motivation-upp-betyg-oforandrat]] - **kontrariskt fynd**: i en enskild SEER 2026-studie (humaniora) steg motivation och kreativitet men inte standardiserade prestationsmått - en påminnelse om att motivationsvinster inte automatiskt är prestationsvinster, se punkt 8.
+- [[svag-teoretisk-grund-i-escape-room-forskningen]] - escape room-fältet citerar SDT som en av nio teoretiska grunder men utvecklar den sällan djupt; vaultets egen SDT-domän (denna MOC) är faktiskt mer teoretiskt utvecklad än fältet självt.
+
+---
+
+## 10. Effektstorlekar - snabbreferens
 
 | Intervention | Effektstorlek | Kalla |
 |-------------|--------------|-------|
@@ -118,11 +129,13 @@ Formativ bedomning ur ett motivationsperspektiv:
 
 - [[MOC - Evidensbaserad lektionsarkitektur]] - Lektionsstrukturen som motivationsdesign; motivationsnoterna kompletterar varje fas med SDT-perspektiv
 - [[MOC - Master Navigation]] - Oversikt over alla kunskapsomraden
+- [[MOC - Lärandevetenskap och kognition]] - escape rooms som gränsyta: motivationsvinster (denna MOC) vs. inlärningsmekanismer och kognitiv belastning (den andra)
 
 **Broar mellan MOCs:**
 - Fasmodellens sex faser (lektionsarkitektur) + motivationsdesign = komplett lektionsplanering
 - Formativ bedomning finns i bada MOCs: kognitivt perspektiv (lektionsarkitektur) + motivationsperspektiv (denna MOC)
 - Felklimat (lektionsarkitektur) + produktivt misslyckande (denna MOC) = tva sidor av samma mynt
+- Escape rooms (2026-07-11-sessionen) + SDT/autonomistöd-struktur (denna MOC) + CLT/seductive details (Lärandevetenskap-MOC) = tre linser på samma designobjekt
 
 ---
 
@@ -132,7 +145,8 @@ Formativ bedomning ur ett motivationsperspektiv:
 - Autonomi + struktur i samhallskunskap: praktisk guide
 - Motivationsdesign for yrkeselever: forskningen som utmanar "forenkla for att motivera"
 - Utility-value-intervention: sa anvander du den i SO-undervisning
+- Escape rooms som SDT-fallstudie: när hög struktur och hög autonomi möts i pusseldesign
 
 ---
 
-*20 insiktsnoter | 1 forskningsrapport | ~30 analyserade kallor | Senast uppdaterad 2026-03-22*
+*20 insiktsnoter | 1 forskningsrapport | ~30 analyserade kallor | Senast uppdaterad 2026-07-11*

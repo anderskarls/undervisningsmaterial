@@ -1,9 +1,9 @@
 ---
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-07-11
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 source: Aktivering-Elevdeltagande-Research-Report-2026-05-17
 tags: [aktivering, mini-whiteboards, formativ-bedömning, sampling, lemov, sherrington]
 type: permanent
@@ -23,6 +23,10 @@ Detta gör mini-whiteboards till en strukturellt unik teknik, inte bara ytterlig
 ## Praktisk implikation
 Köp in en klassuppsättning whiteboards och pennor (engångsinvestering ~500 kr). Inför rutin: "På denna fråga skriver ni på whiteboarden, jag säger 'visa' och alla håller upp samtidigt." Använd 2-3 gånger per lektion för faktakontroll, begreppstest eller kort resonemang. Använd Show Call när du ser en intressant felaktig respons: "Anonymt, vad är intressant med det här svaret?". Notera att digitalt motsvarande (Mentimeter, Plickers) ger anonymitet men förlorar lärarens individuella diagnostik.
 
+## Samplingsproblemet i escape room-observation
+
+Samma sampling-problem som gör mini-whiteboards strukturellt unikt i helklassundervisning återkommer, förvärrat, i escape room-baserad formativ bedömning: [[escape-rooms-som-formativ-bedomning-med-observationsprotokoll]] beskriver hur klassrumsobservationsprotokoll typiskt bara följer "slumpmässigt utvalda grupper" under spelfasen. Till skillnad från en helklasslektion där mini-whiteboards *kan* lösa sampling-problemet finns inget motsvarande verktyg för att observera 6-8 escape room-lag samtidigt med samma detaljnivå - vilket gör debriefen (inte spelfasen) till den praktiska platsen där en lärare kan samla data om hela klassen.
+
 ## Spänningar / Kontraintuitivt
 Mini-whiteboards är fortfarande underanvända på svenska gymnasier, ofta uppfattade som "barnsligt" eller "grundskoletteknik". Empirin säger det motsatta - för gymnasieelevernas formativa diagnostik är de strukturellt överlägsna. Den enda kostnaden är social: läraren måste vara villig att normalisera ett enkelt fysiskt verktyg som annars associeras med yngre åldrar.
 
@@ -32,3 +36,4 @@ Mini-whiteboards är fortfarande underanvända på svenska gymnasier, ofta uppfa
 - [[minimumsekvens-aktivering-sex-steg]] - whiteboards som verifieringssteg
 - [[mentimeter-vs-mini-whiteboards-anonymitet-vs-diagnostik]] - tradeoff-analys
 - [[choral-response-fungerar-bara-for-fakta-inte-resonemang]] - parallell teknik för 100 procent response
+- [[escape-rooms-som-formativ-bedomning-med-observationsprotokoll]] - samma samplingsproblem i en annan aktiveringsform

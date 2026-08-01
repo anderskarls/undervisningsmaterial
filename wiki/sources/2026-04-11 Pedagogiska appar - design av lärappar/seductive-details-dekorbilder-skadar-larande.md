@@ -1,9 +1,9 @@
 ---
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-07-11
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 tags: [pedagogik, larappar, cognitive-load, Mayer, multimedia]
 source: Pedagogiska appar design research report 2026-04-11
 ---
@@ -30,6 +30,10 @@ Skulmowski & Xu (2021) utvidgar taxonomin: digitala miljöer genererar en *ny* k
 
 ## Koppling till survey-platform
 Motstå impulsen att göra appen "snygg" med illustrationer, emoji-headings, bakgrundsmönster. Varje bild måste förtjäna sin plats pedagogiskt. Minimalism är inte estetisk preferens här - det är evidensbaserat.
+
+## Koppling till escape rooms: narrativ som seductive detail
+
+Escape room-litteraturens "chocolate-covered broccoli"-felmode - ett stämningsfullt narrativ eller tema som inte faktiskt krävs för att lösa pusslet - är i CLT-termer exakt samma mekanism som seductive details: intressant men innehållsmässigt ovidkommande material som konkurrerar om arbetsminnet utan att bidra till schemabildning. Se [[choklad-overdragen-brokkoli-pussel-maste-vara-blooms-matta]] och [[karaktarsperspektiv-som-narrativ-teknik-i-historia-escape-rooms]], som varnar specifikt för att ett rikt historiskt karaktärsnarrativ kan "dölja" snarare än bära den historiska kunskap pusslet ska pröva. Skillnaden mot en quiz-app är intressant: i escape room-fältets egen lösning ska inte narrativet tas bort (till skillnad från dekorativa bilder i en quizapp) - istället görs pusslet beroende av narrativet på ett sätt som tvingar innehållsbearbetning. Samma underliggande princip, två olika designstrategier beroende på om mediet tillåter obligatorisk interaktion (escape room) eller inte (statisk quiz-fråga).
 
 ## Källa
 - Wang et al. (2025). "A meta-analysis of Richard Mayer's multimedia learning research." *Educational Research Review*. https://www.sciencedirect.com/science/article/pii/S1747938X25000673

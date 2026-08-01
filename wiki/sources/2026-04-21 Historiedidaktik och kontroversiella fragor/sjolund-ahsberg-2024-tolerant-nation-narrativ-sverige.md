@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-06-08
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, nationalnarrativ, svensk-kontext, tolerans, signifikans, sjolund-ahsberg, kritisk-didaktik]
@@ -50,3 +50,4 @@ Edling (2025) argumenterar för "interruptive democracy" - historien ska *störa
 - [[interruptive-democracy-edling-2025-svensk-laroplan.md|interruptive-democracy-edling-2025-svensk-laroplan]] - Teoretiskt ramverk
 - [[structured-academic-controversy-mot-polarisering]] - Metod för att bryta narrativet
 - [[nordgren-2024-decolonize-history-eurocentrisk-kritik]] - Nordgrens kompletterande kritik
+- [[convivencia-och-reconquista-som-trubbiga-kategorier]] - Francos Reconquista-narrativ som parallell till nationella självbilder (The Bright Ages)

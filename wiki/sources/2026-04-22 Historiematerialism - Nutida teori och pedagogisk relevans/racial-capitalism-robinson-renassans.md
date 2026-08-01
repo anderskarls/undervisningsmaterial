@@ -1,9 +1,9 @@
 ---
 created: 2026-04-22
-updated: 2026-04-22
+updated: 2026-06-08
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 tags: [historiematerialism, racial-capitalism, robinson, ras, kolonialism, kapitalism]
 source: "historiematerialism-research-report-2026-04-22.md"
 ---
@@ -59,6 +59,7 @@ Detta är didaktiskt viktigt: elever behöver förstå att "racial capitalism" i
 - [[kapitalismens-utvidgade-sfar-debattkarta]]
 - [[postkolonial-teori-vs-marxism]]
 - [[fraser-cannibal-capitalism-utvidgat-kapitalismbegrepp]]
+- [[rasbegreppets-medeltida-rotter]] - Rasbegreppets rötter i kristna mötet med judar/muslimer/mongoler (The Bright Ages)
 
 ## Taggar
 #historiematerialism #racial-capitalism #robinson #kolonialism #begreppskritik

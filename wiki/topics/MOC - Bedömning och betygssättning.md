@@ -1,9 +1,9 @@
 ---
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-05-21
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-4-7
+agent_version: 04.26
 type: moc
 tags:
   - moc
@@ -11,11 +11,12 @@ tags:
   - betyg
   - gymnasiet
   - svensk-kontext
+  - ai-säkra-prov
 ---
 
 # MOC - Bedömning och betygssättning
 
-Denna MOC samlar forskning, insikter och reflektioner om bedömning och betygssättning i svensk gymnasieskola. Domänen passerade 30 noter i april 2026 och motiverar en egen navigeringshubb, separat från [[MOC - Evidensbaserad lektionsarkitektur]] där bedömning tidigare låg under Fas 4 (guidad övning).
+Denna MOC samlar forskning, insikter och reflektioner om bedömning och betygssättning i svensk gymnasieskola. Domänen passerade 30 noter i april 2026 och motiverar en egen navigeringshubb, separat från [[MOC - Momentplaneringsramverket]] där bedömning tidigare låg under Fas 4 (guidad övning).
 
 **Grundhållning:** Forskning och myndighetsgranskning är anmärkningsvärt samstämmiga om att det svenska betygssystemet inte levererar likvärdighet - och att detta är en **strukturell** brist, inte en lärarbrist. Den praktiska konsekvensen för en enskild lärare är varken kapitulation eller självförebråelse, utan en professionell hållning där systemets begränsningar accepteras utan att bli en ursäkt för slarv.
 
@@ -38,6 +39,8 @@ Startpunkten för hela domänen. Den som vill förstå sitt eget handlingsutrymm
 ## 2. Reformen - Henrekson-utredningen och 70-30-modellen
 
 Den mest sammanhållna reformen av betygssystemet på decennier. Prop. 2025/26:197 är under behandling när denna MOC skrivs.
+
+> **Tidslinjen rättad 2026-07-28.** Sektionen skrevs med implementering 2028. Rätt är: nytt betygssystem successivt **från 2028**, första nationella slutproven **2029**, meritvärden baserade på slutprovsresultat **2031**. Central rättning startar hösten 2026 men bara för uppsatsdelarna i svenska, svenska som andraspråk 3 och engelska 6 - **samhällskunskap och historia ingår inte**. Konsekvensen är genomgripande för den praktiska hållningen i avsnitt 7b: reformen är inte något att invänta i dessa ämnen. Se [[sverige-valde-manskliga-bedomare-framfor-ai-rattning]].
 
 - [[Henrekson-utredningen föreslår 70-30-modell med centralt rättade slutprov]] - **navnot**. SOU 2025:18: 70% lärarbetyg + 30% centralt rättat slutprov, tiogradig skala.
 - [[Samhällskunskap står inför en fundamental bedömningsförändring när slutprov införs]] - ämnesspecifik analys. Reformen kommer att tvinga fram en ny bedömningspraxis i samhällskunskap där slutprov som täcker argumentation och källkritik är en öppen metodfråga.
@@ -124,6 +127,62 @@ AI-revolutionen (ChatGPT från slutet av 2022) har ovanpå detta tvingat fram en
 
 ---
 
+## 7b. AI-säkra examinationsformer - paradigmskifte 2024-2026
+
+Forskningen 2024-2026 har gått från frågan "Hur upptäcker vi AI-fusk?" till "Hur designar vi examinationer vars validitet inte beror på att fusk inte sker?". Det är ett paradigmskifte. Denna sektion samlar de 14 noter som tillsammans formar den nya bilden (session 2026-05-21).
+
+### Detektionsparadigmets sammanbrott
+
+- [[detektionsparadigmets-sammanbrott-2024-2026]] - **navnot**. Sadasivan et al., MDPI, EyeSift: detektion är empiriskt opålitligt och Vanderbilt/Yale/Michigan State/UT Austin har avaktiverat Turnitins detektor.
+- [[ai-detektor-bias-mot-esl-elever]] - Liang m.fl.: FP drabbar systematiskt ESL, NPF och atypisk prosa. Turnitin upp till 50 % FP på ESL-text.
+
+### Teoretiska ramverk
+
+- [[dawson-validitet-slar-fusk-som-central-fraga]] - Dawson, Bearman, Boud (2024): fusk är validitetsfråga, inte moralfråga. Teoretiskt nav.
+- [[corbin-strukturella-vs-diskursiva-bedomningsandringar]] - Corbin/Dawson/Liu (2025) "Talk is cheap": bara strukturella ändringar (uppgiftens mekanik) skyddar validitet, inte regler.
+- [[wicked-problem-ai-bedomning-program-niva]] - Corbin/Bearman (2025): lösningar måste vara på program-, inte uppgiftsnivå.
+- [[bearman-evaluative-judgement-genai-tid]] - Bearman m.fl. (2024): elevens omdöme om kvalitet blir det centrala konstruktet.
+
+### Designramverk
+
+- [[sydney-tva-fileformulering-secure-open]] - Sydney + TEQSA: varje kurs har secure + open lanes. Det dominerande paradigmet.
+- [[aias-perkins-furze-skala-fem-nivaer]] - Perkins/Furze/Roe (2025): AI Assessment Scale v2, fem nivåer från No AI till AI exploration.
+
+### Konkreta examinationsformer
+
+- [[muntliga-prov-inter-rater-reliabilitet-problem]] - kontraintuitivt: muntliga prov κ 0,17-0,54 (under "good"-tröskel). Kan vara mindre reliabla än de skriftliga de ersätter.
+- [[blue-book-renassansen-konstruktdrift]] - USA-universitetens svar: +50 % blue-book på UF, +80 % Berkeley. Men konstruktdrift förorenar bedömningen.
+- [[processportfolj-checkpoint-samtal-fem-min]] - **pragmatisk huvudrekommendation**. Strukturell, hanterbar, formativt värdefull.
+- [[hyperkontextualiserad-autentisk-bedomning]] - Kofinas m.fl. (2025): klassens egna fältarbeten, lokala arkiv, hand-annoterade källor.
+
+### Svensk/nordisk kontext + equity
+
+- [[henrekson-slutprov-loser-ai-validitet-implicit]] - SOU 2025:18 reframing. Samtidiga digitala slutprov 2028 löser AI-validitetsproblemet utan att nämna det.
+- [[nordisk-jamforelse-danmark-norge-sverige-ai-prov]] - Danmark (uppgiftsdesign + censor), Norge (muntligt), Sverige (slutprov 2028).
+- [[ai-som-accommodation-paradox]] - AI som funktionshinderstöd; "AI-säkringar" skadar systematiskt elevgrupper med dokumenterade behov.
+- [[stanford-fuskfrekvens-konstant-2018-2024]] - kontraintuitivt: fusket har inte ökat, bara metoden har förändrats.
+
+### Syntes
+
+- [[kontraintuitiva-insikter-ai-sakra-examinationer-2026]] - **navnot för hela klustret**. Sju överraskande fynd + praktisk hållning för gymnasielärare.
+
+> **Praktisk hållning för gymnasielärare (reviderad 2026-07-28):** Sluta jaga detektorer. Designa minst en strukturellt säkrad bedömning per kurs (Sydney-modellen). Bedöm evaluative judgement explicit. Erkänn equity-spänningen öppet. ~~Vänta in Henrekson 2028 strategiskt.~~ **Planera som om reformen inte kommer att hjälpa dig** - första slutproven 2029, meritvärden 2031, och den centrala rättningen hösten 2026 gäller svenska, sva 3 och engelska 6, inte SO-ämnena. Lägg till: **gör din egen bedömning innan du öppnar maskinens** - human-in-the-loop skyddar inte i kraft av att du är där.
+
+### 7c. Professionens gräns och bedömarledets risker (2026-07-28)
+
+Från sessionen om AI i lärararbetet. Dessa sex noter utgör tillsammans kravspecifikationen för varje AI-stött bedömningsflöde, och de placerar den svenska bedömningsdiskussionen i ett internationellt sammanhang.
+
+- [[bedomning-lagst-i-alla-matningar-professionens-egen-grans]] - professionen drar själv gränsen vid bedömning: TALIS 2024 visar 64 % AI-användning för planering mot 26 % för bedömning, och lärarna ramar in det som försvar av yrkesomdömet, inte som teknikmotstånd.
+- [[far-ai-ratta-och-satta-betyg-internationell-jamforelse]] - hur Ofqual, Oklahoma, Kina och Filippinerna reglerat frågan. Alla formuleringar utom Kinas lämnar avgörandet till den enskilda läraren under tidspress.
+- [[sverige-valde-manskliga-bedomare-framfor-ai-rattning]] - 3 500 certifierade bedömare i stället för en modell, och den rättade reformtidslinjen.
+- [[llm-bedomarreliabilitet-spannet-030-080]] - syntes över 65 studier. Villkorar allt som sägs om AI som kalibreringspartner i avsnitt 4.
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - samma uppsats, olika AI-omdöme, ηp² = 0,579-0,745. Den enskilt viktigaste noten för den som bygger ett bedömningsstöd.
+- [[deskilling-tesen-vilar-pa-analogi-inte-pa-longitudinella-data]] - obelagd åt båda hållen; granskningsintensiteten avgör vilken väg det går.
+
+Se [[MOC - AI i lärararbetet och professionens organisering]] för hela domänen.
+
+---
+
 ## 8. Effektstorlekar och verktyg - snabbreferens
 
 | Intervention | Effekt | Källa |
@@ -161,7 +220,18 @@ Gemensam mekanism: skrift förstärker kalibrering genom att tvinga fram explici
 - Källkritik: [[overmod-efter-kallkritikundervisning-nordisk-studie]]
 - Retrieval: [[otestat-innehall-far-ingen-testningseffekt]]
 
+- AI i lärararbetet: [[tidsbesparingen-25-minuter-mot-59-timmar]] - efficiency-gain illusion är samma struktur: självskattningen är systematiskt uppåtvriden, och tidigare användning **förstärker** felkalibreringen.
+
 Meta-insikt: den moraliska tolkningen ("lärare borde skärpa sig") är empiriskt svagare än den strukturella.
+
+### Brygga 5: Kalibrering som gemensam lösning på tre skilda reliabilitetsproblem
+
+Tre problem i denna MOC har samma lösning, vilket inte syns förrän de läggs bredvid varandra:
+- Muntliga prov: [[muntliga-prov-inter-rater-reliabilitet-problem]] - κ ≈ 0,17-0,54, kräver flera bedömare.
+- LLM-bedömning: [[llm-bedomarreliabilitet-spannet-030-080]] - QWK 0,30-0,80, okänd position i spannet utan mätning.
+- Okalibrerad lärarrättning: [[rubrikkalibrering-ar-villkoret-for-reliabel-bedomning-i-tolkande-amnen]] och [[Den tysta bedömarkunskapen är viktigare än tydligare kriterier]].
+
+Meta-insikt: reliabilitet i tolkande ämnen är inte en egenskap hos bedömaren - mänsklig eller maskinell - utan hos kalibreringen mellan bedömare. Det gör frågan "kan AI rätta?" felställd. Den rätta frågan är om AI kan kalibreras mot ett ankare, och det förutsätter att ankaret finns. Se även [[automation-bias-hos-larare-experimentellt-bekraftad]]: kalibrering måste ske mot egna ankare **före** maskinens förslag, annars kalibreras du mot maskinen.
 
 ### Brygga 4: Tyst kunskap, lateral läsning, dialogisk undervisning
 - Bedömning: [[Den tysta bedömarkunskapen är viktigare än tydligare kriterier]]
@@ -172,9 +242,9 @@ Tre professionsbundna praktiker som alla motstår formaliseringsförsök.
 
 ---
 
-## 10. Koppling till MOC Evidensbaserad lektionsarkitektur
+## 10. Koppling till MOC Momentplaneringsramverket
 
-Bedömning är en genomgående dimension i sexfasstrukturen, inte en enskild fas. Den här MOC:n kompletterar den befintliga [[MOC - Evidensbaserad lektionsarkitektur]] med ett renodlat bedömningsperspektiv.
+Bedömning är en genomgående dimension i sexfasstrukturen, inte en enskild fas. Den här MOC:n kompletterar den befintliga [[MOC - Momentplaneringsramverket]] med ett renodlat bedömningsperspektiv.
 
 | Lektionsfas | Formativ signal | Summativ evidens | Risknot |
 |-------------|-----------------|------------------|---------|
@@ -201,13 +271,15 @@ Den kritiska punkten: eleven måste kunna avläsa vilken modus läraren är i. O
 
 - `resources/summativ-bedomning-research-report-2026-04-13.md` - 25 källor, svensk kontext 2023-2026 (Skolinspektionen 2024, Riksrevisionen 2022:22, SOU 2025:18, Vlachos, Wikström, Lundahl, Jönsson, Nordgren).
 - `resources/formative-assessment-research-report-2026-03-07.md` - 37 källor, formativ bedömning och BFL.
+- `wiki/sources/2026-05-21 AI-säkra examinationsformer/AI-Sakra-Examinationsformer-Research-Report-2026-05-21.md` - 26 källor, AI-säkra examinationsformer 2024-2026 (Sadasivan, Dawson, Corbin/Liu, Bearman, Perkins/Furze, Sydney, TEQSA, JISC, UNESCO, UKÄ, Skolverket, SOU 2025:18, Danske Gymnasier, EVA).
 
 ---
 
 ## 13. Aktiv session-folder
 
-- `Brain/Document Insights/2026-04-13 Summativ bedömning och betygssättning (svensk kontext)/` - 23 permanentnoter + sessions-changelog.
+- `wiki/sources/2026-04-13 Summativ bedömning och betygssättning (svensk kontext)/` - 23 permanentnoter + sessions-changelog.
+- `wiki/sources/2026-05-21 AI-säkra examinationsformer/` - 14 atomiska noter + 1 syntesnot + sessions-changelog.
 
 ---
 
-*35+ insiktsnoter | 2 forskningsrapporter | Aktuell domän under utveckling | Senast uppdaterad 2026-04-14*
+*50+ insiktsnoter | 3 forskningsrapporter | Aktuell domän under utveckling | Senast uppdaterad 2026-05-21*

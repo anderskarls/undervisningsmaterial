@@ -1,9 +1,9 @@
 ---
 created: 2026-03-07
-updated: 2026-03-07
+updated: 2026-07-28
 created_by: claude-sonnet-4-6
-updated_by: claude-sonnet-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - pedagogik
   - lektionsplanering
@@ -105,6 +105,10 @@ Forskarnas rekommendation: Använd AI för *första utkast*, sedan applicera äm
 - [[Klafkis didaktiska analys som förplanering]] - AI misslyckas specifikt med Klafkis analysdimensioner
 - [[IRE-mönstret dominerar klassrum]] - AI reproducerar lägre ordningens tänkande precis som IRE-mönstret gör
 - [[Lärandemål i historia bör specificera kognitiva processer]] - AI-genererade mål sätter sällan processmål
+- [[tidsbesparingen-25-minuter-mot-59-timmar]] - reparationsarbetet ar den tid som inte syns i tidsbesparingssiffrorna
+- [[ai-flyttar-arbetsbordan-snarare-an-minskar-den]] - verifiering och omskrivning som nytt arbete
+- [[ai-stod-i-tolkande-amnen-konstaterad-evidenslucka]] - MLA 2025 om forstarkta dominerande narrativ ar samma fynd som 94-procentssiffran har
+- [[ansvaret-flyttar-aldrig-fran-lararen-den-globala-normkarnan]] - listan 'behall som lararansvar' ar i praktiken en granskningschecklista, och bor vara det uttryckligen
 
 ---
 

@@ -1,9 +1,9 @@
 ---
 created: 2026-04-13
-updated: 2026-04-13
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - bedömning
   - kunskapskrav
@@ -35,3 +35,6 @@ Den praktiska implikationen för en enskild lärare är att investera i de tillf
 - [[Sambedömning är kompetensutveckling men inte likvärdighetsgaranti]]
 - [[Lärarens ämneskunskap är en förutsättning för valid bedömning]]
 - [[pseudo-formativ-bedomning-jonsson-kritik]]
+- [[deskilling-tesen-vilar-pa-analogi-inte-pa-longitudinella-data]] - samma sats fran motsatt hall: denna sida sager vad som bygger bedomarkompetensen, deskilling-noten vad som eroderar den
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - den tysta kunskapen ankras av en maskinutsaga innan den hinner anvandas
+- [[llm-bedomarreliabilitet-spannet-030-080]] - vad som hander nar tyst bedomarkunskap ersatts av en modell

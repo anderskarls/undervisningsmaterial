@@ -1,9 +1,9 @@
 ---
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-07-11
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 tags: [pedagogik, larappar, edtech, gamification, motivation, SDT]
 source: Pedagogiska appar design research report 2026-04-11
 ---
@@ -24,6 +24,10 @@ Ytterligare kontraintuition: korta gamification-interventioner (<1 vecka) övert
 
 ## Koppling till survey-platform
 Bygg aldrig in ett poängsystem i quizappen. Visa personlig progress ("Du kunde 8 av 10") - inte "Du är plats 17 i klassen". Läraren är relatedness-signalen, inte appen.
+
+## Koppling till escape rooms
+
+Escape room-litteraturen har ett eget namn på samma felmode: **"chocolate-covered broccoli"** (poäng/lås/badges läggs på ett pussel utan att pusslets logik faktiskt kräver innehållsbearbetning). Se [[choklad-overdragen-brokkoli-pussel-maste-vara-blooms-matta]] och [[create-ramverket-stem-integrerar-pedagogik-och-spelmekanik]] - den senare är det designramverk som mest explicit adresserar exakt denna risk, men löser den annorlunda: genom att göra *pusslet självt* till bevis på lärande, inte genom att helt undvika spelmekanik.
 
 ## Källa
 - Zeng, J. et al. (2024). "Exploring the impact of gamification on students' academic performance: meta-analysis 2008-2023." *British Journal of Educational Technology*. https://bera-journals.onlinelibrary.wiley.com/doi/full/10.1111/bjet.13471

@@ -1,9 +1,9 @@
 ---
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - ai-feedback
   - tutoring
@@ -31,6 +31,9 @@ Designimplikationen for en quiz-plattform ar oväntad: AI:ns starkaste roll kans
 
 - [[hybrid-feedback-ai-plus-larare-overtraffar-bada-ensamma]] - Tutor CoPilot ar en specifik implementation av hybridmodellen
 - [[ai-genererade-lektionsplaneringar-systematisk-svaghet]] - Samma princip: AI som larar-stod ar starkare an AI som larar-ersattare
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - CoPilot-lagets sekvens ar ankringsvanlig: lararen ser forslaget fore sin egen bedomning
+- [[deskilling-tesen-vilar-pa-analogi-inte-pa-longitudinella-data]] - spanningen: att kompensera for svagare amnesspecifik bedomarkompetens kan vara detsamma som att lata den atrofiera
+- [[Den tysta bedömarkunskapen är viktigare än tydligare kriterier]] - den kompetens CoPilot kompenserar for underhalls bara genom att utovas
 
 ## Kalla
 

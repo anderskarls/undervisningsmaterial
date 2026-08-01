@@ -1,9 +1,9 @@
 ---
 created: 2026-03-07
-updated: 2026-03-07
+updated: 2026-07-11
 created_by: claude-sonnet-4-6
-updated_by: claude-sonnet-4-6
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 tags:
   - pedagogik
   - EU-rollspel
@@ -67,11 +67,18 @@ Definiera *i förväg* vad du vill att eleverna ska lära. Vill du att de ska f�
 
 ---
 
+## Koppling till escape rooms i samhällskunskap
+
+Samma "design styr lärande"-slutsats återkommer i den kontrollerade escape room-forskningen: [[civics-escape-room-hojer-motivation-kritiskt-tankande-flow]] (Chen et al. 2025, den enda kontrollerade civics-studien) mäter delvis andra utfall (kritiskt tänkande, flow) men bekräftar samma mönster - det är *designen* av uppgiften, inte formatetiketten ("simulering" eller "escape room"), som avgör läroutbytet. Se även [[historia-och-samhallskunskap-escape-rooms-tunn-peer-reviewed-evidens]] för hur tunn den kontrollerade evidensbasen är för escape rooms i just samhällskunskap - ett mönster som är slående likt EU-rollspelsforskningens egen begränsade omfattning innan Müller et al.
+
+---
+
 ## Kopplingar till kunskapsbas
 
 - [[Structured Academic Controversy mot polarisering]] - SAC delar mekanismer med EU-rollspel
 - [[Deliberativ undervisning gynnar yrkeselever mest]] - Vilka elever gynnas av aktiva format
 - [[Deliberativa förmågor som medborgerlig kompetens]] - Vad politiska simuleringar egentligen tränar
+- [[civics-escape-room-hojer-motivation-kritiskt-tankande-flow]] - jämförbar simuleringsforskning i escape room-formatet
 
 ---
 

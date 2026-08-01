@@ -1,9 +1,9 @@
 ---
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - ai-feedback
   - metakognition
@@ -44,6 +44,7 @@ For en quiz-plattform ar princip 1 den enklaste att implementera: efter att elev
 
 - [[sjalvbedomning-kalibrering-kravs-traning]] - Metakognitiv stallning ar den tekniska implementationen av sjalvbedomningstraning
 - [[metakognitiva-fragor-sjalvreglerat-larande]] - Reflektionsuppmaningar (princip 3) ar samma teknik i digitalt format
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - designprincip 1 har ar den fardiga motatgarden, hittills bara formulerad for eleven och inte for lararen
 
 ## Kalla
 

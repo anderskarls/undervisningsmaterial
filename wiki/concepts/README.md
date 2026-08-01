@@ -1,174 +1,31 @@
-# 02-Permanent - Your Knowledge Atoms
-
-**Purpose**: Atomic permanent notes—the core of your knowledge graph. These are YOUR insights in YOUR words.
-
-## 🧬 What Are Permanent Notes?
-
-Permanent notes are:
-- **Atomic**: One idea per note
-- **Personal**: In your own words, your perspective
-- **Connected**: Linked to other notes
-- **Standalone**: Independently understandable
-- **Timeless**: Worth revisiting years later
-
-## 📝 Characteristics
-
-### Size
-- **Ideal**: 50-300 words (13 lines average)
-- **Focus**: Single insight or concept
-- **Detail**: Enough to understand without source
-
-### Content
-- **Clear title**: States the insight explicitly
-- **Your voice**: Personal phrasing and perspective
-- **Attribution**: Links back to sources
-- **Connections**: Links to related notes
-
-### Metadata
-```yaml
 ---
-created: YYYY-MM-DD
-tags: [tag1, tag2, tag3]
-type: permanent
----
-```
-
-## ✅ Good Permanent Note Examples
-
-**Good titles** (state the insight):
-- "Dopamine drives motivation, not pleasure"
-- "Confirmation bias reinforces existing beliefs"
-- "Flow requires clear immediate feedback"
-- "Uncertainty itself can trigger dopamine"
-
-**Bad titles** (too vague):
-- "Chapter 3 Notes"
-- "Interesting idea"
-- "Dopamine" (what about it?)
-- "Book summary"
-
-## 🔄 Creation Workflow
-
-### From Source Material
-1. Read and highlight
-2. Create source note in `01-Sources/`
-3. Extract insights—create atomic notes here
-4. Link permanent notes back to source
-5. Link permanent notes to each other
-
-### From Original Thinking
-1. Capture fleeting note in `00-Inbox/`
-2. Develop the thought
-3. Create permanent note here
-4. Find related notes
-5. Add connections
-
-### From AI Extraction
-1. Review note in `AI Extracted Notes/`
-2. Validate accuracy and relevance
-3. Edit if needed
-4. Move to `02-Permanent/`
-5. Run `/find-connections` to integrate
-
-## 🔗 Linking Strategy
-
-### When to Link
-
-**Definitely link**:
-- Related concepts (similar ideas)
-- Contrasting concepts (opposite views)
-- Source attribution (where it came from)
-- Examples (concrete instances)
-- Bridge notes (connect clusters)
-
-**Consider linking**:
-- Contextual background
-- Applications
-- Implications
-- Questions raised
-
-### How to Link
-
-Use `[[wikilinks]]` with context:
-```markdown
-**Related concepts**:
-- [[Related Note]] - Brief explanation of connection
-- [[Contrasting View]] - How they differ
-- [[Example Instance]] - Concrete demonstration
-```
-
-## 🎯 Best Practices
-
-### Writing
-- **Write for future you**: Assume you'll forget the context
-- **Use your voice**: Make it personal and memorable
-- **Be specific**: Vague notes are useless
-- **Show, don't tell**: Include examples when helpful
-
-### Organizing
-- **Don't use folders**: Permanent notes stay flat in this folder
-- **Use tags**: For loose categorization
-- **Use MOCs**: For navigation (create in `03-MOCs/`)
-- **Use links**: For true organization
-
-### Maintaining
-- **Update as you learn**: Permanent doesn't mean frozen
-- **Add connections**: As you discover relationships
-- **Refine wording**: Make clearer over time
-- **Split if needed**: If note covers multiple ideas
-
-## 🚀 Discovery Commands
-
-### Find Connections
-```
-/find-connections [note name]
-```
-Discovers hidden relationships with other notes.
-
-### Search
-```
-/search-vault [topic]
-```
-Quick search across all notes.
-
-### Deep Recall
-```
-/recall [topic]
-```
-3-layer semantic search with context.
-
-## 📊 Quality Checklist
-
-Before marking a note as "permanent":
-
-- [ ] Single, clear insight
-- [ ] In my own words
-- [ ] Independently understandable
-- [ ] Source attributed (if applicable)
-- [ ] Connected to related notes
-- [ ] Clear, specific title
-- [ ] Metadata filled in
-
-## 🔍 Common Patterns
-
-### Insight Types
-- **Definitions**: What something is
-- **Mechanisms**: How something works
-- **Relationships**: How things connect
-- **Principles**: Fundamental rules
-- **Observations**: Patterns noticed
-- **Frameworks**: Mental models
-
-### Connection Types
-- **Definitional**: Defines a concept
-- **Evidential**: Supports with evidence
-- **Synthesis**: Combines multiple ideas
-- **Application**: Practical use
-- **Analogical**: Similar in different domain
-- **Contrasting**: Opposite perspective
-
+created: 2026-07-27
+updated: 2026-07-27
+created_by: claude-opus-5
+updated_by: claude-opus-5
+agent_version: 04.26
+type: concept
+tags: [meta]
 ---
 
-**Remember**: Quality over quantity. One excellent permanent note is worth ten mediocre ones.
+# Om wiki/concepts/
 
-See `_SAMPLE - Permanent Note Template.md` for a template to get started.
+Atomiska begreppssidor - en idé per sida, i användarens egna ord, fristående begripliga och liberalt korslänkade. Det här är wikins permanenta lager: sidor som överlevt flera källor och blivit egna begrepp, till skillnad från `wiki/sources/` där extraktionerna från enskilda ingest-batcher bor.
+
+**Skrivregler och frontmatter:** se `CLAUDE.md` i vaultroten. Mallar ligger i `wiki/_templates/`.
+
+## Vad som hör hemma här
+
+- Begrepp som återkommer över flera källor och domäner
+- Ramverk och modeller användaren faktiskt använder i undervisningen
+- Läslistor och syntesunderlag som är ämnade att växa
+
+## Vad som inte hör hemma här
+
+- Extraktioner från en enskild källa - de hör till `wiki/sources/[sessionsmapp]/`
+- Domänöversikter och navigation - de hör till `wiki/topics/` som `MOC - [Namn].md`
+- Utkast och infångning - de hör till `raw/inbox/`
+
+## Historik
+
+Den här filen var till 2026-07-27 en 175-raders engelsk mallboilerplate med rubriken "02-Permanent - Your Knowledge Atoms". Den instruerade agenten att skriva till `01-Sources/`, `00-Inbox/`, `03-MOCs/` och `AI Extracted Notes/` - mappar som aldrig funnits i det här vaultet. Eftersom en agent som listar `wiki/concepts/` träffar `README.md` före någon riktig begreppssida låg felaktiga skrivvägar först i ledet. Ersatt i OS-audit Batch B; se `audits/os-audit-2026-07-26.md`, Check 2.

@@ -1,9 +1,9 @@
 ---
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-06-08
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Metakognition, Förkroppsligad & Social Kognition — Research Report 2026-04-23
 tags: [interleaving, differentiering, desirable-difficulty, boundary-condition, lag-presterande]
@@ -39,6 +39,7 @@ Interleaving fungerar genom att tvinga hjärnan att *diskriminera* mellan uppgif
 - [[interleaving-i-humaniora-kraver-tematisk-kontrast]] - kompletterar: i humaniora krävs *tematisk* kontrast, här krävs dessutom *förkunskap*
 - [[desirable-difficulty-sweet-spot-60-till-85-procent]] - desirable difficulty har gränser; lågpresterande kan falla under 60%-tröskeln med full interleaving
 - [[produktivt-misslyckande-replikerar-inte-i-samhallsvetenskap]] - liknande mönster: teknik som fungerar i vissa sammanhang skadar i andra
+- [[vad-make-it-stick-fick-ratt-och-vad-som-overspelats]] - *Make It Stick* (2014) översäljer interleaving (geometristudiens +215%, framställt som universellt); denna boundary condition är en av flera wikin lägger till
 
 ## Kontrast/Kontrovers
 Studien gäller *språkinlärning* (deklarativ kunskap i L2). Överföring till samhällsvetenskap är en extrapolation - men mekanismen (behovet av etablerade separata representationer före diskrimination) är domän-oberoende teoretiskt. Kritisk fråga: hur identifieras "lågpresterande" praktiskt? Betyg är en grov approximation; ibland är en elev lågpresterande i ett ämne men högpresterande i ett annat. Lösning: initial diagnostiska uppgifter per ämnesområde, inte bara generell presterandenivå. Boundary condition: även högpresterande kan ha smala kunskapsluckor där blockering fortfarande behövs.

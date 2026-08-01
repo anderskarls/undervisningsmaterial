@@ -1,9 +1,9 @@
 ---
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-06-08
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Metakognition, Förkroppsligad & Social Kognition — Research Report 2026-04-23
 tags: [growth-mindset, replikationskris, meta-analys, kontroversiellt, publication-bias]
@@ -35,6 +35,7 @@ Att tro att intelligens är formbar påverkar inte akademisk prestation direkt. 
 - [[metakognitiv-traning-svagast-i-gymnasiet]] - liknande mönster: populär intervention med svagare evidens än antaget
 - [[sdt-metaanalys-behovsstod-och-behovshammande-ar-skilda-konstrukt]] - motivationsevidens med starkare empirisk grund
 - [[srl-undervisas-sallan-explicit-trots-hog-effekt]] - kontrasten: SRL har evidens men implementeras inte; mindset implementeras men saknar evidens
+- [[vad-make-it-stick-fick-ratt-och-vad-som-overspelats]] - *Make It Stick* (2014, kap. 7) hyllade growth mindset oförbehållsamt som etablerad vetenskap; detta är den största enskilda differensen mellan den boken och wikin
 
 ## Kontrast/Kontrovers
 Yeager-studien (2019, *Nature*, N stort, National Study of Learning Mindsets) visade *någon* effekt (d = 0.03 generellt, d = 0.10 för lågpresterande) men *endast* i skolor med stödjande peer-normer. Detta är en moderator som i praktiken omöjliggör generalisering till svenska gymnasier utan specifik klasskultur. Teachers' growth mindset-meta-analysen (Zhang et al., 2024) visade små positiva effekter, men högre studiekvalitet = mindre effekt - klassiskt publiceringsbias-mönster. Sammantaget: den populära teorin står på mycket svagare grund än vad läroböcker och fortbildningar föreslår.

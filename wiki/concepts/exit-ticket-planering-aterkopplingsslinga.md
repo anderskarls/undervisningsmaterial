@@ -1,9 +1,9 @@
 ---
 created: 2026-03-07
-updated: 2026-04-23
+updated: 2026-07-11
 created_by: claude-sonnet-4-6
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 tags:
   - pedagogik
   - lektionsplanering
@@ -96,12 +96,19 @@ Detta är en operationalisering av spacad repetition utan att kräva separata sy
 
 ---
 
+## Loopen i stort format: escape room-debriefing
+
+En escape room-debrief gör funktionellt samma jobb som ett exit ticket - samlar in data om vad som faktiskt förstods för att informera fortsatt undervisning - fast i mycket större skala (en 60-90-minuters spelupplevelse istället för en lektion). [[debriefing-den-mest-forsummade-fasen-i-escape-rooms]] visar att risken är densamma i förstärkt form: precis som exit tickets som ritual utan dataanvändning faller i pseudo-formativ-fällan, riskerar en escape room-debrief som bara är "hur kändes det" utan koppling till specifika lärandemål att missa hela poängen med den strukturerade reflektionen - fast med en betydligt större investerad lektionstid på spel.
+
+---
+
 ## Kopplingar till kunskapsbas
 
 - [[Retrieval practice som dubbelt formativt verktyg]] - Exit tickets triggar retrieval practice-effekten
 - [[Hinge questions - diagnostiska frågor vid vägskälet]] - Hinge questions kan fungera som exit ticket
 - [[Sex-fas lektionsstruktur - evidensbaserad sekvens]] - Exit ticket = fas 6
 - [[Pseudo-formativ bedömning - Sveriges BFL-implementation]] - Exit tickets utan dataanvändning faller i samma fälla
+- [[debriefing-den-mest-forsummade-fasen-i-escape-rooms]] - samma planering-undervisning-bedömning-loop, i lektionsöverskridande skala
 
 ---
 

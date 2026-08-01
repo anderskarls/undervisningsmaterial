@@ -1,9 +1,9 @@
 ---
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-07-11
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-fable-5
+agent_version: "04.26"
 type: document-insight
 source: Metakognition, Förkroppsligad & Social Kognition — Research Report 2026-04-23
 tags: [produktivt-misslyckande, boundary-condition, samhallskunskap, replikationskris, kontroversiellt]
@@ -34,10 +34,15 @@ Hypotes (2024-formulering): I matematik och naturvetenskap finns *kanoniska korr
 - **Skilj mellan "kämpa med uppgiften" och "utforska före instruktion"** - det första är evidensbaserat (desirable difficulty), det andra är det inte i humaniora
 - **Vicarious failure (observera andra misslyckas) kan vara ett substitut:** visa elever 3 *olika* felaktiga historiska tolkningar av samma källa - variation i misstag är kritisk (Instructional Science 2025, 10.1007/s11251-025-09706-x)
 
+## Koppling till escape rooms
+
+Detta är en direkt tillämpad varning för humaniora-escape rooms, som strukturellt bygger på samma Kapur-logik (kämpa med pusslet innan instruktionen/lösningen kommer). [[larparadoxen-escape-rooms-motivation-upp-betyg-oforandrat]] (SEER 2026, N=38, kinesiskspråkig undervisning) rapporterar precis det mönster denna not förutsäger: motivation och kreativitet steg kraftigt, men standardiserade prestationsmått rörde sig inte i motsvarande grad. Escape rooms i historia/samhällskunskap bör alltså förväntas leverera starka motivations- och engagemangsvinster med större osäkerhet kring akademiska prestationsvinster jämfört med samma format i STEM - samma boundary condition, ny domän.
+
 ## Koppling till vault
 - [[produktivt-misslyckande-kamp-som-motiverar]] - kritisk nyansering: tidigare note fokuserar på motivationen; denna note visar boundary condition för prestation
 - [[desirable-difficulty-sweet-spot-60-till-85-procent]] - desirable difficulty är generellt, men produktiv misslyckande är domänspecifikt
 - [[felklimat-felaktiga-svar-som-lararresurs]] - kompletterar: felklimat = fel är resurser i *efterhand*; productive failure = fel i *förhand*, fungerar sämre i humaniora
+- [[larparadoxen-escape-rooms-motivation-upp-betyg-oforandrat]] - samma boundary condition bekräftad i escape room-litteraturen
 
 ## Kontrast/Kontrovers
 Kapur och hans efterföljare argumenterar fortfarande att produktiv misslyckande är universellt. Steenhof-studierna är *två studier* - inte en definitiv meta-analys. Men 2025 interdisciplinär översikt bekräftar mönstret och utökar evidensen. Det är en öppen forskningsfråga: kanske kan en *anpassad* form av produktiv misslyckande fungera i humaniora med andra uppgiftstyper (revision, wicked problems). Men standard Kapur-paradigm (utforska först, instruktion sen) i samhällsvetenskap har nu misslyckats att replikera i flera studier - det är en *genuine* boundary condition, inte en designdetalj.

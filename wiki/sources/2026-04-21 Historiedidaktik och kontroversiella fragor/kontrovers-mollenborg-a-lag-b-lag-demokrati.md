@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-06-09
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Kontroversiella-fragor-Research-Report-2026-04-21.md
 tags: [yrkesprogram, svensk-forskning, samhallskunskap, demokratisk-ojamlikhet, gy11, mollenborg]
@@ -54,9 +54,17 @@ Men: om yrkesprogrammens totala timmar inte ökas, kan Gy25 bli ett format som *
 
 Rapporten noterar: "empirisk interventionsforskning specifikt för yrkesprogram är mycket tunn". Möllenborg ger kartan, men vi saknar randomiserade studier av *vad som fungerar* specifikt för yrkeselever.
 
+## Tillägg 2026-06-09: eleverna vill ha mer, inte mindre
+
+Djupresearchen om undervisning på yrkesprogram (2026-06-09) skärper en av Möllenborgs poänger: yrkeseleverna i studien var **missnöjda med att uppgifterna var för enkla** - de efterfrågade mer utmaning. Det är alltså lärares antaganden om vad eleverna klarar, inte elevernas vilja, som driver nedprioriteringen. Detta kopplar A-lag/B-lag-frågan till Pygmalion-effekten (d = 0,92) och till fyndet att avskaffad spårning ändå inte eliminerar social reproduktion - ojämlikheten är en seg mekanism som måste mötas *inom* undervisningen, inte väntas bort.
+
 ## Relaterat
 
 - [[deliberativ-undervisning-gynnar-yrkeselever-mest]] - yrkeselever har mest att vinna
 - [[kontrovers-gy25-kontroversiella-fragor-obligatoriska]] - Gy25-öppningen
 - [[samhallskunskap-motivation-demokratisk-agens-och-sjalvfortroende]] - motivationsdimensionen
 - [[autonomistod-extra-effektivt-lag-ses-skolor]] - låg-SES-kopplingen
+- [[hoga-forvantningar-inte-sankta-krav-yrkesprogram]] - eleverna ville ha mer utmaning (d = 0,92)
+- [[yrkesprogram-1a-1b-sparlasning]] - den strukturella grunden för innehållsgapet
+- [[avskaffad-sparning-eliminerar-inte-social-reproduktion]] - ojämlikheten är en seg mekanism
+- [[MOC - Undervisning på yrkesprogram]] - samlande topic

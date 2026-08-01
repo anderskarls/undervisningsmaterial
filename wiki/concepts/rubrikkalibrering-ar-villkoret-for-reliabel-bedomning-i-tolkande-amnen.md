@@ -1,9 +1,9 @@
 ---
 created: 2026-04-15
-updated: 2026-04-15
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 type: permanent
 tags:
   - rubrik
@@ -36,3 +36,5 @@ Detta är ett resultat som förklarar varför bedömning av historiska argument 
 - [[djupa-vs-ytliga-framgangsskriterier]]
 - [[prompt-verb-effekten-vardera-slar-forklara]]
 - [[2026-04-15 Frågedesign för lärande - quiz examen undervisning]] - sessionskälla
+- [[llm-bedomarreliabilitet-spannet-030-080]] - villkorar rekommendationen att lata AI bedoma mot din rubrik: samstammigheten ar okand i spannet 0,30-0,80 tills du matt den
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - kalibrera mot egna ankare fore maskinens forslag, inte efter

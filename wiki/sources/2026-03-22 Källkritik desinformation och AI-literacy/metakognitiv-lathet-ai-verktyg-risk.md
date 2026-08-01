@@ -1,9 +1,9 @@
 ---
 created: 2026-03-22
-updated: 2026-03-22
+updated: 2026-07-28
 created_by: claude-opus-4-6-20250605
-updated_by: claude-opus-4-6-20250605
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 ---
 
 # Metakognitiv lathet - risken med AI-verktyg i larandet
@@ -25,6 +25,8 @@ Denna insikt kopplar direkt till overmodsproblemet: elever som anvander AI-verkt
 ## Kopplingar
 - [[Overmod efter kallkritikundervisning - nordisk studie]]
 - [[AI-genererade lektionsplaneringar - systematisk svaghet]]
+- [[deskilling-tesen-vilar-pa-analogi-inte-pa-longitudinella-data]] - lararmotsvarigheten till samma mekanism
+- [[ai-stod-i-tolkande-amnen-konstaterad-evidenslucka]] - OECD:s 'mirage of false mastery' ar samma fenomen med siffror: 48 % / 17 % / 80 %
 
 ## Kallor
 - Frontiers in Education (2025). Generative AI use in K-12 education: a systematic review.

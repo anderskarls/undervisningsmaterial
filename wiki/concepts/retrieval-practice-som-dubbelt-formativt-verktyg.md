@@ -1,9 +1,9 @@
 ---
 created: 2026-03-07
-updated: 2026-04-23
+updated: 2026-06-08
 created_by: claude-sonnet-4-6
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 tags:
   - pedagogik
   - formativ-bedömning
@@ -71,6 +71,7 @@ Låginsatsquizar - ett klassiskt formativt bedömningsverktyg - producerar *retr
 - [[Hinge questions - diagnostiska frågor vid vägskälet]] - Simultant-svar-logiken gäller för båda verktygen
 - [[Fem strategier för formativ bedömning - Wiliam och Leahy]] - Strategi 2: Skapa aktiviteter som synliggör lärande-evidens
 - [[Pseudo-formativ bedömning - Sveriges BFL-implementation]] - Retrieval starters riskerar bli ritual utan att data faktiskt används
+- [[make-it-stick-ursprungskalla-till-wikins-larandevetenskap]] - testningseffektens populärvetenskapliga ursprung (Roediger & McDaniel, *Make It Stick* 2014)
 
 ---
 

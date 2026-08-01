@@ -1,9 +1,9 @@
 ---
 created: 2026-03-07
-updated: 2026-03-07
+updated: 2026-07-28
 created_by: claude-sonnet-4-6
-updated_by: claude-sonnet-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - pedagogik
   - lektionsplanering
@@ -80,6 +80,8 @@ Lesson study passar väl till Skolverkets betoning på *kollegialt lärande* och
 - [[Tvånivåarkitektur - UbD för kursenheten och Rosenshine för lektionen]] - Lesson study förbättrar förmågan att använda dessa ramverk adaptivt
 - [[Planering-undervisning-gapet]] - Lesson study adresserar gapet genom att träna på realtidsadaptation
 - [[Dialogisk undervisning - Alexander och Mercer]] - Lesson study kan fokusera specifikt på att träna dialogisk undervisning
+- [[co-lab-modellen-roterande-kollegialt-ai-labb]] - lesson study-logiken applicerad pa AI, med roterande facilitator och en utvarderande fraga som tillater svaret nej
+- [[promptbibliotek-ar-faltets-svagaste-led]] - vad kollegialt AI-arbete delar i dag, och vad det borde dela
 
 ---
 

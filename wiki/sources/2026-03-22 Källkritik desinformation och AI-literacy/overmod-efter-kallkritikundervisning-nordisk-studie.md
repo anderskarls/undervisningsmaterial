@@ -1,9 +1,9 @@
 ---
 created: 2026-03-22
-updated: 2026-03-22
+updated: 2026-07-28
 created_by: claude-opus-4-6-20250605
-updated_by: claude-opus-4-6-20250605
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 ---
 
 # Overmod efter kallkritikundervisning - nordisk studie
@@ -26,6 +26,7 @@ Studien stärker argumentet for att bedomning av kallkritik bor inkludera bade p
 ## Kopplingar
 - [[Ungdomars sarbarhet for desinformation - identitetsbildning som riskfaktor]]
 - [[Sjalvbedomning kalibrering kravs traning]]
+- [[tidsbesparingen-25-minuter-mot-59-timmar]] - efficiency-gain illusion ar overmodseffekten i lararversion, och forstarks av tidigare AI-anvandning
 
 ## Kallor
 - Nordisk tidskrift for pedagogikk og kritikk (2025). Nordic classroom study on fact-checking overconfidence.

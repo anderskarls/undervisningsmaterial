@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-07-28
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, ai, aha-guidelines, 2025, ai-literacy, kritiskt-tankande, amerikansk-forskning]
@@ -54,3 +54,5 @@ Detta är skarpare än generella skolmyndighetsrekommendationer som ofta förfal
 - [[ai-genererade-lektionsplaneringar-systematisk-svaghet]] - AI för lärare
 - [[gy25-digital-kompetens-kallkritik-integration]] - Gy25-kontext
 - [[metakognitiv-lathet-ai-verktyg-risk]] - Risker
+- [[amnesforeningarna-levererar-natverken-saknas]] - AHA:s principer i sitt sammanhang: amnesforeningarna har levererat ramverk, men ingen kollegial struktur finns
+- [[cccc-institutionaliserar-ratten-att-vagra-ai]] - motsvarigheten for skrivamnena, med vagransratten institutionaliserad

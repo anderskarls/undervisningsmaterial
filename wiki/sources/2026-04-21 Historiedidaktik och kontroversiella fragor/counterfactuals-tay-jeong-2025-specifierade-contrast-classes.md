@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-06-15
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-4-8
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, counterfactuals, kausalitet, metodologi, frageteknik, tay-jeong]
@@ -50,3 +50,6 @@ Svenska gymnasister ägnar sig spontant åt counterfactuals - "vad hade hänt om
 - [[andra-ordningens-begrepp-historisk-frageteknik]] - Kausalitet som disciplinärt begrepp
 - [[evidence-based-reasoning-intervention-d-205-historia]] - Evidenstypologi krävs för god counterfactual
 - [[prompt-verb-effekten-vardera-slar-forklara]] - Verbnivå styr kvalitet
+- [[belisarius-kontrafaktiskt-540-rom-aterstallt]] - Konkret medeltida counterfactual med tydlig contrast class (The Bright Ages)
+
+**Tillämpning (2026-06-15):** [[tackett-kontingens-mot-determinism-mot-furet]] - skräckväldet som kontingent; konkreta kontrafaktiska frågor (om krigsförklaringen april 1792 uteblivit?).

@@ -1,9 +1,9 @@
 ---
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-07-28
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - ai-feedback
   - skolverket
@@ -43,6 +43,8 @@ Foraldrars samtycke kan behovas for elever under 16 ar (Sveriges GDPR-aldersgran
 
 - [[gdpr-datafminimering-ar-designconstraint-i-sverige]] - Denna not kompletterar med AI-specifika krav utöver generella GDPR-regler
 - [[eu-ai-act-quiz-plattform-hogrisk-klassificering]] - Skolverkets och IMY:s riktlinjer operationaliserar EU AI Act pa svensk niva
+- [[vad-far-en-svensk-larare-mata-in-i-ett-ai-verktyg]] - uppdaterar hela regelbilden till 2026 (Norrkopingsmodellen, Ostersundsbeslutet, IMY:s prioriteringar)
+- [[norden-har-nationella-riktlinjer-sverige-har-rad]] - vad Norge, Danmark och Finland gjort som Sverige inte gjort
 
 ## Kalla
 

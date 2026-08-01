@@ -64,6 +64,10 @@ Var Sverige står och vart vi ska:
 - [[visuella-medier-blinda-flacken-svensk-skola]] - Elever möter desinformation i bild/video men undervisas med text
 - [[gy25-digital-kompetens-kallkritik-integration]] - Ny läroplan integrerar digital kompetens genomgaende; MIK-satsning pagår
 - [[lararfortbildning-digitalt-sarbarhetsgap]] - 80% anser det viktigt, 20% känns förberedda; specifika sårbarhetsgap hos lärare
+- [[svenska-policyomsvangningen-ai-i-skolan-2023-2026]] - från avvisad digitaliseringsstrategi och skärmnedtoning till att skolan skrivs in i AI-strategin februari 2026
+- [[skolverkets-lagesbild-2026-atta-av-tio-men-grundskolan]] - siffran alla citerar, och avgränsningen som nästan alltid tappas bort (grundskolepanel, inte gymnasiet)
+- [[vad-far-en-svensk-larare-mata-in-i-ett-ai-verktyg]] - vad du faktiskt får mata in: Skolverkets råd, Norrköpingsmodellen, IMY:s praxis
+- [[norden-har-nationella-riktlinjer-sverige-har-rad]] - Norge, Danmark och Finland har nationella riktlinjer; Sverige har råd
 
 ---
 
@@ -86,6 +90,10 @@ Lärarens roll, utmaningar och verktyg:
 - [[lararfortbildning-digitalt-sarbarhetsgap]] - Lärare saknar tid, verktyg och utbildning trots hög motivation
 - [[deepfakes-larare-mer-sarbara-an-elever]] - Lärare behöver fortbildning i samma strategier de ska undervisa
 - [[kozyreva-toolbox-nio-interventioner-evidens]] - Interaktivt verktyg för evidensbaserat val av interventioner
+- [[automation-bias-hos-larare-experimentellt-bekraftad]] - lärarens egen källkritik mot maskinutsagor, experimentellt mätt: samma uppsats, olika AI-omdöme, ηp² = 0,579-0,745
+- [[fortbildningsluckan-ai-som-amne-inte-ai-i-amnet]] - den svenska fortbildningsluckan 2026: enda statliga AI-kursen går till matematik- och tekniklärare
+- [[leverantorsdrivna-pseudo-communities-och-ambassadorsprogram]] - källkritik tillämpad på lärarens egna informationskanaler: hur man skiljer ett kollegialt nätverk från ett marknadsföringsforum
+- [[kompetensramverk-och-fortbildning-normativt-inte-effektprovat]] - fyra konkurrerande ramverk, inget effektprövat
 
 ---
 
@@ -99,7 +107,7 @@ Kopplingen mellan källkritik och elevmotivation:
 
 ## Kopplingar till andra MOCs
 
-- [[MOC - Evidensbaserad lektionsarkitektur]] - Källkritik som del av sexfasstrukturen; bedömning, frageteknik och klassrumsklimat
+- [[MOC - Momentplaneringsramverket]] - Källkritik som del av sexfasstrukturen; bedömning, frageteknik och klassrumsklimat
   - Särskilt: [[sjalvbedomning-kalibrering-kravs-traning]] (övermod), [[hinge-questions-diagnostiska-fragor-vid-vagskalen]] (diagnostik), [[skolinspektionen-larare-undviker-kontroversiella-fragor]] (svensk kontext)
 - *MOC - Elevmotivation och självreglerat lärande* (kommande) - Utility value, identifierad reglering och relevansframing
 
