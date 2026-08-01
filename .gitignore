@@ -7,3 +7,41 @@ obsidianplugin/
 # Python-cache från vaultets skript
 __pycache__/
 *.pyc
+
+# Hemligheter - får ALDRIG nå detta publika repo
+.env
+resources/claude
+resources/claude.pub
+
+# Maskinlokal konfiguration (se CLAUDE.md: syncas inte mellan installationer)
+.claude/settings.md
+.claude/settings.local.json
+.claude/settings.local*.json
+
+# Obsidian Sync-state och app-state (lokalt per maskin, hanteras av Obsidian Sync)
+.sync_*.db
+.sync_*.db-shm
+.sync_*.db-wal
+.sync-exclude.lst
+.obsidian/
+.nextcloudsync.log
+
+# Regenererbart FAISS-index - bygg om med resources/local-brain-search/run_index.sh
+resources/local-brain-search/data/
+
+# Nextcloud-demofiler, ej vaultinnehåll
+resources/nextcloud/
+
+# Elevinlämningar med ofiltrerad fritext - får ALDRIG nå detta publika repo.
+# Filerna bär egen varning: pseudonymen "Elev N" bryter kopplingen bakåt,
+# men fritexten kan innehålla självidentifierande uppgifter.
+resources/feedback-runs/
+
+# Fristående git-repon med egen historik (egna kodbaser, versioneras separat)
+.claude/obsidian-skills/
+kokboks-mcp/
+resources/Varldskrigen-Hi1a1/
+resources/guardian-mcp/
+resources/sam3-globalisering-vardag-till-varldssystem/
+resources/sh1a1-politikomraden-valet-2026/
+resources/survey-platform/
