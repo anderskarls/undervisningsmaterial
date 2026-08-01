@@ -7,34 +7,34 @@
 
 ### Källkritiska verktyg
 
-- [x] **KRIT-01**: Elev kan tillämpa de fyra källkritiska grundfrågorna på digitalt innehåll
-- [x] **KRIT-02**: Elev kan använda SIFT-metoden/lateral reading för att verifiera påståenden
-- [x] **KRIT-03**: Elev kan använda Harvard-referering i skriftliga uppgifter
-- [x] **KRIT-04**: Elev kan använda digitala verifieringsverktyg (omvänd bildsökning, Google Lens)
+- [ ] **KRIT-01**: Elev kan tillämpa de fyra källkritiska grundfrågorna på digitalt innehåll
+- [ ] **KRIT-02**: Elev kan använda SIFT-metoden/lateral reading för att verifiera påståenden
+- [ ] **KRIT-03**: Elev kan använda Harvard-referering i skriftliga uppgifter
+- [ ] **KRIT-04**: Elev kan använda digitala verifieringsverktyg (omvänd bildsökning, Google Lens)
 
 ### Konspirationsteorier
 
-- [x] **KONSP-01**: Elev kan förklara psykologiska mekanismer bakom konspirationstro
-- [x] **KONSP-02**: Elev har genomgått inokulering/prebunking genom AI-labb i kontrollerad miljö
-- [x] **KONSP-03**: Momentet använder aktuella svenska och internationella exempel (2025-2026)
-- [x] **KONSP-04**: Elev kan analysera hur AI förstärker konspirationsteoriers spridning
+- [ ] **KONSP-01**: Elev kan förklara psykologiska mekanismer bakom konspirationstro
+- [ ] **KONSP-02**: Elev har genomgått inokulering/prebunking genom AI-labb i kontrollerad miljö
+- [ ] **KONSP-03**: Momentet använder aktuella svenska och internationella exempel (2025-2026)
+- [ ] **KONSP-04**: Elev kan analysera hur AI förstärker konspirationsteoriers spridning
 
 ### AI och källkritik
 
-- [x] **AI-01**: Elev kan källkritiskt granska AI-genererat innehåll
-- [x] **AI-02**: Elev kan reflektera över sitt eget tänkande och blinda fläckar (metakognition)
+- [ ] **AI-01**: Elev kan källkritiskt granska AI-genererat innehåll
+- [ ] **AI-02**: Elev kan reflektera över sitt eget tänkande och blinda fläckar (metakognition)
 
 ### Bedömning och progression
 
-- [x] **BED-01**: Exit ticket varje lektion som informerar nästa lektions retrieval review
-- [x] **BED-02**: Seminarium som examination med equity-safeguards för konspirationskänsligt ämne
-- [x] **BED-03**: Tredjepersons-framing genomgående ("varför kan någon finna detta övertygande?")
+- [ ] **BED-01**: Exit ticket varje lektion som informerar nästa lektions retrieval review
+- [ ] **BED-02**: Seminarium som examination med equity-safeguards för konspirationskänsligt ämne
+- [ ] **BED-03**: Tredjepersons-framing genomgående ("varför kan någon finna detta övertygande?")
 
 ### Material
 
-- [x] **MAT-01**: 7 lektionsplaner som Word-dokument (.docx) med 6-fas struktur
-- [x] **MAT-02**: Presentationer som PowerPoint (.pptx) för lektioner med instruktionsmoment
-- [x] **MAT-03**: Momentöversikt som HTML-sida för eleverna
+- [ ] **MAT-01**: 7 lektionsplaner som Word-dokument (.docx) med 6-fas struktur
+- [ ] **MAT-02**: Presentationer som PowerPoint (.pptx) för lektioner med instruktionsmoment
+- [ ] **MAT-03**: Momentöversikt som HTML-sida för eleverna
 
 ## v2 Requirements
 
@@ -59,22 +59,22 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| KRIT-01 | Phase 3 | Complete |
-| KRIT-02 | Phase 3 | Complete |
-| KRIT-03 | Phase 3 | Complete |
-| KRIT-04 | Phase 3 | Complete |
-| KONSP-01 | Phase 3 | Complete |
-| KONSP-02 | Phase 2 | Complete |
-| KONSP-03 | Phase 2 | Complete |
-| KONSP-04 | Phase 3 | Complete |
-| AI-01 | Phase 3 | Complete |
-| AI-02 | Phase 4 | Complete |
-| BED-01 | Phase 1 | Complete |
-| BED-02 | Phase 2 | Complete |
-| BED-03 | Phase 1 | Complete |
-| MAT-01 | Phase 5 | Complete |
-| MAT-02 | Phase 4 | Complete |
-| MAT-03 | Phase 5 | Complete |
+| KRIT-01 | Phase 3 | Pending |
+| KRIT-02 | Phase 3 | Pending |
+| KRIT-03 | Phase 3 | Pending |
+| KRIT-04 | Phase 3 | Pending |
+| KONSP-01 | Phase 3 | Pending |
+| KONSP-02 | Phase 2 | Pending |
+| KONSP-03 | Phase 2 | Pending |
+| KONSP-04 | Phase 3 | Pending |
+| AI-01 | Phase 3 | Pending |
+| AI-02 | Phase 4 | Pending |
+| BED-01 | Phase 1 | Pending |
+| BED-02 | Phase 2 | Pending |
+| BED-03 | Phase 1 | Pending |
+| MAT-01 | Phase 5 | Pending |
+| MAT-02 | Phase 4 | Pending |
+| MAT-03 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total
