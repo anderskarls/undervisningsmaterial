@@ -1,12 +1,14 @@
 ---
 name: hamta-dn-artikel
-description: Hämta och spara en paywallad DN-artikel som markdown i kunskapsbasen. Använd denna skill när användaren klistrar in en dn.se-URL och vill spara/arkivera/läsa artikeln, eller säger "hämta DN-artikel", "spara DN-artikel", "scrapea den här DN-artikeln", "ladda ner DN-artikel". Kräver giltig bnidtoken i .secrets/dn-cookies.json och att lokala Firecrawl-containern körs.
+description: Hämta och spara en paywallad DN-artikel som markdown i kunskapsbasen. Använd denna skill när användaren klistrar in en dn.se-URL och vill spara/arkivera/läsa artikeln, eller säger "hämta DN-artikel", "spara DN-artikel", "scrapea den här DN-artikeln", "ladda ner DN-artikel". Kräver giltig bnidtoken i .secrets/dn-cookies.json - inga andra tjänster behöver köras.
 allowed-tools: Bash, Read
 ---
 
 # Hämta DN-artikel
 
-Denna skill scrapear en paywallad DN-artikel via den lokala Firecrawl-instansen med användarens `bnidtoken`-cookie och sparar resultatet som en källnot i `raw/articles/`.
+Denna skill hämtar en paywallad DN-artikel med ett rakt HTTP-anrop med användarens `bnidtoken`-cookie och sparar resultatet som en källnot i `raw/articles/`.
+
+**Ingenting behöver startas först.** Skillen körde tidigare via en lokal Firecrawl-container; den kopplades bort 2026-08-01 sedan det visat sig att DN gaterar serverside - skickas cookien levereras brödtexten direkt i HTML:en, utan headless browser.
 
 ## När skillen ska triggas
 
@@ -16,11 +18,9 @@ Denna skill scrapear en paywallad DN-artikel via den lokala Firecrawl-instansen 
 
 ## Förutsättningar
 
-Innan skillen kan köras måste följande vara på plats:
+Bara en sak behöver vara på plats:
 
-1. **Firecrawl-containern körs lokalt** på `http://localhost:3002`
-   - Starta om stoppad: `cd /home/anders/firecrawl && docker compose up -d`
-2. **Giltig `bnidtoken` i `.secrets/dn-cookies.json`** - detta sköts numera automatiskt.
+1. **Giltig `bnidtoken` i `.secrets/dn-cookies.json`** - detta sköts automatiskt.
    - `fetch.py` anropar `refresh.py` före varje hämtning och förnyar token vid behov.
    - Kontrollera läget: `python3 refresh.py --status`
    - Förnya manuellt: `python3 refresh.py`
@@ -54,15 +54,30 @@ Vill du slippa krocken helt - läs DN i en annan browser/profil än den skriptet
 Kör helper-scriptet med URL:en som argument:
 
 ```bash
-python3 "/home/anders/Second brain/.claude/skills/hamta-dn-artikel/fetch.py" "<dn-url>"
+python3 "${VAULT_BASE_PATH:-/home/anders/Second brain}/.claude/skills/hamta-dn-artikel/fetch.py" "<dn-url>"
 ```
 
+Lägg till `--stdout` för att skriva artikeln till terminalen i stället för att spara den.
+
 Scriptet:
-1. Läser `bnidtoken` från `.secrets/dn-cookies.json`
-2. Verifierar att JWT:n inte gått ut (JWT `exp`-claim)
-3. Anropar lokal Firecrawl med cookie-header
-4. Extraherar huvudartikeln genom att klippa mellan DN:s utskriftsmarkörer
+1. Läser `bnidtoken` från `.secrets/dn-cookies.json`, förnyar den vid behov
+2. Hämtar artikelsidan över HTTP med cookien satt
+3. Extraherar brödtexten ur `div.article__content` (`extract.py`) och gör markdown
+4. Läser titel, ingress, datum och skribent ur sidans ld+json / byline
 5. Genererar YAML-frontmatter och sparar till `raw/articles/YYYY-MM-DD-slug.md`
+
+### DN:s två betalväggar
+
+| Typ | Beteende | Konsekvens |
+|-----|----------|------------|
+| Mjuk | Brödtexten serverrenderas åt alla; låsöverlägget läggs på av JavaScript | Går att hämta även utan cookie |
+| Hård | Brödtexten utelämnas ur HTML:en för utloggade | Kräver giltig `bnidtoken` |
+
+Verifierat 2026-08-01 mot sju artiklar i debatt, ekonomi, sport och världen - båda typerna förekommer, och båda fungerar med cookien.
+
+### Firecrawl som fallback
+
+`fetch.py` provar Firecrawl på `localhost:3002` **bara** om direktvägen ger under 400 tecken *och* containern råkar vara igång. I normalfallet anropas den aldrig, och den behöver inte startas. Skulle DN lägga om till klientrendering är fallbacken redan på plats - starta den då med `cd /home/anders/firecrawl && docker compose up -d`.
 
 ## Exit codes och felhantering
 
@@ -71,8 +86,8 @@ Scriptet:
 | 0 | OK, artikel sparad | Rapportera sökvägen till användaren |
 | 2 | Ogiltig URL eller saknat argument | Be användaren ge en dn.se-URL |
 | 3 | Token kunde inte förnyas automatiskt | Sessionen är slut - be användaren logga in på dn.se i Firefox, kör sedan `python3 refresh.py` |
-| 4 | Firecrawl-anrop misslyckades (nätverk/container) | Kolla att containern kör: `docker ps \| grep firecrawl` |
-| 5 | DN svarade med fel, eller extraherad text misstänkt kort | Troligen token-problem — be användaren förnya |
+| 4 | Nätverksfel mot dn.se | Kontrollera internetanslutningen |
+| 5 | DN svarade med fel, eller extraherad text misstänkt kort (<400 tecken) | Troligen token-problem - kör `python3 refresh.py --status` |
 
 Vid **exit 3** har både lagrade refresh-cookies och Firefox-kedjan slutat gälla. Be användaren:
 1. Logga in på dn.se i Firefox
