@@ -33,6 +33,11 @@ resources/local-brain-search/data/
 # Nextcloud-demofiler, ej vaultinnehåll
 resources/nextcloud/
 
+# Hämtade artiklar i fulltext (bl.a. paywallat DN-material via /hamta-dn-artikel).
+# Upphovsrättsskyddat innehåll hör inte hemma i ett publikt repo. Filerna ligger
+# kvar lokalt och syncas via Obsidian Sync - de versioneras bara inte här.
+raw/articles/
+
 # Elevinlämningar med ofiltrerad fritext - får ALDRIG nå detta publika repo.
 # Filerna bär egen varning: pseudonymen "Elev N" bryter kopplingen bakåt,
 # men fritexten kan innehålla självidentifierande uppgifter.
