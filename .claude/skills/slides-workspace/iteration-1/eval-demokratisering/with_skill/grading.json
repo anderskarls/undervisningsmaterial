@@ -1,0 +1,55 @@
+{
+  "run_id": "eval-0-with_skill",
+  "expectations": [
+    {
+      "text": "Uses reveal.js as the presentation framework",
+      "passed": true,
+      "evidence": "Found reveal.js references: CDN links to reveal.js@5 (reveal.css, white.css theme, reveal.js script)"
+    },
+    {
+      "text": "Contains a timeline with at least 3 historical dates/years",
+      "passed": true,
+      "evidence": "Found 4 timeline dates in .timeline component: 1866, 1909, 1919, 1921"
+    },
+    {
+      "text": "Has at least one discussion slide prompting student discussion",
+      "passed": true,
+      "evidence": "Found 3 slides containing 'Diskutera' - two dedicated discussion slides (slides 4 and 8) with red background and timed discussion prompts"
+    },
+    {
+      "text": "Contains a source criticism exercise with a historical quote",
+      "passed": true,
+      "evidence": "Slide 9 has a blockquote with a historical quote about women's suffrage (ca 1912 riksdag debate), followed by source-critical questions (Vem? När? Syfte?). Slide 10 continues with source analysis (Tendens, Tidsanda, Maktperspektiv)"
+    },
+    {
+      "text": "No slide has more than 3 bullet points in a list",
+      "passed": true,
+      "evidence": "Maximum bullet points in any single list: 3. All ul/ol elements across all sections have 3 or fewer direct li children"
+    },
+    {
+      "text": "At least half of slide titles are phrased as questions",
+      "passed": true,
+      "evidence": "8/10 h2 titles are questions (80%). Questions include 'Vem fick bestämma i Sverige - och vem fick inte?', 'Hur styrdes Sverige före demokratin?', etc. Only 2 non-questions: 'Diskutera (2 min)' x2"
+    },
+    {
+      "text": "Uses reveal.js fragments for progressive disclosure",
+      "passed": true,
+      "evidence": "Found 21 elements with class='fragment' across multiple slides, including timeline items, comparison columns, list items, and stat elements"
+    },
+    {
+      "text": "Speaker notes present on at least half of content slides",
+      "passed": true,
+      "evidence": "Found 11 <aside class=\"notes\"> elements across 11 sections (100% coverage). Every slide has speaker notes"
+    },
+    {
+      "text": "Single HTML file with no local file dependencies",
+      "passed": true,
+      "evidence": "All resources loaded from CDNs (jsdelivr for reveal.js, Google Fonts) or inline. No relative path references found"
+    },
+    {
+      "text": "Base font size is at least 24px for projector readability",
+      "passed": true,
+      "evidence": "Font size on .reveal: 28px (exceeds 24px minimum)"
+    }
+  ]
+}

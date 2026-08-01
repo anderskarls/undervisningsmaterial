@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalla kriget — Momentöversikt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: #f5f0eb;
+      color: #2d2a26;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    /* --- Header --- */
+    .header {
+      background-color: #6b3a2a;
+      color: #f5f0eb;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .header .kurs {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d4a574;
+      margin-bottom: 0.75rem;
+    }
+
+    .header h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .header .beskrivning {
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 1.25rem;
+      color: #e8d5c4;
+      line-height: 1.5;
+    }
+
+    .header .period {
+      display: inline-block;
+      background-color: rgba(255,255,255,0.12);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #d4a574;
+    }
+
+    /* --- Larandemal --- */
+    .larandemal {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      margin: -1.5rem auto 2rem;
+      max-width: 940px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .larandemal h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #6b3a2a;
+      margin-bottom: 1rem;
+    }
+
+    .larandemal ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .larandemal li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      font-size: 1rem;
+    }
+
+    .larandemal li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 8px;
+      height: 8px;
+      background-color: #d4a574;
+      border-radius: 50%;
+    }
+
+    /* --- Lektioner --- */
+    .lektioner-rubrik {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2d2a26;
+      margin-bottom: 1.25rem;
+      padding-top: 0.5rem;
+    }
+
+    .lektioner-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .lektion-kort {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .lektion-kort:hover {
+      box-shadow: 0 3px 16px rgba(0,0,0,0.1);
+    }
+
+    .lektion-nummer {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      background-color: #6b3a2a;
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .lektion-innehall h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d2a26;
+      margin-bottom: 0.25rem;
+    }
+
+    .lektion-datum {
+      font-size: 0.85rem;
+      color: #8a7e74;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .lektion-beskrivning {
+      font-size: 0.95rem;
+      color: #4a4540;
+      line-height: 1.55;
+    }
+
+    .forberedelse {
+      margin-top: 0.75rem;
+      padding: 0.6rem 0.9rem;
+      background-color: #fdf6ef;
+      border-left: 3px solid #d4a574;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: #5c4a3a;
+    }
+
+    .forberedelse-label {
+      font-weight: 600;
+      color: #6b3a2a;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.85rem;
+      color: #8a7e74;
+      border-top: 1px solid #e0d8d0;
+    }
+
+    /* --- Responsive --- */
+    @media (min-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      .header {
+        padding: 4rem 2rem 3rem;
+      }
+
+      .larandemal {
+        padding: 2.5rem 2rem;
+        margin-top: -2rem;
+      }
+
+      .lektioner-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+
+      .lektion-kort {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .lektion-nummer {
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lektioner-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <p class="kurs">Historia 1b</p>
+      <h1>Kalla kriget och kampen om världsordningen</h1>
+      <p class="beskrivning">Vi utforskar hur rivaliteten mellan USA och Sovjetunionen formade världen efter andra världskriget — från ideologisk kamp till proxy-krig och slutligen Berlinmurens fall.</p>
+      <span class="period">13 januari – 7 februari 2026</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="larandemal">
+      <h2>Det här ska du kunna efter momentet</h2>
+      <ul>
+        <li>Beskriva hur kalla krigets huvuddrag utvecklades från 1945 till 1991</li>
+        <li>Förklara sambandet mellan ideologi, maktpolitik och konflikter under kalla kriget</li>
+        <li>Analysera hur kalla kriget påverkade människors vardag i öst och väst</li>
+        <li>Använda historiska källor för att undersöka propaganda och historiebruk under perioden</li>
+      </ul>
+    </section>
+
+    <h2 class="lektioner-rubrik">Lektionsplan</h2>
+
+    <div class="lektioner-grid">
+
+      <article class="lektion-kort">
+        <div class="lektion-nummer">1</div>
+        <div class="lektion-innehall">
+          <h3>En delad värld</h3>
+          <p class="lektion-datum">Tisdag 13 januari</p>
+          <p class="lektion-beskrivning">Vi startar med att förstå hur och varför världen delades i två block efter andra världskriget. Fokus på ideologiska skillnader och viktiga händelser 1945–1949.</p>
+        </div>
+      </article>
+
+      <article class="lektion-kort">
+        <div class="lektion-nummer">2</div>
+        <div class="lektion-innehall">
+          <h3>Kapprustning och skräckbalans</h3>
+          <p class="lektion-datum">Fredag 16 januari</p>
+          <p class="lektion-beskrivning">Kärnvapnens roll i kalla kriget, Kubakrisen och MAD-doktrinen. Hur levde människor med hotet om kärnvapenkrig?</p>
+          <div class="forberedelse">
+            <span class="forberedelse-label">Förbered:</span> Läs sidorna 142–148 i läroboken
+          </div>
+        </div>
+      </article>
+
+      <article class="lektion-kort">
+        <div class="lektion-nummer">3</div>
+        <div class="lektion-innehall">
+          <h3>Proxy-krig och globala konflikter</h3>
+          <p class="lektion-datum">Tisdag 20 januari</p>
+          <p class="lektion-beskrivning">Koreakriget, Vietnamkriget och konflikter i tredje världen. Supermakterna slogs genom ombud — vad innebar det för de länder som drabbades?</p>
+        </div>
+      </article>
+
+      <article class="lektion-kort">
+        <div class="lektion-nummer">4</div>
+        <div class="lektion-innehall">
+          <h3>Propaganda och historiebruk</h3>
+          <p class="lektion-datum">Fredag 23 januari</p>
+          <p class="lektion-beskrivning">Källkritisk workshop: vi analyserar propagandamaterial från både USA och Sovjet. Hur användes historia och kultur som vapen?</p>
+          <div class="forberedelse">
+            <span class="forberedelse-label">Förbered:</span> Ta med din dator — vi arbetar med digitala källor
+          </div>
+        </div>
+      </article>
+
+      <article class="lektion-kort">
+        <div class="lektion-nummer">5</div>
+        <div class="lektion-innehall">
+          <h3>Vardagsliv i öst och väst</h3>
+          <p class="lektion-datum">Tisdag 27 januari</p>
+          <p class="lektion-beskrivning">Hur påverkade kalla kriget vanliga människors liv? Jämförelse av vardag i DDR och Västtyskland genom personliga berättelser och statistik.</p>
+        </div>
+      </article>
+
+      <article class="lektion-kort">
+        <div class="lektion-nummer">6</div>
+        <div class="lektion-innehall">
+          <h3>Murens fall och kalla krigets slut</h3>
+          <p class="lektion-datum">Fredag 30 januari</p>
+          <p class="lektion-beskrivning">Glasnost, perestrojka och händelserna som ledde till Berlinmurens fall 1989 och Sovjetunionens upplösning 1991. Vad hände sedan?</p>
+        </div>
+      </article>
+
+      <article class="lektion-kort">
+        <div class="lektion-nummer">7</div>
+        <div class="lektion-innehall">
+          <h3>Seminarium och avslutning</h3>
+          <p class="lektion-datum">Tisdag 3 februari</p>
+          <p class="lektion-beskrivning">Avslutande seminarium där vi diskuterar kalla krigets arv och kopplingar till dagens geopolitik. Du visar dina kunskaper genom att delta aktivt i diskussionen.</p>
+          <div class="forberedelse">
+            <span class="forberedelse-label">Förbered:</span> Förbered dig genom att repetera dina anteckningar och formulera minst två diskussionsfrågor
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Historia 1b — Anna Lindström — Genererad 2026-01-10</p>
+  </footer>
+
+</body>
+</html>

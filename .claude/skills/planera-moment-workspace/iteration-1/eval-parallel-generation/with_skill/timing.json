@@ -1,0 +1,15 @@
+{
+  "approach": "parallel",
+  "agents": [
+    {"lesson": 1, "duration_ms": 415932, "tokens": 102617, "tool_uses": 45},
+    {"lesson": 2, "duration_ms": 524461, "tokens": 108452, "tool_uses": 59},
+    {"lesson": 3, "duration_ms": 523703, "tokens": 110960, "tool_uses": 59},
+    {"lesson": 4, "duration_ms": 449891, "tokens": 98219, "tool_uses": 43},
+    {"lesson": 5, "duration_ms": 422403, "tokens": 103929, "tool_uses": 51}
+  ],
+  "wall_clock_ms": 524461,
+  "wall_clock_minutes": 8.7,
+  "total_tokens": 524177,
+  "total_tool_uses": 257,
+  "files_generated": 10
+}

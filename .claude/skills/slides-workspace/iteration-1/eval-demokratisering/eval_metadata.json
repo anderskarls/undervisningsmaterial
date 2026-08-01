@@ -1,0 +1,57 @@
+{
+  "eval_id": 0,
+  "eval_name": "demokratisering-tidslinje",
+  "prompt": "Gör slides till en lektion om Sveriges demokratisering. Lektionen handlar om hur Sverige gick från ståndsriksdag till allmän rösträtt. Eleverna går i åk 1 på samhällsprogrammet. Presentationen ska vara ca 15 minuter och innehålla en tidslinje över viktiga årtal, en diskussion, och en källkritisk övning med ett historiskt citat.",
+  "assertions": [
+    {
+      "id": "uses-revealjs",
+      "text": "Uses reveal.js as the presentation framework",
+      "type": "programmatic"
+    },
+    {
+      "id": "has-timeline",
+      "text": "Contains a timeline with at least 3 historical dates/years",
+      "type": "programmatic"
+    },
+    {
+      "id": "has-discussion-slide",
+      "text": "Has at least one discussion slide prompting student discussion",
+      "type": "programmatic"
+    },
+    {
+      "id": "has-source-criticism",
+      "text": "Contains a source criticism exercise with a historical quote",
+      "type": "llm"
+    },
+    {
+      "id": "max-3-points-per-slide",
+      "text": "No slide has more than 3 bullet points in a list",
+      "type": "programmatic"
+    },
+    {
+      "id": "questions-as-titles",
+      "text": "At least half of slide titles are phrased as questions",
+      "type": "programmatic"
+    },
+    {
+      "id": "has-fragments",
+      "text": "Uses reveal.js fragments for progressive disclosure",
+      "type": "programmatic"
+    },
+    {
+      "id": "has-speaker-notes",
+      "text": "Speaker notes present on at least half of content slides",
+      "type": "programmatic"
+    },
+    {
+      "id": "self-contained-html",
+      "text": "Single HTML file with no local file dependencies",
+      "type": "programmatic"
+    },
+    {
+      "id": "projector-friendly-fonts",
+      "text": "Base font size is at least 24px for projector readability",
+      "type": "programmatic"
+    }
+  ]
+}

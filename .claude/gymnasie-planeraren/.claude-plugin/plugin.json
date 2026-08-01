@@ -1,0 +1,9 @@
+{
+  "name": "gymnasie-planeraren",
+  "version": "0.1.0",
+  "description": "Dialogdriven momentplanering för gymnasielärare. Skapar kompletta undervisningsmoment med lektionsplaner och presentationer grundade i Gy11.",
+  "author": {
+    "name": "Anders"
+  },
+  "keywords": ["pedagogik", "gymnasiet", "gy11", "lektionsplanering", "samhällskunskap", "historia", "juridik"]
+}

@@ -1,0 +1,6 @@
+{
+  "eval_id": 1,
+  "eval_name": "parallel-generation-5-lessons",
+  "prompt": "Generera lektionsplaner (docx) och presentationer (pptx) för alla 5 lektioner i momentplanen parallellt - en agent per lektion.",
+  "assertions": []
+}

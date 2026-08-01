@@ -1,0 +1,55 @@
+{
+  "run_id": "eval-0-without_skill",
+  "expectations": [
+    {
+      "text": "Uses reveal.js as the presentation framework",
+      "passed": false,
+      "evidence": "No reveal.js reference found. The presentation uses a custom HTML/CSS/JS implementation with manual slide navigation (div.slide elements, custom showSlide/changeSlide functions)."
+    },
+    {
+      "text": "Contains a timeline with at least 3 historical dates/years",
+      "passed": true,
+      "evidence": "Slide 4 contains a visual timeline component with 6 dates: 1809, 1842, 1866, 1909, 1919, 1921. Uses dedicated CSS classes (timeline-slide, timeline-container, timeline-line, timeline-event, event-dot, event-year)."
+    },
+    {
+      "text": "Has at least one discussion slide prompting student discussion",
+      "passed": true,
+      "evidence": "Slide 8 (id='slide-8') is a dedicated discussion slide with class 'discussion-slide', titled 'Diskussion i par (3-4 minuter)' containing 3 discussion questions and the instruction 'Diskutera med din bänkkamrat. Var beredda att dela en tanke med klassen.'"
+    },
+    {
+      "text": "Contains a source criticism exercise with a historical quote",
+      "passed": true,
+      "evidence": "Slide 9 (id='slide-9') contains a quote box with the historical quote 'Att ge rösträtt åt den stora massan...' attributed to 'Ur ett konservativt debattinlägg i Första kammaren, ca 1890-talet', followed by 4 source-critical analysis questions (Vem, Varför, Tendens, Relevans idag)."
+    },
+    {
+      "text": "No slide has more than 3 bullet points in a list",
+      "passed": false,
+      "evidence": "Multiple slides exceed 3 bullet points per list. Slide 2 left column: 4 <li>. Slide 5 left column: 4 <li>. Slide 5 right column: 4 <li>. Slide 6: 6 <li>. Slide 7 left column: 4 <li>. Slide 9 source-questions: 4 <li>. Slide 10 left column: 4 <li>. Slide 10 right column: 4 <li>."
+    },
+    {
+      "text": "At least half of slide titles are phrased as questions",
+      "passed": false,
+      "evidence": "Only 1 out of 10 h2 titles ends with '?': 'Vad menar vi med demokrati?' (10%). The other 9 are statements: 'Ståndsriksdagen (1435-1866)', 'Tidslinje: Vägen till demokrati', 'Riksdagsreformen 1866', 'Kampen för rösträtt', 'Genombrottet: 1919-1921', 'Diskussion i par (3-4 minuter)', 'Källkritisk övning', 'Källkritiska begrepp att använda', 'Sammanfattning'."
+    },
+    {
+      "text": "Uses reveal.js fragments for progressive disclosure",
+      "passed": false,
+      "evidence": "No elements with class='fragment' found anywhere in the HTML. The presentation has no progressive disclosure mechanism."
+    },
+    {
+      "text": "Speaker notes present on at least half of content slides",
+      "passed": false,
+      "evidence": "No <aside class='notes'> elements found in the HTML. Zero speaker notes across all 11 slides."
+    },
+    {
+      "text": "Single HTML file with no local file dependencies",
+      "passed": true,
+      "evidence": "All CSS is embedded in a <style> block, all JavaScript is inline in a <script> block. No external stylesheets, scripts, images, or fonts are referenced. The file is fully self-contained."
+    },
+    {
+      "text": "Base font size is at least 24px for projector readability",
+      "passed": false,
+      "evidence": "No explicit px-based font-size is set on body or a .reveal container. Body has no font-size declaration. All font sizes use viewport-relative units (vw): content text at 1.8vw (about 19px on a 1080p screen), headings at 3.2vw. The requirement for a base font-size of at least 24px is not met."
+    }
+  ]
+}

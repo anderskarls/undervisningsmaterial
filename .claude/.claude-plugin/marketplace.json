@@ -1,0 +1,21 @@
+{
+  "name": "local",
+  "description": "Lokala plugins för Second Brain-vaultet",
+  "owner": {
+    "name": "Anders"
+  },
+  "plugins": [
+    {
+      "name": "gymnasie-planeraren",
+      "source": "./gymnasie-planeraren",
+      "description": "Dialogdriven momentplanering för gymnasielärare. Skapar kompletta undervisningsmoment med lektionsplaner och presentationer grundade i Gy11.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "obsidian",
+      "source": "./obsidian-skills",
+      "description": "Create and edit Obsidian vault files including Markdown, Bases, and Canvas.",
+      "version": "1.0.1"
+    }
+  ]
+}

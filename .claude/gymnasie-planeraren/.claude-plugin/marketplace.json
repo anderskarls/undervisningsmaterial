@@ -1,0 +1,14 @@
+{
+  "name": "gymnasie-planeraren",
+  "owner": {
+    "name": "Anders"
+  },
+  "plugins": [
+    {
+      "name": "gymnasie-planeraren",
+      "source": "./",
+      "description": "Dialogdriven momentplanering för gymnasielärare.",
+      "version": "0.1.0"
+    }
+  ]
+}

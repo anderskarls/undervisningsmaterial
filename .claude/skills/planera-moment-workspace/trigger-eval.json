@@ -1,0 +1,22 @@
+[
+  {"query": "Jag vill planera ett moment om kalla kriget för historia 1b, 5 lektioner à 80 min", "should_trigger": true},
+  {"query": "planera-moment demokrati och diktatur", "should_trigger": true},
+  {"query": "Kan du hjälpa mig planera undervisningen för nästa vecka? Vi ska börja med avtalsrätt i juridikkursen", "should_trigger": true},
+  {"query": "jag behöver lektionsplaner för ett moment om privatekonomi i samhällskunskap 1b", "should_trigger": true},
+  {"query": "Skapa ett komplett moment med presentationer och allt om franska revolutionen", "should_trigger": true},
+  {"query": "momentplanering — vi ska jobba med källkritik och media i samhällskunskap, 4 lektioner", "should_trigger": true},
+  {"query": "hjälp mig planera lektioner om industrialiseringen, historia 1a1", "should_trigger": true},
+  {"query": "Jag vill planera för nästa moment. Ämnet är mänskliga rättigheter, samhällskunskap 1b, och jag har 6 lektioner på 60 minuter", "should_trigger": true},
+  {"query": "planera undervisning om eu-rätt och svensk rätt i juridikkursen", "should_trigger": true},
+  {"query": "jag har tänkt köra ett moment om nationalism och imperialism, kan du hjälpa mig strukturera det?", "should_trigger": true},
+  {"query": "Skriv en presentation om demokrati för lektion 3", "should_trigger": false},
+  {"query": "Gör ett word-dokument med en lektionsplan för imorgon", "should_trigger": false},
+  {"query": "Skapa en momentöversikt i HTML för eleverna baserat på befintliga lektionsplaner", "should_trigger": false},
+  {"query": "Hur fungerar E/C/A-bedömning i historia?", "should_trigger": false},
+  {"query": "Ge mig feedback på min lektionsplan om andra världskriget", "should_trigger": false},
+  {"query": "Sammanfatta mina reflektioner om källkritiksmomentet", "should_trigger": false},
+  {"query": "Vad har jag för lektioner idag?", "should_trigger": false},
+  {"query": "Skriv en artikel om formativ bedömning baserat på mina anteckningar", "should_trigger": false},
+  {"query": "Jag behöver en exit ticket till morgondagens lektion om migration", "should_trigger": false},
+  {"query": "Planera en studieresa till riksdagen för samhällskunskapsklassen", "should_trigger": false}
+]

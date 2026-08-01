@@ -1,0 +1,6 @@
+{
+  "eval_id": 0,
+  "eval_name": "sequential-generation-5-lessons",
+  "prompt": "Jag har en färdig momentplan för 'Ungas ekonomi' i Samhällskunskap 1a1. Momentplanen finns i Undervisningsmaterial/Samhällskunskap/Ungas ekonomi/momentplan.md. Kör steg 5 och 6 - generera detaljerade lektionsplaner (docx) och presentationer (pptx) för alla 5 lektioner. Godkänn varje lektion direkt utan att fråga mig - kör bara rakt igenom.",
+  "assertions": []
+}

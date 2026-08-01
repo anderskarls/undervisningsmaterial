@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(../CLAUDE.md)"
+    ]
+  },
+  "mcpServers": {
+    "kokboks": {
+      "command": "uv",
+      "args": ["--directory", "/home/anders/Second brain/kokboks-mcp", "run", "kokboks-mcp"]
+    }
+  }
+}
