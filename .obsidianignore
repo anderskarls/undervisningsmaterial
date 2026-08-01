@@ -1,0 +1,16 @@
+**/node_modules
+**/venv
+**/.venv
+**/__pycache__
+.git
+.planning
+.agents
+.claude
+Kod
+kokboks-mcp
+resources
+*.db
+*.db-shm
+*.db-wal
+.~lock.*
+*.sync_*

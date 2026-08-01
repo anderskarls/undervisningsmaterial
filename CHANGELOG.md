@@ -6,7 +6,260 @@ This is a **summary index**. For detailed session logs, see `05-Meta/Changelogs/
 
 ---
 
+## 2026-07
+
+### 2026-07-28
+**Deep research: Språkanpassning av texter** - [Details](meta/changelogs/SESSION SUMMARY - Deep Research Sprakanpassning 2026-07-28.md)
+
+- 18 noter i `wiki/sources/2026-07-28 Språkanpassning av texter/` från två parallella researchspår (internationell läsforskning respektive svensk didaktik och styrdokument). 28 länkmål verifierade, noll trasiga.
+- **Huvudfynd:** hållningen "scaffolda proceduren, sänk aldrig språknivån" preciseras men bekräftas inte. Reichenberg bytte inte ut ämnesbegreppen - hon förklarade dem; det bearbetade var kohesion, kausalitet och röst. Som generellt förståelsepåstående håller hållningen inte: förenkling vinner ofta på korttidsförståelse, med små effekter. Starkast står den för primärkällor i historia, där källans språk är studieobjektet och inte transportmedlet.
+- **Korsdomänfynd:** McNamaras reverse cohesion effect (1996) och Tetzlaffs expertise reversal-metaanalys (2025) är samma mekanism i två fält som sällan citerar varandra. Kohesion är scaffolding inbyggd i texten och ska fadas som all annan stöttning.
+- **Faktakorrigering:** Gy25 gäller sedan 1 juli 2025. Varken historia eller samhällskunskap ställer krav på textsvårighet, och inga nationella prov finns i ämnena på gymnasiet - ingen extern kalibreringspunkt existerar.
+- **Tre noter dokumenterar vad man inte ska hävda:** den direkta jämförelsen saknas i forskningen, "lättläst cementerar låga förväntningar" saknar svensk empirisk grund, och scaffolding-argumentet vilar tyngre på auktoritet än på effektforskning.
+
+**Deep research: AI i lärararbetet - professionens organisering** - [Details](meta/changelogs/SESSION SUMMARY - Deep Research AI i lararabetet 2026-07-28.md)
+
+- 40 noter + ny [[MOC - AI i lärararbetet och professionens organisering]] från fem parallella researchspår (nätverk, fack, policy, forskning, Sverige/Norden). Ny domän: läraren som yrkesutövare och part, till skillnad från vaultets befintliga AI-täckning som gäller eleverna (AI-literacy) och proven (examinationsformer).
+- **Robustaste fyndet:** bedömning är den gräns professionen själv drar, och den dras fyra gånger oberoende - av professionsidentitet (TALIS 2024: 64 % använder AI för planering, 26 % för bedömning), myndighetsutövning (Ofqual, Oklahoma, Kina, EU), statsfinansiell reformdesign (Sverige valde 3 500 mänskliga bedömare) och psykometri (QWK-spannet 0,30-0,80).
+- **Strukturell iakttagelse:** professionen har ett normlager utan verkställighet och ett handlingslager utan spridning. Mellanlagret - ämnesdidaktiska kollegiala strukturer - är tomt. Inget aktivt lärarlett nätverk för SO/humaniora och AI hittades, varken internationellt eller i Sverige.
+- **Fem motsägelser mot befintliga sidor** (M1-M5), varav Henrekson-tidslinjen (slutprov 2029/meritvärden 2031, inte 2028, och sve/sva/eng först - inte SO-ämnena) underminerar en praktisk hållning som är citerad i `MOC - Bedömning och betygssättning`.
+- **Faktarättning:** EU:s högriskkrav för utbildning flyttade till 2 december 2027 genom Digital Omnibus, verifierat mot tre juridiska källor. Fyra nya noter rättade; två befintliga sidor bär fortfarande fel datum.
+- **Åtta krav på förmågeträningsbygget**, tyngst att CLI-flödets ordningsföljd är ankringsvänlig och att stresstestets 96 % mätte LLM-bedömning av LLM-genererade svar.
+- Metodbegränsning: Firecrawl låg nere hela sessionen; all research gjord med WebSearch/WebFetch. Sverige-spåret svagast underbyggt.
+- Statistik: wiki-sidor 810 -> 851 (räknare omräknade mot disk och definitionen utskriven; de gamla siffrorna var internt inkonsistenta).
+
+### 2026-07-22
+**Bygge: Elevlägesbilden v1 - grundinfrastruktur**
+
+- Vaultets fjärde lager `elevdata/` skapat (ADR 0002): elevakter, synteser, observationer per läsår, med bindande pseudonymregler och mallar. Gallras vid läsårsslut.
+- Pseudonymiseringsbryggan i `resources/elevlagesbild/`: hämtar signaldata (classroom-tool, survey-plattformen), byter källidentiteter mot Elev-ID via lokal nyckelfil (`.secrets/elevnyckel/`, aldrig läst av LLM), läckagekontroll som avbryter vid klarnamn/e-post. Smoke-testad.
+- Nya skills: `/undantagssyntes` (veckovis rapport med beläggskrav, max 5 avvikelser per kursinstans) och `/observation` (friktionsfri infångning med Elev-ID).
+- Kartläggning bekräftade ADR 0003:s antagande för 2 av 3 källsystem; förmågeträningen saknar per-elev-API (öppen punkt). Detaljer i `log.md` [2026-07-22].
+
+### 2026-07-19
+**Grilling + file-back: Förmågeträningens utvecklingsplan (Hi 1b, HT26)**
+
+- Grilling-session om kommande läsåret: hur bygga material så elever tränar förmågor i stället för att enbart stoffplugga. Resultatet filat som [[Formagetraningens-utvecklingsplan-2026-07]] i `wiki/topics/` (andra implementationsplanen efter [[Fragappens-utvecklingsplan-2026-05]]).
+- Design: femdelad delfärdighetstaxonomi (kategorisera, kedjor, förgrena, vikta, kritisera) x två riktningar (orsak/konsekvens); mikroövningstrappa med exempelsvar-efter-försök som feedback-ryggrad; AI-återkoppling i survey-plattformen (nya frågetyper sortering + kedjebyggare); hybrid obligatorisk ramp -> frivillig övning; bedömningskarantän.
+- Pilot: båda nya Historia 1b-grupperna från kursstart HT26. Sommarbyggordning i 6 steg, syntetisk stresstestning av AI-feedback före elevkontakt. Statistik: wiki-sidor 767 -> 768.
+**Ingest: Educational Escape Rooms Research Report - ny domän** - [Details](wiki/sources/2026-07-11 Designa escaperooms/CHANGELOG - Extraktion 2026-07-11.md)
+
+- 22 atomära noter + sessionschangelog i `wiki/sources/2026-07-11 Designa escaperooms/`. Helt ny domän i vaultet (spelbaserat lärande via escape rooms) - inga befintliga sidor om ämnet fanns.
+- **Designramverk (7 noter):** escapED, Star Model (K-12-validerat), Room2Educ8 (Design Thinking), CREATE (STEM, "chocolate-covered broccoli"), Generisk flernivåstruktur, Socio-konstruktivistiskt ramverk (2026, riktat mot humaniora), samt en syntesnot om det konvergerande niostegsprocessen alla ramverk delar.
+- **Metaanalytisk evidens:** tre konvergerande 2023-2024-metaanalyser visar stora kunskapsvinster (d=1,4; g=0,86; SMD 0,84-4,91) men extrem heterogenitet (I²=95,5%); svag teoretisk grund (endast 9 teorier över 24 studier); debriefing implementeras i under 40% av K-12-studierna trots att det är den mest avgörande lärandefasen.
+- **Ämnesspecifikt (historia/samhällskunskap):** enda kontrollerade civics-studien (Chen et al. 2025, årskurs 8); karaktärsperspektiv som narrativ teknik för multiperspektivitet (hypotes, ej testad för historia); stark praktikeranvändning men nästan obefintlig peer-granskad evidens för ämnet.
+- **Kontrariskt fynd:** "lärparadoxen" (SEER 2026) - motivation och kreativitet steg kraftigt i en escape room-intervention men standardiserade provresultat rörde sig inte i motsvarande grad.
+- **Korslänkat mot 6 befintliga sidor** (ingen duplicering): [[gamification-kombinationer-kan-backfire]], [[nyhetseffekten-kort-gamification-slar-lang]], [[eu-rollspel-vad-forskning-faktiskt-visar]], [[inokulationsspel-klassrumsverktyg-oversikt]], [[constructive-alignment-biggs]], [[vad-make-it-stick-fick-ratt-och-vad-som-overspelats]].
+
+**Connection Discovery: Escape rooms mot vaultet** - [Details](meta/changelogs/CHANGELOG - Connection Discovery 2026-07-11.md)
+
+- 19 nya wikilänk-par mellan escape room-domänen och fem andra domäner: SDT/motivation (autonomistöd+struktur, agentiskt engagemang), CLT/multimedia (seductive details/coherence-principen ↔ "chocolate-covered broccoli"), aktivering/formativ bedömning (Freeman sweet spot, mini-whiteboards samplingsproblem, equity), historiedidaktik (andra ordningens begrepp), samt ett tredje bekräftande ben i mönstret "motivations-/domänpåståenden replikerar sämst i SO/humaniora" (lärparadoxen ↔ produktivt misslyckande ↔ Make It Stick-kalibreringen).
+- 25 filer redigerade (8 nya sessionsnoter berikade, 15 befintliga sidor fick backlänkar, 2 MOC:er uppdaterade: [[MOC - Elevmotivation och engagemang]] och [[MOC - Lärandevetenskap och kognition]]).
+- **MOC-beslut:** ingen ny MOC för escape rooms - domänen positionerad som tillämpad fallstudie i befintliga MOC:er snarare än egen kunskapsdomän.
+
+---
+
+## 2026-06
+
+### 2026-06-15
+**Ingest: The Enlightened Economy (Mokyr 2009) - kluster D, helbok-ingest** - [Details](wiki/sources/2026-06-15 The Enlightened Economy (Mokyr)/CHANGELOG - Document Analysis 2026-06-15.md)
+
+- Sista och fjärde klustret i 12-boksbatchen (industriella revolutionen, moment 7 i Hi 1b). EPUB-extraktion + en läsagent; ~260 000 ord (20 kapitel).
+- 12 atomära noter + sessionschangelog i `wiki/sources/2026-06-15 The Enlightened Economy (Mokyr)/`. Mokyrs idé-/kulturförklaring: Industrial Enlightenment - upplysningens nyttiga kunskap som motor bakom brittiska industriella revolutionen.
+- **Nyckelbegrepp:** useful knowledge (propositionell vs preskriptiv); baconska programmet; savants-fabricants-alliansen; sjunkande åtkomstkostnader till kunskap; förbättringskulturen; rent-seeking-begränsning; varför inte Kina/Frankrike; gradvis inte plötslig.
+- **Trepartspar komplett:** Mokyr (idéer/kultur) som tredje position mot [[malm-fossil-capital-kolets-politiska-historia]] (arbetskontroll/materialism) och [[hobsbawm-industriella-revolutionen-bomull-och-kapital]] (strukturell dubbelrevolution). Kontrastnoten [[mokyr-vs-malm-ideer-mot-arbetskontroll]] = direkt SAC-brygga. Bryggar även bakåt till upplysningen (Robertson, Wootton).
+- **MOC fylld:** [[MOC - Revolutionernas tidsålder (amerikanska, franska, industriella)]] sektion 4 (industriella revolutionen) ifylld. Hela 12-boksbatchen (kluster A-D, 2 nya epok-MOC:er) nu komplett.
+- 4 befintliga sidor korslänkade. Statistik: source sessions 37 -> 38; source notes 698 -> 710; wiki-sidor 733 -> 745; MOCs oförändrat 13.
+
+---
+
+### 2026-06-15
+**Ingest: Revolutionernas tidsålder kluster C (Taylor, Wood, Darnton, Tackett, Hobsbawm) - fem hela facklitterära verk** - [Details](log.md)
+
+- Tredje och största klustret i 12-boksbatchen (revolutionernas tidsålder, moment 6 i Hi 1b). EPUB-extraktion + fem parallella läsagenter; ~945 000 ord.
+- 63 atomära sidor + 5 sessionschangelogs: Taylor (13), Wood (12), Darnton (13), Tackett (12), Hobsbawm (13) i `wiki/sources/2026-06-15 .../`.
+- **Ny MOC:** [[MOC - Revolutionernas tidsålder (amerikanska, franska, industriella)]] - andra epok-MOC:en i batchen, syskon till [[MOC - Tidigmodern tid (erövring, vetenskap, upplysning)]]. Sektion 1-3 fyllda (amerikanska, franska, dubbelrevolutionen); sektion 4 (industri) reserverad för kluster D.
+- **Två färdiga kontrastpar:** Taylor (blodig kontinental verklighet) mot Wood (genuint radikal idéomvälvning) = SAC om amerikanska revolutionen ([[taylor-vs-wood-revolutionen-radikal-eller-blodig]] mot [[wood-revolutionen-var-en-radikal-social-transformation]]); Darnton (hur revolutionen blev tänkbar) till Tackett (hur den blev blodig) = före/efter-par för franska revolutionen ([[darnton-och-tackett-fore-och-efter-1789]] / [[tackett-skracket-var-inte-forutbestamt-utan-en-process]]).
+- **Hobsbawm** = den marxistiska makroramen (dubbelrevolutionen) som binder ihop allt och bryggar till industri-klustret; även historiesyns-par mot Wood (materialism mot idealism) och tredje teleologirösten mot Wickham.
+- 8 befintliga sidor korslänkade. Statistik: source sessions 32 -> 37; source notes 635 -> 698; MOCs 12 -> 13; wiki-sidor 669 -> 733.
+
+---
+
+### 2026-06-15
+**Ingest: Tidigmodern-batch kluster B (Wootton, Shapin, Robertson) - tre hela facklitterära verk** - [Details](log.md)
+
+- Andra klustret i 12-boksbatchen (nya tiden -> industriella revolutionen, moment 5-6 i Hi 1b). EPUB-extraktion + tre parallella läsagenter; ~836 000 ord (Robertson ensam 463k, läst strategiskt).
+- 40 atomära sidor + 3 sessionschangelogs: Wootton (14), Shapin (12), Robertson (14) i `wiki/sources/2026-06-15 .../`.
+- **MOC utvidgad:** [[MOC - Tidigmodern tid (erövring, vetenskap, upplysning)]] sektion 4 (vetenskaplig revolution) och 5 (upplysningen) fyllda - MOC:en nu komplett för kluster A+B.
+- **Färdigt kontrastpar:** Wootton (realism, "revolutionen var verklig") mot Shapin ("there was no such thing") = SAC "Fanns den vetenskapliga revolutionen?", samma mekanik som katastrof/kontinuitet för Roms fall. Noderna [[wootton-vs-shapin-realism-mot-konstruktivism]] mot [[shapin-det-fanns-ingen-vetenskaplig-revolution]].
+- **Robertson:** upplysningen som strävan efter lycka (inte kall rationalism); försvarar epoken mot Adorno/Horkheimer; bryggar bakåt till slaveriet ([[upplysningen-och-slaveriet-spannungen]], universalismens blinda fläck) och framåt till revolutionerna.
+- 6 befintliga sidor korslänkade. Statistik: source sessions 29 -> 32; source notes 595 -> 635; wiki-sidor 629 -> 669.
+
+---
+
+### 2026-06-15
+**Ingest: Tidigmodern-batch kluster A (Restall, Townsend, Rediker) - tre hela facklitterära verk** - [Details](log.md)
+
+- Första klustret i en 12-boksbatch som fyller wikins lucka "nya tiden -> industriella revolutionen" ([[laslista-nya-tiden-till-industriella-revolutionen]], moment 5-7 i Hi 1b). EPUB-extraktion via `resources/epub_extract.py` + tre parallella läsagenter (en per bok), ~400 000 ord.
+- 37 atomära sidor + 3 sessionschangelogs: Restall (12), Townsend (12), Rediker (13) i `wiki/sources/2026-06-15 .../`.
+- **Ny domän/MOC:** [[MOC - Tidigmodern tid (erövring, vetenskap, upplysning)]] - sektion 1-3 fyllda (erövring, aztekerna, slavhandeln); sektion 4 (vetenskaplig revolution + upplysning) reserverad för kluster B. Syskon-MOC [[MOC - Revolutionernas tidsålder (amerikanska, franska, industriella)]] skapas vid kluster C. Kronologisk fortsättning på [[MOC - Medeltiden (innehåll och historiebruk)]].
+- **Färdiga par/bryggor:** Restall + Townsend = oberoende konvergens (gudamyten som efterhandskonstruktion, Malintzin som aktör, erövringen som inhemskt inbördeskrig + epidemi). Tre källkritikfall (probanza, nahuatl-annaler, sjömannen-som-vittne) förstärker [[medeltida-kallor-ar-retorik-inte-fonster]]. Rediker bryggar framåt till [[malm-fossil-capital-kolets-politiska-historia]] (slaveriet som kapitalets ackumulation 150 år före kolet) och bakåt till [[rom-som-slavsamhalle-frigivning-och-blind-flack]].
+- **Kontraintuitivt:** erövringen var ingen europeisk överlägsenhet utan inhemskt inbördeskrig; ras "tillverkades" ombord på slavskeppet; "den spanska erövringen" fullbordades aldrig.
+- 9 befintliga sidor korslänkade (bakåtlänkar). Statistik: source sessions 26 -> 29; source notes 558 -> 595; MOCs 11 -> 12; wiki-sidor 591 -> 629.
+
+---
+
+
+### 2026-06-10
+**Query + file-back: Läsårsskiss Hi 1b (85 h) + läslista för wikins luckor** - [Details](log.md)
+
+- Läsårsskiss för Historia 1b (forntid -> industriella revolutionen) byggd på Momentplaneringsramverket: 8 moment, Rüsen-progression, andra ordningens begrepp som spiral, retrieval-infrastruktur. Sparad i `output/lessons/Historia/Läsårsskiss Hi 1b - forntid till industriella revolutionen.md`.
+- **Ny concept-sida:** [[laslista-nya-tiden-till-industriella-revolutionen]] - fyller wikins luckor 1450-1850 (kolonialism, reformation, upplysning, revolutionerna, industrialisering, svensk tråd). Nyckelmönster: färdiga kontrastpar för SAC; ingest-prioritet 1 är Allen (motpositionen till Malms fossil capital-tes).
+- Statistik: concepts 16 -> 17; wiki-sidor 590 -> 591.
+
+---
+
+### 2026-06-10
+**Ingest: Antiken-batch (Ober, Lane Fox, Beard, Heather) - fyra hela facklitterära verk** - [Details](log.md)
+
+- ~840 000 ord över fyra böcker (alla på [[laslista-antikens-grekland-och-rom]]). EPUB-extraktion + 12 parallella läsagenter i två vågor (disjunkta domäner -> ren korsboks-dedup).
+- 52 atomära sidor + 4 sessionschangelogs: Ober (12), Lane Fox (13), Beard (12), Heather (15) i `wiki/sources/2026-06-10 .../`.
+- **Ny domän/MOC:** [[MOC - Antiken (Grekland och Rom)]] - fyra linser: ekonomi/institutioner (Ober), kultur/frihet/lyx (Lane Fox), källkritik/Rom (Beard), katastrof/fall (Heather). Förgångare till [[MOC - Medeltiden (innehåll och historiebruk)]].
+- **Viktigaste bryggan:** Heather = katastrofrösten som fyllde Ward-Perkins-luckan; trepositionsdebatten katastrof/kontinuitet/varken-eller nu komplett. Antik möter medeltid i Roms fall.
+- **Kontraintuitivt:** Rom skapade sin egen barbarfiende; splittringen gjorde Grekland rikt; Beard slutar 212 e.Kr. (medborgarskapet), inte 476.
+- Statistik: source sessions 22 → 26; source notes 506 → 558; MOCs 10 → 11; wiki-sidor → 589.
+
+---
+
+### 2026-06-10
+**Moment: Den mörka medeltiden (Hi 1b)** (autonom /planera-moment-körning, hela 7-stegsprocessen) - [Beslutslogg](output/lessons/Historia/Den mörka medeltiden/beslutslogg.md)
+
+- Komplett moment: momentplan, 10 lektionsplaner + elevuppgifter (md+docx), källkompendium + SAC-positionskort, examination med E/C/A-matris, 11 quizzar (68 frågor) i frågeappen, 3 NotebookLM-videor, 9 Arkiv-presentationer, momentoversikt.html.
+- Designen byggde direkt på medeltids-MOC:ens fem bokingester (2026-06-08): brottningsfrågan "Var medeltiden mörk?", trepartsdebatten ljus/katastrof/varken-eller som SAC, mörka medeltiden som studieobjekt.
+- Kursminne för Historia Nivå 1b grundat. 0 ramverks-overrides. Wikin oförändrad (output-lagret).
+
+---
+
+### 2026-06-09
+**Deep Research: Undervisning på yrkesprogram** (`/deep-research`, directed mode) - [Details](meta/changelogs/SESSION SUMMARY - Deep Research Yrkesprogram 2026-06-09.md)
+
+- 3 parallella research-rapporter (~90 källor, 2024-2026) i `resources/`: systemkontext+Gy25, didaktik/motivation, internationell VET.
+- 18 atomära sidor + sessionschangelog i `wiki/sources/2026-06-09 Undervisning på yrkesprogram/`.
+- **Strukturell diagnos:** yrkeselever har 50 vs 100 p Sh/Hi, 1a/1b-spårlåsning och halverat ideologiinnehåll = kodifierad demokratiojämlikhet (Gy25 ändrar betygslogik, inte timantal).
+- **Kontraintuitiva trådar:** eleverna vill ha mer utmaning (inte mindre); mer APL kan skada (belgisk studie 2025); avskaffad spårning eliminerar inte social reproduktion (Schindler 2024); det AI inte ersätter är vad VET tränar (WEF 2025).
+- **Didaktisk hävstång:** relation + relevans + kognitivt utmanande uppgifter + öppet klimat - aldrig sänkta krav (Pygmalion d=0,92).
+- **Dedup:** 3 dubbletter undvikna; [[kontrovers-mollenborg-a-lag-b-lag-demokrati]] berikad i stället.
+- **Ny MOC:** [[MOC - Undervisning på yrkesprogram]] (18 nya + 6 tidigare noter, 8 sektioner).
+- Statistik: source sessions 21 → 22; source notes 488 → 506; MOCs 9 → 10.
+
+---
+
+### 2026-06-08
+**Ingest: The Once and Future Sex (Janega 2023) - hel bok** (bok 4/4 i autonom raw-batch, SISTA) - [Details](wiki/sources/2026-06-08 The Once and Future Sex (Janega)/CHANGELOG - Document Analysis 2026-06-08.md)
+
+- ~70 000 ord, 5 kap. Polemisk genushistoria; matar genushistoria-momentet (Historia 2a). Fem parallella agenter.
+- 11 atomära sidor + sessionschangelog i `wiki/sources/2026-06-08 The Once and Future Sex (Janega)/`
+- **Tes:** moderna könsideal är konstruerade, inte naturliga; underordningen är konstanten, motiveringen byts (Gud -> Naturen -> Vetenskapen).
+- **Distinkt:** kvinnan som "utochinvänd man"; den sexuellt glupska kvinnan (bevisar konstruktion); skönhet som förklädd klass; kärlek vs äktenskap; "kvinnor arbetade överallt, hemmafrun är modern"; tradwife-historiebruk; motröster (Hildegard, Christine de Pizan).
+- **Balanspar:** [[janega-vs-wickham-polemik-mot-struktur]] - polemisk vs strukturell genushistoria. Plus momentdesign-not med klassrumsvarning (grova exempel = lärarberättade).
+- **MOC uppdaterad:** [[MOC - Medeltiden (innehåll och historiebruk)]] ny sektion 11.
+- Statistik: sidor 502 → 513; source sessions 20 → 21; source notes 477 → 488.
+- **Raw-batch klar:** fyra textbara böcker bearbetade. Ward-Perkins *The Fall of Rome* (.m4b) kan ej textextraheras.
+
+---
+
+### 2026-06-08
+**Ingest: Powers and Thrones (Dan Jones 2021) - hel bok** (bok 3/4 i autonom raw-batch) - [Details](wiki/sources/2026-06-08 Powers and Thrones (Dan Jones)/CHANGELOG - Document Analysis 2026-06-08.md)
+
+- ~240 000 ord, 16 tematiska kapitel. Populär narrativ historia; fokus på vad Jones TILLFÖR (domänen hade redan 51 akademiska noter).
+- 11 atomära sidor + sessionschangelog i `wiki/sources/2026-06-08 Powers and Thrones (Dan Jones)/`
+- **Distinkt:** fem krafter-ram ("vi är medeltidens barn"); klimat som drivkraft (megatorkan flyttade hunnerna); **mongolerna** + Pax Mongolica (fyller väst-luckor); kommersiella revolutionen; översättningsrörelsen (väst som baksvansare); korståget som giftig maktteknologi (mot extremism); tryckpressen som informationsrevolution (brygga till källkritik/medier).
+- **Crown jewel:** [[dan-jones-vs-wickham-teleologi-mot-anti-teleologi]] - samma material, motsatt narrativ logik = färdigt verktyg för historiesyn/historiebruk. Plus klassrumshooks-resurs.
+- **MOC uppdaterad:** [[MOC - Medeltiden (innehåll och historiebruk)]] ny sektion 10.
+- Statistik: sidor 491 → 502; source sessions 19 → 20; source notes 466 → 477.
+
+---
+
+### 2026-06-08
+**Ingest: Medieval Europe (Wickham 2016) - hel bok** (bok 2/4 i autonom raw-batch) - [Details](wiki/sources/2026-06-08 Medieval Europe (Wickham)/CHANGELOG - Document Analysis 2026-06-08.md)
+
+- ~135 000 ord, 13 kap. Samma författare som bok 1; fokus på det NYA (1000-1500) + helhetssyntes (tidig period överlappar Inheritance of Rome).
+- 12 atomära sidor + sessionschangelog i `wiki/sources/2026-06-08 Medieval Europe (Wickham)/`
+- **Kärnteser:** 1000-talet som medeltidens verkliga vattendelare; lokalisering av makt (cellstruktur); massmarknad (ej lyxhandel) som ekonomisk motor; sex statsbyggnadsmekanismer; "skatt kräver samtycke" som representationens rot; 1204 (Bysans som förlorat alternativ); digerdöden som maktförskjutning, ej kollaps; ingen systemisk senmedeltida "kris"; 1500 svagt brott, reformationen det verkliga.
+- **Anti-teleologi:** "history goes *from*, not *to*". Genus-noten förbereder Janega-ingesten.
+- **MOC uppdaterad:** [[MOC - Medeltiden (innehåll och historiebruk)]] ny sektion 9.
+- Statistik: sidor 479 → 491; source sessions 18 → 19; source notes 454 → 466.
+
+---
+
+### 2026-06-08
+**Ingest: The Inheritance of Rome (Wickham 2009) - hel bok** (bok 1/4 i autonom raw-batch) - [Details](wiki/sources/2026-06-08 The Inheritance of Rome (Wickham)/CHANGELOG - Document Analysis 2026-06-08.md)
+
+- ~275 000 ord, 23 kap. Extraktion via `resources/epub_extract.py`; läst av fem parallella kapitelkluster-agenter.
+- 15 atomära sidor + sessionschangelog i `wiki/sources/2026-06-08 The Inheritance of Rome (Wickham)/`
+- **Ramning:** akademisk materialistisk motvikt till de 24 Bright Ages-noterna. Wickhams **tredje position** - varken katastrof eller kontinuitet, förstå på egna villkor.
+- **Kärnteser:** skattestatens fall som den strukturella förändringen; regional variation (Britannien total kollaps vs Francias kontinuitet); den verkliga romerska kontinuiteten fanns i öst (Bysans/kalifatet); böndernas "caging"; nordisk statsbildning sent och utan romersk grund.
+- **MOC uppdaterad:** [[MOC - Medeltiden (innehåll och historiebruk)]] ny sektion 8; Ward-Perkins-luckan delvis fylld (m4b kan ej textextraheras).
+- Statistik: sidor 464 → 479; source sessions 17 → 18; source notes 439 → 454.
+
+---
+
+### 2026-06-08
+**Ny MOC: Lärandevetenskap och kognition (samlande mekanismkarta)** - `wiki/topics/MOC - Lärandevetenskap och kognition.md`
+
+- Wikins största kunskapsdomän fick äntligen en karta. **Mekanismlagret** ("varför") under de tillämpade MOC:erna (Momentplaneringsramverket "hur man designar", Bedömning "hur man bedömer", Larappar "hur man bygger").
+- Samlar fem källsessioner: Retrieval Practice (46), Frågedesign (25), Kognitionsforskning (34), CLT (21), Make It Stick (14) - de fyra första lämnar MOC-kandidatlistan.
+- Organiserad efter kognitiv princip i 11 sektioner + meta-lärdomar + bryggor + forskningsluckor. ~75 kuraterade nodlänkar.
+- **Bärande syntes:** två återkommande meta-lärdomar - (1) det som känns effektivt under inlärning är ofta motsatsen, (2) effekter krymper och får gränsvillkor från labb till klassrum.
+- Statistik: MOC 8 → 9; kandidater 7 → 3; sidor 463 → 464; sessions med egen MOC 7 → 11 av 17.
+
+---
+
+### 2026-06-08
+**Ingest: Make It Stick (Brown, Roediger & McDaniel 2014) - hel bok** - [Details](wiki/sources/2026-06-08 Make It Stick/CHANGELOG - Document Analysis 2026-06-08.md)
+
+- Andra bok-ingesten. Hel bok (328 s., 8 kap.) bearbetad. PDF-extraktion via `pdfplumber` (Read-verktygets pdftoppm saknades); kap. 2-8 djuplästa av 7 parallella läsagenter.
+- 14 atomära sidor + 1 sessionschangelog i `wiki/sources/2026-06-08 Make It Stick/`
+- **Ramning:** boken är *ursprungskällan* till wikins befintliga lärandevetenskap (46+ retrieval-noter). Ingen re-extraktion av "testning funkar" - i stället ankarnot + bok-specifika begrepp + lärar-playbook (kap. 8) + motsägelsekarta.
+- **5 befintliga sidor uppdaterade** med ursprungs-/motsägelseflaggor: understanding-how-we-learn (dinglande ref uppfylld), retrieval-practice, desirable-difficulty-sweet-spot, growth-mindset-kollaps, interleaving-skadar
+- **Kärnbidrag - motsägelsekartan** [[vad-make-it-stick-fick-ratt-och-vad-som-overspelats]]: *håller* (retrieval, spacing, lärstilsmyten, illusions of knowing); *nyanserat* (desirable difficulties, interleaving, transfer); *överspelat* (growth mindset d≈0, generation-i-humaniora, 10 000-timmarsregeln).
+- **Top kontraintuitivt:** boken (2014) hyllar growth mindset oförbehållsamt - wikin visar att teorin kollapsat (Gazmuri 2025, Sisk N=365k); "lös innan du undervisas" replikerar inte i SO/historia (Steenhof 2020).
+- **Ingen ny MOC** (14 < 15-tröskeln); stärker MOC-kandidaten Lärandevetenskap/kognition (Retrieval 46 + Kognition 34 + Frågedesign 25 + CLT 21 + denna).
+- **Statistik:** wiki-sidor 449 → 463; source sessions 16 → 17; source notes 425 → 439
+
+---
+
+### 2026-06-08
+**Ingest: The Bright Ages (Gabriele & Perry 2021) - hel bok** - [Details](wiki/sources/2026-06-08 The Bright Ages/CHANGELOG - Document Analysis 2026-06-08.md)
+
+- Första bok-ingesten i wikin. Hel bok minad (94 028 ord; brödtext ≈ 84 000). EPUB-extraktion via egen Python-stdlib-extraktor (`resources/epub_extract.py`) då ebook-mcp/pandoc/calibre saknades.
+- 24 atomära sidor + 1 sessionschangelog i `wiki/sources/2026-06-08 The Bright Ages/`
+- **Ny MOC:** [[MOC - Medeltiden (innehåll och historiebruk)]] - öppnar en **ny domän** (medeltidens sakinnehåll, till skillnad från wikins didaktikdomäner). Byggd för momentet "Den mörka medeltiden" (Hi 1b).
+- **8 befintliga sidor uppdaterade** med korslänkar: counterfactuals, historiebruk, nordgren-decolonize, sjolund-ahsberg, kontrovers-far-right, fran-detektion-navigation, racial-capitalism, laslista-medeltiden
+- **Huvudtes:** *"Den mörka medeltiden" är ett historiebruk, inte en epokbeskrivning. Tre bärande teser: kontinuitet ("Rom föll inte"), permeabilitet (uppkopplad multireligiös värld), historiebruk (Petrarca → kolonialism → vit makt).*
+- **Top kontraintuitivt:** Slaget vid Tours 732 räddade inte Europa; första korståget var inte defensivt mot islam; digerdöden var 500 år och tre kontinenter (Monica Green/aDNA); demokratin är medeltida
+- **Tvärdomän-bryggor:** historiebruk, källkritik, counterfactuals, dekolonisering, racial capitalism, far-right-rekrytering
+- **Motsägelser:** inga direkta; balanserande motvikt (Ward-Perkins *The Fall of Rome*) flaggad som forskningslucka
+- **Statistik:** wiki-sidor 421 → 446; MOC 7 → 8; source sessions 15 → 16
+
+---
+
 ## 2026-05
+
+### 2026-05-21
+**Deep Research: AI-säkra examinationsformer 2024-2026** - [Details](meta/changelogs/CHANGELOG - Connection Discovery AI-sakra-examinationer 2026-05-21.md)
+
+- 26 källor 2024-2026 analyserade i forskningsrapport `wiki/sources/2026-05-21 AI-säkra examinationsformer/AI-Sakra-Examinationsformer-Research-Report-2026-05-21.md` (80%+ från 2024-2026)
+- 13 atomiska + 1 syntesnot + 1 session-changelog skapade i `wiki/sources/2026-05-21 AI-säkra examinationsformer/`
+- **MOC uppdaterad:** [[MOC - Bedömning och betygssättning]] ny sektion **7b "AI-säkra examinationsformer - paradigmskifte 2024-2026"** med alla 17 nya wikilänkar; total noter 35+ → 50+
+- **Index:** ny sessions-sektion 2026-05-21; sidstatistik 401 → 418
+- **Huvudtes:** *Forskningsfältet 2024-2026 har gjort ett paradigmskifte från detektion till strukturell omdesign av examination — och det dominerande ramverket är Sydneys två-fileformulering (secure + open) snarare än någon enskild form*
+- **Top kontraintuitivt:** Stanford-data — fuskfrekvensen har inte ökat sedan ChatGPT (konstant 60-70 % 2018-2024); muntliga prov kan vara *mindre* reliabla (κ 0,17-0,54) än de skriftliga de ersätter; Henrekson-reformen löser AI-validitetsproblemet utan att nämna det
+- **Equity-paradox identifierad:** AI-säkringsregimer (handskrift, muntligt, detektorer) skadar systematiskt elevgrupper med dokumenterade behov; AI kan vara accommodation snarare än hot
+- **Tvärdomän-bryggor:** 3 länkar till [[MOC - Källkritik och digital kompetens]], 2 till [[MOC - Historiedidaktik och kontroversiella frågor]]
+- **7 forskningsluckor noterade:** svensk gymnasieforskning saknas i stort sett; slutprovens innehållsdesign (SOU 2025:18) inte tekniskt beskriven; tvärnordisk utvärdering (DK/NO/SE) saknas
+
+---
 
 ### 2026-05-18
 **Deep Research: Cognitive Load Theory 2024-2025** - [Details](05-Meta/Changelogs/CHANGELOG - Connection Discovery CLT 2026-05-18.md)
@@ -276,7 +529,7 @@ Systematisk kopplingsanalys av 94 insiktsnoter over fyra sessioner (kallkritik, 
 - **Last Auto-Discovery**: YYYY-MM-DD
 - **Last Connection Finding**: 2026-03-22
 - **Last Analysis**: YYYY-MM-DD
-- **Last Document Analysis**: 2026-03-22
+- **Last Document Analysis**: 2026-07-11
 
 ---
 

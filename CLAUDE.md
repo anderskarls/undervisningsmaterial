@@ -61,6 +61,8 @@ Pseudonymiserad elevdata (elevakter, observationer, undantagssynteser). Ackumule
 - `templates/` — Obsidian-mallar för nya råkällor (reflektioner, planeringar)
 - `meta/changelogs/` — sessionschangelogs från connection-discovery och auto-discovery
 - `meta/archive/` — historiskt material som inte längre är aktivt
+- `audits/` — daterade OS-auditrapporter (`/os-audit`). **Senaste rapporten gäller; äldre rapporter är historik och ska aldrig citeras som nuläge.**
+- `docs/` — ADR:er (`docs/adr/`) och agentkonventioner (`docs/agents/`)
 
 ---
 
@@ -151,8 +153,15 @@ output/
 ├── lessons/       Pedagogiska moment per ämne (samhällskunskap, historia, juridik, ...)
 │                  Varje moment = egen mapp med momentplan.md, lektion-N.md, presentation-N.html, etc.
 │                  _kursminne/ - momentplanering-pluginens kursminnen (en fil per kurs, syncas via vaultet)
-└── articles/      Publicerade eller drafter
+├── articles/      Publicerade eller drafter
+├── planering/     Läsårskalendrar och läsårsskisser (underlag för /tempo-status)
+├── analyser/      Betygs- och resultatanalyser per kurs och termin
+├── Idéer/         Utkast och momentförslag som ännu inte blivit moment
+├── recept/        Privat: recept
+└── kok/           Privat: matlagningsmaterial
 ```
+
+Privatmapparna (`recept/`, `kok/` och lösa dokument som provningskort) hör inte till undervisningskunskapen och ska aldrig behandlas som källor vid ingest eller query.
 
 När en lektion produceras: använd kunskapen från wikin (concepts, topics, sources) som källa, men SKRIV INTE TILLBAKA till wikin från outputmappen. Wikin ackumuleras genom ingest av källor och nya synteser.
 
@@ -228,7 +237,7 @@ LLM:ns roll: allt annat.
 
 ### Issue tracker
 
-Issues spåras som lokal markdown under `.scratch/<feature>/` i repot. Se `docs/agents/issue-tracker.md`.
+Issues spåras som lokal markdown under `.scratch/<feature>/`. Mappen skapas vid behov - den finns inte förrän första issuen skrivs. Se `docs/agents/issue-tracker.md`. Vaultet är ett git-repo sedan 2026-07-27 (baslinje `22fcf2d`); `.scratch/` versioneras med resten.
 
 ### Triage labels
 

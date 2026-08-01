@@ -10,6 +10,7 @@ __pycache__/
 
 # Hemligheter - får ALDRIG nå detta publika repo
 .env
+.mcp.json
 resources/claude
 resources/claude.pub
 

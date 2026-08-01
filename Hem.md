@@ -80,8 +80,11 @@ Mallar finns i [[templates|templates/]] — Obsidian Templates-plugin pekar dit:
 
 ---
 
-## Aktuell status
+## Status och siffror
 
-- **Wiki-sidor:** 176 noterade i `index.md` (~485 indexerade i Local Brain Search)
-- **MOCs:** 4 aktiva, 3 kandidater väntar (Historiedidaktik, Kontroversiella frågor, Kognitionsforskning)
-- **Senaste restruktur:** 2026-05-18 — vault konverterat till LLM-Wiki-mönster
+Den här sidan för inte längre egen statistik. Sidantal, MOC-antal och lint-läge räknas mot disk och står i [[index|index.md]] under *Statistics*, daterat vid varje mätning.
+
+Skälet: den här sidan hade fyra siffror som alla var fel och två månader gamla, och de motsade `index.md` om både antal och vilka MOC-kandidater som var öppna. Två register över samma fakta i olika åldrar blir förr eller senare en motsägelse. `index.md` är sanningskällan för vad wikin innehåller; `Hem.md` är människoingången till var saker ligger.
+
+- **Senaste restruktur:** 2026-05-18 - vault konverterat till LLM-Wiki-mönster
+- **Senaste OS-audit:** 2026-07-27, se [[audits/os-audit-2026-07-27|senaste auditrapporten]]

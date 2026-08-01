@@ -1,24 +1,18 @@
 ---
+type: lektionsreflektion
+datum: {{date:YYYY-MM-DD}}
+kurs: 
+moment: 
 tags:
   - reflektion
   - lektionsreflektion
-datum: "{{date}}"
-lektion: "[[]]"
 ---
 
-# Reflektion: {{title}}
-
-## Hur gick lektionen?
+## Vad hände?
 
 
-## Vad fungerade bra?
+## Vad fungerade / vad sprack?
 
 
-## Vad kan förbättras?
-
-
-## Vad lärde jag mig som pedagog?
-
-
-## Åtgärder till nästa gång
+## Ta med till nästa lektion
 

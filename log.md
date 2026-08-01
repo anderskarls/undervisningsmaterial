@@ -639,3 +639,113 @@ Session-changelog (1): `CHANGELOG - Document Analysis 2026-05-21.md`
 - E2E-verifierat mot prod med ZZ TEST-kursen (kurs 8, syntetiska elever): båda hämtarna levererar korrekt pseudonymiserad payload; läckagekontroll bekräftar noll källidentiteter i utdata.
 - Bryggans README uppdaterad: förmågeträningen flyttad från "Kända luckor" till ansluten källa (identitetsrymd = `survey_username`). Kvarvarande lucka i v1: endast Skola24.
 - Kvar före drift (oförändrat): Anders fyller nyckelfilen, skapar HT26-elever i survey-plattformen, Classroom-ids i `config.json`.
+
+## [2026-07-27] underhåll | OS-audit Batch A - säkerhet och döda kapaciteter
+
+Åtgärder från `audits/os-audit-2026-07-26.md`, Batch A. Read-only-auditen från 2026-07-26 kördes om som delta (`audits/os-audit-2026-07-27.md`, inget hade ändrats) varefter Batch A utfördes.
+
+- **Hemligheter ut ur vaultet.** `Untitled.md` (OpenRouter-nyckel, roterad av Anders innan borttagning) raderad till papperskorgen. `ADMIN_API_KEY.md` och `supabase token.md` flyttade till `C:\Users\andkar001\.brain-secrets\` - fortfarande oroterade, se öppen punkt. Vaultroten innehåller inga credential-filer längre.
+- **Elevarbeten borttagna.** `raw/student-work/Uppgift WTO/` - 21 PDF:er med elevernas klarnamn i filnamnen - raderade till papperskorgen på Anders begäran (ADR 0001: aldrig klarnamn). Inga levande kodvägar berodde på dem; endast `log.md` [2026-05-18] och idénoten `raw/personal-notes/Verktygsförslag - arbetsflödesgenomgång 2026-07-03.md` nämner dem. `raw/student-work/` står nu tom.
+- **`elevdata` exkluderad från FAISS.** Tillagd i `excluded_folders` i `resources/local-brain-search/memory_config.py`. Verifierat att konfigurationen parsar och att listan nu har 15 poster. Elevdata kan därmed inte bäddas in i `brain.faiss`/`brain_metadata.pkl` och överleva gallringen i ADR 0002.
+- **Versionshantering.** `git init` i `C:\Brain` med `.gitignore` som håller hemligheter, elevdata, elevarbeten, xlsx-filer, beroenden, stora binärer, lokala kodbaser och FAISS-indexet utanför historiken. 1520 filer stagade (wiki, output, schema, skills, rå textkällor), skannade för nyckelmönster - noll träffar. Baslinjecommit ej gjord ännu.
+- **os-audit-skillen installerad.** `raw/inbox/os-audit-SKILL.md` → `.claude/skills/os-audit/SKILL.md`. Registrerad och anropbar som `/os-audit`.
+- **`.claude/.claude/` borttagen** till papperskorgen. Verifierat först att dess 39 skills, 10 agenter och commands var en strikt delmängd av de riktiga - inget unikt fanns där. Skuggregistreringen av 37 skills med gamla döda sökvägar är därmed borta.
+- **Baslinjecommit gjord** (`22fcf2d`, 1520 filer / 138 204 rader). Vid verifiering upptäcktes att `resources/planeramoment` hamnat i baslinjen som gitlink (mode 160000) - en pekare utan innehåll, alltså falsk trygghet. Den har egen `.git` med remote `anderskarls/planeramoment` och behandlas nu som eget projekt i `.gitignore`, i linje med `Kod/` och `.cornelius-dashboard/` (`e80ace6`). Inga gitlinks kvar; 1517 versionerade filer.
+- **Trasiga MCP-agenter avgjorda** (`dd6aa3a`): `diagram-generator` och `epub-chapter-extractor` borttagna - båda krävde MCP-servrar som aldrig konfigurerats i `.mcp.json` och kunde varken fungera eller fela. EPUB-vägen som faktiskt används är `resources/epub_extract.py`; skillen `epub-chapter-extractor` kör ett uv-skript och är oberoende av agenten, därför orörd. `self-diagnostic` testade explicit att `diagram-generator.md` fanns och hade börjat rapportera FAIL - kontrollen borttagen. `research-specialist` behållen: begär `aistudio` + `apollo` men har även WebSearch/WebFetch och är delvis fungerande. Agentkatalogen: 10 → 8.
+
+## [2026-07-27] underhåll | OS-audit Batch B - routing, indexsanning och omflyttning
+
+Punkt 8-17 och 30 ur `audits/os-audit-2026-07-26.md`. Fyra commits i vaultrepot (`bee8353`, `299e679` m.fl.). Allt som raderats gick till papperskorgen.
+
+**Fysisk städning.** Sex Word-låsfiler borttagna. Tomma skal borttagna: `cornelius-dashboard/`, `.dev/`, `obsidianplugin/`. `kokboks-mcp/` borttagen efter MD5-jämförelse som visade byte-identisk kopia i `C:\Users\andkar001\Claude\kokboks-mcp`. `Kod/survey-platform/` (fryst 2026-03-09) borttagen - kanonisk kopia har 40 072 filer och ligger på GitHub; `Kod/` blev tom och togs bort. Fem `node_modules` och ett `_build` ut ur `output/lessons/`. `.tmp/` (444 filer, 54 MB bokextraktioner) flyttad till `C:\Users\andkar001\.brain-scratch\`. `obsidianplugin/README.md` visade sig vara enda kopian av dashboardprojektets README och flyttades till `.cornelius-dashboard/` före borttagningen.
+
+**Omflyttning.** `Undervisningsmaterial/Samhällskunskap/Riksdagsvalet 2026/` → `output/lessons/Samhällskunskap/`. Kontrollerat att det *inte* är en dubblett av "Politikområden inför riksdagsvalet 2026": olika kurs (Sam 1b/GY25/8 lektioner mot Sam 1a1/7 lektioner). `output/ideer/` sammanslagen i `output/Idéer/`. Roten tömd på lösa dokument: `Plan.md`, `Historia.pdf`, CV och personligt brev → `raw/personal-notes/`; `Idé till intro Historia 1b.md` → `raw/inbox/`; två äldre CV-utkast → `meta/archive/cv-utkast-2026-06/`. Roten har nu nio filer, alla schemabärande.
+
+**Routing.** `VAULT_BASE_PATH` löste till `C:\Brain\Brain`; satt till `C:/Brain`, och `DOCUMENT_INSIGHTS_PATH` pekar nu på `wiki/sources`. De sex agenter som skrev till PARA-mappar (`02-Permanent/`, `01-Sources/`, `03-MOCs/`, `04-Output/`, `05-Meta/`, `00-Inbox/`, `AI Extracted Notes/`, `Document Insights/`) är översatta till den faktiska strukturen - 78 förekomster - och dubbleringen `$VAULT_BASE_PATH/Brain/...` är borta. `vault-manager` och `connection-finder` listade dessutom påhittad understruktur (`Books/`, `Videos/`, `LinkedIn Insights/`, `Frameworks/`, `Projects/`, `Draft Posts/`, `Second Brain/`) som nu är ersatt med verkligheten plus en rad om att den inte ska återskapas. Felaktiga verktygsnamn i skills rättade: `venv` → `.venv`, `build_index.py` → `index_brain.py`, `run_reindex.sh` → `run_index.sh`, `brain_index/` → `data/`.
+
+**Indexsanning.** `index.md`-sektionen `2026-03-07 Lektionsplaneringsramverk` sade 13 noter men fyra är medvetet arkiverade; satt till 9 med en förklaring av varför de inte listas. Räknarna satta mot disk och daterade (`counts_verified: 2026-07-27`): 810 sidor, 19 concepts, 16 topics, 771 källnoter. Lint-backloggen omräknad idag: **448 brutna wikilänkar fördelat på 246 unika mål, och 27 orphans, över 7 223 länkar** - de gamla siffrorna 204/18 var en frusen ögonblicksbild. Huvudorsaken till de brutna länkarna är dubbletter mellan svensk titel och kebab-version, inte saknade sidor; åtgärdas bäst med en alias-runda. `wiki/concepts/README.md` (175 rader mallboilerplate med fantomsökvägar) omskriven. `README.md` i roten omskriven från originalmallens döda PARA-karta. `Hem.md`:s egen statistik ersatt med pekare till `index.md` som sanningskälla.
+
+**Schema.** CLAUDE.md kompletterad med de sex odokumenterade `output/`-undermapparna, `audits/`, `docs/`, regeln att senaste auditrapporten vinner, och rättad `.scratch/`-rad. Elevlagesbild-raden bär nu en statusruta: bryggan och skillsen finns inte på den här maskinen, verifiera på disk, och improvisera ingen egen väg till källsystemen.
+
+**Verifiering.** Ett sökvägsskript kördes över alla agenter och skills: 267 vaultrelativa sökvägsförekomster kontrollerade mot disk. Kvarvarande icke-upplösta är exempelsökvägar i dokumentationen, filnamnsprefix och `brain-graph`.
+
+**Öppet efter Batch B:** fyra skills (`coherence-sweep`, `compute-lifecycle`, `detect-tensions`, `propagate-change`) vars hela körsteg är `resources/brain-graph/`, som inte finns. Beslut inväntas. De sex skills som bara använde grafen som valfri berikning har anropen utkommenterade med förklaring. Nytt fynd: **16 skills bär samma döda PARA-sökvägar som de sex agenterna gjorde** - auditen räknade bara agenterna.
+
+**FAISS ombyggt** (`run_index.sh --force`, 2026-07-27): 1 130 noter, 10 073 chunkar, 8 645 grafkanter (7 473 explicita wikilänkar + 1 172 semantiska). Verifierat mot metadatapicklen: **noll chunkar från `elevdata/`** - exkluderingen från Batch A håller i praktiken, inte bara i konfigurationen. Även noll kvarvarande referenser till `Kod/`, `.tmp/`, `Undervisningsmaterial/`, `kokboks-mcp/`, `obsidianplugin/`, `cornelius-dashboard/` och `raw/student-work/`. Nu indexerat och därmed sökbart för första gången: `docs/`, `CONTEXT.md` och `audits/`. Söktest kört och grönt.
+
+**De fyra brain-graph-skillsen borttagna** (2026-07-27, efter beslut): `coherence-sweep`, `compute-lifecycle`, `detect-tensions`, `propagate-change`. Hela deras körsteg var `cd resources/brain-graph && ... cli.py <kommando>` mot ett delsystem som inte finns i vaultet - de kunde varken fungera eller fela. Kontrollerat före borttagning att de var lokala skills (inte symlänkade marketplace-poster, inte i `skills-lock.json`) och att inget utom `scheduled-run` refererade dem. Skillkatalogen: 71 → 67. Borttagna via `git rm`, alltså återställningsbara ur historiken.
+
+Två följdfynd i `scheduled-run` som rättades samtidigt: dess schemalista pekade på `gjopen-refresh` som inte finns (utbytt mot `veckodigest`), och skillen förutsätter `git pull`/`git push` mot en remote som vaultrepot inte har - en varningsruta med förutsättningen tillagd, eftersom den annars felar på steg 1.
+
+## [2026-07-28] deep-research | AI i lärararbetet - professionens organisering (40 noter, ny MOC)
+
+Deep-research-session på användarens fråga: "en överblick över vad det finns för organiserat arbete av lärare runt om i världen kring användandet av AI i lärararbetet". Tolkad som professionens kollektiva organisering - fack, nätverk, myndighetsstyrning, fortbildning - inte enskilda verktygstips.
+
+**Research (5 parallella spår, 3 197 rader).** `resources/AI-i-lararabetet-{Natverk,Fack-Professionsorg,Policy-Myndigheter,Fortbildning-Forskning,Sverige-Norden}-Research-Report-2026-07-28.md`. **Metodbegränsning: Firecrawl låg nere under hela sessionen**, samtliga agenter föll tillbaka på WebSearch/WebFetch. Rapporterna markerar genomgående belagt/andrahand/resonemang. Sverige-spåret är svagast underbyggt - två centrala PDF:er (Sveriges AI-strategi, Skolverket 2026:982) kunde inte extraheras och de delarna vilar på pressmeddelanden.
+
+**Extraktion.** 40 noter + 5 spårchangelogs i `wiki/sources/2026-07-28 AI i lärararbetet - professionens organisering/`. Fördelning: fack 8, forskning 9, nätverk 8, policy 7, Sverige 8. Formatkontroll grön (alla har Kärninsikt + Kopplingar, korrekt `created_by`, noll tankstreck). Två extraktionsagenter korrigerade varandra under arbetet: EEF:s tidsbesparingssiffra avser per vecka, inte per lektion.
+
+**Ny MOC.** [[MOC - AI i lärararbetet och professionens organisering]] - 8 avsnitt ordnade från det som binder, via det professionen gör, till det man själv kan göra. Noll brutna länkar.
+
+**Tvärgående fynd (sessionssyntes).** Sex mönster återkommer i minst tre spår oberoende: ansvarsförskjutning utan resurs; bedömning som professionens egen gräns (dragen fyra gånger oberoende - materialets robustaste fynd); skärpa i omvänd proportion till verkställighet; leverantören fyller styrningsvakuumet; fortbildning i AI som ämne i stället för AI i ämnet; sekvensregeln lärarna först. **Strukturell iakttagelse:** professionen organiserar sig i ett normlager utan verkställighet och ett handlingslager utan spridning, medan mellanlagret - ämnesdidaktiska kollegiala strukturer - är tomt. Researchen hittade inget aktivt lärarlett nätverk för SO/humaniora och AI, varken internationellt eller i Sverige.
+
+**Connection discovery: fem motsägelser mot befintliga sidor, varav tre påverkar faktiska beslut.**
+- M1: `ai-bedomning-av-essaer-nar-manniskoniva-icc-094` generaliserar från en studie; ny syntes över 65 studier placerar den i övre svansen av spannet QWK 0,30-0,80.
+- M2: `hybrid-feedback-ai-plus-larare-overtraffar-bada-ensamma` och `tutor-copilot-ai-stodjer-svagare-larare-mest` rekommenderar den ordningsföljd där läraren ser maskinens förslag först - experimentellt visad som ankringsvänlig.
+- M3: `henrekson-slutprov-loser-ai-validitet-implicit` har fel tidslinje. Slutprov 2029, meritvärden 2031, inte 2028. Central rättning hösten 2026 gäller sve/sva/eng - **inte** samhällskunskap eller historia. Rådet "vänta in Henrekson 2028" (citerat i `MOC - Bedömning och betygssättning`) har inget format att kalibrera mot i Anders ämnen.
+- M4: intern motsägelse i den nya batchen om EU:s högriskdatum. **Rättad i denna session.**
+- M5: `detektionsparadigmets-sammanbrott-2024-2026` råder att använda detektion "som ett av flera signaler" - vilket är precis vad deltagarna i automation bias-experimentet trodde att de gjorde.
+
+**Faktarättning utförd (M4).** Fyra av de nya noterna angav att AI-förordningens högriskkrav börjar gälla 2 augusti 2026, en angav 2 december 2027. Verifierat mot Jones Walker, Gibson Dunn och aiactblog.nl: Digital Omnibus flyttade skyldigheterna för fristående Annex III-system, inklusive utbildning, till **2 december 2027**. Artikel 50 (transparens) och artikel 4 (AI-kunnighet) flyttades **inte**; tillsynen över artikel 4 börjar 2 augusti 2026. Rättat i `vad-far-en-svensk-larare-mata-in-i-ett-ai-verktyg` (tre ställen), `sverige-valde-manskliga-bedomare-framfor-ai-rattning` och Sverige-spårets changelog. Två **befintliga** sidor bär samma överspelade datum och är inte rättade: `eu-ai-act-quiz-plattform-hogrisk-klassificering` (hel tidslinjetabell) och `ai-fusk-detektion-ar-opalitlig-och-diskriminerande`.
+
+**Åtta krav på förmågeträningsbygget (K1-K8, se sessionssyntesen avsnitt 4).** Tyngst är K1: CLI-flödet visar feedbackförslaget innan läraren bildat egen uppfattning, vilket är exakt den situation där human-in-the-loop inte skyddar (Du m.fl. 2026, N = 214, ηp² 0,579-0,745). Att servern aldrig anropar en LLM är ett arkitektoniskt skydd, inte ett kognitivt. Vidare: stresstestets 96 %-siffra mätte LLM-bedömning av LLM-genererade svar och är därmed exponerad för self-enhancement bias; den behöver göras om mot äkta elevsvar.
+
+**Sidoupptäckt utanför uppdraget, åtgärdad.** `elevdata/` var inte exkluderad från FAISS i `resources/local-brain-search/memory_config.py` på den här maskinen - 13 chunkar (README + mallar) låg i indexet. Exkluderingen som infördes på Windows-maskinen 2026-07-27 fanns inte i den här kopian. Tillagd; ingen faktisk elevdata hade indexerats eftersom akterna ännu är tomma.
+
+**Räknare omräknade mot disk och definitionen skriven ut.** 851 sidor (18 concepts + 17 topics + 769 källnoter + 47 sessionschangelogs). Tidigare 810/19/16/39/771 var internt inkonsistent: 19 concepts räknade in `README.md`, och 771 slog ihop källnoter med changelogs.
+
+**Öppet efter sessionen:** ~19 befintliga sidor har föreslagna länktillägg som inte utförts (se connection discovery-rapporten Del 4), varav tre kräver faktisk textrevision (M1, M3, M5) och två datumrättning (M4).
+
+## [2026-07-28] underhåll | Länktillägg och faktarättningar från connection discovery
+
+Genomförande av Del 4 i `meta/changelogs/CHANGELOG - Connection Discovery 2026-07-28 AI i lararabetet.md`. Rapporten var förslag; detta är utförandet.
+
+**Faktarättningar i befintliga sidor (de fem motsägelserna).**
+- **M3, Henrekson-tidslinjen.** `henrekson-slutprov-loser-ai-validitet-implicit` angav implementering 2028 på fyra ställen. Rättat till: nytt betygssystem successivt från 2028, första slutproven 2029, meritvärden 2031. Central rättning hösten 2026 gäller svenska, sva 3 och engelska 6 - inte SO-ämnena. Mellanperioden är fem år, inte två. Följdrättat i `kontraintuitiva-insikter-ai-sakra-examinationer-2026` punkt 5 ("vänta in Henrekson 2028" → "planera som om reformen inte kommer att hjälpa dig") och i `MOC - Bedömning och betygssättning` avsnitt 2 och 7b, där formuleringen var citerad ordagrant.
+- **M1, essäbedömningen.** `ai-bedomning-av-essaer-nar-manniskoniva-icc-094` generaliserade från en studie (15 EFL-lärare) till ett strukturellt skifte. Villkorad med syntesen över 65 studier (QWK 0,30-0,80) och de tre systematiska bias som dokumenterats sedan dess. Rekommendationen om AI som kalibreringspartner står kvar men med två nya villkor.
+- **M5, detektionsrådet.** Rådet i `detektionsparadigmets-sammanbrott-2024-2026` att använda detektion "som ett av flera signaler" är genomstruket med motivering: det var precis vad deltagarna i automation bias-experimentet trodde att de gjorde. Sidans övriga slutsatser står.
+- **M2, hybridfeedbackens ordning.** `hybrid-feedback-ai-plus-larare-overtraffar-bada-ensamma` och `tutor-copilot-ai-stodjer-svagare-larare-mest` rekommenderar båda den sekvens där läraren möter maskinens förslag först. Modellens effekt är inte ifrågasatt, dess ordningsföljd är det. Motmedlet fanns redan i vaultet men bara för eleven (`metakognitiv-stallning-sjalvbedomning-fore-ai-feedback`, designprincip 1).
+- **M4, EU-datumen i befintliga sidor.** `eu-ai-act-quiz-plattform-hogrisk-klassificering` hade en hel tidslinjetabell med 2 augusti 2026 som full tillämpning; tabellen rättad med Digital Omnibus-fristerna (Annex III 2 dec 2027, Annex I 2 aug 2028) och med noteringen att artikel 50 och artikel 4 **inte** flyttades. Samma rättning i `ai-fusk-detektion-ar-opalitlig-och-diskriminerande`.
+
+**Länktillägg.** 21 källnoter fick sammanlagt ~40 nya korslänkar in i den nya sessionen. Fyra trasiga länkar rättade på vägen: `Lärarnas ser likvärdighetsproblemet...` → `Lärarna ser...`, två svensk-titel-länkar i `lararfortbildning-digitalt-sarbarhetsgap` → kebab-versionerna, och `MOC - Evidensbaserad lektionsarkitektur` → `MOC - Momentplaneringsramverket` (trasig sedan omdöpningen 2026-05-24).
+
+**MOC-arbete.**
+- `MOC - Bedömning och betygssättning`: nytt avsnitt 7c (professionens gräns och bedömarledets risker, sex noter), ny Brygga 5 (kalibrering som gemensam lösning på tre skilda reliabilitetsproblem - muntligt, LLM, okalibrerad lärarrättning), plus tidslinjerättningarna ovan.
+- `MOC - Källkritik och digital kompetens`: fyra noter till avsnitt 6 (Lärare och profession), fyra till avsnitt 4 (Svensk kontext).
+- `MOC - Historiedidaktik och kontroversiella frågor`: noter till avsnitt 7, 9 och 14, plus en notering att AI i skolan klarar Hess-gaten som öppen policyfråga och därmed är brottningskandidat i Sh1b - med den ovanliga egenskapen att både lärare och elever är part.
+
+**Förmågeträningsbygget.** `Formagetraningens-utvecklingsplan-2026-07` har fått ett nytt avsnitt 7b med K1-K8 och två obekväma iakttagelser. `Delfardighetstaxonomin-operationaliserad` har fått noteringen att proportionell bias och verbositetsbias träffar exakt N2-N3-språnget, med ett konkret längdkänslighetstest.
+
+**Medvetet inte gjort.** Connection discovery föreslog en **AI-statusnod på nivå 5** i momentplaneringsramverket. `ramverk-momentdesign-utkast-3` är aktiv ramverkskälla och styr `/planera-moment`, så ändringen är ett designbeslut för Anders, inte något en agent ska skriva in. Luckan är i stället dokumenterad i `MOC - Momentplaneringsramverket` under nivå 5, med de fyra byggstenar som redan finns och den form en lösning skulle kunna ta.
+
+**Kontroll.** Samtliga 44 länkmål som lagts in verifierade mot disk - noll trasiga. Frontmatter (`updated`, `updated_by`, `agent_version`) uppdaterad i alla substantiellt ändrade sidor enligt schemat.
+
+---
+
+## [2026-07-28] deep-research | Språkanpassning av texter
+
+**Uppdrag.** `/deep-research "Språkanpassning av texter"`. Frågan riggades som en prövning av Anders dokumenterade hållning "scaffolda proceduren, sänk aldrig språknivån" - båda forskningsagenterna instruerades att aktivt söka evidens som talar emot den.
+
+**Källor.** Två forskningsöversikter producerade i sessionen: `resources/research/sprakanpassning-internationell-forskning-2026-07-28.md` och `resources/research/sprakanpassning-svensk-forskning-2026-07-28.md`.
+
+**Resultat.** 18 noter i `wiki/sources/2026-07-28 Språkanpassning av texter/`. 28 länkmål, samtliga verifierade mot disk - noll trasiga.
+
+**Huvudfynd.** Hållningen preciseras, den bekräftas inte. Reichenberg bytte inte ut ämnesbegreppen, hon förklarade dem - det som bearbetades var kohesion, kausalitet och röst, inte begreppsnivån. Som generellt förståelsepåstående håller hållningen däremot inte: förenkling vinner ofta på korttidsförståelse, om än med små effekter. Där den står starkast är primärkällor i historia, där källans språk är studieobjektet.
+
+**Korsdomänfynd.** McNamaras reverse cohesion effect (1996) och Tetzlaffs expertise reversal-metaanalys (2025) är samma mekanism i två fält som sällan citerar varandra. Kohesion är scaffolding inbyggd i texten och ska därmed fadas som all annan stöttning.
+
+**Faktakorrigering.** Gy25 gäller sedan 1 juli 2025, inte "på väg". Varken historia eller samhällskunskap ställer krav på textsvårighet, och det finns inga nationella prov i ämnena på gymnasiet - alltså ingen extern kalibreringspunkt.
+
+**Tre noter dokumenterar vad man INTE ska hävda.** Den direkta jämförelsen (förenklad text utan stöttning mot originaltext med stöttning) finns inte gjord. "Lättläst cementerar låga förväntningar" saknar svensk empirisk grund. Scaffolding-argumentet vilar tyngre på Gibbons auktoritet än på effektforskning.
+
+**Skillproblem.** `/deep-research` är skriven före omstruktureringen: fyra döda sökvägar (`Brain/…`) och tre subagenter som inte finns i `.claude/agents/`. Sökvägarna översattes, generella agenter användes. Skillen bör uppdateras.
