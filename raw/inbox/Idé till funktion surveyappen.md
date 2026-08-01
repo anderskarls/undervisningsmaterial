@@ -1,0 +1,1 @@
+självreflektion är viktigt för lärandet, så föra in ytor där eleverna ska skriva en reflektion som en del av uppgifterna varje lektion eller varannan lektion iaf. w

@@ -1,1 +1,0 @@
-När eleverna använder frågeappen så behöver det finnas någon typ av inlåsning. Dels någon typ av kiosmode men jag behöver också se vem som har svarat på vad eller om de gjort uppgiften överhuvudtaget. 

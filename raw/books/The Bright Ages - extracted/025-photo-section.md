@@ -1,0 +1,133 @@
+## Photo Section
+
+
+
+
+Ceiling of the so-called mausoleum of Galla Placidia, Ravenna, Italy. The canopy of stars is framed by symbols representing the Four Evangelists: Matthew, Mark, Luke, John. Early fifth century. (Wikimedia Commons, user Incola)
+
+
+
+
+
+
+Mosaic from the so-called mausoleum of Galla Placidia, showing, most likely, St. Lawrence and the grate on which he was legendarily grilled to death. Note, too, the stars above and sea below. (Alamy, Veronika Pfeiffer)
+
+
+
+
+
+
+
+Interior of the Hagia Sophia, Istanbul. Built as a church in the Byzantine capital of Constantinople in the early sixth century, it was converted to a mosque in the fifteenth century, then made into a museum in the twentieth, before reverting to a mosque in 2018. (Alamy, John Bedford Photography)
+
+
+
+
+
+
+
+Mosaic of the Empress Theodora from the church of San Vitale, Ravenna. Construction of the church began before the Byzantines took the city from the Ostrogoths, and was completed with its mosaics afterward. Mid-sixth century.
+
+
+
+
+
+
+
+Ruthwell Cross, modern Scotland. Now in the small parish church, it likely originally stood outside in a field. Note the way the vine scrolls and animals on the side elide with the carved images of Jesus, Mary Magdalene, and others. Likely eighth century. (Courtesy Dr. Heidi Stoner)
+
+
+
+
+
+
+
+Gold coin, front and back, minted for King Offa of Mercia. To the viewer’s left, the Latin “Offa Rex” (“Offa the king”) is clearly visible. But note too the pseudo-Arabic script, perhaps made by an artisan who didn’t know the language but was trying to copy an early eighth-century dinar minted by the Abbasid Caliph al-Mansur. Late eighth century. (Trustees of the British Museum)
+
+
+
+
+
+
+
+Drawing of an elephant in a French manuscript. The full manuscript contains scientific texts about plants and animals. Tenth century. (Den Haag, Huis van het boek, MMW 10 D 7, f. 88r.)
+
+
+
+
+
+
+
+Carved standing stone showing crucifixion of Jesus from Jelling, modern Denmark. The inscribed runes relate that these were ordered made by King Harald Bluetooth to commemorate his conquest of Denmark and Norway, and conversion to Christianity. Some of the original paint is visible. Tenth century. (National Museum, Denmark—Roberto Fortuna)
+
+
+
+
+
+
+
+Reconstruction of another carved standing stone from Jelling, modern Denmark. All the stones would have been brightly, vibrantly painted, perhaps like this one created by Erik Sandquist in 2003–4. (National Museum, Denmark—Roberto Fortuna)
+
+
+
+
+
+
+
+Detail from the Bayeux Tapestry, Normandy, modern France. Created to commemorate William’s conquest in 1066 CE, this detail shows the construction of a motte castle at Hastings—workers digging the earth and piling it in a mound, on which a fortification is built. Eleventh century. (Courtesy City of Bayeux, Bayeux Museum)
+
+
+
+
+
+
+
+Apse of the Church of Cristo de la Luz, Toledo, modern Spain. Originally built as a mosque just before 1000 CE, it was converted into a church in 1085 after the city was given to King Alfonso VI. The apse was added in the late twelfth century though, retaining the Arabic inscriptions. Eleventh and twelfth centuries. (Wikimedia Commons, user G41rn8)
+
+
+
+
+
+
+
+Manuscript image of Aristotle conversing with one of his commentators, Baghdad, modern Iraq. The full manuscript contains a bestiary discussing characteristics of and uses for a variety of animals. Thirteenth century. (BL Or 2784 f. 96r, Courtesy Qatar Digital Library)
+
+
+
+
+
+
+
+Manuscript image of Pope Innocent III excommunicating heretics (Cathars) and then crusaders killing Cathars in southern France. The full manuscript is from Normandy and contains a revised edition of the Grandes Chroniques de France. Mid-fourteenth century. (BL Royal MS 16 G VI, f. 374v, Courtesy Granger Historical Picture Archive)
+
+
+
+
+
+
+
+Hildegard of Bingen receiving divine inspiration, writing on a wax tablet, and speaking with her scribe, Volmar. Lost or destroyed during World War II, the original manuscript had this image at the beginning of its pages to communicate the authority of its author. Late twelfth century. (Alamy)
+
+
+
+
+
+
+
+Stained glass windows behind altar of upper level, Sainte-Chapelle, Paris. The story of the Passion is directly behind the altar. Light through the windows on a sunny day is dazzling. Early thirteenth century. (Jean-Christophe Benoist)
+
+
+
+
+
+
+
+Mongol safe conduct pass, created during the Yuan dynasty, China. Likely dating from the reign of Kublai Khan, this token would be given to diplomats and travelers to ensure others knew they enjoyed the khan’s protection. Late thirteenth century. (Courtesy Metropolitan Museum of Art, NYC)
+
+
+
+
+
+
+
+Dante and Virgil on the shore, under a canopy of stars, before crossing to the gates of Purgatory. The manuscript contains the full text of The Divine Comedy and may have been in the possession for a time of King Alfonso V of Aragon, Naples, and Sicily. Mid-fifteenth century. (BL Yates Thompson 36, f. 68, Courtesy Granger Historical Picture Archive)
