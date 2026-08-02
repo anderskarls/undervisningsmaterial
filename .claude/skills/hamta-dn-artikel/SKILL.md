@@ -1,12 +1,18 @@
 ---
 name: hamta-dn-artikel
-description: Hämta och spara en paywallad DN-artikel som markdown i kunskapsbasen. Använd denna skill när användaren klistrar in en dn.se-URL och vill spara/arkivera/läsa artikeln, eller säger "hämta DN-artikel", "spara DN-artikel", "scrapea den här DN-artikeln", "ladda ner DN-artikel". Kräver giltig bnidtoken i .secrets/dn-cookies.json - inga andra tjänster behöver köras.
-allowed-tools: Bash, Read
+description: Hämta paywallade DN-artiklar och bygg automatiskt bearbetat läsmaterial för elever. Kan också leta upp artiklar själv utifrån vilket moment som är aktivt i kurserna. Använd när användaren klistrar in en dn.se-URL och vill spara/arkivera/läsa artikeln, säger "hämta DN-artikel", "spara DN-artikel", "scrapea den här DN-artikeln", eller frågar "hitta artiklar till mitt moment", "finns det nåt i DN som passar", "vad kan jag använda i Sh1b den här veckan". Kräver giltig bnidtoken i .secrets/dn-cookies.json - inga andra tjänster behöver köras.
+allowed-tools: Bash, Read, Write
 ---
 
 # Hämta DN-artikel
 
-Denna skill hämtar en paywallad DN-artikel med ett rakt HTTP-anrop med användarens `bnidtoken`-cookie och sparar resultatet som en källnot i `raw/articles/`.
+Skillen har två lägen.
+
+**Läge A - användaren ger en URL.** Skillen hämtar artikeln med ett rakt HTTP-anrop med `bnidtoken`-cookien, sparar den som källnot i `raw/articles/`, och bearbetar den automatiskt till elevanpassat läsmaterial i `output/lasmaterial/`: röst och utskriven kausalitet, ämnesbegreppen kvar och förklarade, stödapparat runt originalet. Bearbetningen körs efter varje lyckad hämtning om inte användaren säger annat, eftersom många i grupperna möter ämnesspråket som ett andraspråk.
+
+**Läge B - skillen letar själv.** Den läser av vilket moment som är aktivt i varje kurs, skannar DN:s sektionssidor och föreslår artiklar som passar undervisningen. De tre starkaste hämtas och bearbetas direkt, resten listas.
+
+Läge B beskrivs först nedan eftersom det oftast leder in i Läge A.
 
 **Ingenting behöver startas först.** Skillen körde tidigare via en lokal Firecrawl-container; den kopplades bort 2026-08-01 sedan det visat sig att DN gaterar serverside - skickas cookien levereras brödtexten direkt i HTML:en, utan headless browser.
 
@@ -49,7 +55,67 @@ skriptet bootstrappade från kommer de förr eller senare att slå ut varandra. 
 logga in på dn.se i Firefox igen och kör `python3 refresh.py` en gång för att ta om kedjan.
 Vill du slippa krocken helt - läs DN i en annan browser/profil än den skriptet läser från.
 
-## Körning
+## Läge B: hitta artiklar till det aktiva momentet
+
+Utöver "här är en URL" kan skillen köras baklänges: leta upp artiklar som passar det som faktiskt undervisas just nu. Triggas av "hitta artiklar till mitt moment", "finns det nåt i DN som passar", "vad kan jag använda i Sh1b den här veckan".
+
+### Steg 1: läs av läget och hämta artikellistan
+
+```bash
+python3 "${VAULT_BASE_PATH:-/home/anders/Second brain}/.claude/skills/hamta-dn-artikel/hitta-artiklar.py"
+```
+
+Ett anrop ger allt: vad som är aktivt i varje grupp, kopplat till respektive momentplan, plus dagens artiklar från `sverige`, `varlden`, `ekonomi` och `politik`. Byt sektioner med `--sektioner ekonomi,kultur` när momentet kräver det.
+
+Källan till kursläget är `output/planering/aktivt.md`. Den filen är sanningskällan, inte ditt minne av tidigare samtal.
+
+**Är momentkolumnen tom** skriver scriptet "INGET AKTIVT MOMENT" till stderr men listar artiklarna ändå. Fråga då användaren vad hen kör, och erbjud att fylla i filen samtidigt - den är avsedd att underhållas.
+
+### Steg 2: bedöm relevans
+
+Scriptet rankar inte. Nyckelordsmatchning missar både det uppenbara och det intressanta, så bedömningen är din.
+
+Läs momentplanen som `momentplan`-fältet pekar på när innehållssignalen i indexet är tunn. Väg sedan varje rubrik mot momentet och fråga:
+
+- **Ger artikeln något momentet faktiskt behöver?** Ett samtida exempel på en mekanism, en konflikt som visar begreppet i bruk, en siffra att räkna på. Att ämnet nuddas räcker inte.
+- **Går den att arbeta med?** En artikel som bara refererar ett beslut ger mindre än en som visar aktörer som vill olika saker. Motsättningar är arbetsmaterial.
+- **Passar den brottningsfrågan?** När momentet har en, är den det skarpaste filtret. En artikel som gör frågan svårare är bättre än en som bekräftar ett svar.
+
+Undvik rena nyhetsnotiser, personporträtt och recensioner. De ser relevanta ut på rubriken och bär sällan något att undervisa på.
+
+### Steg 3: hämta topp 3, lista resten
+
+Användarens beslut 2026-08-01: **de tre starkaste träffarna hämtas och bearbetas direkt**, utan att fråga. Kör `fetch.py` på var och en och gör läsmaterialet enligt Läge A steg 2.
+
+Presentera därefter resten som en kortlista, fem till åtta rader:
+
+```
+Hämtade och bearbetade (3):
+  1. <rubrik> - <varför den passar, en rad>
+  ...
+Övriga träffar - säg till om du vill ha någon:
+  4. <rubrik> - <varför den kan passa>
+  ...
+```
+
+Motiveringen ska knyta an till momentet, inte till artikeln. "Visar hur utsläppsrätter blir en konflikt mellan medlemsländer" är användbart. "Handlar om EU och klimat" är det inte.
+
+Hittar du inte tre som håller måttet, hämta färre och säg varför. Tre svaga artiklar är sämre än en stark.
+
+### Momentindexet
+
+`hitta-artiklar.py` läser `output/planering/momentindex.json`. Bygg om det när momentplaner tillkommit eller ändrats:
+
+```bash
+python3 .claude/skills/hamta-dn-artikel/momentindex.py          # bygg om
+python3 .claude/skills/hamta-dn-artikel/momentindex.py --lista  # alla moment och kurser
+```
+
+Indexet har två fält som scriptet aldrig fyller i: `sokord` och `sektioner`. Fyll dem när du arbetat med ett moment och vet vilka begrepp som är sökbara i nyhetsflödet och vilka sektioner som brukar ge träff. De bevaras vid ombyggnad.
+
+---
+
+## Läge A: hämta en känd URL
 
 Kör helper-scriptet med URL:en som argument:
 
@@ -97,10 +163,47 @@ DevTools-kopiering behövs inte längre - den vägen är ersatt av refresh-endpo
 
 ## Efter lyckad hämtning
 
-Rapportera kort till användaren:
+### Steg 1: rapportera hämtningen
+
+Kort, till användaren:
 - Sökväg till den sparade filen
 - Titel
 - Storlek (antal tecken)
+
+### Steg 2: bygg läsmaterialet
+
+**Detta steg körs automatiskt.** Fråga inte om lov - användaren har beslutat att varje hämtad artikel ska få det (2026-08-01).
+
+Läs `bearbetning.md` i denna mapp och följ proceduren där. Kortfattat:
+
+1. Läs originalet, kartlägg ämnesbegrepp, underförstådd referensram och orsakskedja
+2. Bygg stödapparaten: kontextruta, ordlista, läsprocedur
+3. Bearbeta texten med röst och utskriven kausalitet - ämnesbegreppen stannar och förklaras
+4. Skriv till `output/lasmaterial/` enligt `mall-lasmaterial.md`, med Arkiv-märkningen (`==`, `__`, `»`)
+5. Kör obesvarbarhetstestet: sex frågor ställda på originalet, besvarade enbart ur bearbetningen
+6. Bygg HTML-versionen: `python3 bygg-html.py "output/lasmaterial/<fil>.md"`
+7. Redovisa kontrollresultatet i filen
+
+Varje artikel ger alltså två filer med samma namn: `.md` som arbetsversion i vaultet och `.html` för elevleverans i Arkiv v2.1. **Markdownen är sanningskällan och HTML:en genereras ur den** - skriv aldrig HTML för hand, då glider versionerna isär vid första rättelsen. Ändras bearbetningen, kör om scriptet.
+
+Bearbetningen görs av dig som modell, inte av `fetch.py`. Skriptet kan inte bedöma vilka begrepp en Sh1b-elev kan eller om ett orsakssamband överlevde.
+
+**Tre regler som aldrig får brytas:**
+- Skriv aldrig till `raw/` - det lagret är immutabelt, bearbetningen är en artefakt
+- Skriv aldrig om text inom citattecken - ett omskrivet citat tillskriver en verklig människa ord hen inte sagt
+- Blev bearbetningen kortare än originalet har du raderat, inte bearbetat - gå tillbaka
+
+**Hoppa över steg 2 när:**
+- Användaren säger "bara hämta", "spara bara", "jag vill bara läsa den själv"
+- Artikeln uppenbart saknar undervisningsvärde (nöje, sport, recensioner) - fråga då i stället för att anta
+
+### Steg 3: rapportera läsmaterialet
+
+- Sökväg till båda filerna, markdown och HTML
+- Vilka ämnesbegrepp som togs upp i ordlistan
+- Kontrollresultatet (x/6) och vad som eventuellt fick återställas
+
+Nämn att HTML-filen kan delas med eleverna eller läggas på Google Sites som den är. Den är självständig så när som på fonterna, som hämtas från Google Fonts.
 
 Om användaren ber dig sen läsa/sammanfatta artikeln, läs den sparade filen direkt från `raw/articles/`.
 
@@ -110,9 +213,21 @@ Om användaren ber dig sen läsa/sammanfatta artikeln, läs den sparade filen di
 - **Aldrig** committa `.secrets/`-mappen (redan gitignored)
 - Om token skulle läcka: användaren bör logga ut och in igen på dn.se för att invalidera gammal token
 
+## Forskningsförankring
+
+Bearbetningen är inte "gör texten lättare". Den vilar på `wiki/sources/2026-07-28 Språkanpassning av texter/` och särskilt på fyra noter:
+
+- [[primarkallans-sprak-ar-studieobjektet]] - varför nyhetstext får bearbetas men primärkällor inte
+- [[rost-och-kausalitet-utraderade-andrasprakgapet]] - vilka två operationer som faktiskt stängde gapet
+- [[reichenberg-forklarar-amnesbegrepp-byter-inte-ut-dem]] - varför begreppen stannar
+- [[llm-forenkling-har-en-tyst-felmod]] - varför obesvarbarhetstestet finns
+
+Läs `bearbetning.md` för hela resonemanget. Där står också vad som **inte** är belagt: [[den-direkta-jamforelsen-saknas]] visar att ingen jämfört förenklad text mot originaltext med stöttning. Proceduren är välgrundad, inte bevisad.
+
 ## Integration med andra skills
 
 Denna skill producerar markdown-filer som kan konsumeras av:
-- `document-insight-extractor` — för att bygga research-bas från DN-artiklar (t.ex. betygsdebatten)
-- `create-article` — för att citera DN-källor i artiklar
-- `recall` / `search-vault` — för att söka bland sparade artiklar
+- `document-insight-extractor` - för att bygga research-bas från DN-artiklar (t.ex. betygsdebatten)
+- `create-article` - för att citera DN-källor i artiklar
+- `recall` / `search-vault` - för att söka bland sparade artiklar
+- `/planera-moment` - läsmaterialet i `output/lasmaterial/` är färdigt att lägga in som lektionsunderlag

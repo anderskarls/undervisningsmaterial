@@ -31,6 +31,7 @@ from extract import article_metadata, html_to_markdown  # noqa: E402
 from refresh import UA, VAULT, RefreshError, get_valid_token, refresh_token  # noqa: E402
 
 OUTPUT_DIR = VAULT / "raw/articles"
+LASMATERIAL_DIR = VAULT / "output/lasmaterial"
 FIRECRAWL_URL = "http://localhost:3002/v1/scrape"
 AGENT_VERSION = "04.26"
 
@@ -197,6 +198,12 @@ def main() -> None:
     if metadata.get("author"):
         print(f"  Skribent: {metadata['author']}")
     print(f"  Storlek: {len(body)} tecken")
+
+    # Bearbetningen görs av modellen, inte här - den kräver ämnesomdöme.
+    # Skriptet pekar bara ut var filen ska ligga så att paret får samma slug.
+    print()
+    print("NÄSTA STEG - bearbeta till läsmaterial (se bearbetning.md):")
+    print(f"  {LASMATERIAL_DIR / path.name}")
 
 
 if __name__ == "__main__":

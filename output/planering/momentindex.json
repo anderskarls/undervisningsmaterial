@@ -1,0 +1,375 @@
+{
+  "genererad_av": "momentindex.py",
+  "antal": 18,
+  "moment": [
+    {
+      "moment": "Ekonomisk geografi och globalisering",
+      "amnesmapp": "Geografi",
+      "sokvag": "output/lessons/Geografi/Ekonomisk geografi och globalisering/momentplan.md",
+      "kurs": "Geografi 1 (GEOGEO01, 100p)",
+      "tema": "Ekonomisk geografi — globaliseringens drivkrafter och strukturomvandlingar i Sverige",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Centralt innehåll som täcks",
+        "Elevgruppen",
+        "Vinkel och krokar (från grill-session)",
+        "Progressionstanke",
+        "1. Geografiska processer",
+        "2. Geografiska teorier och modeller",
+        "3. Internationalisering och globalisering",
+        "Lärandemål 1: Globaliseringens drivkrafter",
+        "Lärandemål 2: Strukturomvandlingar i Sverige",
+        "Lärandemål 3: Närmiljö och globala kopplingar",
+        "Lärandemål 4: Geografiska begrepp och modeller"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "1914-1945 Aktor och struktur",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/1914-1945 Aktor och struktur/momentplan.md",
+      "kurs": "",
+      "tema": "Perioden 1914–1945 analyserad genom aktör- och strukturperspektivet — den stora frågan som binder ihop momentet är:",
+      "position": "Sista stora momentet",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "A. De båda världskrigen, deras orsaker och konsekvenser (kärna)",
+        "B. Nationalism, imperialism och deras konsekvenser (kärna)",
+        "H. Genus- och jämställdhetsperspektiv på historiska förändringsprocesser (integrerat i lektion 3, 7)",
+        "I. Kulturmöten, migration och handelsvägar genom historien (kolonialsoldater L3, folkmord och flyktingar L8, globala fronter L7)",
+        "J. Teknikutveckling och vetenskapliga genombrott i historiskt perspektiv (industriellt krig L3, Vernichtungstechnologi L8)",
+        "C. Industrialisering och demokratisering (lätt bakgrundskontext i L1)",
+        "Lärandemål 1 — Redogöra för perioden",
+        "Lärandemål 2 — Analysera orsaker och konsekvenser ur aktör- och strukturperspektiv",
+        "Lärandemål 3 — Resonera om Förintelsen som historisk process",
+        "Lärandemål 4 — Använda historiska begrepp",
+        "Lärandemål 5 — Jämföra historiska förklaringsmodeller",
+        "Ansats: Källkritisk undersökande + begreppsbygge (kombination)",
+        "Huvudmetoder (per fas)",
+        "Differentiering",
+        "Formativa avstämningar",
+        "Lektionsöversikt",
+        "Progressionsanalys",
+        "Naturliga stoppunkter"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Andra världskriget och Förintelsen",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Andra världskriget och Förintelsen/momentplan.md",
+      "kurs": "Historia — Historia 1a1 (50 poäng)",
+      "tema": "Andra världskriget och Förintelsen — *stegen mot folkmord genom Hédi Frieds familj*",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Mål 1 — Redogöra för andra världskrigets ram och Förintelsens stadier (Bloom 2: förståelse)",
+        "Mål 2 — Använda historiska begrepp om Förintelsen (Bloom 2–3: förståelse/tillämpning)",
+        "Mål 3 — Förklara samband: hur Förintelsen blev möjlig (Bloom 4: analys)",
+        "4-fasstruktur per lektion (40 min)",
+        "Differentiering",
+        "Formativa avstämningar"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Antiken",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Antiken/momentplan.md",
+      "kurs": "Historia Nivå 1b (GY25)",
+      "tema": "Domännedslag (Vinkel A) — varje lektion spårar antikens arv inom ett fält",
+      "position": "",
+      "brottningsfraga": "\"Vilka spår av antiken bär vi med oss idag — och vilka av dem är värda något för oss idag?\" Sparad ordagrant. \"Idag\" återkommer två gånger avsiktligt — första = empirisk närvaro, andra = värdering i nuet.",
+      "innehallssignal": [
+        "Lektionsstruktur",
+        "Lärandemål (4 st, E/C/A enligt GY25 Hi-betygskriterierna)",
+        "Princip 3 — Förberedelseintegritet"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Antiken - framsteg för vem",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Antiken - framsteg för vem/momentplan.md",
+      "kurs": "Historia / Historia Nivå 1b",
+      "tema": "Epokvärdering genom perspektivlinsen \"för vem?\" (social bakgrund, kön, etnicitet)",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Differentiering och formativa avstämningar",
+        "Klassrumsquizzar",
+        "Moment i frågeappen"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Den mörka medeltiden",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Den mörka medeltiden/momentplan.md",
+      "kurs": "Historia Nivå 1b (GY25)",
+      "tema": "Begreppet \"den mörka medeltiden\" är **studieobjektet, inte ramen**. Varje lektion prövar mörker-tesen mot ett delområde av perioden.",
+      "position": "",
+      "brottningsfraga": "\"Var medeltiden mörk?\" Sparad ordagrant (ur lärarens MOC). Operationalisering som följer genom momentet: mörk för vem, var, när - och vem tjänar på berättelsen?",
+      "innehallssignal": [
+        "Differentiering och formativa avstämningar",
+        "Exit ticket-slinga (alla digitalt via frågeappen)"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Den uppkopplade medeltiden",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Den uppkopplade medeltiden/momentplan.md",
+      "kurs": "Historia Nivå 1b (GY25)",
+      "tema": "Skalskifte från M3: samma århundraden, ny kamera. M3 frågade \"var Europa mörkt?\" inifrån Europa; M4 zoomar ut och frågar hur världen hängde ihop - och varför vår berättelse klipper bort det.",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Differentiering och formativa avstämningar"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Första världskriget - aktör och struktur",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Första världskriget - aktör och struktur/momentplan.md",
+      "kurs": "Historia 1b",
+      "tema": "Aktör och struktur - var kriget ett resultat av enskilda aktörers beslut eller av strukturella krafter?",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Redogöra för första världskrigets orsaker och förlopp",
+        "Förklara samband mellan strukturella orsaker och aktörers handlande",
+        "Resonera om historiska förklaringsmodeller (aktör vs struktur)",
+        "\"Verktyg och kruttunnor\" - begreppen aktör och struktur + Europas väg mot krig",
+        "\"Julikrisen - 37 dagar som förändrade världen\" - aktörernas beslut",
+        "\"Skyttegravarna och världen\" - krigets förlopp och konsekvenser",
+        "\"Var kriget oundvikligt?\" - syntes och den stora frågan",
+        "Mål 1: Redogöra för första världskrigets orsaker och förlopp",
+        "Mål 2: Förklara samband mellan strukturella orsaker och aktörers handlande",
+        "Mål 3: Resonera om historiska förklaringsmodeller (aktör vs struktur)",
+        "Lektion 1: \"Verktyg och kruttunnor\" - begreppen aktör och struktur + Europas väg mot krig",
+        "Lektion 2: \"Julikrisen - 37 dagar som förändrade världen\" - aktörernas beslut",
+        "Lektion 3: \"Skyttegravarna och världen\" - krigets förlopp och konsekvenser",
+        "Lektion 4: \"Var kriget oundvikligt?\" - syntes och den stora frågan"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Industriella revolutionen - och vi",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Industriella revolutionen - och vi/momentplan.md",
+      "kurs": "Historia Nivå 1b (GY25)",
+      "tema": "\"Och vi\" är momentets andra huvudord: processen som leder fram till eleverna själva. Genetisk Rüsen-klimax - kursen slutar där eleverna står.",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Differentiering och formativa avstämningar"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Mellankrigstiden",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Mellankrigstiden/momentplan.md",
+      "kurs": "Historia 1b (100 poäng)",
+      "tema": "\"Varför blev demokratier diktaturer?\" - ekonomisk kris, propaganda och politisk radikalisering under mellankrigstiden",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Demokratins kris",
+        "Ideologier och rörelser",
+        "Propaganda och källkritik",
+        "Efterkrigstidens hopp och kris",
+        "Fascismens och nazismens framväxt",
+        "Propagandans makt",
+        "Sammanfattning och analys",
+        "Mål 1: Demokratins kris",
+        "Mål 2: Ideologier och rörelser",
+        "Mål 3: Propaganda och källkritik",
+        "Lektion 1: Efterkrigstidens hopp och kris (Mål 1)",
+        "Lektion 2: Fascismens och nazismens framväxt (Mål 1, 2)",
+        "Lektion 3: Propagandans makt (Mål 2, 3)",
+        "Lektion 4: Sammanfattning och analys (Alla mål)"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Nya tiden - när börjar det moderna",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Nya tiden - när börjar det moderna/momentplan.md",
+      "kurs": "Historia Nivå 1b (GY25)",
+      "tema": "Epokgränsen som studieobjekt. Varje delområdeslektion prövar en kandidat till \"här börjar det moderna\" - och varje kandidat testas mot frågan \"nytt för vem?\".",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Differentiering och formativa avstämningar"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Revolutionernas tidsålder",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Revolutionernas tidsålder/momentplan.md",
+      "kurs": "Historia Nivå 1b (GY25)",
+      "tema": "Kausalitetens verkstad. Momentet frågar inte främst VAD som hände utan VAD SOM DRIVER det - och gör förklaringstyperna själva till studieobjekt, som generalrepetition inför M7:s historiesynsfinal.",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Differentiering och formativa avstämningar"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Världskrigen",
+      "amnesmapp": "Historia",
+      "sokvag": "output/lessons/Historia/Världskrigen/momentplan.md",
+      "kurs": "Historia 1a1 (50p)",
+      "tema": "Världskrigen med fokus på orsaker och konsekvenser. Förintelsen behandlas strukturellt (\"hur kunde det hända?\") med inslag av personliga berättelser. Röd tråd: \"konsekvenser blir orsaker\". Nationalism repeteras tidigt. Mer utrymme för WW2. Avslutas med prov.",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "LM1: Orsaker till världskrigen",
+        "LM2: Konsekvenser av världskrigen",
+        "LM3: Förintelsen",
+        "LM4: Historiska begrepp",
+        "Differentiering",
+        "Formativa avstämningar",
+        "Tidsbudget per lektion (40 min)",
+        "Lektionsöversikt",
+        "Progression"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Globalisering - Från vardag till världssystem",
+      "amnesmapp": "Samhällskunskap",
+      "sokvag": "output/lessons/Samhällskunskap/Globalisering - Från vardag till världssystem/momentplan.md",
+      "kurs": "Samhällskunskap 3 (SAMSAM03)",
+      "tema": "Flerskalanalys av globalisering genom vardagsobjekt (hybrid-modell: gemensamt objekt i genomgångar, eget objekt i slutuppgift)",
+      "position": "Slutet av kursen — ska binda ihop och toppa",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "Globalisering och dess betydelse utifrån demokratiskt, ekonomiskt och politiskt perspektiv — för individer, grupper och nationer. Analys av utmaningar i en globaliserad värld.",
+        "Hur vetenskapliga begrepp används i samhällsdebatten och påverkar individens syn på sig själv, andra och samhället",
+        "Tillämpning av samhällsvetenskapliga begrepp, teorier, modeller och metoder i arbetet med komplexa samhällsfrågor",
+        "Källkritisk granskning, tolkning och värdering av information. Källhänvisning enligt vanliga system",
+        "Muntlig och skriftlig presentation — debatter, rapporter, essäer",
+        "Lätt inslag — teoriernas styrkor/svagheter, vetenskapsteoretisk källa på alla betygssteg",
+        "LM 1 — Redogöra för och kritiskt diskutera teorier",
+        "LM 2 — Tillämpa teoretiska verktyg i flerskalanalys",
+        "LM 3 — Vetenskapliga begrepp i samhällsdebatten",
+        "LM 4 — Argumentera och presentera med källkritisk medvetenhet",
+        "Metodarsenal",
+        "Differentiering (UDL-informerad)",
+        "Formativa avstämningar"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Källkritik AI och konspirationsteorier",
+      "amnesmapp": "Samhällskunskap",
+      "sokvag": "output/lessons/Samhällskunskap/Källkritik AI och konspirationsteorier/momentplan.md",
+      "kurs": "Samhällskunskap 3",
+      "tema": "",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "1. Tillämpa källkritiska verktyg på digitalt innehåll",
+        "2. Analysera varför konspirationsteorier upplevs som övertygande",
+        "3. Diskutera källkritiska frågor i analytisk form",
+        "4. Referera till källor i skriftliga uppgifter",
+        "Fas 1: Verktyg och grundläggande förståelse (L1-L2)",
+        "Fas 2: Fördjupad integration (L3)",
+        "Fas 3: Självständig tillämpning med avtagande stöd (L4-L5)",
+        "Fas 4: Examination (L6, L8)",
+        "Fas 5: Avslutning och reflektion (L7)",
+        "L6: Skriftlig examination (summativ skrivuppgift)",
+        "L8: Muntlig examination (seminarium)"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Politikområden inför riksdagsvalet 2026",
+      "amnesmapp": "Samhällskunskap",
+      "sokvag": "output/lessons/Samhällskunskap/Politikområden inför riksdagsvalet 2026/momentplan.md",
+      "kurs": "Samhällskunskap 1a1 (50 p)",
+      "tema": "Politikområden som förberedelse inför riksdagsvalet 2026 — eleverna bygger upp förmågan att formulera egna välgrundade åsikter i politiska sakfrågor",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "LM1 — Redogöra för politiska ideologier",
+        "LM2 — Analysera ideologiernas uttryck i politikområden",
+        "LM3 — Formulera och argumentera för en egen ståndpunkt",
+        "Kärnideologier som behandlas",
+        "Slutexamination: Politiskt samtal (inte debatt)",
+        "Differentiering (UDL-informerad)",
+        "Formativa avstämningar — exit ticket-slinga"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Riksdagsvalet 2026",
+      "amnesmapp": "Samhällskunskap",
+      "sokvag": "output/lessons/Samhällskunskap/Riksdagsvalet 2026/momentplan.md",
+      "kurs": "Samhällskunskap, Nivå 1b (100 p)",
+      "tema": "Riksdagsvalet - momentet följer valrörelsen 2026 i realtid; opinionsmätningar, utspel och debatter används som levande material. [VERIFIERA valdagens exakta datum]",
+      "position": "",
+      "brottningsfraga": "Spelar min röst egentligen någon roll?",
+      "innehallssignal": [
+        "Differentiering (PRELIMINÄR - kompletteras när läraren träffat grupperna)",
+        "Formativa avstämningar"
+      ],
+      "sokord": [],
+      "sektioner": []
+    },
+    {
+      "moment": "Ungas ekonomi",
+      "amnesmapp": "Samhällskunskap",
+      "sokvag": "output/lessons/Samhällskunskap/Ungas ekonomi/momentplan.md",
+      "kurs": "Samhällskunskap 1a1",
+      "tema": "Ungas ekonomi — fokus på privatekonomi och arbetsmarknad ur ungas perspektiv",
+      "position": "",
+      "brottningsfraga": "",
+      "innehallssignal": [
+        "\"Vad händer med pengarna?\" — Det ekonomiska kretsloppet",
+        "\"Vem får jobben?\" — Arbetsmarknaden för unga",
+        "\"Räcker pengarna?\" — Privatekonomi och budget",
+        "\"Vad händer om...?\" — Risker, val och konsekvenser",
+        "\"Min ekonomi, hela samhällets ekonomi\" — Syntes och fördjupning",
+        "1. Redogöra för det ekonomiska kretsloppet",
+        "2. Analysera arbetsmarknadens villkor för unga",
+        "3. Resonera om privatekonomiska val",
+        "4. Diskutera sambandet individ–samhälle",
+        "Ansats: \"Vardagsekonomen\" — Casefokuserad",
+        "Differentiering",
+        "Formativa avstämningar",
+        "Lektion 1: \"Vad händer med pengarna?\" — Det ekonomiska kretsloppet",
+        "Lektion 2: \"Vem får jobben?\" — Arbetsmarknaden för unga",
+        "Lektion 3: \"Räcker pengarna?\" — Privatekonomi och budget",
+        "Lektion 4: \"Vad händer om...?\" — Risker, val och konsekvenser",
+        "Lektion 5: \"Min ekonomi, hela samhällets ekonomi\" — Syntes och fördjupning",
+        "Progression"
+      ],
+      "sokord": [],
+      "sektioner": []
+    }
+  ]
+}

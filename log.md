@@ -749,3 +749,57 @@ Genomförande av Del 4 i `meta/changelogs/CHANGELOG - Connection Discovery 2026-
 **Tre noter dokumenterar vad man INTE ska hävda.** Den direkta jämförelsen (förenklad text utan stöttning mot originaltext med stöttning) finns inte gjord. "Lättläst cementerar låga förväntningar" saknar svensk empirisk grund. Scaffolding-argumentet vilar tyngre på Gibbons auktoritet än på effektforskning.
 
 **Skillproblem.** `/deep-research` är skriven före omstruktureringen: fyra döda sökvägar (`Brain/…`) och tre subagenter som inte finns i `.claude/agents/`. Sökvägarna översattes, generella agenter användes. Skillen bör uppdateras.
+
+---
+
+## [2026-08-01] skill | hamta-dn-artikel bygger elevanpassat läsmaterial
+
+**Beslut.** Varje hämtad DN-artikel bearbetas automatiskt till elevmaterial i `output/lasmaterial/`. Anledning: många elever i grupperna möter ämnesspråket som ett andraspråk.
+
+**Design förankrad i `wiki/sources/2026-07-28 Språkanpassning av texter/`.** Inte "flera språknivåer" utan en bearbetning med två operationer som har experimentellt stöd: röst plus utskriven kausalitet (Reichenberg 2000, den kombination som stängde gapet mellan andraspråks- och förstaspråksläsare). Ämnesbegreppen står kvar i texten och förklaras. Originalet ligger alltid kvar i filen.
+
+**Avgränsningen som gör detta legitimt.** `primarkallans-sprak-ar-studieobjektet` skiljer primärkälla från nyhetstext. DN-artiklar är det senare, där språket är transport och bearbetning en avvägning. Hade det gällt historiska källor vore svaret ett annat.
+
+**Obesvarbarhetstestet.** Sex innehållsfrågor ställs på originalet och besvaras enbart ur bearbetningen. Fångar överradering, den felmod `llm-forenkling-har-en-tyst-felmod` beskriver som osynlig för förenklingsmått. Resultatet redovisas i varje fil.
+
+**Nya filer.** `bearbetning.md` (procedur och forskningsförankring) och `mall-lasmaterial.md` i skillmappen. `SKILL.md` och `fetch.py` uppdaterade. Skriptet hämtar; bearbetningen görs av modellen, eftersom den kräver ämnesomdöme.
+
+**Verifierat på skarpt fall.** `output/lasmaterial/2026-07-28-bryssel-mildrar-utslappskrav-nar-sydeuropa-brinner.md`. Bearbetningen 20 % längre än originalet, 6/6 på kontrollen, 11/11 wikilänkar mot disk.
+
+**Kvarstående.** Två saker att ta ställning till: extract.py delar ord mitt itu vid länkar i råtexten, och `raw/articles/` innehåller nyhetsbrevsrutor som måste rensas manuellt vid varje bearbetning. Arkiv v2.1-HTML för elevleverans är framskjuten till efter kalibrering.
+
+---
+
+## [2026-08-01] skill | hamta-dn-artikel hittar artiklar till aktivt moment
+
+**Beslut.** Skillen får ett andra läge: den läser av vad som körs i kurserna, skannar DN:s sektionssidor och föreslår artiklar. Topp 3 hämtas och bearbetas direkt, resten listas. Körs på begäran.
+
+**Blockeraren som hittades.** Ingenting i vaultet sa vilket moment som var aktivt. 18 momentplaner har noll datumfält, `lasarskalender-2026-2027.md` var en tom mall, senaste reflektionen var från 2026-05-11. Löst med en liten tillståndsfil, `output/planering/aktivt.md`, som Anders håller aktuell. Den är sanningskällan.
+
+**Nya filer.** `momentindex.py` (18 moment till `output/planering/momentindex.json`, kurs för 17, innehållskarta för 18) och `hitta-artiklar.py` (kursläge plus DN-skanning i ett anrop). `output/planering/aktivt.md` skapad med HT26-grupperna, momentceller tomma tills terminen börjar.
+
+**Designval.** Skripten rankar inte. Nyckelordsmatchning missar både det uppenbara och det intressanta, så relevansbedömningen ligger hos modellen, som får hela listan plus momentets brottningsfråga och tema.
+
+**Extraktion.** Momentplanerna följer två oförenliga format - nyare enligt Momentplaneringsramverket, äldre friare. Regex mot "Centralt innehåll" gav 2/18. Rubrikkarta med bortfiltrerade ramverksetiketter gav 18/18.
+
+**Verifierat skarpt.** 4 sektioner skannade, 185 träffar, 130 kvar efter sållning på sektion och 30 dagars ålder. Testkörning mot momenten "Riksdagsvalet 2026" och "Ungas ekonomi" gav träffar som håller (valbeteende och väljarrörlighet respektive ungas arbetsmarknad och dolda avgifter). Kedjan skanning till URL till `fetch.py` verifierad end-to-end. Testdatan i `aktivt.md` återställd efteråt.
+
+**Kvarstående.** `sokord` och `sektioner` i momentindexet är tomma för alla 18 - fylls när ett moment blir aktivt. Anders fyller momentkolumnen när HT26 drar igång.
+
+---
+
+## [2026-08-01] skill | Arkiv-HTML genereras ur läsmaterialets markdown
+
+**Beslut.** Varje läsmaterial får två filer med samma namn: `.md` som arbetsversion och `.html` för elevleverans i Arkiv v2.1. Markdownen är sanningskällan, HTML:en genereras. Ingen HTML skrivs för hand - texten ska inte finnas på två ställen.
+
+**Nya filer.** `bygg-html.py` (markdown till Arkiv-HTML) och `arkiv-lasmaterial.css` (designen, separerad så att den kan itereras utan att röra Python).
+
+**Två saker HTML ger som markdown inte kan.** En växel mellan bearbetad version och original på samma plats, vilket gör fadingprincipen ur `reverse-cohesion-och-expertise-reversal-samma-mekanism` till något eleven kan göra själv. Och marginalglossor, som `primarkallans-sprak-ar-studieobjektet` rekommenderar som apparat runt texten; de faller in under sitt stycke på telefon.
+
+**Märkkonventioner tillagda i bearbetning.md.** `==text==` blir ockermarkering och sätts på kausalkonnektiver och utskrivna mellanled, `__text__` blir bordeauxunderstruken nyckelmening, `» Term | text` blir marginalgloss. Ordlistans begrepp markeras och glossas automatiskt vid första förekomst, med böjningstolerant matchning (ordlistans *Utsläppsrätt* träffar textens *utsläppsrätter*, *Civilskyddsmekanismen* träffar *civilskyddsmekanism*).
+
+**Anpassning av Arkiv-specen.** Specen är skriven för slides: 1280x720, brödtext 22/32, minst 18 px. En läsande sida är något annat, så brödtexten är 19/1.68 och spalten 62 tecken. Tokens, snitt, betoningsverktyg och ikonspråk oförändrade. Designbeslutet dokumenterat i CSS-filens huvud.
+
+**Verifierat.** Genererad fil matchar den handbyggda referensen på alla mått (10 markeringar, 3 understrykningar, 5 begrepp, 2 blockcitat, 4 talstreck) och ger en marginalgloss till. Idempotent vid ombyggnad, strukturellt validerad: inga oslutna taggar, inga id-dubbletter, noll kvarvarande markdown-syntax.
+
+**Kvarstående.** Anders återkommer till designen. Öppna frågor han flaggat som sina: om lärarkontrollen ska följa med i elevversionen, och om sidan ska ha ett mörkt läge trots att Arkiv är pappersljust.
