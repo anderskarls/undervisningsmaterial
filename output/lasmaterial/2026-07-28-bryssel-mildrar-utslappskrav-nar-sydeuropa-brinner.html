@@ -9,17 +9,65 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
 <style>
 /* Arkiv v2.1, anpassat från slide till läsande dokument.
-   Tokens oförändrade; typskalan nedskalad eftersom sidan läses på
-   armlängds avstånd och inte projiceras. */
+   Tokens oförändrade i ljust läge; typskalan nedskalad eftersom sidan läses på
+   armlängds avstånd och inte projiceras.
+
+   Mörkt läge (2026-08-03): samma tokens, inverterade till varm mörk ton.
+   Färgerna är inte inverterade rakt av: bordeaux, ocker, marin och oliv är
+   uppljusade så att kontrasten mot den mörka bakgrunden håller.
+
+   Tre lägen i prioritetsordning (2026-08-03):
+     1. läsarens egen knapp   -> [data-tema] på <html>, sätts av sidans script
+     2. systeminställningen   -> prefers-color-scheme, gäller så länge inget valts
+     3. pappersljust          -> utgångsläget, och det enda som gäller utan JS
+   De mörka värdena bor i --m-*-variablerna nedan och sätts på ett ställe.
+   Blocken därunder tilldelar bara; ändra aldrig en hex på två ställen. */
 :root{
+  color-scheme:light;
   --papper:#F4EDE1; --papper2:#EBE1CF; --black:#1F1A15; --black2:#4A3F33;
   --linje:#2A221A; --bordeaux:#7A2E2E; --marin:#2C3E55; --oliv:#5A6A3A;
   --ocker:#B8862F; --moss:#3E5A3E; --tegel:#C96442;
+  --harfin:rgba(42,34,26,.13);
+  --markbg:rgba(184,134,47,.28);
+  /* Ljus text på mossgrön platta - fast i båda lägena, plattan är mörk även i
+     ljust läge och får därför inte följa med när --papper byter håll. */
+  --papperljus:#F4EDE1;
+  /* mörka läget, värdena. --m-linje bär knappramen och är därför ett
+     gränssnittselement: ljusad till 3,5:1 mot bakgrunden, inte bara till
+     "syns nätt och jämnt". */
+  --m-papper:#191512; --m-papper2:#221D17; --m-black:#EFE6D8; --m-black2:#B6A895;
+  --m-linje:#7A6B5C; --m-bordeaux:#E2907E; --m-marin:#89A8CB; --m-oliv:#A3B872;
+  --m-ocker:#D8A94D; --m-moss:#33472F; --m-tegel:#DE8058;
+  --m-harfin:rgba(239,230,216,.14);
+  --m-markbg:rgba(216,169,77,.32);
   --serif:'Cormorant Garamond','EB Garamond',Georgia,'Times New Roman',serif;
   --sans:'Inter Tight','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  --matt:62ch; --gloss:230px; --rannil:44px;
+  --matt:62ch; --gloss:230px; --rannil:44px; --kant:28px;
 }
+/* Systemet får bestämma bara så länge läsaren inte gjort ett eget val.
+   :not([data-tema]) är hela mekaniken: så fort knappen tryckts finns
+   attributet, och den här regeln slutar gälla utan att något skrivs över. */
+@media (prefers-color-scheme:dark){
+  :root:not([data-tema]){
+    color-scheme:dark;
+    --papper:var(--m-papper); --papper2:var(--m-papper2);
+    --black:var(--m-black); --black2:var(--m-black2);
+    --linje:var(--m-linje); --bordeaux:var(--m-bordeaux); --marin:var(--m-marin);
+    --oliv:var(--m-oliv); --ocker:var(--m-ocker); --moss:var(--m-moss);
+    --tegel:var(--m-tegel); --harfin:var(--m-harfin); --markbg:var(--m-markbg);
+  }
+  :root:not([data-tema]) body{-webkit-font-smoothing:antialiased}
+}
+:root[data-tema="mork"]{
+  color-scheme:dark;
+  --papper:var(--m-papper); --papper2:var(--m-papper2);
+  --black:var(--m-black); --black2:var(--m-black2);
+  --linje:var(--m-linje); --bordeaux:var(--m-bordeaux); --marin:var(--m-marin);
+  --oliv:var(--m-oliv); --ocker:var(--m-ocker); --moss:var(--m-moss);
+  --tegel:var(--m-tegel); --harfin:var(--m-harfin); --markbg:var(--m-markbg);
+}
+:root[data-tema="mork"] body{-webkit-font-smoothing:antialiased}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
@@ -27,7 +75,7 @@ body{
   font-family:var(--sans); font-size:19px; line-height:1.68;
   font-weight:400; text-rendering:optimizeLegibility;
 }
-.omslag,main,footer{max-width:calc(var(--matt) + var(--gloss) + var(--rannil) + 96px); margin:0 auto; padding:0 28px}
+.omslag,main,footer{max-width:calc(var(--matt) + var(--gloss) + var(--rannil) + 96px); margin:0 auto; padding:0 var(--kant)}
 
 /* ---------- etiketter ---------- */
 .etikett{font-family:var(--mono); font-size:12px; font-weight:600;
@@ -41,10 +89,10 @@ h3.rubrik{font-family:var(--mono); font-size:12.5px; font-weight:600;
   border-bottom:1.5px solid var(--linje); padding-bottom:14px}
 .omslag .rad span+span::before{content:"▸ "; color:var(--bordeaux)}
 h1{font-family:var(--serif); font-weight:600; color:var(--bordeaux);
-  font-size:clamp(2.5rem,6.2vw,4.05rem); line-height:1.06; letter-spacing:-.015em;
+  font-size:clamp(2.2rem,6.2vw,4.05rem); line-height:1.06; letter-spacing:-.015em;
   margin:30px 0 0; max-width:20ch; text-wrap:balance}
 .ingress{font-family:var(--serif); font-style:italic; font-weight:400;
-  font-size:clamp(1.28rem,2.7vw,1.6rem); line-height:1.45; color:var(--black2);
+  font-size:clamp(1.24rem,2.7vw,1.6rem); line-height:1.45; color:var(--black2);
   margin:20px 0 0; max-width:46ch}
 .byline{margin:26px 0 0; font-family:var(--mono); font-size:12.5px;
   letter-spacing:.08em; color:var(--black2)}
@@ -65,18 +113,23 @@ h2 em{font-style:italic; color:var(--bordeaux)}
 .ruta.procedur h3.rubrik{color:var(--oliv)}
 .ruta p:last-child,.ruta ul:last-child{margin-bottom:0}
 .ruta p{margin:0 0 14px}
+.ruta ul{margin:0; padding-left:1.2em}
+.ruta li{margin:0 0 10px} .ruta li:last-child{margin-bottom:0}
 
 /* ---------- ordlista ---------- */
 .ordlista{display:grid; grid-template-columns:minmax(140px,auto) 1fr;
   gap:2px 26px; max-width:var(--matt); margin:0}
 .ordlista dt{font-weight:600; color:var(--bordeaux); padding:9px 0 0}
-.ordlista dd{margin:0; padding:9px 0; border-bottom:1px solid rgba(42,34,26,.13)}
-.ordlista dt{border-bottom:1px solid rgba(42,34,26,.13)}
+.ordlista dd{margin:0; padding:9px 0; border-bottom:1px solid var(--harfin)}
+.ordlista dt{border-bottom:1px solid var(--harfin)}
 .ordlista dt:last-of-type,.ordlista dd:last-of-type{border-bottom:none}
 
 /* ---------- växeln ---------- */
+/* Bleeder ut i marginalen så att texten som rullar förbi inte sticker fram
+   vid kanterna av den klistrade listen. */
 .vaxel{position:sticky; top:0; z-index:20; background:var(--papper);
-  border-bottom:1.5px solid var(--linje); padding:12px 0 13px; margin-top:64px;
+  border-bottom:1.5px solid var(--linje); padding:12px var(--kant) 13px;
+  margin:64px calc(var(--kant) * -1) 0;
   display:flex; gap:18px; align-items:center; flex-wrap:wrap}
 .knappar{display:inline-flex; border:1.5px solid var(--linje); background:var(--papper)}
 .knappar button{font-family:var(--mono); font-size:12px; font-weight:600;
@@ -84,9 +137,28 @@ h2 em{font-style:italic; color:var(--bordeaux)}
   border:none; background:transparent; color:var(--black2); cursor:pointer}
 .knappar button+button{border-left:1.5px solid var(--linje)}
 .knappar button[aria-pressed="true"]{background:var(--bordeaux); color:var(--papper)}
-.knappar button:focus-visible{outline:3px solid var(--ocker); outline-offset:2px}
+.knappar button:focus-visible{outline:3px solid var(--bordeaux); outline-offset:2px}
 .vaxelnot{font-family:var(--mono); font-size:11.5px; letter-spacing:.05em;
   color:var(--black2); max-width:42ch}
+
+/* Ljus/mörk. Tonad ner mot versionsväxeln med flit: vilken text du läser är
+   ett pedagogiskt val, vilken bakgrund du läser den mot är en bekvämlighet. */
+.temaknapp{font-family:var(--mono); font-size:12px; font-weight:600;
+  letter-spacing:.11em; text-transform:uppercase; padding:9px 15px;
+  border:1.5px solid var(--linje); background:transparent; color:var(--black2);
+  cursor:pointer; white-space:nowrap}
+.temaknapp:hover{color:var(--black)}
+.temaknapp:focus-visible{outline:3px solid var(--bordeaux); outline-offset:2px}
+/* Etiketten säger vad knappen ger dig, inte var du är. Vilken av de två som
+   syns avgörs av samma villkor som färgerna - annars hinner fel ord blinka
+   förbi innan scriptet vaknat, och utan JS skulle den ljuga rakt av. */
+.tema-ljus{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-tema]) .tema-mork{display:none}
+  :root:not([data-tema]) .tema-ljus{display:inline}
+}
+:root[data-tema="mork"] .tema-mork{display:none}
+:root[data-tema="mork"] .tema-ljus{display:inline}
 
 /* ---------- artikeln ---------- */
 .artikel{margin-top:38px}
@@ -105,7 +177,7 @@ blockquote cite{display:block; margin-top:12px; font-family:var(--mono);
   font-size:1.3rem; font-style:italic; line-height:1.45}
 
 /* betoningsverktyg */
-mark{background:rgba(184,134,47,.28); color:inherit; padding:0 4px}
+mark{background:var(--markbg); color:inherit; padding:0 4px}
 .def{border-bottom:3px solid var(--bordeaux); padding-bottom:1px}
 
 /* begrepp + marginalgloss */
@@ -118,44 +190,85 @@ mark{background:rgba(184,134,47,.28); color:inherit; padding:0 4px}
 @media (min-width:1180px){
   .gloss{position:absolute; top:0; left:calc(100% + var(--rannil));
     width:var(--gloss); margin:0; background:transparent; border-left-width:2px}
+  /* Glossen lyfts ur flödet. Ett kort stycke med gloss blir därför lägre än
+     sin egen gloss, och nästa gloss lägger sig ovanpå. Reservera höjd. */
+  .stycke:has(> .gloss){min-height:9rem}
 }
 
 /* ---------- efter läsningen ---------- */
-.efter{background:var(--moss); color:var(--papper); padding:38px 34px; max-width:var(--matt)}
+.efter{background:var(--moss); color:var(--papperljus); padding:38px 34px; max-width:var(--matt)}
 .efter h3.rubrik{color:rgba(244,237,225,.72)}
 .efter ol{margin:0; padding-left:1.3em}
 .efter li{margin:0 0 15px} .efter li:last-child{margin-bottom:0}
 .efter li::marker{font-family:var(--mono); font-size:13px; color:rgba(244,237,225,.6)}
-
-/* ---------- lärarsektion ---------- */
-details.larare{margin-top:60px; border-top:1.5px solid var(--linje); padding-top:22px}
-details.larare summary{font-family:var(--mono); font-size:12px; font-weight:600;
-  letter-spacing:.14em; text-transform:uppercase; cursor:pointer; color:var(--black2)}
-details.larare summary:focus-visible{outline:3px solid var(--ocker); outline-offset:3px}
-details.larare[open] summary{margin-bottom:22px; color:var(--bordeaux)}
-.tabellyta{overflow-x:auto; max-width:100%}
-table{border-collapse:collapse; width:100%; min-width:520px; font-size:16px}
-th,td{text-align:left; padding:11px 14px; border-bottom:1px solid rgba(42,34,26,.16); vertical-align:top}
-th{font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.11em;
-  text-transform:uppercase; color:var(--black2); border-bottom:1.5px solid var(--linje)}
-td:first-child{font-variant-numeric:tabular-nums; color:var(--black2); width:2.5em}
-.ja{color:var(--oliv); font-weight:600}
-.resultat{font-family:var(--serif); font-size:2.6rem; color:var(--oliv); margin:24px 0 6px}
 
 /* ---------- sidfot ---------- */
 footer{border-top:1.5px solid var(--linje); padding-top:22px; padding-bottom:70px;
   font-size:16px; color:var(--black2); max-width:var(--matt)}
 footer em{font-family:var(--serif); font-size:1.15rem}
 footer .kalla{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; margin-top:16px}
+footer .kontrollnot{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em;
+  margin-top:16px; color:var(--black2)}
 a{color:var(--bordeaux)}
+a:focus-visible{outline:3px solid var(--bordeaux); outline-offset:2px}
+
+/* ---------- telefon ---------- */
+@media (max-width:600px){
+  :root{--kant:20px}
+  body{font-size:18px}
+  .omslag{padding-top:38px}
+  section{margin-top:48px}
+  .ruta{padding:22px 22px}
+  .efter{padding:30px 24px}
+  .ordlista{grid-template-columns:1fr; gap:0}
+  .ordlista dt{border-bottom:none; padding-bottom:0}
+  .ordlista dd{padding-top:2px}
+  .vaxel{gap:12px}
+  .vaxelnot{max-width:none}
+}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+/* ---------- utskrift ---------- */
+/* Tokens tvingas tillbaka till papper: den som skriver ut från en mörk skärm
+   ska inte få en svart sida. Båda versionerna skrivs ut, och får rubriker så
+   att de inte läses som samma text två gånger. */
 @media print{
-  .vaxel{display:none} .artikel[hidden]{display:block!important}
-  body{font-size:11pt} .efter{background:none; color:var(--black); border:1.5px solid var(--linje)}
+  :root{
+    --papper:#FFFFFF; --papper2:#F2ECE1; --black:#000000; --black2:#3B322A;
+    --linje:#2A221A; --bordeaux:#7A2E2E; --marin:#2C3E55; --oliv:#5A6A3A;
+    --ocker:#B8862F; --harfin:rgba(42,34,26,.2); --markbg:rgba(184,134,47,.3);
+  }
+  .vaxel{display:none}
+  .artikel[hidden]{display:block!important}
+  .artikel{break-inside:auto}
+  .artikel::before{display:block; font-family:var(--mono); font-size:11px;
+    font-weight:600; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--black2); border-top:1.5px solid var(--linje);
+    padding-top:10px; margin-bottom:24px}
+  #version-stod::before{content:"Artikeln med stöd"}
+  #version-orig::before{content:"Artikeln i original"; break-before:page}
+  body{font-size:11pt}
+  h1{font-size:30pt}
+  .stycke,blockquote,.efter,.ruta,h4{break-inside:avoid}
+  .efter{background:none; color:var(--black); border:1.5px solid var(--linje)}
   .efter h3.rubrik{color:var(--black2)}
+  .efter li::marker{color:var(--black2)}
+  .gloss{position:static!important; width:auto!important; background:var(--papper2)!important;
+    margin:12px 0 22px!important; border-left-width:3px!important}
+  .stycke:has(> .gloss){min-height:0}
+  footer a::after{content:" (" attr(href) ")"; word-break:break-all}
 }
 </style>
+<script>
+/* Läsarens tidigare val av ljust/mörkt, satt före sidan ritas ut. Ligger i
+   head med flit: körs det efteråt hinner fel bakgrund blinka förbi. Har inget
+   valts sätts inget attribut, och systeminställningen får fortsätta gälla. */
+(function(){try{
+  var t=localStorage.getItem('lasmaterial-tema');
+  if(t==='ljus'||t==='mork') document.documentElement.setAttribute('data-tema',t);
+}catch(e){}})();
+</script>
 </head>
 <body>
 
@@ -167,7 +280,7 @@ a{color:var(--bordeaux)}
   </div>
   <h1>Bryssel mildrar utsläppskrav när Sydeuropa brinner</h1>
   
-  <p class="byline">Text Lina Lund · Bearbetad version med stöd</p>
+  <p class="byline">Text Lina Lund · <span id="bylineversion">Bearbetad version med stöd</span></p>
 </header>
 
 <main>
@@ -184,6 +297,7 @@ a{color:var(--bordeaux)}
     <button type="button" id="btn-stod" aria-pressed="true">Med stöd</button>
     <button type="button" id="btn-orig" aria-pressed="false">Originalet</button>
   </div>
+  <button type="button" class="temaknapp" id="btn-tema"><span class="tema-mork">Mörkt läge</span><span class="tema-ljus">Ljust läge</span></button>
   <p class="vaxelnot" id="vaxelnot">Orsakssambanden är utskrivna och begreppen förklarade.</p>
 </div>
 
@@ -191,7 +305,7 @@ a{color:var(--bordeaux)}
   <div class="stycke"><p><em>Bryssel skickar brandbekämpningsflyg och nödhjälp till bränderna i Spanien och Frankrike. Samtidigt växer kritiken mot att EU luckrar upp sin egen klimatpolitik. Vissa menar att det bara ger nytt bränsle till de bränder man försöker släcka.</em></p></div>
   <div class="stycke"><p>Text: Lina Lund</p></div>
   <div class="stycke"><p>Mitt i den svenska industrisemestern, mellan den sista semifinalen och matchen om tredje pris i herrarnas fotbolls-VM, smög EU-kommissionen ut sitt förslag om att ändra spelreglerna i klimatpolitiken. Att lägga fram det just då var knappast en slump, <mark>eftersom</mark> få journalister och politiker är i tjänst mitt i juli.</p></div>
-  <div class="stycke"><p><span class="begrepp">Fossilindustrin</span> är hårt pressad, och för att hjälpa den vill kommissionen rucka på sitt viktigaste verktyg för att minska utsläppen: systemet för handel med utsläppsrätter, ETS. Verktyget fungerar så att företagen måste betala för varje ton koldioxid de släpper ut, <mark>vilket gör</mark> det dyrt att fortsätta som förut och lönsamt att ställa om. Nu föreslår kommissionen att företagen ska få längre tid på sig att ställa om, och att de ska få rabatterat pris på att släppa ut koldioxid. <mark>Blir utsläppen billigare minskar också trycket att minska dem.</mark></p><aside class="gloss"><b>Fossilindustrin</b>Företag vars verksamhet bygger på kol, olja och gas.</aside></div>
+  <div class="stycke"><p><span class="begrepp" title="Företag vars verksamhet bygger på kol, olja och gas.">Fossilindustrin</span> är hårt pressad, och för att hjälpa den vill kommissionen rucka på sitt viktigaste verktyg för att minska utsläppen: systemet för handel med utsläppsrätter, ETS. Verktyget fungerar så att företagen måste betala för varje ton koldioxid de släpper ut, <mark>vilket gör</mark> det dyrt att fortsätta som förut och lönsamt att ställa om. Nu föreslår kommissionen att företagen ska få längre tid på sig att ställa om, och att de ska få rabatterat pris på att släppa ut koldioxid. <mark>Blir utsläppen billigare minskar också trycket att minska dem.</mark></p><aside class="gloss"><b>Fossilindustrin</b>Företag vars verksamhet bygger på kol, olja och gas.</aside></div>
   <div class="stycke"><p>Tajmingen kunde ha varit bättre.</p></div>
   <div class="stycke"><p>Samtidigt som talepunkterna mejslades fram i Bryssel pyrde det i Sydeuropas skogar. Snart skulle bränderna i Spanien och Frankrike tvinga fler än 300 000 människor att lämna sina hem. Hade kommissionen vetat det hade den kanske valt ett annat tillfälle.</p></div>
   <div class="stycke"><p>Den spanska premiärministern, socialisten Pedro Sánchez, har varit snabb med att peka ut just klimatförändringarna som orsaken bakom brandkatastrofen.</p></div>
@@ -199,7 +313,7 @@ a{color:var(--bordeaux)}
   <div class="stycke"><p>Spanien har de senaste åren drabbats hårt av översvämningar, torka och bränder, som enligt många experter har förvärrats av den globala uppvärmningen.</p></div>
   <div class="stycke"><p><span class="def">Men vad som ligger bakom just de här bränderna är inte klarlagt, och Sánchez kritiker ger en annan förklaring.</span> De menar att spridningen gick så snabbt <mark>därför att</mark> de förebyggande insatserna varit för få och brandförsvaret för dåligt finansierat. I grannlandet Frankrike har dessutom ett 160-tal personer gripits de senaste veckorna, misstänkta för att ha anlagt bränderna som rasar där. <mark>Enligt den förklaringen handlar det alltså mindre om klimatet och mer om beredskap och brottslighet.</mark></p><aside class="gloss"><b>Två förklaringar</b>Håll isär dem. Vem påstår vad, och vilket stöd ger artikeln för respektive påstående?</aside></div>
   <div class="stycke"><p>Det hindrar inte kritiker från att rikta blickarna mot Bryssel.</p></div>
-  <div class="stycke"><p>Både Frankrike och Spanien har aktiverat EU:s så kallade <span class="begrepp">civilskyddsmekanism</span> för att klara krisen, alltså begärt hjälp av de andra medlemsländerna. EU-kommissionen samordnar hjälpinsatsen, och satellittjänsten <span class="begrepp">Copernicus</span> används för att övervaka bränderna och understödja arbetet på marken. Flera medlemsländer, däribland Sverige, har skickat brandbekämpningsflyg och annan expertis.</p><aside class="gloss"><b>Civilskyddsmekanismen</b>EU:s system för att samordna hjälp mellan medlemsländer vid katastrofer. Ett land begär hjälp, och de andra skickar det de kan.</aside></div>
+  <div class="stycke"><p>Både Frankrike och Spanien har aktiverat EU:s så kallade <span class="begrepp" title="EU:s system för att samordna hjälp mellan medlemsländer vid katastrofer. Ett land begär hjälp, och de andra skickar det de kan.">civilskyddsmekanism</span> för att klara krisen, alltså begärt hjälp av de andra medlemsländerna. EU-kommissionen samordnar hjälpinsatsen, och satellittjänsten <span class="begrepp" title="EU:s satellittjänst. Här används den för att se bränderna uppifrån och styra insatsen på marken.">Copernicus</span> används för att övervaka bränderna och understödja arbetet på marken. Flera medlemsländer, däribland Sverige, har skickat brandbekämpningsflyg och annan expertis.</p><aside class="gloss"><b>Civilskyddsmekanismen</b>EU:s system för att samordna hjälp mellan medlemsländer vid katastrofer. Ett land begär hjälp, och de andra skickar det de kan.</aside></div>
   <p class="talstreck">– Inget land ska någonsin behöva möta en katastrof av denna omfattning på egen hand, lovade EU:s krishanteringskommissionär Hadja Lahbib häromdagen.</p>
   <div class="stycke"><p>Men de som vill se en mer ambitiös klimatpolitik tycker sig höra hur Bryssel talar med kluven tunga. En EU-diplomat skriver så här i ett sms till DN:</p></div>
   <blockquote>”Samtidigt som Bryssel hjälper till att släcka bränderna häller de på mer tändvätska genom att montera ner klimatpolitiken”</blockquote>
@@ -207,8 +321,8 @@ a{color:var(--bordeaux)}
   <blockquote>”Försöken att försvaga, pausa eller begränsa ETS undergräver investerarnas förtroende, missgynnar dem som agerat tidigt, snedvrider konkurrensvillkoren och bromsar omställningen av våra ekonomier”</blockquote>
   <div class="stycke"><p>Resonemanget bygger på att företag som redan lagt pengar på att minska sina utsläpp gjorde det <mark>därför att</mark> de räknade med att utsläpp skulle förbli dyra. <mark>Sänks priset i efterhand</mark> får de som avvaktat en fördel, medan de som agerade tidigt straffas för det.</p><aside class="gloss"><b>Mellanledet</b>Den här förklaringen står inte i originalet. Där förutsätts du sluta dig till den själv.</aside></div>
   <div class="stycke"><p>Brevet undertecknades även av ledarna för Danmark, Finland och Portugal. De två grupperna har dock olika skäl. För Sverige kan förändringarna av utsläppshandeln innebära ett hårt slag mot satsningarna på grönt stål i norr, och slå mot företag som LKAB och Stegra, som investerat stort i grön teknik. För Spanien och Portugal handlar motståndet snarare om att mildra konsekvenserna av klimatförändringarna, alltså om bränderna och torkan.</p></div>
-  <div class="stycke"><p><span class="def">Men protesterna från Norden och den Iberiska halvön hjälpte föga.</span> Pressen från tunga industriländer som Italien, Polen, Tjeckien och Österrike blev för stor. De är rädda för att stigande priser på koldioxid ska göra deras fabriker olönsamma, <mark>så att</mark> industrin lägger ner eller flyttar utomlands. Följden skulle bli <span class="begrepp">avindustrialisering</span> och massarbetslöshet.</p><aside class="gloss"><b>Avindustrialisering</b>Att industrin lägger ner eller flyttar utomlands, så att landet tappar sina fabriker och jobben som hör till dem.</aside></div>
-  <div class="stycke"><p>EU-kommissionen menar å sin sida att ändringen av <span class="begrepp">ETS</span> bara ska ses som en mindre justering och en nödvändig anpassning till verkligheten.</p><aside class="gloss"><b>ETS</b>EU:s system för handel med utsläppsrätter. Företag måste ha en utsläppsrätt för varje ton koldioxid de släpper ut.</aside></div>
+  <div class="stycke"><p><span class="def">Men protesterna från Norden och den Iberiska halvön hjälpte föga.</span> Pressen från tunga industriländer som Italien, Polen, Tjeckien och Österrike blev för stor. De är rädda för att stigande priser på koldioxid ska göra deras fabriker olönsamma, <mark>så att</mark> industrin lägger ner eller flyttar utomlands. Följden skulle bli <span class="begrepp" title="Att industrin lägger ner eller flyttar utomlands, så att landet tappar sina fabriker och jobben som hör till dem.">avindustrialisering</span> och massarbetslöshet.</p><aside class="gloss"><b>Avindustrialisering</b>Att industrin lägger ner eller flyttar utomlands, så att landet tappar sina fabriker och jobben som hör till dem.</aside></div>
+  <div class="stycke"><p>EU-kommissionen menar å sin sida att ändringen av <span class="begrepp" title="EU:s system för handel med utsläppsrätter. Företag måste ha en utsläppsrätt för varje ton koldioxid de släpper ut.">ETS</span> bara ska ses som en mindre justering och en nödvändig anpassning till verkligheten.</p><aside class="gloss"><b>ETS</b>EU:s system för handel med utsläppsrätter. Företag måste ha en utsläppsrätt för varje ton koldioxid de släpper ut.</aside></div>
   <div class="stycke"><p>En verklighet som hamnar i ett nytt ljus när delar av Europa står i lågor.</p></div>
 </article>
 
@@ -245,20 +359,11 @@ a{color:var(--bordeaux)}
 
 <section><div class="efter"><h3 class="rubrik">Efter läsningen</h3><ol><li>Förklara med egna ord varför billigare utsläppsrätter gör att företag släpper ut mer. Använd orden <em>utsläppsrätt</em> och <em>lönsamt</em>.</li><li>Kristersson och Sánchez skriver att förslaget "missgynnar dem som agerat tidigt". Vilka är det som agerat tidigt, och varför drabbas just de?</li><li>Artikeln ger två olika förklaringar till att bränderna spred sig så snabbt. Vilka är de, och vem står bakom vilken?</li><li>Italien, Polen, Tjeckien och Österrike vill ha svagare utsläppskrav. Deras oro handlar inte om klimatet. Vad handlar den om?</li><li>Rubriken ställer två saker mot varandra: att Bryssel mildrar utsläppskraven och att Sydeuropa brinner. Är det ett orsakssamband artikeln visar, eller en motsättning den pekar ut? Motivera.</li></ol></div></section>
 
-<details class="larare">
-  <summary>Kontroll av bearbetningen · för läraren</summary>
-  <p>Sex innehållsfrågor ställda på <strong>originalet</strong>, besvarade enbart ur den bearbetade versionen. Testet fångar överradering - att bearbetningen tappat innehåll utan att det syns.</p><p><strong>Resultat: 6/6.</strong></p><p>Fråga 6 är den kritiska. Den motsäger artikelns huvudvinkel och är därför det som lättast försvinner vid en slentrianmässig förenkling. I bearbetningen har det avsnittet i stället <strong>förstärkts</strong> med en inledande markering och en avslutande sammanfattning av vad den alternativa förklaringen innebär.</p><p>Bearbetningen är längre än originalet, vilket är väntat. Att skriva ut mellanled och förklara begrepp lägger till ord.</p><p><em>Bearbetningen är en stötta, inte en permanent version. Den elev som klarar den bearbetade texten ska få originalet nästa gång - stöd som aldrig fasas ut slutar vara stöd.</em></p>
-  <div class="tabellyta"><table>
-    <thead><tr><th>#</th><th>Fråga ställd på originalet</th><th>Besvarbar ur bearbetningen</th></tr></thead>
-    <tbody><tr><td>1</td><td>Hur många människor tvingades lämna sina hem?</td><td class="ja">ja - 300 000</td></tr><tr><td>2</td><td>Vilka länders ledare undertecknade brevet till von der Leyen?</td><td class="ja">ja - Sverige, Spanien, Danmark, Finland, Portugal</td></tr><tr><td>3</td><td>Varför motsätter sig Italien, Polen, Tjeckien och Österrike högre koldioxidpriser?</td><td class="ja">ja - rädsla för avindustrialisering och massarbetslöshet</td></tr><tr><td>4</td><td>Varför menar Kristersson och Sánchez att förslaget missgynnar dem som agerat tidigt?</td><td class="ja">ja - och mellanledet är utskrivet i bearbetningen, till skillnad från i originalet</td></tr><tr><td>5</td><td>Till vilket år får tung industri behålla fria utsläppsrätter?</td><td class="ja">ja - 2038, faktarutan är komplett</td></tr><tr><td>6</td><td>Vilken förklaring till brändernas spridning ger Sánchez kritiker?</td><td class="ja">ja - bristande förebyggande insatser, underfinansierat brandförsvar, 160 gripna i Frankrike</td></tr></tbody>
-  </table></div>
-  <p class="resultat">6/6 besvarbara</p>
-</details>
-
 </main>
 
 <footer>
   <p><em>Bearbetningen är en stötta, inte en permanent version. Den som klarar den bearbetade texten ska få originalet nästa gång. Stöd som aldrig fasas ut slutar vara stöd.</em></p>
+  <p class="kontrollnot">Bearbetningen är kontrollerad mot originalet: sex innehållsfrågor ställda på originaltexten, 6/6 besvarbara.</p>
   <p class="kalla">Källa: Dagens Nyheter 2026-07-28, text Lina Lund · <a href="https://www.dn.se/varlden/bryssel-skickar-brandflyg-och-nodhjalp-men-oppnar-for-mer-utslapp/">Originalartikeln</a> är oförändrad och nås via växeln ovan</p>
 </footer>
 
@@ -266,7 +371,8 @@ a{color:var(--bordeaux)}
 (function(){
   var stod=document.getElementById('version-stod'), orig=document.getElementById('version-orig'),
       bS=document.getElementById('btn-stod'), bO=document.getElementById('btn-orig'),
-      not=document.getElementById('vaxelnot');
+      not=document.getElementById('vaxelnot'),
+      byl=document.getElementById('bylineversion');
   function visa(medStod){
     stod.hidden=!medStod; orig.hidden=medStod;
     bS.setAttribute('aria-pressed',String(medStod));
@@ -274,9 +380,25 @@ a{color:var(--bordeaux)}
     not.textContent = medStod
       ? 'Orsakssambanden är utskrivna och begreppen förklarade.'
       : 'Artikeln som den publicerades. Klarar du den behöver du inte stödversionen.';
+    if(byl) byl.textContent = medStod ? 'Bearbetad version med stöd' : 'Originalversionen';
   }
   bS.addEventListener('click',function(){visa(true);});
   bO.addEventListener('click',function(){visa(false);});
+
+  // Ljust/mörkt. Attributet på <html> vinner över systeminställningen; sätts
+  // det aldrig fortsätter systemet bestämma, även om det byter mitt i läsningen.
+  var rot=document.documentElement, bT=document.getElementById('btn-tema');
+  function tema(){
+    var v=rot.getAttribute('data-tema');
+    if(v==='mork'||v==='ljus') return v;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches)
+      ? 'mork' : 'ljus';
+  }
+  if(bT) bT.addEventListener('click',function(){
+    var ny = tema()==='mork' ? 'ljus' : 'mork';
+    rot.setAttribute('data-tema',ny);
+    try{localStorage.setItem('lasmaterial-tema',ny);}catch(e){}
+  });
 })();
 </script>
 </body>

@@ -181,12 +181,17 @@ def _termmonster(term: str) -> re.Pattern:
     return re.compile(r"(?<![\w-])" + r"\s+".join(delar) + r"(?![\w-])", re.I)
 
 
-def markera_begrepp(text: str, termer: list[str], träffade: set) -> str:
+def markera_begrepp(text: str, termer: list[str], träffade: set,
+                    förklaring: dict[str, str] | None = None) -> str:
     """Markera första förekomsten av varje ordlisteterm.
 
     Texten innehåller redan HTML, så sökningen görs bara i textnoderna -
     annars kan en term träffa inuti ett attributvärde eller en redan satt tagg.
+
+    Ordlisteförklaringen läggs som title, så att den prickade markeringen
+    faktiskt visar något vid hovring i stället för att bara utlova det.
     """
+    förklaring = förklaring or {}
     bitar = re.split(r"(<[^>]+>)", text)
     for term in termer:
         nyckel = term.lower()
@@ -205,8 +210,11 @@ def markera_begrepp(text: str, termer: list[str], träffade: set) -> str:
                 continue
             m = mönster.search(bit)
             if m:
+                förkl = re.sub(r"[*_]+", "", förklaring.get(nyckel, "")).strip()
+                titel = (f' title="{htmlmod.escape(förkl, quote=True)}"'
+                         if förkl else "")
                 bitar[i] = (bit[:m.start()]
-                            + f'<span class="begrepp">{m.group(0)}</span>'
+                            + f'<span class="begrepp"{titel}>{m.group(0)}</span>'
                             + bit[m.end():])
                 träffade.add(nyckel)
                 break
@@ -258,7 +266,7 @@ def bygg_artikel(block: str, ordlista: list[tuple[str, str]], markera: bool) -> 
 
         if markera:
             före = set(träffade)
-            kropp = markera_begrepp(kropp, termer, träffade)
+            kropp = markera_begrepp(kropp, termer, träffade, förklaring)
             nya = träffade - före
             if nya and not egna and autogloss < MAX_AUTOGLOSS:
                 term = next(iter(nya))
@@ -337,17 +345,10 @@ def bygg(md_path: Path) -> str:
              if typ in ("oli", "li", "p")]
     efter_html = "".join(f"<li>{inline(t)}</li>" for t in efter)
 
-    # Kontroll (lärarsektionen)
-    kontroll_block = hitta(sek, "kontroll")
-    rader = tabellrader(kontroll_block)
-    kontroll_rader = "".join(
-        f"<tr><td>{inline(r[0])}</td><td>{inline(r[1])}</td>"
-        f'<td class="ja">{inline(r[2])}</td></tr>'
-        for r in rader if len(r) >= 3)
-    resultat = fm.get("kontroll", "")
-    kontroll_text = "".join(
-        f"<p>{inline(t)}</p>" for typ, t in stycken(kontroll_block)
-        if typ == "p" and not t.startswith("|"))
+    # Obesvarbarhetstestet stannar i markdownen. Tabellen svarar på frågor som
+    # eleven ska besvara själv under "Efter läsningen" - i elevversionen får
+    # bara utfallet följa med, som en not om att bearbetningen är kontrollerad.
+    kontroll_utfall = fm.get("kontroll", "")
 
     css = CSS_PATH.read_text(encoding="utf-8")
     return f"""<!doctype html>
@@ -359,6 +360,15 @@ def bygg(md_path: Path) -> str:
 {FONTLANK}
 <style>
 {css}</style>
+<script>
+/* Läsarens tidigare val av ljust/mörkt, satt före sidan ritas ut. Ligger i
+   head med flit: körs det efteråt hinner fel bakgrund blinka förbi. Har inget
+   valts sätts inget attribut, och systeminställningen får fortsätta gälla. */
+(function(){{try{{
+  var t=localStorage.getItem('lasmaterial-tema');
+  if(t==='ljus'||t==='mork') document.documentElement.setAttribute('data-tema',t);
+}}catch(e){{}}}})();
+</script>
 </head>
 <body>
 
@@ -370,7 +380,7 @@ def bygg(md_path: Path) -> str:
   </div>
   <h1>{inline(titel)}</h1>
   {f'<p class="ingress">{inline(fm.get("description", ""))}</p>' if fm.get("description") else ''}
-  <p class="byline">{('Text ' + htmlmod.escape(forfattare) + ' · ') if forfattare else ''}Bearbetad version med stöd</p>
+  <p class="byline">{('Text ' + htmlmod.escape(forfattare) + ' · ') if forfattare else ''}<span id="bylineversion">Bearbetad version med stöd</span></p>
 </header>
 
 <main>
@@ -387,6 +397,7 @@ def bygg(md_path: Path) -> str:
     <button type="button" id="btn-stod" aria-pressed="true">Med stöd</button>
     <button type="button" id="btn-orig" aria-pressed="false">Originalet</button>
   </div>
+  <button type="button" class="temaknapp" id="btn-tema"><span class="tema-mork">Mörkt läge</span><span class="tema-ljus">Ljust läge</span></button>
   <p class="vaxelnot" id="vaxelnot">Orsakssambanden är utskrivna och begreppen förklarade.</p>
 </div>
 
@@ -402,20 +413,11 @@ def bygg(md_path: Path) -> str:
 
 {f'<section><div class="efter"><h3 class="rubrik">Efter läsningen</h3><ol>{efter_html}</ol></div></section>' if efter_html else ''}
 
-{f'''<details class="larare">
-  <summary>Kontroll av bearbetningen · för läraren</summary>
-  {kontroll_text}
-  <div class="tabellyta"><table>
-    <thead><tr><th>#</th><th>Fråga ställd på originalet</th><th>Besvarbar ur bearbetningen</th></tr></thead>
-    <tbody>{kontroll_rader}</tbody>
-  </table></div>
-  {f'<p class="resultat">{htmlmod.escape(resultat)}</p>' if resultat else ''}
-</details>''' if kontroll_rader else ''}
-
 </main>
 
 <footer>
   <p><em>Bearbetningen är en stötta, inte en permanent version. Den som klarar den bearbetade texten ska få originalet nästa gång. Stöd som aldrig fasas ut slutar vara stöd.</em></p>
+  {f'<p class="kontrollnot">Bearbetningen är kontrollerad mot originalet: sex innehållsfrågor ställda på originaltexten, {htmlmod.escape(kontroll_utfall)}.</p>' if kontroll_utfall else ''}
   <p class="kalla">Källa: {htmlmod.escape(fm.get('source', 'Dagens Nyheter'))}{' ' + publicerad if publicerad else ''}{', text ' + htmlmod.escape(forfattare) if forfattare else ''} · <a href="{htmlmod.escape(fm.get('source_url', ''))}">Originalartikeln</a> är oförändrad och nås via växeln ovan</p>
 </footer>
 
@@ -423,7 +425,8 @@ def bygg(md_path: Path) -> str:
 (function(){{
   var stod=document.getElementById('version-stod'), orig=document.getElementById('version-orig'),
       bS=document.getElementById('btn-stod'), bO=document.getElementById('btn-orig'),
-      not=document.getElementById('vaxelnot');
+      not=document.getElementById('vaxelnot'),
+      byl=document.getElementById('bylineversion');
   function visa(medStod){{
     stod.hidden=!medStod; orig.hidden=medStod;
     bS.setAttribute('aria-pressed',String(medStod));
@@ -431,9 +434,25 @@ def bygg(md_path: Path) -> str:
     not.textContent = medStod
       ? 'Orsakssambanden är utskrivna och begreppen förklarade.'
       : 'Artikeln som den publicerades. Klarar du den behöver du inte stödversionen.';
+    if(byl) byl.textContent = medStod ? 'Bearbetad version med stöd' : 'Originalversionen';
   }}
   bS.addEventListener('click',function(){{visa(true);}});
   bO.addEventListener('click',function(){{visa(false);}});
+
+  // Ljust/mörkt. Attributet på <html> vinner över systeminställningen; sätts
+  // det aldrig fortsätter systemet bestämma, även om det byter mitt i läsningen.
+  var rot=document.documentElement, bT=document.getElementById('btn-tema');
+  function tema(){{
+    var v=rot.getAttribute('data-tema');
+    if(v==='mork'||v==='ljus') return v;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches)
+      ? 'mork' : 'ljus';
+  }}
+  if(bT) bT.addEventListener('click',function(){{
+    var ny = tema()==='mork' ? 'ljus' : 'mork';
+    rot.setAttribute('data-tema',ny);
+    try{{localStorage.setItem('lasmaterial-tema',ny);}}catch(e){{}}
+  }});
 }})();
 </script>
 </body>

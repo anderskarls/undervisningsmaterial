@@ -186,6 +186,10 @@ Läs `bearbetning.md` i denna mapp och följ proceduren där. Kortfattat:
 
 Varje artikel ger alltså två filer med samma namn: `.md` som arbetsversion i vaultet och `.html` för elevleverans i Arkiv v2.1. **Markdownen är sanningskällan och HTML:en genereras ur den** - skriv aldrig HTML för hand, då glider versionerna isär vid första rättelsen. Ändras bearbetningen, kör om scriptet.
 
+De två versionerna har olika publik och innehåller därför inte samma sak. **Obesvarbarhetstestet skrivs bara i markdownen** - dess tabell besvarar frågor som eleven ska besvara själv under "Efter läsningen". I HTML:en följer bara utfallet med, som en rad i sidfoten om att bearbetningen är kontrollerad. Skriv därför alltid `kontroll: x/6 besvarbara` i frontmattern; den raden är det enda generatorn har att gå på.
+
+Designen ligger i `arkiv-lasmaterial.css` bredvid scriptet, urlyft för att kunna ändras utan att Python rörs. Kör `python3 bygg-html.py --alla` efteråt så slår ändringen igenom på allt befintligt läsmaterial. Sidan har ett mörkt läge i tre steg: läsarens egen knapp i växeln vinner, annars gäller systeminställningen (`prefers-color-scheme`), annars pappersljust. Valet sparas i `localStorage` och sätts i `<head>` innan sidan ritas ut, så ingen bakgrund hinner blinka förbi. Utskrift tvingas alltid till papper.
+
 Bearbetningen görs av dig som modell, inte av `fetch.py`. Skriptet kan inte bedöma vilka begrepp en Sh1b-elev kan eller om ett orsakssamband överlevde.
 
 **Tre regler som aldrig får brytas:**
