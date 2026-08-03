@@ -851,3 +851,47 @@ Detta var det verkliga hålet. Vaultet hade länkverifiering mot disk - att `[[w
 **Faller verifieringen skrivs inga noter.** Alla andra faser får leverera delresultat om något går fel. Fas 4 är undantaget: hellre rapporter i `resources/research/` och orörd wiki än overifierade påståenden inne i vaultet.
 
 **Kvarstår.** Skillen är fortfarande inte körd skarpt. Panelvalet mellan A och B är beskrivet men oprövat, och en fråga som ligger mitt emellan domänerna - historiedidaktik hör hemma i båda - har ingen regel. Nästa riktiga forskningsfråga får avgöra om panelerna ska slås ihop eller om ett blandat urval fungerar.
+
+---
+
+## [2026-08-03] deep-research | Historiskt evidensresonemang - d=2,05 föll
+
+**Sessionen kördes som prövning, inte som täckning.** Historiedidaktik hade redan 49 noter från 2026-04-21. En bred körning hade gett dubbletter. I stället prövades den enskilda sida som MOC:en kallade "det enskilt starkaste empiriska fyndet" och "direkt implementerbart": `evidence-based-reasoning-intervention-d-205-historia`, märkt `evidence-level: high`.
+
+Den föll. `44 påståenden prövade: 19 bekräftade, 19 delvis rättade, 1 overifierat, 5 falska.`
+
+**Huvudfyndet: siffran var rätt, allt runt den var fel.** d=2,05 är exakt korrekt återgivet ur Du & List (2024). Men studien gäller amerikanska collegestudenter i pedagogisk psykologi, interventionen lärde ut statistiska forskningsdesigner tillämpade på nyhetsartiklar, och orden "history" och "historical" förekommer inte i artikeln. Måttet är forskargruppens eget. Forskargruppens **egen** randomiserade studie från 2022 gav ingen effekt på slutsatsdragning.
+
+**Det skarpaste enskilda fyndet är en vändning.** Wiki-sidan åberopade Kraft (2020) för att visa att d=2,05 var extraordinärt. Kraft använder exakt intervallet d=1,0-2,0 - Blooms 2 sigma - som sitt uttryckliga varnande paradexempel på orealistiskt uppblåsta effekter. Den åberopade källan sa motsatsen till vad den citerades för. Sidan hette dessutom fel på båda författarna: Du, C. skulle vara Du, H., och Thomas Kraft är Matthew A. Kraft.
+
+**Verifieringen rättade i båda riktningarna, och det är viktigt.** Reismans d=0,29, som cirkulerat som fältets bästa siffra för historiskt tänkande, är effekten på **faktakunskap** - effekten på historiskt tänkande är ≈0,49. Wilke m.fl. (2022) var inte ett nollresultat utan gav signifikant effekt på undersökningsfärdigheter. Skeptikerlensen var för hård. Fältet står starkare än lensrapporterna gav sken av; effekterna är måttliga, inte obefintliga.
+
+**Den allvarligaste upptäckten gäller styrdokumenten.** Två påståenden om Gy25 som bar sessionens praktiska rekommendation - att källkritik "ska ske som integrerade delar" och att Gy25 använder "funktionell källkritik" - finns inte i något Skolverket-dokument. Båda kommer från Arkivpedagogernas tolkande presentationsslides. Skolverket skriver att delarna "behöver inte studeras isolerat utan **kan** integreras". Kan, inte ska. Slutsatsen att ett separat moment vore ett styrdokumentsavsteg saknade grund - och den hade gått rakt in i en kursplanering. Felmoden: en tredjepartssammanfattning lästes som myndighetstext.
+
+**Blindfläcken blev sessionens bästa bro.** Tre av fem lenser skrev oberoende av varandra att de inte kan bedöma om taxonomin ändå fungerar som **kognitiv stöttning**. Ingen ställde frågan om extraneous load eller worked examples, och ingen rörde CLT-MOC:en. Den saknade sjätte lensen var kognitionsforskaren. Frontfrågan blev: fungerar en evidenstaxonomi som kognitiv stöttning i historia, och vid vilken dos?
+
+**Varningen om den författarbyggda panelen fick empiriskt stöd.** Fyra av fem lenser hävdade att fältet saknar RCT:er. Alla fyra hade fel, samtidigt och oberoende av varandra - Wilke m.fl. (2022) är en klusterrandomiserad RCT. Fem lenser som delar träningsmängd delade ett fel, precis som varningen förutsäger. Samtliga fem misslyckades dessutom med att nå Du & List i fulltext; konvergensen var alltså fem samstämmiga tolkningar av sekundärkällor tills verifieringen läste originalet via Penn States öppna arkiv.
+
+**33 noter, 49 länkar, noll trasiga.** En befintlig sida omskriven i sin helhet med `evidence-level` sänkt från `high` till `low`; den behölls i stället för att raderas eftersom felet är lärorikt. Nio sidor och två MOC:er fick nya ömsesidiga länkar. `index.md` omräknad mot disk: 906 sidor.
+
+---
+
+## [2026-08-03] skill | Panelvalet i /deep-research höll inte binärt - regeln ändras
+
+**Frågan som testades.** Skillen definierade två paneler, A för pedagogik och B för sakinnehåll, och lämnade öppet vad som gäller för frågor som ligger mellan. Historiedidaktik är det tydligaste gränsfallet som finns i vaultet.
+
+**Utfallet: den binära uppdelningen höll inte, och det var rätt att den inte gjorde det.** Frågan visade sig vara ett mekanismpåstående (fungerar explicit undervisning i evidenstypologi?) inbäddat i en innehållsfråga (är comparative/correlational/causal ens historiens evidenslogik?). Panelen som kördes var blandad: Forskaren, Skeptikern, Ämnesdidaktikern och Praktikern ur A, Källkritikern ur B.
+
+**Blandningen var inte en kompromiss - den var nödvändig.** Källkritikern ur panel B levererade det som ingen A-lens kunde: att de tre kategorierna är samhällsvetenskapliga forskningsdesigner och att ingen etablerad historisk evidenstypologi delar upp belägg så. Det är den strukturella förklaringen till varför importen inte fungerar, och den ligger djupare än invändningen att studien gällde fel population. Utan B-lensen hade sessionen bara konstaterat att fel folk testades.
+
+**Praktikern ur A levererade det motsatta:** aritmetiken över kurstid som ingen forskarlens gör. Att den räkningen sedan visade sig vila på ett falskt styrdokumentscitat ändrar inte att lensen var rätt att ha med - den ställde frågan ingen annan ställde, och verifieringen fångade felet.
+
+**Regeln som ska in i skillen.** Panelen väljs inte efter **ämnets** domän utan efter **frågans** struktur. Är frågan ett mekanismpåstående om ett visst innehåll, ska panelen ha minst en lens ur vardera lägret - annars ser man bara den ena halvan av felet. Rent binära fall finns fortfarande: "vad säger forskningen om spacing" är A, "vad vet vi om Roms fall" är B.
+
+**Två observationer till om skillen.**
+
+Att köra extraktion **per lensrapport** hade gett dubbletter, eftersom alla fem rapporterna behandlade Du & List. Tematisk uppdelning i tre extraktorer var rätt och följer skillens egen varning. Skillen bör säga detta rakt ut i stället för att låta det följa av en varning i förbifarten.
+
+Indexeringen tar över tio minuter på ett vault med 900 sidor och blockerade Fas 6. Den kördes i bakgrunden medan connection-finder arbetade med grep. Skillen bör säga att indexeringen startas tidigt, gärna redan när extraktionen börjar.
+
+**Kvarstår.** Verifieringen kostade sex agenter och var värd varenda en - fem falska påståenden, varav två skulle ha ändrat en kursplanering. Men den fångade bara det jag valde ut att pröva. Vilka påståenden som blir bärande nog att verifiera är fortfarande ett omdömesbeslut utan regel.

@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-08-03
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, laroplan, komparativ-forskning, historiemedvetande, andra-ordningens-begrepp, svensk-kontext, gy25]
@@ -38,3 +38,4 @@ Svensk Gy25-ämnesplan gör "liknande pedagogiskt arbete" som engelskt second-or
 - [[andra-ordningens-begrepp-historisk-frageteknik]] - Den engelska/disciplinära linsen
 - [[historiskt-tankande-som-ram-for-diskussion]] - Disciplinär ansats
 - [[gy25-digital-kompetens-kallkritik-integration]] - Gy25-kontext
+- [[svensk-kallkritik-och-anglosaxiskt-historiskt-tankande-ar-tva-olika-projekt]] (2026-08-03) - denna sidas läroplansjämförelse är den empiriska grunden för RESONEMANGET att svensk källkritik (Weibull) och anglosaxisk historical thinking (Wineburg/Seixas) är genuint olika projekt, inte samma sak i olika kläder

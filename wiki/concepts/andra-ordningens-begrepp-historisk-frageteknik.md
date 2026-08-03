@@ -1,8 +1,8 @@
 ---
 created: 2026-03-07
-updated: 2026-07-11
+updated: 2026-08-03
 created_by: claude-sonnet-4-6
-updated_by: claude-fable-5
+updated_by: claude-opus-5
 agent_version: "04.26"
 tags:
   - pedagogik
@@ -104,6 +104,7 @@ De sex kategorierna ger en konkret checklista för att designa escape room-pusse
 - [[Historielärare saknar ankarprov och måste bygga sin egen kalibreringsbas]] - Den praktiska konsekvensen för historieläraren när varken ankarprov eller etablerad FA-forskning finns
 - [[karaktarsperspektiv-som-narrativ-teknik-i-historia-escape-rooms]] - de sex kategorierna som checklista för escape room-pusseldesign i historia
 - [[MOC - Bedömning och betygssättning]]
+- [[ingen-historisk-evidenstypologi-anvander-jamforande-korrelativt-kausalt]] (2026-08-03) - denna sidas kategori "evidens och källkritik" ligger i linje med Seixas Big Six, inte med den samhällsvetenskapliga comparative/correlational/causal-typologin som felaktigt importerades i [[evidence-based-reasoning-intervention-d-205-historia]]; håll isär de två när "evidens" som andra ordningens begrepp diskuteras
 
 ---
 

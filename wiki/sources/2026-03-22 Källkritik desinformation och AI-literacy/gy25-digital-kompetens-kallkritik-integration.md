@@ -1,9 +1,9 @@
 ---
 created: 2026-03-22
-updated: 2026-03-22
+updated: 2026-08-03
 created_by: claude-opus-4-6-20250605
-updated_by: claude-opus-4-6-20250605
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 ---
 
 # Gy25 - digital kompetens och kallkritik integreras i ny laroplan
@@ -28,6 +28,7 @@ NORDIS (Nordic Observatory for Digital Media and Information Disorder) samordnar
 ## Kopplingar
 - [[Lgy25 och lektionsplanering - nytt kursplanekontext]]
 - [[Skolinspektionen 2024 - 25 av 30 gymnasieskolor brister i källkritikundervisning]]
+- [[gy25-tillater-integrerad-kallkritik-kraver-den-inte]] — **granskad 2026-08-03, oförändrad**: en verifiering av två cirkulerande historia-specifika Gy25-påståenden ("ska ske som integrerade delar", "funktionell källkritik") visade att de inte finns i Skolverkets ämnesplan för Historia 1b. Den granskningen gäller historieämnets centrala innehåll, en annan källa och en annan formulering än denna sidas påstående om samhällskunskapens digitala kompetens-skrivningar - denna sida är inte falsifierad av den genomgången och lämnas därför oförändrad i sak. Håll isär: detta gäller Lgy25:s digitala kompetens-skrivningar för samhällskunskap, inte historieämnets ämnesplan.
 
 ## Kallor
 - Skolverket (2025). Gy25 laroplan.

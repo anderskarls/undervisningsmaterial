@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-08-03
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, kallkritik, ai-literacy, wineburg, webblitteracitet, paradigmskifte]
@@ -39,3 +39,4 @@ Sam Wineburg hävdar att skolor (globalt, inklusive Sverige) under 20 år lärt 
 - [[lateral-lasning-faktakollares-strategi]] - Den validerade metoden
 - [[fran-detektion-till-navigation-paradigmskifte]] - Samma paradigmskifte
 - [[ai-hallucinationer-systematiska-bias-historiska-kallor.md|ai-hallucinationer-systematiska-bias-historiska-kallor]] - AI-specifik risk
+- [[marino-2022-historiker-korroborerar-opalitliga-kallor-forkastar-dem-inte]] (2026-08-03) - samma kritik mot checklistebaserad källkritik (CRAAP här, Weibulls fyra kriterier där), fast för historiska källor i stället för webbkällor: sorteringslogik ("pålitlig/opålitlig") missar att både historiker och en god lateral läsare korroborerar snarare än förkastar

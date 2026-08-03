@@ -1,13 +1,13 @@
 ---
 type: wiki-index
-updated: 2026-07-28
-counts_verified: 2026-07-28
-total_pages: 870
+updated: 2026-08-03
+counts_verified: 2026-08-03
+total_pages: 906
 total_concepts: 18
 total_topics: 17
-total_source_sessions: 41
-total_source_notes: 787
-total_session_changelogs: 48
+total_source_sessions: 42
+total_source_notes: 820
+total_session_changelogs: 51
 total_implementation_plans: 3
 ---
 
@@ -1095,6 +1095,49 @@ Deep-research-session om vad läraren ska göra när en text är för svår: fö
 - [[scaffolding-vilar-pa-auktoritet-mer-an-effektforskning]]
 - [[llm-forenkling-har-en-tyst-felmod]]
 
+### 2026-08-03 Historiskt evidensresonemang (33 noter + 3 changelogar)
+
+Verifieringssession: en tidigare wiki-sida ([[evidence-based-reasoning-intervention-d-205-historia]], skapad 2026-04-21) prövades mot primärkällorna och föll. Siffran d=2,05 stod sig - allt runt den (population, ämne, författarnamn, benchmark) gjorde det inte. Sidan är omskriven i sin helhet, inte raderad. Se [[MOC - Historiedidaktik och kontroversiella frågor]] (avsnitt 6, rättad) för läsordning. **Passerat 15-noterströskeln** men mappas mot en befintlig MOC snarare än att föreslås som egen - ingen ny MOC-kandidat härifrån.
+
+**Effektstorlek d=2,05: den korrekta siffran och den generaliserbara lärdomen**
+- [[d-205-korrekt-siffra-fel-tillskrivning]]
+- [[den-generaliserbara-lardomen-vad-fallet-lar-om-effektstorlekar]]
+- [[studien-handlar-inte-om-historia-eller-gymnasieelever]]
+- [[kraft-2020-varnar-for-exakt-den-effektstorlek-som-abaropas-som-stod]]
+- [[krafts-riktvarde-galler-en-specifik-studieklass-inte-within-subjects-labbstudier]]
+- [[forskarkonstruerade-matt-ger-2-4-ggr-storre-effekter-kraft]]
+- [[oebr-mattet-ar-forfattarnas-eget-inte-oberoende]]
+- [[forfattarna-reserverar-sig-sjalva-mot-kausala-slutsatser]]
+- [[du-list-2022-egna-rct-visar-ingen-effekt-pa-slutsatsdragning]]
+- [[inget-vedertaget-namn-pa-felet-att-blanda-within-och-between-subjects-d]]
+- [[cheung-slavin-2-1-forhallande-forskarkonstruerade-matt-obalanserat-underlag]]
+- [[liten-stickprov-ger-uppblasta-effekter-slavin-smith]]
+- [[abrami-2015-realistisk-effektstorlek-kritiskt-tankande-undervisning]]
+- [[blindflacken-fungerar-evidenstaxonomin-som-kognitiv-stottning-hypotes]] - HYPOTES, bro till [[MOC - Lärandevetenskap och kognition]]
+
+**Historiens egen evidenslogik och Gy25**
+- [[ingen-historisk-evidenstypologi-anvander-jamforande-korrelativt-kausalt]]
+- [[gy25-tillater-integrerad-kallkritik-kraver-den-inte]] - "ska integreras" och "funktionell källkritik" finns inte hos Skolverket
+- [[72-100-timmar-historia-ar-gy11-data-inte-gy25]]
+- [[wineburgs-triad-kommer-fran-tva-artiklar-inte-en]]
+- [[droysens-trikotomi-ar-inte-en-ren-trikotomi]]
+- [[weibullkriteriernas-datering-haller-polemikramen-gor-det-inte]]
+- [[lonnroth-inte-englund-identifierade-weibullskolans-blinda-flack]]
+- [[primar-sekundarkalla-argumentet-star-i-ett-medlemsmagasin]]
+- [[rosenlunds-tvangstroja-ar-en-essa-inte-en-studie]]
+- [[svensk-kallkritik-och-anglosaxiskt-historiskt-tankande-ar-tva-olika-projekt]] - RESONEMANG
+
+**Vad som faktiskt fungerar för historiskt evidensresonemang**
+- [[reismans-och-wilkes-effekter-visar-att-skepsis-mot-faltet-var-for-hard]]
+- [[nygren-efimova-2025-en-enda-skola-ingen-direkt-eftermatning]]
+- [[de-la-paz-tre-studier-som-inte-far-blandas-ihop]]
+- [[det-cirkulerar-att-fältet-saknar-rct-fast-en-finns]]
+- [[marino-2022-historiker-korroborerar-opalitliga-kallor-forkastar-dem-inte]]
+- [[doströskeln-mellan-korta-och-uthålliga-källkritikinsatser-är-fältets-öppna-fråga]] - RESONEMANG
+- [[skolforskningsinstitutet-2023-02-saknar-effektstorlekar-andrahand]] - ANDRAHAND
+- [[fjarrtransfer-forsvinner-bara-efter-kontroll-for-placebo-sala-gobet]]
+- [[willingham-kritiskt-tankande-svart-inte-omojligt]]
+
 ---
 
 ## Sources
@@ -1107,20 +1150,22 @@ Nya källor: lägg i `raw/articles/`, `raw/books/` eller `raw/inbox/` och säg `
 
 ## Statistics
 
-**Alla siffror nedan är räknade mot disk 2026-07-28.** De är en mätning med datum, inte ett påstående om nuet - står datumet långt tillbaka ska siffrorna misstros och räknas om, inte citeras.
+**Alla siffror nedan är räknade mot disk 2026-08-03.** De är en mätning med datum, inte ett påstående om nuet - står datumet långt tillbaka ska siffrorna misstros och räknas om, inte citeras.
 
-**Definition (ny 2026-07-28, tidigare underförstådd och därmed inkonsistent):** *Total wiki pages* = alla `.md` i `wiki/` utom `_templates/` och `README.md`. Den summan är nu internt konsistent: 18 + 17 + 787 + 48 = 870. Tidigare angavs 19 concepts, vilket räknade in `wiki/concepts/README.md`, och 771 source notes, vilket slog ihop källnoter med sessionschangelogs. De två raderna är därför uppdelade nedan.
+**Definition (sedan 2026-07-28):** *Total wiki pages* = alla `.md` i `wiki/` utom `_templates/` och `README.md`. Summan är internt konsistent: 18 + 17 + 820 + 51 = 906.
 
 | Metric | Count |
 |--------|-------|
-| Total wiki pages | 870 |
+| Total wiki pages | 906 |
 | Concepts (permanenta) | 18 |
 | Topics (MOC:er och synteser) | 17 |
-| Source sessions | 41 |
-| Source notes (exkl. changelogs) | 787 |
-| Sessionschangelogs i `wiki/sources/` | 48 |
-| Sessions med egen MOC | 33 av 41 |
-| Räknat mot disk | 2026-07-28 |
+| Source sessions | 42 |
+| Source notes (exkl. changelogs) | 820 |
+| Sessionschangelogs i `wiki/sources/` | 51 |
+| Sessions med egen MOC | 34 av 42 |
+| Räknat mot disk | 2026-08-03 |
+
+**2026-08-03:** sessionen `2026-08-03 Historiskt evidensresonemang` tillkom (33 noter + 3 changelogar, +1 källsession). Den passerar 15-noterströskeln för egen MOC, men mappas mot den befintliga [[MOC - Historiedidaktik och kontroversiella frågor]] i stället för att föreslås som ny - se sessionens entry ovan under "Wiki Pages by Session". Ökningen i "Sessions med egen MOC" (33→34 av 41→42) beror på just denna mappning.
 
 ### Kända lint-problem (oåtgärdade)
 

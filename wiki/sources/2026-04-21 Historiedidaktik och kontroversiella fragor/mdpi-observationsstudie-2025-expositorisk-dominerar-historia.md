@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-08-03
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [historiedidaktik, klassrumsobservation, expositorisk-undervisning, implementationsgap, mdpi, empirisk-evidens]
@@ -53,3 +53,5 @@ Problemet är inte brist på kunskap hos lärare - de *vet* att inquiry är bät
 - [[think-pair-share-jamnar-ut-deltagande]] - Konkret motstrategi
 - [[structured-academic-controversy-mot-polarisering]] - Konkret motstrategi
 - [[planering-undervisning-gapet-implementeringsfidelitet]] - Generellt fenomen
+- [[doströskeln-mellan-korta-och-uthålliga-källkritikinsatser-är-fältets-öppna-fråga]] (2026-08-03) - denna sidas fynd (lärare glider mot kort, expositorisk undervisning under tidspress) gör dosfrågan till en resursfråga i praktiken, inte bara en obesvarad forskningsfråga
+- [[nygren-efimova-2025-en-enda-skola-ingen-direkt-eftermatning]] - kompletterande bild av hur svår källkritikundervisning är att genomföra även när ambitionen finns

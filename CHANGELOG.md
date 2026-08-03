@@ -9,6 +9,24 @@ This is a **summary index**. For detailed session logs, see `meta/changelogs/CHA
 ## 2026-08
 
 ### 2026-08-03
+**Deep research: Historiskt evidensresonemang - d=2,05 föll** - [Details](meta/changelogs/SESSION SUMMARY - Deep Research Historiskt evidensresonemang 2026-08-03.md)
+
+- Första skarpa körningen av den omskrivna `/deep-research`. Kördes som **prövning** av en befintlig sida, inte som ny täckning - historiedidaktik hade redan 49 noter. 33 nya noter i `wiki/sources/2026-08-03 Historiskt evidensresonemang/`, 49 länkmål verifierade, noll trasiga.
+- **Verifiering: 44 påståenden prövade mot primärkälla - 19 bekräftade, 19 delvis rättade, 1 overifierat, 5 falska.**
+- **Huvudfynd:** siffran d=2,05 är exakt korrekt återgiven ur Du, H. & List, A. (2024) - men studien gäller amerikanska collegestudenter i pedagogisk psykologi, lär ut statistiska forskningsdesigner tillämpade på nyhetsartiklar, och orden "history"/"historical" förekommer inte i den. Måttet är forskargruppens eget. Deras **egen** RCT (Du & List 2022) gav ingen effekt på slutsatsdragning.
+- **Skarpaste fyndet är en vändning:** wiki-sidan åberopade Kraft (2020) för att visa att d=2,05 var extraordinärt. Kraft använder exakt det intervallet (Blooms 2 sigma) som sitt varnande paradexempel på orealistiskt uppblåsta effekter. Den åberopade källan sa motsatsen till vad den citerades för. Sidan hade dessutom fel på båda författarnamnen ("Du, C." → Du, H.; "Thomas Kraft" → Matthew A. Kraft).
+- **Allvarligast för praktiken:** två Gy25-påståenden som bar rekommendationen - att källkritik "ska ske som integrerade delar" och att Gy25 använder "funktionell källkritik" - finns **inte i något Skolverket-dokument**. Båda kommer från Arkivpedagogernas presentationsslides. Skolverket skriver "kan integreras". Kan, inte ska.
+- **Verifieringen rättade i båda riktningarna:** Reismans d=0,29 är effekten på faktakunskap - historiskt tänkande är ≈0,49. Wilke m.fl. (2022) var inte noll utan gav signifikant effekt på undersökningsfärdigheter. Fältet står starkare än lensrapporterna gav sken av.
+- **Varningen om den författarbyggda panelen fick empiriskt stöd:** fyra av fem lenser hävdade felaktigt att fältet saknar RCT:er, samtidigt och oberoende. Samtliga fem misslyckades nå primärkällan; först verifieringen läste den.
+- Befintlig sida omskriven, `evidence-level` sänkt `high` → `low`, behållen eftersom felet är lärorikt. Nio sidor och två MOC:er fick ömsesidiga länkar. Statistik: 870 → **906 sidor** (omräknad mot disk).
+
+**Skill: panelvalet i `/deep-research` höll inte binärt**
+
+- Historiedidaktik testade gränsfallet mellan panel A (pedagogik) och B (sakinnehåll). Den binära uppdelningen höll inte - frågan var ett mekanismpåstående inbäddat i en innehållsfråga, och en blandad panel var nödvändig, inte en kompromiss. Källkritikern ur B levererade den strukturella förklaringen (kategorierna är samhällsvetenskapliga forskningsdesigner) som ingen A-lens kunde nå.
+- **Regel som ska in:** panelen väljs efter **frågans struktur**, inte ämnets domän. Mekanismpåstående om ett visst innehåll → minst en lens ur vardera lägret.
+- Extraktion per lensrapport hade gett dubbletter när alla fem behandlar samma studie; tematisk uppdelning var rätt. Indexeringen tar >10 min på 900 sidor och bör startas redan vid extraktionen.
+
+### 2026-08-03
 **Underhåll: skills-lagret renoverat efter omstruktureringen**
 
 - **Agentlagret byggt.** Fyra agenter fanns bara som namn: `research-specialist`, `document-insight-extractor`, `insight-extractor`, `connection-finder` anropades av fem skills men saknades i `.claude/agents/`, som bara innehöll `survey-feedback`. Nu skrivna mot vaultets faktiska struktur och ämnesbild. CLAUDE.md listade sju agenter varav noll fanns - listan rättad till de fem som existerar.

@@ -1,9 +1,9 @@
 ---
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-08-03
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags: [pedagogik, larappar, evidens, metaanalys, realism]
 source: Pedagogiska appar design research report 2026-04-11
 ---
@@ -30,3 +30,8 @@ Ett epistemiskt försvar: bygg inte hajp i din marknadsföring. Skriv "evidensba
 ## Källa
 - Latimier, A. et al. (2024). "Single-paper meta-analyses of the effects of spaced retrieval practice in nine introductory STEM courses." *International Journal of STEM Education*. https://link.springer.com/article/10.1186/s40594-024-00468-5
 - Adesope, Trevisan, Sundararajan (2017). *Review of Educational Research*.
+
+## Kopplingar
+
+- [[den-generaliserbara-lardomen-vad-fallet-lar-om-effektstorlekar]] (2026-08-03) - samma krympningsmönster identifierat inom en enda studies två delar: Du & Lists (2024) mest ämnesnära mått gav d=2,05, deras öppna evalueringsuppgifter d=0,69-0,97. Denna sidas labb-till-fält-princip generaliseras här till mått-till-mått inom samma studie
+- [[cheung-slavin-2-1-forhallande-forskarkonstruerade-matt-obalanserat-underlag]] - kvantifierar en släkt mekanism (måttets närhet till interventionens vokabulär, inte bara labb kontra fält)

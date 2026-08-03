@@ -1,8 +1,8 @@
 ---
 created: 2026-06-08
-updated: 2026-07-11
+updated: 2026-08-03
 created_by: claude-opus-4-8
-updated_by: claude-fable-5
+updated_by: claude-opus-5
 agent_version: "04.26"
 type: moc
 tags:
@@ -190,6 +190,7 @@ Hur kognitionsforskningen omsätts i konkret quiz- och frågekonstruktion.
 - [[MOC - Bedömning och betygssättning]] - retrieval/kalibrering ↔ formativ och summativ bedömning
 - [[MOC - Design av larappar]] - testningseffekten, inbäddade frågor, coherence-principen i appdesign
 - [[MOC - Elevmotivation och engagemang]] - motivation som egen mekanism (SDT) bredvid kognitionen
+- [[MOC - Historiedidaktik och kontroversiella frågor]] - **bro till innehållslagret (2026-08-03):** en verifiering av ett historiedidaktiskt effektstorleksfynd (Du & List 2024, d=2,05) föll på population och domän, men tre av fem oberoende granskningar efterlyste ändå, oberoende av varandra, en bedömning av om den prövade evidenstaxonomin kunde fungera som kognitiv stöttning - schema, avlastad extraneous load - oavsett disciplinär äkthet. Ingen av granskningarna var en kognitionsforskare i CLT-mening. Se [[blindflacken-fungerar-evidenstaxonomin-som-kognitiv-stottning-hypotes]] för hypotesen och dess falsifieringskriterier, formulerade med vokabulär från sektion 4 här (worked examples, schema-first-discrimination-later, expertise reversal, PAAS-skalan)
 - **Angränsande sessioner** (egna kandidat-kluster, tätt kopplade): Feedback för inlärning (2026-05-06), Aktivering och elevdeltagande (2026-05-17), Designa escaperooms (2026-07-11) - escape rooms är i grunden en tillämpad instans av CLT/seductive details (pusseldesign), produktivt misslyckande (domängräns SO/humaniora) och sweet spot-principen (aktiveringstid)
 
 ---
@@ -210,3 +211,4 @@ Hur kognitionsforskningen omsätts i konkret quiz- och frågekonstruktion.
 - **AI-feedback i svensk humaniora på sekundärnivå** - uttalad lucka, se [[forskningsgap-sekundarniva-humaniora-svenska-ai-feedback]]
 - **Long-term retention bortom en termin** - de flesta studier mäter veckor, inte år
 - **Make It Stick:s motvikt** - en bok-ingest av en *kritisk* röst (t.ex. om replikationskrisen i pedagogisk psykologi) skulle balansera domänen
+- **Evidenstaxonomier som kognitiv stöttning, oavsett disciplinär äkthet** - obesvarad fråga, formulerad 2026-08-03 från historiedidaktiken: se [[blindflacken-fungerar-evidenstaxonomin-som-kognitiv-stottning-hypotes]]. Kräver en studie som mäter kognitiv belastning (t.ex. PAAS-skattning), inte bara prestation, för en disciplinärt "oäkta" men enkel taxonomi jämfört med en "äkta" men mer komplex ram

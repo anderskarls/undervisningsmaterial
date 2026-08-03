@@ -1,8 +1,8 @@
 ---
 created: 2026-05-18
-updated: 2026-05-18
+updated: 2026-08-03
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
+updated_by: claude-opus-5
 agent_version: 04.26
 type: moc
 tags:
@@ -67,9 +67,39 @@ Strukturella perspektivskiften i innehållsurval.
 
 ### 6. Evidensresonemang och counterfactuals
 
-Det enskilt starkaste empiriska fyndet i hela sessionen.
+> **Rättad 2026-08-03.** Denna sektion kallade tidigare Du & List (2024) "det enskilt starkaste empiriska fyndet i hela sessionen" och "direkt implementerbart". En verifieringsomgång mot primärkällan visade att detta var fel: siffran d=2,05 är korrekt återgiven, men studien gäller amerikanska collegestudenter i pedagogisk psykologi, inte historieundervisning eller gymnasieelever, och den egen benchmark-källan (Kraft 2020) den jämfördes mot använder just detta effektstorleksintervall som sitt varnande exempel på orealistiskt uppblåsta effekter. Se [[evidence-based-reasoning-intervention-d-205-historia]] (helt omskriven) och sessionen [[wiki/sources/2026-08-03 Historiskt evidensresonemang|2026-08-03 Historiskt evidensresonemang]] (33 noter) för den fullständiga rättelsen.
 
-- [[evidence-based-reasoning-intervention-d-205-historia]] — Du & List 2024: **d=2,05** på explicit undervisning om evidenstyper (comparative, correlational, causal). En av de största effektstorlekarna någonsin i utbildningsforskning. **Direkt implementerbart**
+**Effektstorleken i sig och den generaliserbara lärdomen om att läsa effektstorlekar:**
+- [[evidence-based-reasoning-intervention-d-205-historia]] — omskriven: Du & List (2024) prövade evidensresonemang hos collegestudenter i pedagogisk psykologi, inte historieundervisning. Siffran d=2,05 är korrekt, attributionen var inte det.
+- [[d-205-korrekt-siffra-fel-tillskrivning]] — kärnrättelsen i klartext: en korrekt siffra kan bära ett falskt påstående när det som omger den (population, ämne, författarnamn, benchmark) är fel
+- [[den-generaliserbara-lardomen-vad-fallet-lar-om-effektstorlekar]] — RESONEMANG: fyra kontrollfrågor att ställa till varje effektstorlek som citeras framöver (studiedesign mot benchmark, måttets oberoende, avstånd labb-fält, attributionskedjan)
+- [[studien-handlar-inte-om-historia-eller-gymnasieelever]] — det dubbla generaliseringshoppet (population + ämnesdomän) som gjorde importen ogiltig
+- [[kraft-2020-varnar-for-exakt-den-effektstorlek-som-abaropas-som-stod]] — benchmarken som åberopades för att d=2,05 var imponerande använder samma intervall som sitt varnande paradexempel (Blooms "2 sigma")
+- [[krafts-riktvarde-galler-en-specifik-studieklass-inte-within-subjects-labbstudier]] — Krafts 0,20-tröskel gäller kausala pre-K-12-RCT:er med standardiserade test, inte within-subjects-labbstudier på collegestudenter
+- [[forskarkonstruerade-matt-ger-2-4-ggr-storre-effekter-kraft]] och [[oebr-mattet-ar-forfattarnas-eget-inte-oberoende]] — måttet som gav d=2,05 är byggt av samma forskargrupp som interventionen
+- [[forfattarna-reserverar-sig-sjalva-mot-kausala-slutsatser]] och [[du-list-2022-egna-rct-visar-ingen-effekt-pa-slutsatsdragning]] — författarnas egna reservationer, inklusive deras tidigare, starkare RCT som gav noll effekt på just slutsatsdragning
+- [[inget-vedertaget-namn-pa-felet-att-blanda-within-och-between-subjects-d]], [[cheung-slavin-2-1-forhallande-forskarkonstruerade-matt-obalanserat-underlag]], [[liten-stickprov-ger-uppblasta-effekter-slavin-smith]], [[abrami-2015-realistisk-effektstorlek-kritiskt-tankande-undervisning]] — metodologiska preciseringar som tillsammans placerar realistiska effektstorlekar för tänkandeundervisning kring g≈0,3, inte d≈2
+
+**Bro till mekanismlagret (kognitionsvetenskap):**
+- [[blindflacken-fungerar-evidenstaxonomin-som-kognitiv-stottning-hypotes]] — HYPOTES, inte fynd: kan en explicit evidenstaxonomi fungera som kognitiv stöttning (schema, avlastad extraneous load) oavsett om den är disciplinärt äkta för historieämnet? Ingen av de historiedidaktiska granskningarna ställde frågan i CLT-termer. Se [[MOC - Lärandevetenskap och kognition]] för den mekanismvokabulär (worked examples, schema-first, expertise reversal) hypotesen bygger på.
+
+**Historiens egen evidenslogik och styrdokumenten:**
+- [[ingen-historisk-evidenstypologi-anvander-jamforande-korrelativt-kausalt]] — den disciplinära grunden till varför importen misslyckas: varken Weibull, Droysen, Wineburg eller Seixas delar upp belägg efter comparative/correlational/causal
+- [[gy25-tillater-integrerad-kallkritik-kraver-den-inte]] — "källkritik ska ske integrerat" och "funktionell källkritik" finns inte hos Skolverket; källan är Arkivpedagogernas tolkande slides. Skolverket säger "kan integreras" — tillåtande, inte tvingande
+- [[72-100-timmar-historia-ar-gy11-data-inte-gy25]] — den cirkulerande undervisningstidssiffran beskriver Gy11, inte Gy25, och det specifika intervallet gick inte att återfinna
+- [[svensk-kallkritik-och-anglosaxiskt-historiskt-tankande-ar-tva-olika-projekt]] — RESONEMANG: Weibullskolan (arkivforskningsmetod) och Wineburg/Seixas (kognitionspsykologiskt grundad) är två olika projekt, inte samma sak i olika kläder
+- [[wineburgs-triad-kommer-fran-tva-artiklar-inte-en]], [[droysens-trikotomi-ar-inte-en-ren-trikotomi]], [[weibullkriteriernas-datering-haller-polemikramen-gor-det-inte]], [[lonnroth-inte-englund-identifierade-weibullskolans-blinda-flack]], [[primar-sekundarkalla-argumentet-star-i-ett-medlemsmagasin]], [[rosenlunds-tvangstroja-ar-en-essa-inte-en-studie]] — historiografiska preciseringar: var och en av de etablerade ramverken bär egna nyanser och evidensbegränsningar som slätas ut i sammanfattningar
+
+**Vad som faktiskt fungerar, och vad det är värt:**
+- [[reismans-och-wilkes-effekter-visar-att-skepsis-mot-faltet-var-for-hard]] — Reismans effekt på historiskt tänkande är ≈0,49 (inte 0,29, som gäller faktakunskap); Wilke m.fl. (2022) gav signifikant effekt på undersökningsfärdigheter
+- [[nygren-efimova-2025-en-enda-skola-ingen-direkt-eftermatning]] — den mest relevanta svenska studien: kvasiexperimentell, en skola, ingen direkt-eftermätning
+- [[de-la-paz-tre-studier-som-inte-far-blandas-ihop]] — "0,3-0,4 SD" är en skillnad mellan två aktiva undervisningssätt, inte mot en obehandlad kontrollgrupp
+- [[det-cirkulerar-att-fältet-saknar-rct-fast-en-finns]] — negativt fynd: fyra av fem oberoende forskningsöversikter hävdade felaktigt att fältet saknar en RCT
+- [[marino-2022-historiker-korroborerar-opalitliga-kallor-forkastar-dem-inte]] — historiker sorterar inte bort opålitliga källor, de korroborerar dem — motsäger sorteringsbaserad källkritikundervisning
+- [[doströskeln-mellan-korta-och-uthålliga-källkritikinsatser-är-fältets-öppna-fråga]] — RESONEMANG: var brytpunkten går mellan overksamma korta insatser och verksamma uthålliga interventioner är obesvarad
+- [[skolforskningsinstitutet-2023-02-saknar-effektstorlekar-andrahand]] — ANDRAHAND: Sveriges egen översikt bygger sannolikt på kvalitativ analys, inte effektstorlekar
+- [[fjarrtransfer-forsvinner-bara-efter-kontroll-for-placebo-sala-gobet]], [[willingham-kritiskt-tankande-svart-inte-omojligt]] — närliggande metodologiska försiktighetsprinciper för transfer av tänkandeförmågor
+
 - [[counterfactuals-tay-jeong-2025-specifierade-contrast-classes]] — Specificerade contrast classes som villkor för didaktiskt välfungerande kontrafaktiska resonemang
 
 ### 7. AI i historieundervisning
@@ -164,7 +194,7 @@ Noter där historiedidaktik och kontroversiella frågor flätas samman:
 
 ## Topp-insikter (kombinerade, rankade efter actionability)
 
-1. **Du & List 2024: d=2,05 för evidensresonemang** ([[evidence-based-reasoning-intervention-d-205-historia]]) — direkt implementerbart genom explicit undervisning om evidenstyper
+1. **Mönstret "korrekt siffra, falsk attribution"** ([[d-205-korrekt-siffra-fel-tillskrivning]]) — d=2,05 var rätt återgivet men studien gällde collegestudenter i pedagogisk psykologi, inte historieundervisning; se rättelsen i punkt 6 ovan och [[evidence-based-reasoning-intervention-d-205-historia]] (tidigare rankad etta här som "direkt implementerbart" — det var den felaktiga slutsatsen)
 2. **Deliberation slår empati** ([[kontrovers-perspective-taking-model-building-rct]]) — kalibrera bort från empati-språk, mot strukturell modellering
 3. **Wineburg 2025: vi har lärt ut fel källkritik i decennier** ([[wineburg-2025-weblitteracitet-lart-fel-i-decennier]]) — kräver rekalibrering av befintliga källkritikmoment
 4. **Tolerant-nation-narrativet som sköld** ([[sjolund-ahsberg-2024-tolerant-nation-narrativ-sverige]]) — didaktisk intervention måste ske på narrativ-nivå, inte fakta-nivå
@@ -189,7 +219,8 @@ Se [[kontrovers-forskningsluckor-yrkes-ai-digital]] för fördjupad analys.
 
 - [[MOC - Källkritik och digital kompetens]] — paradigmskifte från detektion till navigation överlappar Wineburg/AI-källkritik
 - [[MOC - Bedömning och betygssättning]] — alternativa bedömningsformat för svår historia och kontroversiella frågor
-- [[MOC - Evidensbaserad lektionsarkitektur]] — evidence-based reasoning d=2,05 är en av de starkaste effektstorlekarna och kan strukturera lektionssekvens
+- [[MOC - Momentplaneringsramverket]] — momentdesign för svår historia och kontroversiella frågor (ersätter tidigare länk till MOC - Evidensbaserad lektionsarkitektur, som i sin tur byggde på den nu rättade d=2,05-siffran)
+- [[MOC - Lärandevetenskap och kognition]] — mekanismlagrets svar på blindfläcken i sektion 6: kan en evidenstaxonomi fungera som kognitiv stöttning oavsett disciplinär äkthet? Se [[blindflacken-fungerar-evidenstaxonomin-som-kognitiv-stottning-hypotes]]
 - [[MOC - Elevmotivation och engagemang]] — agentiskt engagemang och deliberativa förmågor möts kring [[deliberativ-undervisning-gynnar-yrkeselever-mest]]
 - [[MOC - Master Navigation]] — toppnivå-nav
 
@@ -198,5 +229,6 @@ Se [[kontrovers-forskningsluckor-yrkes-ai-digital]] för fördjupad analys.
 ## Källsessioner
 
 - [[wiki/sources/2026-04-21 Historiedidaktik och kontroversiella fragor|Sessionsmapp 2026-04-21]] — 49 atomära noter
+- [[wiki/sources/2026-08-03 Historiskt evidensresonemang|Sessionsmapp 2026-08-03 (Historiskt evidensresonemang)]] — 33 noter: verifiering och rättelse av d=2,05-fyndet ovan, historiens egen evidenslogik mot Gy25, och vad som faktiskt fungerar för källkritik/evidensresonemang (Reisman, Wilke, Nygren & Efimova, De La Paz, Marino)
 - [[wiki/sources/2026-03-22 Källkritik desinformation och AI-literacy|Sessionsmapp 2026-03-22 (Källkritik)]] — föregångare för AI-källkritik
 - [[wiki/sources/2026-03-07 Pedagogisk forskning - Diskussion, bedömning, frågor|Sessionsmapp 2026-03-07]] — befintliga deliberationssidor (Diana Hess, structured academic controversy, Skolinspektionen 2022)

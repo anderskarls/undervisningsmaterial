@@ -1,9 +1,9 @@
 ---
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-08-03
 created_by: claude-opus-4-7
-updated_by: claude-opus-4-7
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 type: document-insight
 source: Historiedidaktik-Research-Report-2026-04-21.md
 tags: [gy25, amnesbetyg, progression, historia, svensk-kontext, lektionsplanering, reform, 2025]
@@ -50,3 +50,4 @@ Kursbetygssystemet (1994-2025) har tvingat fragmenterad bedömning:
 - [[larandemal-historia-kognitivt-process-mal]] - Processmålsdesign
 - [[tva-nivaaarkitektur-ubd-rosenshine]] - UbD-tänkande för slutbedömning
 - [[lgy25-och-lektionsplanering-nytt-kursplanekontext]] - Allmän Gy25-kontext
+- [[gy25-tillater-integrerad-kallkritik-kraver-den-inte]] (2026-08-03) - **verifierad, oförändrad**: en genomgång av två andra cirkulerande Gy25-påståenden ("ska ske integrerat", "funktionell källkritik") fann att de saknar stöd i Skolverkets text. Denna sidas beskrivning av ämnesbetygsreformen bygger inte på de falska fraserna och är inte berörd av rättelsen.

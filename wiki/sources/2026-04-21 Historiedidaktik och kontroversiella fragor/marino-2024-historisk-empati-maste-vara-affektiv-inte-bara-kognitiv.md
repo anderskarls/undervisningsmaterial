@@ -43,3 +43,4 @@ Svensk historiedidaktik har varit försiktig med affektiv empati - risken för a
 - [[historisk-empati-vr-presence-eisman-2025.md|historisk-empati-vr-presence-eisman-2025]] - Empiriskt test av affektiv empati
 - [[klimatkris-didaktik-nordgren-kalsas-planetar-historia.md|klimatkris-didaktik-nordgren-kalsas-planetar-historia]] - Klimatkopplingen
 - [[redemptive-framing-forintelse-minoritet-van-doorsselaere-2025.md|redemptive-framing-forintelse-minoritet-van-doorsselaere-2025]] - Affektiv försiktighet krävs också
+- [[marino-2022-historiker-korroborerar-opalitliga-kallor-forkastar-dem-inte]] (2026-08-03) - **namnförväxlingsrisk, flaggad i den nya noten:** annan Marino (M.P. Marino, *The History Teacher*, 2022, om källkorroborering), inte samma person eller ämne som denna sida (T.M. Marino, *History and Theory*, 2024, om empati). Håll isär vid citering.

@@ -1,9 +1,9 @@
 ---
 created: 2026-04-13
-updated: 2026-04-13
+updated: 2026-08-03
 created_by: claude-opus-4-6
-updated_by: claude-opus-4-6
-agent_version: 03.26
+updated_by: claude-opus-5
+agent_version: 04.26
 tags:
   - bedömning
   - källkritik
@@ -36,3 +36,6 @@ Detta är en specifik tillämpning av den mer generella insikten att validitet i
 - [[craap-metoden-gor-elever-mer-sarbara]]
 - [[lateral-lasning-faktakollares-strategi]]
 - [[skolinspektionen-2024-kallkritik-brister]]
+- [[rosenlunds-tvangstroja-ar-en-essa-inte-en-studie]] - beskriver samma checklista-utan-fråga-fenomen med ett belysande men lågt belagt underlag (essä, evidensnivå 6); denna sidas Skolinspektions- och Skolforskningsinstitut-grund är den starkare evidensen för samma iakttagelse, och de två bör inte buntas ihop som likvärdiga källor
+- [[marino-2022-historiker-korroborerar-opalitliga-kallor-forkastar-dem-inte]] - samma strukturella diagnos från andra hållet: historiker korroborerar snarare än sorterar, vilket är precis den praktik som går förlorad när källkritik reduceras till checklista
+- [[svensk-kallkritik-och-anglosaxiskt-historiskt-tankande-ar-tva-olika-projekt]] - RESONEMANG (2026-08-03): checklista-utan-fråga är samma strukturella risk oavsett vilken evidenstypologi som används, inte en svaghet specifik för Weibulls fyra kriterier
