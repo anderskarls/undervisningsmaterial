@@ -21,17 +21,17 @@ Create publication-ready long-form articles by synthesizing insights from the us
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Permanent Notes | `Brain/02-Permanent/` | ✓ | | Core insights for synthesis |
-| AI Extracted Notes | `Brain/AI Extracted Notes/` | ✓ | | AI-extracted insights |
-| Document Insights | `Brain/Document Insights/` | ✓ | | Research extracts |
-| MOCs | `Brain/03-MOCs/` | ✓ | | Topic overviews |
-| Article Index | `Brain/04-Output/Articles/ARTICLE-INDEX.md` | ✓ | ✓ | Registry of all articles |
+| Permanent Notes | `wiki/concepts/` | ✓ | | Core insights for synthesis |
+| AI Extracted Notes | `wiki/sources/[sessionsmapp]/` | ✓ | | AI-extracted insights |
+| Document Insights | `wiki/sources/[sessionsmapp]/` | ✓ | | Research extracts |
+| MOCs | `wiki/topics/` | ✓ | | Topic overviews |
+| Article Index | `output/articles/ARTICLE-INDEX.md` | ✓ | ✓ | Registry of all articles |
 | Tone of Voice | `.claude/skills/create-article/tone-of-voice.md` | ✓ | | Voice DNA and writing style |
 | Article Structure | `.claude/skills/create-article/article-structure.md` | ✓ | | Templates and patterns |
 | Metadata Template | `.claude/skills/create-article/metadata-template.md` | ✓ | | Template for _metadata.md |
-| Article Folder | `Brain/04-Output/Articles/[article-name]/` | | ✓ | Output folder for article |
-| Main Article | `Brain/04-Output/Articles/[article-name]/[article-name].md` | | ✓ | The article itself |
-| Metadata File | `Brain/04-Output/Articles/[article-name]/_metadata.md` | | ✓ | Creation record |
+| Article Folder | `output/articles/[article-name]/` | | ✓ | Output folder for article |
+| Main Article | `output/articles/[article-name]/[article-name].md` | | ✓ | The article itself |
+| Metadata File | `output/articles/[article-name]/_metadata.md` | | ✓ | Creation record |
 
 ## Core Workflow
 
@@ -48,17 +48,17 @@ resources/local-brain-search/run_connections.sh "Related Note Name" --json
 ```
 
 **Key locations to search:**
-- `Brain/02-Permanent/` - Core insights and permanent notes
-- `Brain/AI Extracted Notes/` - AI-extracted insights
-- `Brain/Document Insights/` - Research extracts
-- `Brain/03-MOCs/` - Maps of Content for topic overviews
+- `wiki/concepts/` - Core insights and permanent notes
+- `wiki/sources/[sessionsmapp]/` - AI-extracted insights
+- `wiki/sources/[sessionsmapp]/` - Research extracts
+- `wiki/topics/` - Maps of Content for topic overviews
 
 ### Step 2: Check Article Index
 
 **MANDATORY**: Read the Article Index before creating any article:
 
 ```
-Brain/04-Output/Articles/ARTICLE-INDEX.md
+output/articles/ARTICLE-INDEX.md
 ```
 
 - Check for existing articles on similar topics
@@ -70,7 +70,7 @@ Brain/04-Output/Articles/ARTICLE-INDEX.md
 Create folder and files:
 
 ```
-Brain/04-Output/Articles/[article-name]/
+output/articles/[article-name]/
 ├── [article-name].md          # Main article
 ├── _metadata.md               # Creation record
 └── [images if needed]
@@ -191,11 +191,11 @@ When called by Ruby:
 
 ## Output Location
 
-All articles go to: `Brain/04-Output/Articles/[article-name]/`
+All articles go to: `output/articles/[article-name]/`
 
 After creation, open the folder:
 ```bash
-open "Brain/04-Output/Articles/[article-name]/"
+open "output/articles/[article-name]/"
 ```
 
 ## Completion Checklist

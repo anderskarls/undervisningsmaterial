@@ -2,7 +2,21 @@
 
 **Purpose**: Quick reference index of all discovery sessions and major changes.
 
-This is a **summary index**. For detailed session logs, see `05-Meta/Changelogs/CHANGELOG - [Session Type] YYYY-MM-DD.md`.
+This is a **summary index**. For detailed session logs, see `meta/changelogs/CHANGELOG - [Session Type] YYYY-MM-DD.md`.
+
+---
+
+## 2026-08
+
+### 2026-08-03
+**Underhåll: skills-lagret renoverat efter omstruktureringen**
+
+- **Agentlagret byggt.** Fyra agenter fanns bara som namn: `research-specialist`, `document-insight-extractor`, `insight-extractor`, `connection-finder` anropades av fem skills men saknades i `.claude/agents/`, som bara innehöll `survey-feedback`. Nu skrivna mot vaultets faktiska struktur och ämnesbild. CLAUDE.md listade sju agenter varav noll fanns - listan rättad till de fem som existerar.
+- **`/deep-research` omskriven.** Fyra döda sökvägar (`Brain/Document Insights/`, `Brain/05-Meta/Changelogs/`, `knowledge-base-analysis.md`, `Brain/CHANGELOG.md`), tre saknade agenter och en ämnesinriktning ärvd från en generisk mall (arXiv, NeurIPS, "de 6 primära hubbarna Consciousness/Dopamine/Flow States"). Ersatt av den översättning som faktiskt användes 2026-07-28, plus vaultets två domäner, kravet på aktivt eftersökt motevidens och länkverifiering mot disk.
+- **Aktualitetsregeln rättad i sak.** Mallens "förkasta allt äldre än 2023" är fel för pedagogik, där Rosenshine 2012 och Reichenberg 2000 fortfarande är det bästa som finns. Ersatt av: gå till primärstudien bakom påståendet, och sök det senaste bara i fält som faktiskt rör sig.
+- **16 levande skills sökvägsöversatta**, plus tematiska exempel utbytta (dopamin, Buddhism och flow states mot retrieval practice, kognitiv belastning och historiedidaktik).
+- **Nio mall-skills arkiverade** till `meta/archive/skills-arvegods/` med README om vad de gjorde och hur de tas tillbaka.
+- **Regressionsskydd:** `/self-diagnostic` har nytt test 2b som fångar döda `Brain/`-sökvägar och anrop till agenter som saknas. Det var frånvaron av en sådan kontroll som lät lagret ruttna tyst i över ett år.
 
 ---
 

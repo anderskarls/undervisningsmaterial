@@ -803,3 +803,23 @@ Genomförande av Del 4 i `meta/changelogs/CHANGELOG - Connection Discovery 2026-
 **Verifierat.** Genererad fil matchar den handbyggda referensen på alla mått (10 markeringar, 3 understrykningar, 5 begrepp, 2 blockcitat, 4 talstreck) och ger en marginalgloss till. Idempotent vid ombyggnad, strukturellt validerad: inga oslutna taggar, inga id-dubbletter, noll kvarvarande markdown-syntax.
 
 **Kvarstående.** Anders återkommer till designen. Öppna frågor han flaggat som sina: om lärarkontrollen ska följa med i elevversionen, och om sidan ska ha ett mörkt läge trots att Arkiv är pappersljust.
+
+---
+
+## [2026-08-03] underhåll | skills-lagret renoverat - agenter byggda, /deep-research omskriven
+
+**Utgångspunkten.** `/deep-research` var skriven före omstruktureringen till LLM-Wiki-mönstret och pekade på fyra mappar som inte finns. Den anropade dessutom tre subagenter som inte fanns. Kontrollen visade att röta av samma slag fanns i 20 av 45 skills, och att `.claude/agents/` innehöll exakt en fil - `survey-feedback` - trots att CLAUDE.md listade sju agenter som centrala.
+
+**Varför agenterna byggdes i stället för att skrivas bort.** De tre saknade agenterna refererades av fem skills, inte bara av `/deep-research`. Att göra `/deep-research` självförsörjande med `general-purpose` hade lagat en skill och lämnat fyra trasiga, och CLAUDE.md hade fortsatt beskriva ett agentlager som inte existerade. Fyra agenter skrivna: `research-specialist`, `document-insight-extractor`, `insight-extractor`, `connection-finder`. Prompterna fanns till stor del redan inbakade i skillfilerna - arbetet var att lyfta ut dem och rätta det som var fel i sak.
+
+**Aktualitetsregeln var fel, inte bara sökvägarna.** Mallen instruerade att förkasta allt äldre än 2023 och prioritera arXiv-preprints från senaste halvåret. Det är rimligt för AI-forskning och direkt skadligt för det här vaultet: Rosenshine 2012 sammanfattar decennier, Reichenbergs röst- och kausalitetsexperiment är från 2000, och Bjorks desirable difficulties är från nittiotalet. Regeln är omskriven till att gå till primärstudien bakom påståendet och söka det senaste bara i fält som faktiskt rör sig - AI i undervisning, examinationsformer, digital källkritik.
+
+**Sessionen 2026-07-28 är kodifierad.** Det som fungerade den gången ligger nu i skillen och i agenterna: uppdraget formuleras som en prövning av användarens hållning och inte som en bekräftelse, parallella spår delas på aktör eller perspektiv så att samstämmighet mellan dem blir ett fynd, evidensläget markeras i texten och inte bara i frontmatter, motsägelser jämkas inte utan redovisas med sin asymmetri i evidenskvalitet, och wikilänkarna verifieras mot disk innan sessionen är klar.
+
+**Vad som arkiverades.** Nio skills från den generiska ursprungsmallen flyttades till `meta/archive/skills-arvegods/`: `analyze-kb`, `benchmark-memory`, `dialectic`, `learn-new-things`, `resume-builder`, `test-memory-system`, `talk`, `update-dashboard`, `user-research`. Ingen står i CLAUDE.md:s skill-lista, alla var oförändrade sedan bulkimporten 2026-05-17, och två av dem skrev till filer som aldrig funnits i det här vaultet (`dashboard.yaml`, `knowledge-base-analysis.md`). Flytten är reversibel och README:n i mappen säger hur. `dialectic` är den enda som är genuint välskriven och kan vara värd att ta tillbaka.
+
+**Tematiskt arvegods.** Sökvägarna var den synliga rötan; exemplen var den tysta. Skills instruerade fortfarande modellen att söka på dopamin, sampla från Neuroscience och Economics, och syntetisera "Buddhism-neuroscience-AI triangle". Utbytta mot vaultets faktiska domäner. Exempellänkarna är kontrollerade mot disk - de pekar på noter som finns.
+
+**Regressionsskyddet är poängen.** Lagret kunde ruttna tyst i över ett år därför att en skill med giltig frontmatter passerar varje kontroll som fanns, oavsett om mapparna den pekar på existerar. `/self-diagnostic` har nu test 2b som gör två saker: söker efter kvarvarande `Brain/`-sökvägar, och kontrollerar att varje anropad `subagent_type` motsvarar en fil i `.claude/agents/` eller `~/.claude/agents/`. Kör det efter varje strukturändring.
+
+**Kvarstående.** Sju skills har fortfarande engelsk löptext och `Ruby`-referenser i `get-perspective-on` som ingen vet vad de syftar på. Sökvägarna är rätt och de fungerar, men de är inte skrivna för det här vaultet. `/deep-research` är inte körd skarpt efter omskrivningen - nästa riktiga forskningsfråga blir provet.

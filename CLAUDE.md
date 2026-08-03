@@ -186,24 +186,29 @@ Wrapper-skript:
 ./resources/local-brain-search/run_connections.sh --stats --json
 ```
 
-### Sub-agents och skills
-Detaljerade definitioner i `.claude/agents/` och `.claude/skills/`. Centrala:
-- **vault-manager** — CRUD på wiki-sidor med korrekt metadata
-- **connection-finder** — användardriven utforskning av kopplingar runt en sida/topic
-- **auto-discovery** — autonom korsdomänupptäckt (låg similarity, hög konceptuell styrka)
-- **insight-extractor** — extrahera insikter från **användarens** innehåll (samtal, transkript)
-- **document-insight-extractor** — extrahera insikter från **externa** källor (papper, böcker)
-- **thinking-partner** — brainstorming och idéutveckling
-- **research-specialist** — webb-research och syntes
+### Sub-agents
+Definitioner i `.claude/agents/`. Detta är hela listan - finns namnet inte här finns agenten inte.
+
+- **research-specialist** — webb-research och syntes; producerar forskningsöversikt i `resources/research/`
+- **document-insight-extractor** — extraherar insikter ur **externa** källor (forskningsöversikter, böcker, artiklar) till `wiki/sources/[session]/`
+- **insight-extractor** — extraherar insikter ur **användarens eget** material (reflektioner, samtal, egna planer)
+- **connection-finder** — kopplar in nya noter i wikin; skriver korslänkar och changelog i `meta/changelogs/`
+- **survey-feedback** — daglig kontroll av enkätsvar via survey-plattformens MCP
+
+Korsdomänupptäckt (`/auto-discovery`) och användardriven kopplingsutforskning (`/find-connections`) är **skills**, inte agenter.
 
 Skills (`/<namn>`):
 - `/recall`, `/search-vault`, `/find-connections` — sökning
-- `/extract-insights`, `/extract-document-insights` — extraktion
+- `/extract-insights`, `/extract-document-insights`, `/graduate-insights` — extraktion och graduering till `wiki/concepts/`
 - `/create-article`, `/synthesize-insights`, `/get-perspective-on` — generering
-- `/auto-discovery`, `/deep-research` — autonoma flöden
+- `/auto-discovery`, `/deep-research`, `/integrate-recent-notes` — autonoma flöden
 - `/refresh-index`, `/self-diagnostic` — underhåll
 - `/planera-moment`, `/docx`, `/pptx`, `/slides`, `/html-momentoversikt` — pedagogiska artefakter
+- `/hamta-dn-artikel` — DN-artiklar till råkälla plus elevanpassat läsmaterial
+- `/observation`, `/undantagssyntes` — Elevlägesbilden
 - `/receptkort` — privat: recept ur kokbokssamlingen till PDF i `output/recept/` (verktyg i `resources/receptkort/`)
+
+**Sökvägar i skills är en känd rötpunkt.** Skills-lagret skrevs före omstruktureringen till LLM-Wiki-mönstret och pekade i över ett år på `Brain/`-mappar som inte finns. Översatt 2026-08-03. `/self-diagnostic` har sedan dess ett test för referensintegritet (2b) som fångar både döda sökvägar och anrop till agenter som saknas - kör det efter varje strukturändring. Nio skills från den generiska ursprungsmallen ligger i `meta/archive/skills-arvegods/`.
 
 ---
 

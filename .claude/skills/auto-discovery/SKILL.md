@@ -18,12 +18,12 @@ Find **non-obvious, cross-domain connections** - notes with low semantic similar
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Permanent Notes | `Brain/02-Permanent/` | ✓ | | Sampling source |
-| AI Extracted Notes | `Brain/AI Extracted Notes/` | ✓ | | Sampling source |
-| Document Insights | `Brain/Document Insights/` | ✓ | | Sampling source |
+| Permanent Notes | `wiki/concepts/` | ✓ | | Sampling source |
+| AI Extracted Notes | `wiki/sources/[sessionsmapp]/` | ✓ | | Sampling source |
+| Document Insights | `wiki/sources/[sessionsmapp]/` | ✓ | | Sampling source |
 | Local Brain Search | `resources/local-brain-search/` | ✓ | | Similarity scores, connections |
-| Session Changelogs | `Brain/05-Meta/Changelogs/` | | ✓ | Dated discovery log |
-| Master Changelog | `Brain/CHANGELOG.md` | ✓ | ✓ | Summary entry |
+| Session Changelogs | `meta/changelogs/` | | ✓ | Dated discovery log |
+| Master Changelog | `CHANGELOG.md` | ✓ | ✓ | Summary entry |
 
 ## Prerequisites
 
@@ -45,9 +45,10 @@ Use for changelog filename.
 Sample from 3-5 diverse domains using Local Brain Search:
 
 ```bash
-resources/local-brain-search/run_search.sh "dopamine" --limit 5 --json
-resources/local-brain-search/run_search.sh "uncertainty" --limit 5 --json
-resources/local-brain-search/run_search.sh "identity" --limit 5 --json
+resources/local-brain-search/run_search.sh "kognitiv belastning" --limit 5 --json
+resources/local-brain-search/run_search.sh "historiebruk" --limit 5 --json
+resources/local-brain-search/run_search.sh "bedömning" --limit 5 --json
+resources/local-brain-search/run_search.sh "elevmotivation" --limit 5 --json
 ```
 
 Pick seed notes from different clusters.
@@ -84,8 +85,8 @@ For each strong connection:
 ```markdown
 ## CROSS-DOMAIN CONNECTION
 
-**Node A**: [[Note X]] (Domain: Neuroscience)
-**Node B**: [[Note Y]] (Domain: Economics)
+**Node A**: [[not-x]] (Domän: lärandevetenskap)
+**Node B**: [[not-y]] (Domän: historiedidaktik)
 **Semantic Similarity**: 0.63 (actual from search)
 **Conceptual Strength**: ⭐⭐⭐⭐⭐
 
@@ -96,7 +97,7 @@ For each strong connection:
 
 ### Step 6: Create Dated Changelog
 
-Write to `Brain/05-Meta/Changelogs/CHANGELOG - Auto-Discovery Session YYYY-MM-DD.md`:
+Write to `meta/changelogs/CHANGELOG - Auto-Discovery Session YYYY-MM-DD.md`:
 
 ```markdown
 ## Auto-Discovery Session: YYYY-MM-DD
@@ -119,7 +120,7 @@ Write to `Brain/05-Meta/Changelogs/CHANGELOG - Auto-Discovery Session YYYY-MM-DD
 
 ### Step 7: Update Master Changelog
 
-Add brief summary to `Brain/CHANGELOG.md`:
+Add brief summary to `CHANGELOG.md`:
 
 ```markdown
 ## YYYY-MM-DD - Auto-Discovery Session
@@ -156,5 +157,5 @@ See: [[CHANGELOG - Auto-Discovery Session YYYY-MM-DD]]
 - [ ] ACTUAL similarity scores recorded (not estimated)
 - [ ] Cross-domain connections with conceptual analysis
 - [ ] Non-obvious discoveries documented (similarity < 0.70)
-- [ ] Dated changelog created in `Brain/05-Meta/Changelogs/`
+- [ ] Dated changelog created in `meta/changelogs/`
 - [ ] Master changelog updated with summary

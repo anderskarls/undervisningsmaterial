@@ -10,7 +10,7 @@ user-invocable: false
 
 ## File Location & Naming
 
-- **Directory:** `Brain/05-Meta/Changelogs/`
+- **Directory:** `meta/changelogs/`
 - **Naming Format:** `CHANGELOG - [Session Type] YYYY-MM-DD.md`
 - **Examples:**
   - `CHANGELOG - Auto-Discovery Sessions 2025-10-25.md`
@@ -50,7 +50,7 @@ Each changelog file must include:
 
 ## Dual Logging System
 
-- **Dated files:** Individual session logs in `/05-Meta/Changelogs/` folder (primary, detailed)
-- **Master CHANGELOG.md:** Summary entries in `/Brain/CHANGELOG.md` (secondary, brief)
+- **Dated files:** Individual session logs in `meta/changelogs/` folder (primary, detailed)
+- **Master CHANGELOG.md:** Summary entries in `/CHANGELOG.md` (secondary, brief)
 
 The dated changelog files are the **primary record** - comprehensive and detailed. The master CHANGELOG.md serves as a **quick reference index** with brief entries pointing to the detailed session files.

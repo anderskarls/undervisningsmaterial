@@ -81,14 +81,14 @@ tags: #hypothesis #topic
 ## Examples
 
 ### ✅ GOOD
-- "Dopamine May Modulate Interoceptive Precision Weighting (HYPOTHESIS)"
+- "Kohesion kan fungera som inbyggd scaffolding och bör fadas (HYPOTES)"
 - Type: speculative-synthesis
 - Status: untested
 - Confidence: medium
 - Clear statement: "This is an original synthesis filling a research gap"
 
 ### ❌ BAD
-- "Dopamine Modulates Interoceptive Precision" (stated as fact)
+- "Kohesion är inbyggd scaffolding" (framställt som faktum)
 - No hypothesis tag
 - No confidence level
 - Presented as established finding

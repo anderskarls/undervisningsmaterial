@@ -24,10 +24,10 @@ Extract the user's unique perspective on a topic from the knowledge base. Return
 ## Examples
 
 ```
-/get-perspective-on AI agent adoption barriers
-/get-perspective-on Why do companies resist AI?
-/get-perspective-on How dopamine relates to social media
-/get-perspective-on What's contrarian about my AI views?
+/get-perspective-on språkanpassning av texter
+/get-perspective-on Varför fungerar inte gruppdiskussioner i vissa grupper?
+/get-perspective-on Hur förhåller jag mig till AI i examinationen?
+/get-perspective-on Vad är kontroversiellt i min syn på bedömning?
 ```
 
 ## Workflow
@@ -119,9 +119,9 @@ Weak perspective (regenerate):
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Brain notes | `Brain/**/*.md` | X | | Permanent notes for perspective synthesis |
-| AI Insights | `Brain/AI Extracted Notes/` | X | | AI-extracted unique perspectives |
-| Document Insights | `Brain/Document Insights/` | X | | Research-based insights |
+| Wiki-sidor | `wiki/**/*.md` | X | | Permanent notes for perspective synthesis |
+| AI Insights | `wiki/sources/[sessionsmapp]/` | X | | AI-extracted unique perspectives |
+| Document Insights | `wiki/sources/[sessionsmapp]/` | X | | Research-based insights |
 | Local Brain Search | `resources/local-brain-search/` | X | | Semantic search for relevance |
 
 ## Completion Checklist

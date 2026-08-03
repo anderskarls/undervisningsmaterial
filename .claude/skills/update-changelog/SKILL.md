@@ -5,7 +5,7 @@ description: Update Knowledge Graph Changelog
 
 # Update Knowledge Graph Changelog
 
-You are updating the Brain vault changelog to track recent modifications to the knowledge graph.
+You are updating vaultets changelog to track recent modifications to the knowledge graph.
 
 ## Your Task
 
@@ -15,7 +15,7 @@ You are updating the Brain vault changelog to track recent modifications to the 
    - Significant edits to note content
    - Focus only on changes made during THIS session
 
-2. **Read Existing Changelog** - Read `$VAULT_BASE_PATH/Brain/CHANGELOG.md` to see the current state
+2. **Read Existing Changelog** - Read `$VAULT_BASE_PATH/CHANGELOG.md` to see the current state
 
 3. **Append New Entry** - Add a new dated entry at the TOP of the changelog with:
    - Date and session identifier
@@ -26,13 +26,11 @@ You are updating the Brain vault changelog to track recent modifications to the 
 ## Format Example
 
 ```markdown
-## 2025-10-24 - Session [Brief Description]
+## 2026-08-01 - Session [kort beskrivning]
 
-- CONNECTED [[Psychological Safety]] → [[Flow is impossible without Autonomy]]: Psychological safety creates autonomy prerequisite for flow by removing fear-based constraints.
-- CONNECTED [[Radical Ownership]] → [[Flow is impossible without Autonomy]]: True ownership requires autonomy; permission-seeking eliminates both.
-- CONNECTED [[Flow is a selfless state]] ↔ [[In Buddhism - Self is an Illusion]]: Flow provides empirical validation of Buddhist insight through performance.
-- CONNECTED [[Entrepreneurship is de-risking]] → [[Belief deals with Uncertainty]]: Entrepreneurs hold beliefs about uncertain futures without eliminating uncertainty.
-- CONNECTED [[Taking on external obligations]] → [[Radical Ownership]]: Obligations stem from permission-seeking rather than ownership.
+- CREATED [[lix-stiger-nar-texten-blir-begripligare]]: LIX belönar det som gör texten obegriplig - måttet och målet drar åt motsatta håll.
+- CONNECTED [[reverse-cohesion-och-expertise-reversal-samma-mekanism]] ↔ [[llm-forenkling-har-en-tyst-felmod]]: Kohesion är scaffolding inbyggd i texten och ska fadas som all annan stöttning.
+- UPDATED [[primarkallans-sprak-ar-studieobjektet]]: Preciserad efter Reichenberg - gränsen går vid primärkälla, inte vid all text.
 ```
 
 ## Important Guidelines
@@ -55,7 +53,7 @@ After updating, show the user:
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Master changelog | `Brain/CHANGELOG.md` | X | X | Main change log to update |
+| Master changelog | `CHANGELOG.md` | X | X | Main change log to update |
 | Session history | Current conversation | X | | Changes made this session |
 
 ## Completion Checklist

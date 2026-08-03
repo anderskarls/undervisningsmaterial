@@ -28,9 +28,9 @@ Run specific test category:
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Vault Path | `Brain/` | ✓ | | Verify vault exists |
-| Permanent Notes Dir | `Brain/02-Permanent/` | ✓ | | Verify directory exists |
-| Article Index | `Brain/04-Output/Articles/ARTICLE-INDEX.md` | ✓ | | Verify index exists |
+| Vault Path | `wiki/` | ✓ | | Verify vault exists |
+| Permanent Notes Dir | `wiki/concepts/` | ✓ | | Verify directory exists |
+| Article Index | `output/articles/ARTICLE-INDEX.md` | ✓ | | Verify index exists |
 | Local Brain Search | `resources/local-brain-search/` | ✓ | | Search scripts and index |
 | Skills Directory | `.claude/skills/*/SKILL.md` | ✓ | | Skill configurations |
 | Commands Directory | `.claude/commands/*.md` | ✓ | | Command configurations |
@@ -48,7 +48,7 @@ $ARGUMENTS
 **CRITICAL: These diagnostics are READ-ONLY and NEVER modify production data.**
 
 - All tests use read-only operations (search, grep, read)
-- NO file creation in Brain/ directory during tests
+- NO file creation in wiki/ directory during tests
 - NO API calls to paid services (HeyGen, Gemini, etc.)
 - Test outputs go to `/tmp/cornelius-diagnostic/` only
 - NO changelog creation during diagnostics
@@ -63,16 +63,16 @@ Verify core infrastructure is accessible:
 
 ```bash
 # Test 1.1: Check vault path exists
-test -d "Brain" && echo "PASS: Vault path exists" || echo "FAIL: Vault path missing"
+test -d "wiki" && echo "PASS: Vault path exists" || echo "FAIL: Vault path missing"
 
 # Test 1.2: Check permanent notes directory
-test -d "Brain/02-Permanent" && echo "PASS: Permanent notes directory exists" || echo "FAIL: Permanent notes directory missing"
+test -d "wiki/concepts" && echo "PASS: Permanent notes directory exists" || echo "FAIL: Permanent notes directory missing"
 
 # Test 1.3: Check Local Brain Search is available
 test -f "resources/local-brain-search/run_search.sh" && echo "PASS: Local Brain Search scripts exist" || echo "FAIL: Local Brain Search scripts missing"
 
 # Test 1.4: Check Article Index exists
-test -f "Brain/04-Output/Articles/ARTICLE-INDEX.md" && echo "PASS: Article Index exists" || echo "FAIL: Article Index missing"
+test -f "output/articles/ARTICLE-INDEX.md" && echo "PASS: Article Index exists" || echo "FAIL: Article Index missing"
 ```
 
 ### 2. Dependency Tests
@@ -89,9 +89,37 @@ uv --version 2>/dev/null && echo "PASS: uv available" || echo "FAIL: uv not foun
 # Test 2.3: Check Local Brain Search can run (simple test)
 cd resources/local-brain-search && python3 -c "import sqlite3; import json; print('PASS: Core Python modules available')" 2>/dev/null || echo "FAIL: Python modules missing"
 
-# Test 2.4: Check mermaid-diagram MCP is responsive
-# (Just verify the skill file exists - actual MCP test would require invocation)
-test -f ".claude/agents/diagram-generator.md" && echo "PASS: Diagram generator agent configured" || echo "FAIL: Diagram generator agent missing"
+# Test 2.4: Verifiera att vaultets kärnfiler finns
+for f in index.md log.md CHANGELOG.md CLAUDE.md; do
+  test -f "$f" && echo "PASS: $f finns" || echo "FAIL: $f saknas"
+done
+```
+
+### 2b. Referensintegritet - sökvägar och agenter
+
+Detta är den kontroll som saknades när skills-lagret ruttnade tyst mellan
+omstruktureringen och 2026-08-03. En skill kan ha giltig frontmatter och ändå
+peka på mappar och agenter som inte finns.
+
+```bash
+# Test 2b.1: Inga referenser till den gamla Brain/-strukturen
+if grep -rn "Brain/" .claude/skills/*/SKILL.md | grep -v "Local Brain Search" | grep -q .; then
+  echo "FAIL: döda Brain/-sökvägar kvar:"
+  grep -rn "Brain/" .claude/skills/*/SKILL.md | grep -v "Local Brain Search"
+else
+  echo "PASS: inga döda Brain/-sökvägar"
+fi
+
+# Test 2b.2: Varje subagent som anropas finns som fil
+grep -rho "subagent_type[=:] *['\"]\?[a-z-]*" .claude/skills/*/SKILL.md \
+  | sed "s/.*['\"]//" | sort -u | while read -r a; do
+    [ -z "$a" ] && continue
+    if [ -f ".claude/agents/$a.md" ] || [ -f "$HOME/.claude/agents/$a.md" ]; then
+      echo "PASS: agenten '$a' finns"
+    else
+      echo "FAIL: agenten '$a' anropas men saknas"
+    fi
+  done
 ```
 
 ### 3. Skills Validation Tests
@@ -100,21 +128,28 @@ Verify skills are properly configured (metadata valid):
 
 ```bash
 # Test 3.1: List all skills and validate structure
+#
+# Obs: `name:` är VALFRITT - saknas det används katalognamnet. Bara
+# `description:` är obligatoriskt, eftersom det är den text modellen läser
+# för att avgöra om skillen ska triggas. docx, pptx, planera-moment och
+# html-momentoversikt saknar name: och fungerar ändå.
+#
+# Kataloger utan SKILL.md är workspaces (eval-körningar, iterationer), inte
+# trasiga skills. De rapporteras som INFO.
 for skill_dir in .claude/skills/*/; do
   skill_name=$(basename "$skill_dir")
   if [ -f "${skill_dir}SKILL.md" ]; then
-    # Check for required frontmatter
     if head -1 "${skill_dir}SKILL.md" | grep -q "^---"; then
-      if grep -q "^name:" "${skill_dir}SKILL.md" && grep -q "^description:" "${skill_dir}SKILL.md"; then
+      if grep -q "^description:" "${skill_dir}SKILL.md"; then
         echo "PASS: Skill '$skill_name' - valid metadata"
       else
-        echo "FAIL: Skill '$skill_name' - missing name or description"
+        echo "FAIL: Skill '$skill_name' - missing description"
       fi
     else
       echo "FAIL: Skill '$skill_name' - missing frontmatter"
     fi
   else
-    echo "FAIL: Skill '$skill_name' - missing SKILL.md"
+    echo "INFO: '$skill_name' - workspace utan SKILL.md, inte en skill"
   fi
 done
 ```
@@ -170,12 +205,12 @@ These tests invoke actual skills/commands with READ-ONLY operations.
 This tests the semantic search and grep functionality:
 
 ```
-Invoke /search-vault with query: "dopamine"
-Expected: Returns at least 1 result from permanent notes
+Invoke /search-vault with query: "retrieval practice"
+Expected: Returns at least 1 result from wiki/
 ```
 
 **Run this test:**
-Use the Skill tool to invoke `search-vault` with args "dopamine"
+Use the Skill tool to invoke `search-vault` with args "retrieval practice"
 
 **Success criteria:**
 - Command executes without error
@@ -187,12 +222,12 @@ Use the Skill tool to invoke `search-vault` with args "dopamine"
 Tests 3-layer semantic search:
 
 ```
-Invoke /recall with query: "decision making"
+Invoke /recall with query: "formativ bedömning"
 Expected: Returns layered results with connections
 ```
 
 **Run this test:**
-Use the Skill tool to invoke `recall` with args "decision making"
+Use the Skill tool to invoke `recall` with args "formativ bedömning"
 
 **Success criteria:**
 - Command executes without error
@@ -204,12 +239,12 @@ Use the Skill tool to invoke `recall` with args "decision making"
 Tests connection discovery:
 
 ```
-Invoke /find-connections with query: "Dopamine"
-Expected: Returns connections for the Dopamine note
+Invoke /find-connections with query: "Cognitive Load Theory"
+Expected: Returns connections for the MOC - Lärandevetenskap och kognition note
 ```
 
 **Run this test:**
-Use the Skill tool to invoke `find-connections` with args "Dopamine"
+Use the Skill tool to invoke `find-connections` with args "Cognitive Load Theory"
 
 **Success criteria:**
 - Command executes without error
@@ -221,12 +256,12 @@ Use the Skill tool to invoke `find-connections` with args "Dopamine"
 Tests perspective extraction:
 
 ```
-Invoke /get-perspective-on with query: "AI agents"
+Invoke /get-perspective-on with query: "källkritik"
 Expected: Returns the user's perspective with note citations
 ```
 
 **Run this test:**
-Use the Skill tool to invoke `get-perspective-on` with args "AI agents"
+Use the Skill tool to invoke `get-perspective-on` with args "källkritik"
 
 **Success criteria:**
 - Command executes without error
@@ -239,7 +274,7 @@ Tests local brain search scripts directly:
 
 ```bash
 # Run semantic search
-resources/local-brain-search/run_search.sh "consciousness" --limit 3 --json
+resources/local-brain-search/run_search.sh "historiedidaktik" --limit 3 --json
 
 # Run connections query
 resources/local-brain-search/run_connections.sh --stats --json
@@ -261,18 +296,17 @@ These tests are INTENTIONALLY SKIPPED to avoid side effects:
 
 | Test | Reason Skipped |
 |------|----------------|
-| /create-article | Would create files in Brain/04-Output/ |
+| /create-article | Would create files in output/ |
 | /update-changelog | Would create changelog file |
-| /analyze-kb | May update knowledge-base-analysis.md |
-| /deep-research | Uses external APIs (Gemini, Apollo) - costs money |
+| /deep-research | Webbsökning och flera agentkörningar - dyrt, skriver i wikin |
 | /synthesize-insights | May create output files |
-| /talk | Interactive mode - not suitable for automated testing |
 | nano-banana-image-generator | Uses Gemini API - costs $0.039/image |
 | epub-chapter-extractor | Requires actual EPUB file |
-| vault-manager (write ops) | Would modify vault notes |
+| /graduate-insights | Flyttar filer i wikin |
 | auto-discovery | Creates changelog files |
-| insight-extractor | Creates notes in AI Extracted Notes/ |
-| document-insight-extractor | Creates notes in Document Insights/ |
+| research-specialist | Webbsökning - kostar |
+| insight-extractor | Skapar noter i wiki/sources/[session]/ |
+| document-insight-extractor | Skapar noter i wiki/sources/[session]/ |
 
 ---
 
@@ -295,7 +329,7 @@ Present results as:
 ```markdown
 # Cornelius Self-Diagnostic Report
 **Run Date:** [current date/time]
-**Agent Version:** 01.25
+**Agent Version:** 04.26
 
 ## Summary
 | Category | Passed | Failed | Skipped |
@@ -344,6 +378,7 @@ Based on $ARGUMENTS:
 - **"commands-only"**: Only test commands validation + functional
 - **"skills-only"**: Only test skills validation
 - **"agents-only"**: Only test agents validation
+- **"referens"**: Bara referensintegritet (test 2b) - snabbaste kontrollen av att skills pekar rätt
 - **"dependencies-only"**: Only test infrastructure + dependencies
 - **"quick"**: Only run validation tests (no functional invocations)
 

@@ -56,7 +56,7 @@ Map the conceptual network around the specified note or topic, revealing:
 ### Phase 1: Anchor Point Identification
 1. If given a note name, use `Grep` to find files matching the name:
    ```
-   grep -r "# $ARGUMENTS" $VAULT_BASE_PATH/Brain --include="*.md"
+   grep -r "# $ARGUMENTS" $VAULT_BASE_PATH/wiki --include="*.md"
    ```
 2. If given a topic, search using Local Brain Search:
    ```bash
@@ -90,7 +90,7 @@ Map the conceptual network around the specified note or topic, revealing:
    - Shared concepts despite different domains
    - Analogical relationships
    - Causal chains that cross boundaries
-   - Meta-patterns (e.g., "illusion" appearing in Buddhism, neuroscience, decision-making)
+   - Meta-patterns (t.ex. fading som återkommer i CLT, läsforskning och scaffolding)
 
 ### Phase 5: Pattern Recognition
 1. Identify recurring themes across the network
@@ -294,7 +294,7 @@ High-quality notes with few connections need integration:
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Brain notes | `Brain/**/*.md` | X | | All permanent notes, sources, MOCs |
+| Wiki-sidor | `wiki/**/*.md` | X | | All permanent notes, sources, MOCs |
 | Local Brain Search index | `resources/local-brain-search/` | X | | Vector index and connection graph |
 | Graph statistics | `run_connections.sh --stats` | X | | Network topology data |
 

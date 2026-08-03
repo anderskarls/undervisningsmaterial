@@ -17,7 +17,7 @@ User-invocable wrapper that spawns the `document-insight-extractor` subagent to:
 - Classify epistemic status (confirmed, theoretical, speculative)
 - Store in session-based folders
 - Deduplicate against existing knowledge base
-- Save to `Brain/Document Insights/[session]/`
+- Save to `wiki/sources/[session]/`
 
 ## When to Use
 
@@ -51,6 +51,6 @@ User-invocable wrapper that spawns the `document-insight-extractor` subagent to:
 
 ## Outputs
 
-- Insight notes in `Brain/Document Insights/[session]/`
+- Insight notes in `wiki/sources/[session]/`
 - Session changelog in same folder
 - Summary with epistemic breakdown (confirmed vs hypothetical)

@@ -18,9 +18,11 @@ The FAISS index is not auto-updated. This playbook rebuilds it so semantic searc
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Brain notes | `Brain/**/*.md` | ✓ | | Source content to index |
+| Wiki-sidor | `wiki/**/*.md` | ✓ | | Source content to index |
 | Index script | `resources/local-brain-search/run_index.sh` | ✓ | | Indexer |
-| FAISS index | `resources/local-brain-search/brain_index/` | | ✓ | Output index |
+| FAISS index | `resources/local-brain-search/data/brain.faiss` | | ✓ | Vektorindex |
+| Grafdata | `resources/local-brain-search/data/brain_graph.pkl` | | ✓ | Kopplingsgraf för spreading activation |
+| Metadata | `resources/local-brain-search/data/brain_metadata.pkl` | | ✓ | Sidmetadata |
 
 ## Prerequisites
 
@@ -55,7 +57,7 @@ Should return valid JSON with note count > 0.
 
 ## Outputs
 
-- Rebuilt FAISS index at `resources/local-brain-search/brain_index/`
+- Ombyggt FAISS-index i `resources/local-brain-search/data/` (`brain.faiss`, `brain_graph.pkl`, `brain_metadata.pkl`)
 - Stats output confirming note count
 
 ## Error Handling
@@ -64,7 +66,7 @@ Should return valid JSON with note count > 0.
 |-------|----------|
 | Script missing | Abort - check Local Brain Search installation |
 | Index fails | Check Python env, disk space |
-| Stats return 0 notes | Re-run indexer, check Brain path |
+| Stats return 0 notes | Re-run indexer, check wiki path |
 
 ## Completion Checklist
 

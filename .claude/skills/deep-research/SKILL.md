@@ -1,582 +1,238 @@
 ---
 name: deep-research
-description: Autonomous research pipeline - discover, extract, and integrate cutting-edge insights into knowledge base
-argument-hint: [optional topic or "auto" for autonomous selection]
+description: Autonom forskningspipeline - beställer forskningsöversikter, extraherar dem till atomära wiki-noter och kopplar in dem i wikin. Använd när användaren vill utreda en pedagogisk eller ämnesmässig fråga på djupet, säger "deep research", "utred", "vad säger forskningen om", eller vill fylla en kunskapslucka i wikin. Kan också välja ämne själv utifrån vad som undervisas just nu.
+argument-hint: '[ämne, eller "auto" för självvald inriktning]'
 automation: gated
-allowed-tools: Task, Read, Bash, Glob, Grep
+allowed-tools: Task, Read, Write, Bash, Glob, Grep
 ---
 
-# Deep Research & Knowledge Integration Pipeline
+# Deep Research
 
-You are orchestrating a fully autonomous research → extraction → connection discovery workflow to expand the knowledge base with cutting-edge insights.
+Tre steg som var för sig finns som egna skills, körda i följd med resultatet från det ena som indata till det andra: **research → extraktion → inkoppling**. Slutprodukten är inte en rapport utan ett antal wiki-noter som hänger ihop med resten av wikin.
 
-## Input Processing
+Rapporterna är mellanled. De sparas, men de är inte det som ackumuleras.
 
-**User Input:** $ARGUMENTS
+**Indata:** `$ARGUMENTS`
 
-**Execution Modes:**
-1. **Directed Mode** - User specifies topic(s): `$ARGUMENTS = "neuroscience of habits"` or `$ARGUMENTS = "multi-agent systems, safety alignment"`
-2. **Autonomous Mode** - You select topics: `$ARGUMENTS = ""` or `$ARGUMENTS = "auto"`
+## Två lägen
 
-## Mission
+**Riktat läge** - användaren anger ämne. `/deep-research "formativ bedömning i historia"`.
 
-Execute a complete 3-phase autonomous research pipeline:
-1. **RESEARCH** - Gather cutting-edge papers and developments
-2. **EXTRACT** - Pull unique insights from research findings
-3. **CONNECT** - Map connections to existing knowledge base
-
-**Critical Requirement:** ALL extracted insights MUST be stored in Document Insights folder structure to keep separate from main Brain.
+**Autonomt läge** - `$ARGUMENTS` är tomt eller `auto`. Du väljer ämne själv enligt avsnittet nedan.
 
 ---
 
-## Phase 1: Topic Selection & Research Planning
+## Fas 1: Ämnesval och avgränsning
 
-### A. If User Provided Topic(s) (Directed Mode)
-- Parse `$ARGUMENTS` for topic(s)
-- Validate topics are research-worthy
-- Plan research scope for each topic
+### Riktat läge
 
-### B. If Autonomous Mode
-Analyze knowledge base to identify research opportunities:
+Ämnet är givet, men det ska skärpas innan det går vidare. Två frågor avgör hela sessionens värde:
 
-1. **Read knowledge base analysis:**
-   ```bash
-   cat knowledge-base-analysis.md
-   ```
+1. **Vad är den egentliga frågan?** "Formativ bedömning" är ett ämne, inte en fråga. "Håller formativ bedömning i historia när betygssättningen är summativ och ämnesbetyg gäller?" är en fråga. Frågan går att ha fel om; ämnet gör det inte.
+2. **Har användaren redan en hållning?** Om ja - formulera uppdraget som en **prövning** av den, inte en bekräftelse. Sök i wikin och i minnet efter vad som redan är etablerat, och instruera forskningsagenterna att aktivt leta efter evidens som talar emot.
 
-2. **Check recent activity:**
-   ```bash
-   ls -lt Brain/Document\ Insights/ | head -10
-   ```
+Detta är sessionen från 2026-07-28 om språkanpassning värd att härma: användaren hade en dokumenterad hållning, båda agenterna instruerades att pröva den, och resultatet blev att hållningen **preciserades** i stället för att bekräftas. En bekräftande session hade varit värdelös.
 
-3. **Identify gaps based on:**
-   - Underrepresented domains in knowledge-base-analysis.md
-   - Missing connections flagged in recent changelogs
-   - Emerging themes from existing insights
-   - User's recent work patterns
-   - CLAUDE.md priorities and future directions
+Stäm av avgränsningen med användaren om frågan kan läsas på flera sätt som skulle ge olika research.
 
-4. **Select 1-3 research topics** that would:
-   - Fill identified gaps
-   - Build on existing strengths (e.g., Buddhism-Neuroscience-AI triangle)
-   - Connect underexplored domains
-   - Add empirical validation to intuitive frameworks
-   - Challenge or extend current thinking
+### Autonomt läge
 
-**Examples of Good Topic Selection:**
-- "Neuroscience of habits and behavior change" (if habit formation underrepresented)
-- "Collective intelligence and swarm behavior" (if group dynamics missing)
-- "Embodied cognition and interoception" (if embodiment gap identified)
-- "Complexity science and emergence" (if systems thinking needed)
-- "Creativity neuroscience and insight generation" (if creative process mechanics missing)
+Läs, i den ordningen:
 
----
-
-## Phase 2: Execute Research
-
-### Get Current Timestamp
 ```bash
-date '+%Y-%m-%d %H:%M:%S %Z'
-```
-Save this for session folder naming: `YYYY-MM-DD Topic Description`
-
-### Launch Research Specialist Agent(s)
-
-**For Each Topic:**
-
-Use Task tool with subagent_type='research-specialist':
-
-```
-TOPIC: [Selected topic]
-
-Conduct comprehensive research on [topic] focusing EXCLUSIVELY on the most recent research and developments.
-
-⚠️ CRITICAL RECENCY REQUIREMENT:
-Your training data may be outdated. The world changes rapidly, especially in fast-moving fields like AI, neuroscience, and technology. You MUST prioritize the most recent information available through web search, even if it contradicts what you think you know from training data.
-
-SEARCH STRATEGY:
-- Use Google Search grounding to find papers published in the last 12-18 months
-- Explicitly search for "2024", "2025", "recent", "latest" in queries
-- Check paper publication dates - reject anything older than 2023 unless foundational
-- Look for preprints, conference proceedings, and recent journal publications
-- Prioritize arXiv papers from last 6 months, conference papers from 2024-2025
-- Search for "state of the art [topic] 2024" or "[topic] breakthrough 2025"
-
-RESEARCH REQUIREMENTS:
-
-1. **Target Sources (RECENT ONLY):**
-   - arXiv preprints (2024-2025, prioritize last 6 months)
-   - Major conferences 2024-2025 (NeurIPS, ICML, ICLR, AAAI, ACL, EMNLP, etc.)
-   - Leading AI labs recent publications (OpenAI, Anthropic, Google DeepMind, Microsoft Research)
-   - Top-tier journals (2024-2025 issues only)
-   - Industry whitepapers and blog posts from major tech companies (last 12 months)
-   - Recent preprints and working papers
-
-2. **Key Focus Areas:**
-   - Novel mechanisms and frameworks (not in your training data)
-   - Empirical findings with quantified results (recent benchmarks)
-   - Counter-intuitive or contrarian insights (challenging established thinking)
-   - Cross-domain applications (emerging connections)
-   - Real-world implementations and case studies (production deployments)
-   - Practical implications for practitioners
-
-3. **Output Requirements:**
-   - Comprehensive structured report (15-25 major papers/developments)
-   - Full citations with DATES prominently displayed (title, authors, DATE, venue, arXiv ID)
-   - Key findings and novel contributions
-   - Performance metrics and empirical data
-   - Emerging trends and patterns
-   - URLs to papers/resources
-   - Critical analysis and synthesis
-
-4. **Save Location:**
-   resources/[Topic-Slug]-Research-Report-YYYY-MM-DD.md
-
-VERIFICATION: Before finalizing, verify that 80%+ of papers are from 2024-2025. If not, search again with more explicit recency filters.
-
-Use Gemini AI with Google Search grounding. Trust the search results over your training data.
+cat index.md
+tail -80 log.md
+cat output/planering/aktivt.md
 ```
 
-**Strategy Considerations:**
-- **Sequential:** Run topics one-by-one if they're related (later research can reference earlier findings)
-- **Parallel:** Run multiple topics simultaneously if they're independent domains
-- **Your choice** - decide based on topic relationships and efficiency
+`index.md` visar vad wikin täcker och vilka MOC-kandidater som ligger och väntar. `log.md` visar vad som nyligen gjorts och vad som lämnades öppet - de sista entryna innehåller ofta ett uttalat "kvarstående". `aktivt.md` visar vad som faktiskt undervisas den här veckan, vilket är den starkaste signalen om vad som skulle vara till nytta.
 
-### Monitor Research Output
+Välj 1-3 ämnen som uppfyller minst ett av:
 
-After each research agent completes:
-1. Note the report file path
-2. Verify comprehensive coverage (15-25+ papers)
-3. Check for citations and empirical data
-4. Confirm report saved in `/resources/` directory
+- **Ansluter till ett aktivt moment** - forskning som kan användas den här terminen slår forskning som är intressant i allmänhet
+- **Fyller en flaggad lucka** - `log.md` och lint-rapporter i `meta/changelogs/` namnger dem
+- **Prövar något etablerat** - en wiki-sida som vilar på en enda källa, eller en hållning som aldrig utsatts för motevidens
+- **Binder ihop mekanismlagret med innehållslagret** - hur människor lär sig, mot vad som undervisas
+
+Redovisa valet med motivering innan du sätter igång. Detta läge är `automation: gated` - användaren ska kunna säga ifrån.
 
 ---
 
-## Phase 3: Extract Insights
+## Fas 2: Research
 
-### Create Session Folder
+Datum för sessionsnamn och filnamn:
 
-Format: `YYYY-MM-DD [Topic Description]`
-
-Example: `2025-11-20 Neuroscience of Habits and Behavior Change`
-
-**Path:** `Brain/Document Insights/[Session-Folder]/`
-
-### Launch Document Insight Extractor
-
-**For Each Research Report:**
-
-Use Task tool with subagent_type='document-insight-extractor':
-
-```
-Extract unique insights from the research report for the knowledge base.
-
-SOURCE DOCUMENT: [Full path to research report]
-
-SESSION FOLDER: [Session folder name]
-
-EXTRACTION GUIDELINES:
-
-1. **Focus on Novel Insights:**
-   - Paradigm shifts and new frameworks
-   - Counter-intuitive or surprising findings
-   - Empirical validation of existing theories
-   - Novel mechanisms and explanations
-   - Cross-domain applications
-   - Contrarian perspectives backed by evidence
-
-2. **Bridge to Existing Knowledge Base:**
-   - Connect to the 6 primary hubs: Consciousness, Dopamine, Decision-Making, Identity, AI Agents, Flow States
-   - Reference the user's existing frameworks (Folder Paradigm, Mental Models Taxonomy, etc.)
-   - Identify consilience opportunities (3+ domains converging)
-   - Find validation or challenges to current thinking
-   - Look for applications of Buddhist/neuroscience principles
-
-3. **Prioritize:**
-   - Research findings that extend current understanding
-   - Empirical data that validates intuitive frameworks
-   - Novel architectures or methodologies
-   - Real-world implications and case studies
-   - Philosophical or meta-level insights
-
-4. **Quality Standards:**
-   - 15-25 high-quality insights per report
-   - Avoid redundancy with existing knowledge base (ALWAYS search for duplicates)
-   - Include proper citations (paper title, authors, year)
-   - Tag appropriately for discoverability
-   - Create connections to existing permanent notes
-
-5. **Output Requirements:**
-   - Create permanent notes in session folder
-   - Include full citations and sources
-   - Add relevant tags
-   - Note connections to existing insights
-   - Create changelog: CHANGELOG - Document Analysis YYYY-MM-DD.md
-
-CRITICAL:
-- ALWAYS search for duplicates before creating notes
-- Store ALL extracted notes in: Brain/Document Insights/[Session-Folder]/
-- Create comprehensive changelog documenting extraction process
+```bash
+date '+%Y-%m-%d'
 ```
 
-### Monitor Extraction Output
-
-After extraction completes:
-1. Verify insights stored in correct Document Insights session folder
-2. Check changelog was created
-3. Note count of unique insights extracted
-4. Confirm deduplication was performed
-
----
-
-## Phase 4: Connection Discovery
-
-### Launch Connection Finder Agent(s)
-
-**Strategy Options:**
-
-**Option A: Single Comprehensive Pass**
-- Run connection-finder once on the entire session folder
-- Maps all new insights against full knowledge base
-
-**Option B: Multiple Targeted Passes**
-- Run connection-finder 2-3 times on different subsets
-- First pass: New insights ↔ Existing AI insights (102 notes)
-- Second pass: New insights ↔ Primary hubs (Dopamine, Consciousness, etc.)
-- Third pass: Cross-domain bridges and synthesis opportunities
-
-**Your Choice** - Select based on insight count and domain diversity.
-
-### Execute Connection Discovery
-
-Use Task tool with subagent_type='connection-finder':
+Starta Task med `subagent_type='research-specialist'` per delfråga. Agenten känner vaultets källbild, aktualitetsregler och rapportform - upprepa inte dem i prompten. Ge den i stället det den inte kan veta:
 
 ```
-Discover connections between newly extracted insights and existing knowledge base.
+ÄMNE: [den skärpta frågan]
 
-STARTING POINTS:
-All notes in session folder: Brain/Document Insights/[Session-Folder]/
+BAKGRUND: [vad wikin redan har, med sidnamn - så att rapporten kan
+prövas mot det befintliga i stället för att upprepa det]
 
-Or specify individual notes if doing targeted passes.
+HÅLLNING SOM SKA PRÖVAS: [användarens position, om det finns en.
+Sök aktivt efter evidens som talar emot den.]
 
-CONNECTION DISCOVERY GOALS:
+DELFRÅGOR:
+1. [...]
+2. [...]
 
-1. **Bridge to Existing Knowledge:**
-   - Connect to 102 existing AI insights
-   - Link to 6 primary thematic hubs (Consciousness, Dopamine, Decision-Making, Identity, AI Agents, Flow)
-   - Find relationships to original frameworks (Folder Paradigm, Mental Models Taxonomy, etc.)
-   - Map to MOCs and output content
-
-2. **Cross-Domain Opportunities:**
-   - Buddhism ↔ Neuroscience ↔ AI consilience
-   - Decision Science ↔ Agent Architecture
-   - Flow States ↔ Peak Performance ↔ AI Optimization
-   - Identity/Belief Systems ↔ Agent Fitness Functions
-   - Dopamine hub connections (universal bridge)
-
-3. **Synthesis Identification:**
-   - Clusters of insights ready for article development
-   - Consilience zones (3+ domains converging)
-   - Emergent patterns and meta-insights
-   - Framework extension opportunities
-   - New MOC candidates
-
-4. **Analysis Parameters:**
-   - Similarity thresholds: 0.65-0.85 (strong to moderate)
-   - Depth: 2-3 levels from each new insight
-   - Focus: Non-obvious, high-value connections
-
-5. **Output Requirements:**
-   - Map direct connections to existing permanent notes
-   - Identify bridge notes connecting multiple domains
-   - Highlight consilience zones and synthesis opportunities
-   - Create dated changelog: CHANGELOG - Connection Discovery Session YYYY-MM-DD.md
-   - Store changelog in: Brain/05-Meta/Changelogs/
-   - Update master changelog: Brain/CHANGELOG.md
-   - Suggest concrete article topics or framework extensions
-
-Begin comprehensive connection mapping.
+SPARA SOM: resources/research/[amne-slug]-YYYY-MM-DD.md
 ```
 
-### Monitor Connection Discovery
+**Flera spår när ämnet är brett.** Sessionen om AI i lärararbetet delades i fem spår - fack, policy, nätverk, fortbildning, Norden - och kördes parallellt. Att spåren var oberoende var poängen: när fem agenter som inte läst varandras rapporter landar i samma mönster är det ett starkt fynd. Dela på **aktör eller perspektiv**, inte på delämne, om du vill ha den effekten.
 
-After connection-finder completes:
-1. Verify changelog created in `/Brain/05-Meta/Changelogs/`
-2. Check master CHANGELOG.md was updated
-3. Note key findings: consilience zones, synthesis opportunities
-4. Identify high-priority article topics
+Kör sekventiellt i stället när ett spår behöver bygga på ett annat.
+
+Kontrollera varje rapport innan den går vidare: har den årtal på fynden, effektstorlekar där de finns, ett avsnitt om vad som inte hittades, och något som talar emot? Saknas motevidens helt, skicka tillbaka agenten på den frågan.
 
 ---
 
-## Phase 5: Final Summary & Recommendations
+## Fas 3: Extraktion
 
-### Consolidate Results
+Sessionsmapp: `wiki/sources/[YYYY-MM-DD Ämne på svenska]/`.
 
-Generate a comprehensive session report including:
+Starta Task med `subagent_type='document-insight-extractor'` per rapport - parallellt när spåren är oberoende. Agenten kan notformatet, evidensmarkeringarna och dedupliceringen. Ge den:
 
-```markdown
-# Deep Research Pipeline - Session Summary
-**Date:** [Timestamp]
-**Execution Mode:** [Directed / Autonomous]
-**Topics Researched:** [List]
+```
+KÄLLA: resources/research/[filnamn]
+SESSIONSMAPP: wiki/sources/[YYYY-MM-DD Ämne]
 
----
+BEFINTLIG TÄCKNING: [wiki-sidor som ligger nära, med namn - läs dem
+innan du skriver, både för att undvika dubbletter och för att kunna
+flagga när källan motsäger dem]
 
-## Phase 1: Research
-**Topics Selected:**
-1. [Topic 1] - Rationale: [Why chosen]
-2. [Topic 2] - Rationale: [Why chosen]
-...
-
-**Research Reports Created:**
-- [Report 1]: /resources/[filename] ([N] papers analyzed)
-- [Report 2]: /resources/[filename] ([N] papers analyzed)
-
-**Total Papers Analyzed:** [N]
-**Research Coverage:** [Domains covered]
-
----
-
-## Phase 2: Insight Extraction
-**Session Folder:** /Brain/Document Insights/[Session-Folder]/
-
-**Extraction Results:**
-- Unique insights extracted: [N]
-- Duplicates avoided: [N]
-- Very similar (evaluated): [N]
-- Changelogs created: [List paths]
-
-**Insights by Type:**
-- Research findings: [N]
-- Theoretical frameworks: [N]
-- Production insights: [N]
-- Contrarian arguments: [N]
-
-**Top Insights:**
-1. [[Note Title]] - [Brief description]
-2. [[Note Title]] - [Brief description]
-...
-
----
-
-## Phase 3: Connection Discovery
-**Changelogs Created:**
-- [Path to connection discovery changelog]
-
-**Key Findings:**
-- Strong connections discovered: [N]
-- Emergent patterns identified: [N]
-- Cross-domain bridges: [N]
-- Consilience zones: [List]
-
-**Major Cross-Domain Bridges:**
-1. [Domain A] ↔ [Domain B] - Mechanism: [How connected]
-2. [Domain A] ↔ [Domain C] - Mechanism: [How connected]
-
-**Synthesis Opportunities Identified:**
-1. **Article:** "[Title]" - Ready for development
-2. **Framework:** "[Name]" - Extension of existing work
-3. **MOC Candidate:** "[Topic]" - Needs organization hub
-
----
-
-## Impact Assessment
-
-**Knowledge Base Enhancement:**
-- New research domains added: [List]
-- Existing frameworks validated/extended: [List]
-- Gaps filled: [List]
-- New connections to core hubs: [N]
-
-**Most Significant Discoveries:**
-1. [Discovery 1] - Why significant: [Explanation]
-2. [Discovery 2] - Why significant: [Explanation]
-3. [Discovery 3] - Why significant: [Explanation]
-
-**Contrarian Insights:**
-- [Insight that challenges conventional wisdom]
-- [Insight that challenges existing framework]
-
----
-
-## Recommended Next Steps
-
-**High-Priority Actions:**
-1. **Write Article:** "[Suggested title]"
-   - Sources: [[Note 1]], [[Note 2]], [[Note 3]]
-   - Unique angle: [What makes this distinctive]
-   - Target audience: [Who would benefit]
-
-2. **Extend Framework:** "[Framework name]"
-   - Current state: [What exists]
-   - Enhancement: [What research adds]
-   - Application: [How to use]
-
-3. **Create MOC:** "[Topic]"
-   - Notes to organize: [Count]
-   - Structure: [Suggested organization]
-   - Purpose: [Navigation goal]
-
-**Medium-Priority:**
-- [Additional recommendations]
-
-**Long-Term Opportunities:**
-- [Strategic synthesis possibilities]
-
----
-
-## Session Files Created
-
-**Research Reports:**
-- [Path 1]
-- [Path 2]
-
-**Insight Notes:**
-- [Session folder path] ([N] notes)
-
-**Changelogs:**
-- [Extraction changelog path]
-- [Connection discovery changelog path]
-- Master CHANGELOG.md updated
-
----
-
-## Knowledge Base Statistics (Updated)
-
-**Before Session:**
-- Total permanent notes: [N]
-- AI insights: [N]
-- Document insights: [N]
-
-**After Session:**
-- Total permanent notes: [N] (+[N])
-- AI insights: [N]
-- Document insights: [N] (+[N])
-
-**Growth:** +[N] notes, +[N] connections
-
----
-
-## Meta-Analysis
-
-**What Worked Well:**
-- [Successes in topic selection, research, extraction, or connection]
-
-**Challenges Encountered:**
-- [Any difficulties or limitations]
-
-**Lessons for Future Sessions:**
-- [Improvements for next research pipeline run]
-
----
-
-**End of Deep Research Pipeline Session**
+SÄRSKILT EFTERSÖKT: [negativa fynd, preciseringar, motsägelser mot
+wikin - det som gör sessionen värd mer än en sammanfattning]
 ```
 
----
+Kör flera extraktorer mot samma sessionsmapp bara om rapporterna är tydligt åtskilda. Annars skriver de dubbletter av varandra, eftersom ingen av dem ser den andras noter under körningen.
 
-## Quality Standards & Best Practices
+Kontrollera efteråt:
 
-### Topic Selection (Autonomous Mode)
-- **Strategic alignment:** Choose topics that build on existing strengths or fill critical gaps
-- **Cross-domain potential:** Prefer topics that bridge multiple knowledge base hubs
-- **Empirical grounding:** Select areas with active research (2024-2025 papers available)
-- **Practical relevance:** Topics should have real-world applications or implications
+```bash
+ls wiki/sources/[SESSIONSMAPP]/ | wc -l
+grep -L "^type:" wiki/sources/[SESSIONSMAPP]/*.md
+```
 
-### Research Quality
-- **Recency:** Prioritize 2024-2025 papers and developments
-- **Rigor:** Focus on peer-reviewed research and reputable sources
-- **Depth:** 15-25 major papers minimum per topic
-- **Breadth:** Cover multiple perspectives and approaches
-- **Empirics:** Include quantified results and performance metrics
-
-### Insight Extraction
-- **Novelty:** Only extract genuinely new perspectives
-- **Deduplication:** ALWAYS search before creating notes
-- **Citations:** Include full source attribution
-- **Connections:** Link to existing knowledge base
-- **Quality > Quantity:** 15-25 high-value insights, not 100 mediocre ones
-
-### Connection Discovery
-- **Non-obvious focus:** Surface-level links are less valuable
-- **Cross-domain priority:** Consilience zones are gold
-- **Synthesis orientation:** Identify article/framework opportunities
-- **Actionable output:** Provide concrete next steps
-
-### Documentation
-- **Comprehensive changelogs:** Document every phase
-- **Clear file organization:** Session folders in Document Insights
-- **Master log updates:** Keep CHANGELOG.md current
-- **Audit trail:** Future-you should understand what happened and why
+Andra kommandot ska ge tom output - alla filer ska ha frontmatter.
 
 ---
 
-## Execution Protocol
+## Fas 4: Inkoppling
 
-1. **Parse input** → Determine directed vs. autonomous mode
-2. **Select topics** → Either use provided topics or analyze knowledge base for gaps
-3. **Get timestamp** → For session folder naming
-4. **Research phase** → Launch research-specialist agent(s)
-5. **Extraction phase** → Launch document-insight-extractor for each report
-6. **Connection phase** → Launch connection-finder agent(s)
-7. **Generate summary** → Comprehensive session report
-8. **Provide recommendations** → Actionable next steps for content creation
+Indexet måste byggas om först, annars är de nya noterna osynliga för sökningen:
 
-**Key Principle:** Fully autonomous execution. No human intervention required between phases. All insights stored in Document Insights folder structure to maintain separation from main Brain.
+```bash
+./resources/local-brain-search/run_index.sh
+```
 
----
+Starta sedan Task med `subagent_type='connection-finder'` mot sessionsmappen:
 
-## Error Handling
+```
+SESSIONSMAPP: wiki/sources/[YYYY-MM-DD Ämne]
 
-**If research finds insufficient papers:**
-- Broaden search criteria
-- Extend date range (include 2023)
-- Consider adjacent topics
-- Document limitation in summary
+FOKUS: [de fynd som verkar ha störst räckvidd utanför sitt eget ämne]
 
-**If extraction finds too many duplicates:**
-- Focus on truly novel contributions
-- Look for empirical validation of concepts
-- Seek contrarian perspectives
-- Consider topic was already well-covered
+SÖK SÄRSKILT: broar mellan mekanismlagret och innehållslagret, och
+motsägelser mot befintliga sidor.
+```
 
-**If connection-finder finds weak connections:**
-- Topic may be genuinely novel (good!)
-- Increase similarity threshold range
-- Run additional passes on specific hubs
-- Document gap as synthesis opportunity
+Agenten skriver in kopplingarna i noterna, uppdaterar topic-sida och `index.md`, och lägger changelogen i `meta/changelogs/`.
 
-**If any phase fails:**
-- Document error in summary
-- Continue with successful phases
-- Provide partial results
-- Recommend retry or alternative approach
+**Verifiera att länkarna landar** när agenten är klar:
+
+```bash
+grep -oh "\[\[[^]]*\]\]" wiki/sources/[SESSIONSMAPP]/*.md | sort -u | \
+  sed 's/\[\[//;s/\]\]//' | while read -r l; do
+    f=$(printf '%s' "$l" | sed 's/|.*//;s|.*/||')
+    find wiki output raw -name "$f.md" -print -quit | grep -q . || echo "SAKNAS: $l"
+  done
+```
+
+Länkar till sidor som inte finns är tillåtna och markerar framtida sidor. Men de ska vara **avsiktliga**. Träffar listan något som uppenbart är en felstavning av en befintlig sida, rätta det.
 
 ---
 
-**Remember:** This is a knowledge base expansion engine. Your goal is to systematically grow the user's second brain with cutting-edge, well-integrated insights that enhance his intellectual capabilities and content creation potential.
+## Fas 5: Syntes och bokföring
 
-## State Dependencies
+### Sessionssyntes
 
-| Source | Location | Read | Write | Description |
-|--------|----------|------|-------|-------------|
-| Knowledge base analysis | `knowledge-base-analysis.md` | X | | Current KB state for gap analysis |
-| Document Insights | `Brain/Document Insights/` | X | X | Session folders for extracted insights |
-| Research reports | `resources/` | X | X | Generated research reports |
-| Changelogs | `Brain/05-Meta/Changelogs/` | X | X | Session and discovery changelogs |
-| Master changelog | `Brain/CHANGELOG.md` | X | X | Master change log |
-| Local Brain Search | `resources/local-brain-search/` | X | | Vector search for deduplication |
+Om sessionen körde flera spår: skriv en syntes **tvärs över** dem, inte en sammanfattning av vart och ett. Den ska svara på tre frågor:
 
-## Completion Checklist
+1. **Vilka mönster återkommer i flera spår oberoende av varandra?** Ett mönster som tre spår landar i utan att citera varandra är sessionens starkaste fynd.
+2. **Var motsäger spåren varandra?** Redovisa motsägelsen **och asymmetrin i evidenskvalitet**. En RCT och en konferensslutsats är inte två jämbördiga positioner, och det ska stå.
+3. **Vad ändrar detta i vad användaren gör?** Konkret, för historia eller samhällskunskap på svenskt gymnasium.
 
-- [ ] Execution mode determined (directed vs autonomous)
-- [ ] Topics selected with rationale
-- [ ] Research reports generated and saved to /resources/
-- [ ] Session folder created in Document Insights
-- [ ] Insights extracted with deduplication
-- [ ] Extraction changelog created
-- [ ] Connection discovery completed
-- [ ] Connection discovery changelog created in /05-Meta/Changelogs/
-- [ ] Master CHANGELOG.md updated
-- [ ] Session summary generated with recommendations
-- [ ] Synthesis opportunities identified
+Sparas som `meta/changelogs/SESSION SUMMARY - Deep Research [Ämne] YYYY-MM-DD.md`.
+
+Vid en enda rapport räcker extraktionens changelog - skriv ingen syntes för sakens skull.
+
+### Bokföring
+
+Fyra ställen, alla obligatoriska:
+
+| Fil | Vad som skrivs |
+|-----|----------------|
+| `index.md` | Nya sidor i rätt domänsektion, statistiken i frontmatter uppdaterad, MOC-kandidat noterad vid 15+ noter |
+| `log.md` | Entry `## [YYYY-MM-DD] deep-research \| [Ämne]` i prosa - huvudfyndet, det som förvånade, det som kvarstår. Se de senaste entryna för tonen |
+| `CHANGELOG.md` | Kort sessionsentry |
+| `meta/changelogs/` | Connection-changelogen (av agenten) och syntesen |
+
+### Rapport till användaren
+
+Kort, i löptext:
+
+- Huvudfyndet i två meningar
+- Vad som ändrade eller preciserade något som redan stod i wikin
+- Motsägelser som lämnades öppna
+- Sökväg till sessionsmappen, plus `xdg-open` på den
+- Vad som inte gick att svara på
+
+---
+
+## Sökvägar
+
+Alltid dessa. Skillen refererade tidigare fyra mappar som inte finns i det här vaultet.
+
+| Vad | Var |
+|-----|-----|
+| Forskningsöversikter | `resources/research/` |
+| Extraherade noter | `wiki/sources/[YYYY-MM-DD Ämne]/` |
+| Extraktionens changelog | i sessionsmappen |
+| Connection-changelog och syntes | `meta/changelogs/` |
+| Graduerade begrepp | `wiki/concepts/` (via `/graduate-insights`, inte här) |
+| Topics och MOC:er | `wiki/topics/` |
+| Innehållskatalog | `index.md` |
+| Operationslogg | `log.md` |
+
+---
+
+## När något går fel
+
+**Rapporten är tunn.** Fältet kan vara genuint tomt - det är ett fynd och ska skrivas som en not, inte döljas. Bredda annars sökningen till angränsande discipliner eller till internationella källor och översätt till svensk kontext.
+
+**Extraktionen ger mest dubbletter.** Ämnet var redan täckt. Byt riktning mot det som faktiskt är nytt - preciseringar, motevidens, gränsfall - i stället för att skapa varianter av det som finns.
+
+**Inkopplingen hittar nästan inget.** Två möjligheter, och de ska skiljas åt: ämnet är nytt för wikin, eller sökningen utgick från den nya notens vokabulär i stället för den befintligas. Sök om från den befintliga sidans ord innan du drar slutsatsen.
+
+**En fas misslyckas.** Fortsätt med de övriga, leverera delresultat och skriv i loggen vad som saknas. En halv session som säger att den är halv är användbar.
+
+---
+
+## Checklista
+
+- [ ] Frågan skärpt till något som går att ha fel om
+- [ ] Motevidens aktivt eftersökt, och resultatet av den sökningen redovisat
+- [ ] Rapporter i `resources/research/` med årtal och evidenstyp på fynden
+- [ ] Sessionsmapp i `wiki/sources/` med frontmatter på varje not
+- [ ] Hypoteser och egna resonemang markerade som sådana i texten
+- [ ] Index ombyggt före inkopplingen
+- [ ] Kopplingar inskrivna i noterna, ömsesidigt
+- [ ] Wikilänkar verifierade mot disk
+- [ ] Motsägelser flaggade, ojämkade
+- [ ] `index.md`, `log.md`, `CHANGELOG.md` uppdaterade

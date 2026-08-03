@@ -18,11 +18,11 @@ New notes often sit unconnected. This playbook identifies notes from the last 14
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Permanent Notes | `Brain/02-Permanent/` | ✓ | | Recent notes source |
-| AI Extracted Notes | `Brain/AI Extracted Notes/` | ✓ | | Recent notes source |
-| Document Insights | `Brain/Document Insights/` | ✓ | | Recent notes source |
+| Begreppssidor | `wiki/concepts/` | ✓ | | Recent notes source |
+| Sessionsnoter | `wiki/sources/*/` | ✓ | | Recent notes source |
+| Topics och MOC:er | `wiki/topics/` | ✓ | | Recent notes source |
 | Local Brain Search | `resources/local-brain-search/` | ✓ | | Connection discovery |
-| Session Changelogs | `Brain/05-Meta/Changelogs/` | | ✓ | Integration report |
+| Session Changelogs | `meta/changelogs/` | | ✓ | Integration report |
 
 ## Prerequisites
 
@@ -35,12 +35,11 @@ New notes often sit unconnected. This playbook identifies notes from the last 14
 Find notes modified in the last 14 days:
 
 ```bash
-find Brain/02-Permanent -name "*.md" -mtime -14 -type f
-find Brain/AI\ Extracted\ Notes -name "*.md" -mtime -14 -type f
-find Brain/Document\ Insights -name "*.md" -mtime -14 -type f
+find wiki/concepts wiki/topics -name "*.md" -mtime -14 -type f
+find wiki/sources -name "*.md" -mtime -14 -type f -not -name "CHANGELOG*"
 ```
 
-Compile list of recent notes.
+Compile list of recent notes. Uteslut changelogfilerna - de är sessionsbokföring, inte kunskap, och ska aldrig integreras.
 
 ### Step 2: Get Current Date
 
@@ -69,7 +68,7 @@ For each note, categorize:
 
 ### Step 5: Create Integration Report
 
-Write to `Brain/05-Meta/Changelogs/CHANGELOG - Note Integration YYYY-MM-DD.md`:
+Write to `meta/changelogs/CHANGELOG - Note Integration YYYY-MM-DD.md`:
 
 ```markdown
 ## Note Integration Report: YYYY-MM-DD
@@ -98,7 +97,7 @@ Total: [N] notes from last 14 days
 
 ## Outputs
 
-- Integration report in `Brain/05-Meta/Changelogs/`
+- Integration report in `meta/changelogs/`
 - List of isolated notes needing attention
 - Suggested connections for each
 
@@ -116,4 +115,4 @@ Total: [N] notes from last 14 days
 - [ ] Connections analyzed for each note
 - [ ] Notes categorized (well-connected, partial, isolated)
 - [ ] Integration suggestions provided for isolated notes
-- [ ] Report created in `Brain/05-Meta/Changelogs/`
+- [ ] Report created in `meta/changelogs/`

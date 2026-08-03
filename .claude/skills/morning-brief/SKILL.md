@@ -48,7 +48,7 @@ Prioritera det mest aktuella (senaste 2 veckorna).
 Skapa filen i Inbox:
 
 ```
-Brain/00-Inbox/YYYY-MM-DD Morgonbrief.md
+raw/inbox/YYYY-MM-DD Morgonbrief.md
 ```
 
 Använd detta format:
@@ -59,7 +59,7 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 created_by: [model-name]
 updated_by: [model-name]
-agent_version: 03.26
+agent_version: 04.26
 tags:
   - morgonbrief
 ---

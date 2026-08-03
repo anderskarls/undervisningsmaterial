@@ -17,7 +17,7 @@ User-invocable wrapper that spawns the `insight-extractor` subagent to:
 - Preserve authentic voice and reasoning patterns
 - Handle large files via chunking
 - Deduplicate against existing knowledge base
-- Save to `Brain/AI Extracted Notes/`
+- Save to `wiki/sources/[sessionsmapp]/`
 
 ## When to Use
 
@@ -31,7 +31,7 @@ User-invocable wrapper that spawns the `insight-extractor` subagent to:
 
 ```
 /extract-insights /path/to/transcript.md
-/extract-insights "the conversation above about dopamine"
+/extract-insights "samtalet ovan om varför diskussionen dog i MEK26B"
 ```
 
 ## Process
@@ -48,6 +48,6 @@ User-invocable wrapper that spawns the `insight-extractor` subagent to:
 
 ## Outputs
 
-- Permanent notes in `Brain/AI Extracted Notes/`
-- Session changelog in `Brain/05-Meta/Changelogs/`
+- Permanent notes in `wiki/sources/[sessionsmapp]/`
+- Session changelog in `meta/changelogs/`
 - Summary of extracted insights

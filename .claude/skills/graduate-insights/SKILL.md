@@ -11,27 +11,33 @@ Review candidate notes from holding areas and promote valuable ones to permanent
 
 ## Purpose
 
-The knowledge base accumulates insights in multiple holding areas:
-- **AI Extracted Notes/** - Personal insights from conversations (177 notes)
-- **Document Insights/** - Research findings from external sources (1,608 notes across 89 sessions)
-- **00-Inbox/** - Raw captures and staging notes (27 notes)
+Insikter ackumuleras på två ställen innan de är permanenta:
 
-Without periodic graduation, these insights remain unintegrated. This skill provides a structured review process to:
-1. Surface high-value candidates based on retrieval frequency and age
-2. Present each for human judgment (the essential step)
-3. Graduate worthy notes to `02-Permanent/` with proper formatting
-4. Maintain knowledge graph integrity
+- **`wiki/sources/[session]/`** - extraktioner per ingest-batch, både ur externa källor och ur användarens eget material. Det stora flertalet noter i wikin bor här.
+- **`raw/inbox/`** - snabbfångad text som ännu inte behandlats.
+
+Graduering flyttar en not till `wiki/concepts/`, som är wikins permanenta lager: atomära begreppssidor som är sanna oberoende av vilken session som råkade producera dem. En not i en sessionsmapp är knuten till sin källa; en begreppssida står på egna ben.
+
+Kör `ls wiki/concepts | wc -l` och `ls -d wiki/sources/*/ | wc -l` för aktuella siffror i stället för att lita på någon uppräkning här.
+
+Utan periodisk graduering blir sessionsmapparna ett arkiv i stället för ett arbetslager. Denna skill:
+
+1. Lyfter fram starka kandidater utifrån hur ofta de hämtats och hur gamla de är
+2. Lägger fram varje kandidat för mänskligt omdöme - det avgörande steget
+3. Graduerar värdiga noter till `wiki/concepts/` med korrekt frontmatter
+4. Håller kunskapsgrafen hel genom att länkarna följer med
 
 ## State Dependencies
 
 | Source | Location | Read | Write |
 |--------|----------|------|-------|
 | Q-values | `resources/local-brain-search/data/q_values.json` | Yes | No |
-| AI Extracted | `Brain/AI Extracted Notes/` | Yes | Move |
-| Document Insights | `Brain/Document Insights/*/` | Yes | Move |
-| Inbox | `Brain/00-Inbox/` | Yes | Move |
-| Permanent Notes | `Brain/02-Permanent/` | No | Yes |
-| Changelog | `Brain/CHANGELOG.md` | Yes | Yes |
+| Sessionsnoter | `wiki/sources/*/` | Yes | Move |
+| Inbox | `raw/inbox/` | Yes | Move |
+| Begreppssidor | `wiki/concepts/` | No | Yes |
+| Innehållskatalog | `index.md` | Yes | Yes |
+| Changelog | `CHANGELOG.md` | Yes | Yes |
+| Operationslogg | `log.md` | Yes | Yes |
 
 ## Process
 
@@ -48,9 +54,8 @@ Find candidate notes prioritized by:
 3. **Has connections** - Notes with wiki-links to permanent notes
 
 Collect up to **5 candidates** per session from:
-- `Brain/AI Extracted Notes/*.md`
-- `Brain/Document Insights/**/*.md` (exclude CHANGELOG files)
-- `Brain/00-Inbox/*.md`
+- `wiki/sources/*/*.md` (uteslut `CHANGELOG*` - sessionsbokföring graduerar aldrig)
+- `raw/inbox/*.md`
 
 ### Step 2: For Each Candidate
 
@@ -59,7 +64,7 @@ Present the following information:
 ```
 ## Candidate [N/5]: [Note Title]
 
-**Source:** AI Extracted Notes | Document Insights ([Session Name]) | Inbox
+**Source:** wiki/sources/[Sessionsnamn] | raw/inbox
 **Created:** [date from frontmatter or file mtime]
 **Age:** [X days]
 **Q-Value:** [value or "not tracked"]
@@ -85,10 +90,10 @@ Ask user:
 
 When user chooses **Promote**:
 
-1. **Check for duplicates** in `02-Permanent/`:
+1. **Check for duplicates** in `wiki/concepts/`:
    ```bash
    # Search for similar titles
-   grep -r "similar keywords" Brain/02-Permanent/
+   grep -r "similar keywords" wiki/concepts/
    ```
 
 2. **Prepare note for graduation**:
@@ -99,7 +104,9 @@ When user chooses **Promote**:
      updated: [today]
      created_by: [original model if present]
      updated_by: [current model]
-     agent_version: 01.25
+     agent_version: 04.26
+     type: concept
+     tags: []
      graduated_from: [original path]
      graduated_date: [today]
      ---
@@ -112,9 +119,13 @@ When user chooses **Promote**:
    Ask user: "Refine title/content before promoting? (or press Enter to keep as-is)"
 
 4. **Move to permanent**:
-   - Generate clean filename: `Brain/02-Permanent/[Title].md`
-   - Move file (not copy - maintains git history)
-   - Verify move succeeded
+   - Filnamn i kebab-case enligt CLAUDE.md: `wiki/concepts/retrieval-practice-som-formativt-verktyg.md`, inte `Retrieval Practice.md`
+   - `git mv` (inte kopiera - bevarar historiken)
+   - Kontrollera att inkommande länkar fortfarande träffar. Obsidian löser `[[basnamn]]`, så ett ändrat filnamn bryter varje länk som pekade på det gamla:
+     ```bash
+     grep -rl "\[\[gammalt-basnamn\]\]" wiki output raw
+     ```
+   - Uppdatera `index.md` med den nya begreppssidan i rätt domänsektion
 
 ### Step 4: Handle Skip
 
@@ -143,30 +154,31 @@ After processing all candidates:
 **Deleted:** Z notes
 
 ### Promoted Notes:
-- [[New Permanent Note 1]] (from AI Extracted Notes)
-- [[New Permanent Note 2]] (from Document Insights/Session Name)
+- [[ny-begreppssida-1]] (från wiki/sources/[Sessionsnamn])
+- [[ny-begreppssida-2]] (från raw/inbox)
 
 ### Remaining Candidates
-- AI Extracted Notes: [count] notes
-- Document Insights: [count] notes
-- Inbox: [count] notes
+- wiki/sources: [count] noter
+- raw/inbox: [count] noter
 
 Run `/graduate-insights` again to continue review.
 ```
 
 ### Step 7: Update Changelog
 
-Append to `Brain/CHANGELOG.md`:
+Append to `CHANGELOG.md`:
 
 ```markdown
 ## [DATE] - Insight Graduation Session
 
 **Promoted to Permanent:**
-- [[Note 1]] - graduated from AI Extracted Notes
-- [[Note 2]] - graduated from Document Insights/[Session]
+- [[not-1]] - graduerad från wiki/sources/[Session]
+- [[not-2]] - graduerad från raw/inbox
 
 **Session Stats:** Reviewed 5, Promoted X, Skipped Y
 ```
+
+Lägg också en rad i `log.md` när sessionen graduerat något: `## [YYYY-MM-DD] graduering | [vad som flyttades och varför just det]`.
 
 ## Zettelkasten Graduation Criteria
 
@@ -192,8 +204,8 @@ When reviewing candidates, consider these principles:
 
 ## Outputs
 
-1. Promoted notes in `Brain/02-Permanent/` with graduation metadata
-2. Updated `Brain/CHANGELOG.md` with session record
+1. Promoted notes in `wiki/concepts/` with graduation metadata
+2. Updated `CHANGELOG.md` with session record
 3. Session summary showing graduation statistics
 
 ## Notes

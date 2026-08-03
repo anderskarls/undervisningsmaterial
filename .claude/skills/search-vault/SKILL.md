@@ -33,7 +33,7 @@ $ARGUMENTS
 
 2. **Keyword Search** - Use `Grep`:
    - Pattern: $ARGUMENTS
-   - Path: `Brain/`
+   - Path: `wiki/`
    - Output mode: "files_with_matches" to get file list
    - Then use output mode: "content" with -C flag for context
 
@@ -61,7 +61,7 @@ Keep results concise and actionable. Highlight the most relevant findings.
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Brain notes | `Brain/**/*.md` | X | | All vault notes for search |
+| Wiki-sidor | `wiki/**/*.md` | X | | All vault notes for search |
 | Local Brain Search index | `resources/local-brain-search/` | X | | Vector index for semantic search |
 | Memory config | `resources/local-brain-search/memory_config.py` | X | | Tunable memory parameters |
 

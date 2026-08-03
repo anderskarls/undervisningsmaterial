@@ -17,24 +17,24 @@ Combine multiple insights or permanent notes into a coherent narrative, framewor
 
 - **note names**: List of specific notes to synthesize
   - Comma-separated: "[[Note A]], [[Note B]], [[Note C]]"
-  - Or topic cluster: "All notes about dopamine and AI"
-  - Or theme: "Buddhism and neuroscience connections"
+  - Or topic cluster: "Alla noter om retrieval practice och formativ bedömning"
+  - Or theme: "Kognitiv belastning och källkritik"
 
 ## Examples
 
 ### Synthesize Specific Notes
 ```
-/synthesize-insights [[AI adoption bottleneck is psychological]], [[Professional identity creates AI resistance]], [[Belief is a way to deal with Uncertainty]]
+/synthesize-insights [[lix-stiger-nar-texten-blir-begripligare]], [[reverse-cohesion-och-expertise-reversal-samma-mekanism]], [[primarkallans-sprak-ar-studieobjektet]]
 ```
 
 ### Synthesize Topic Cluster
 ```
-/synthesize-insights All notes connecting dopamine, social media, and AI
+/synthesize-insights Alla noter som kopplar ihop kognitiv belastning, scaffolding och språkanpassning
 ```
 
 ### Synthesize Theme
 ```
-/synthesize-insights Buddhism-neuroscience-AI triangle
+/synthesize-insights Mekanismlagret möter innehållslagret - varför medeltiden är svår att lära ut
 ```
 
 ## Workflow
@@ -116,29 +116,29 @@ User: "I want to write about AI and psychology"
 
 ### 2. Framework Creation
 ```
-User: "Help me create a framework for AI resistance"
+User: "Hjälp mig bygga ett ramverk för hur jag stöttar läsning av källtexter"
 
-/synthesize-insights [[AI adoption bottleneck]], [[Professional identity]], [[Dopamine reinforcement]], [[Belief systems]]
+/synthesize-insights [[primarkallans-sprak-ar-studieobjektet]], [[lasstrategiundervisning-gynnar-svaga-lasare-mest]], [[reverse-cohesion-och-expertise-reversal-samma-mekanism]]
 
-# Output: Framework showing how psychological factors interact
+# Output: Ramverk för hur stöttningen ska fadas över momentet
 # → Visualize in diagram or model
 ```
 
 ### 3. Connection Discovery
 ```
-User: "How do my Buddhism notes relate to AI?"
+User: "Hur hänger mina kognitionsnoter ihop med historiedidaktiken?"
 
-/synthesize-insights Buddhism and AI connections
+/synthesize-insights Kognitionsforskning och historiedidaktik
 
-# Output: Non-obvious bridges between ancient wisdom and digital intelligence
-# → Potential contrarian article angle
+# Output: Broar mellan mekanismlagret och innehållslagret
+# → Möjlig artikelvinkel
 ```
 
 ### 4. Content Planning
 ```
-User: "What content can I create from my dopamine notes?"
+User: "Vad kan jag göra av mina bedömningsnoter?"
 
-/synthesize-insights All dopamine-related notes
+/synthesize-insights Alla noter om bedömning och betygssättning
 
 # Output: Multiple synthesis narratives
 # → Suggests 3-5 article topics or video series
@@ -164,25 +164,25 @@ Low-quality (try different notes):
 
 ### Multi-Domain Synthesis
 ```
-/synthesize-insights Notes connecting Buddhism, neuroscience, and AI agent design
+/synthesize-insights Noter som kopplar kognitionsforskning, ämnesdidaktik och bedömning
 ```
 Reveals consilience - where independent domains converge on same truth
 
 ### Temporal Synthesis
 ```
-/synthesize-insights Evolution of my thinking on AI from 2024 to 2025
+/synthesize-insights Hur mitt tänkande om AI i undervisningen ändrats från 2025 till 2026
 ```
 Shows how perspectives change over time
 
 ### Contrarian Synthesis
 ```
-/synthesize-insights Notes that challenge conventional AI wisdom
+/synthesize-insights Noter som motsäger vedertagna pedagogiska råd
 ```
 Gathers all contrarian perspectives for provocative content
 
 ### Problem-Solution Synthesis
 ```
-/synthesize-insights Problem: AI adoption barriers + Solutions from psychology and Buddhism
+/synthesize-insights Problem: elever läser inte källtexterna + Lösningar ur läsforskning och CLT
 ```
 Connects problem notes with solution notes from different domains
 
@@ -190,19 +190,19 @@ Connects problem notes with solution notes from different domains
 
 ```
 # Synthesis → Article workflow
-/synthesize-insights Dopamine, social media, AI cluster
+/synthesize-insights Klustret kring källkritik och AI-literacy
 # → Get synthesis with connections
 # → Use in /create-article skill
 
 # Synthesis → Connections workflow
-/synthesize-insights AI notes
-/find-connections [synthesized theme]
+/synthesize-insights Noter om AI i lärararbetet
+/find-connections [syntetiserat tema]
 # → Discover even more connections
 
-# Synthesis → Video series workflow
-/synthesize-insights Buddhism-AI connections
-# → Extract 3-5 narratives
-# → Ruby creates video series from each
+# Syntes → momentplanering
+/synthesize-insights Kognitionsforskning och historiedidaktik
+# → Extrahera 3-5 bärande idéer
+# → Använd som underlag i /planera-moment
 ```
 
 ## Notes
@@ -226,9 +226,9 @@ Connects problem notes with solution notes from different domains
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Brain notes | `Brain/**/*.md` | X | | Permanent notes, AI insights, Document insights |
+| Wiki-sidor | `wiki/**/*.md` | X | | Permanent notes, AI insights, Document insights |
 | Local Brain Search | `resources/local-brain-search/` | X | | Semantic search for topic clusters |
-| MOCs | `Brain/03-MOCs/` | X | | Map of Content for thematic organization |
+| MOCs | `wiki/topics/` | X | | Map of Content for thematic organization |
 
 ## Completion Checklist
 

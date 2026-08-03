@@ -90,7 +90,7 @@ Present the findings in this structured format:
 
 | Source | Location | Read | Write | Description |
 |--------|----------|------|-------|-------------|
-| Brain notes | `Brain/**/*.md` | X | | Search permanent notes, sources, MOCs |
+| Wiki-sidor | `wiki/**/*.md` | X | | Search permanent notes, sources, MOCs |
 | Local Brain Search index | `resources/local-brain-search/` | X | | Vector index for semantic search |
 | Memory config | `resources/local-brain-search/memory_config.py` | X | | Tunable memory parameters |
 
