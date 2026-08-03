@@ -823,3 +823,31 @@ Genomförande av Del 4 i `meta/changelogs/CHANGELOG - Connection Discovery 2026-
 **Regressionsskyddet är poängen.** Lagret kunde ruttna tyst i över ett år därför att en skill med giltig frontmatter passerar varje kontroll som fanns, oavsett om mapparna den pekar på existerar. `/self-diagnostic` har nu test 2b som gör två saker: söker efter kvarvarande `Brain/`-sökvägar, och kontrollerar att varje anropad `subagent_type` motsvarar en fil i `.claude/agents/` eller `~/.claude/agents/`. Kör det efter varje strukturändring.
 
 **Kvarstående.** Sju skills har fortfarande engelsk löptext och `Ruby`-referenser i `get-perspective-on` som ingen vet vad de syftar på. Sökvägarna är rätt och de fungerar, men de är inte skrivna för det här vaultet. `/deep-research` är inte körd skarpt efter omskrivningen - nästa riktiga forskningsfråga blir provet.
+
+---
+
+## [2026-08-03] skill | /deep-research byggd om efter STORM-principerna
+
+**Utgångspunkten.** `raw/inbox/storm-research-SKILL.md` låg i inkorgen. Den är en generisk STORM-pipeline - fem expertlenser, motsägelsekarta, HTML-brief, adversariell granskning - och principerna i den är bättre än de jag hade satt i förmiddagens omskrivning. Metoden är importerad, inte skillen: STORM levererar en HTML-rapport, vaultet levererar wiki-noter, och den ordningen ändras inte.
+
+**Fyra principer importerade, tre saknades helt.**
+
+Lenspanelen var det första. Föregående version sa "dela på aktör eller perspektiv" utan att säga vilka. Nu är rollerna namngivna och obligatoriska, och `research-specialist` har fått ett lensläge som kräver tre extra avsnitt: min position, det bara min lens säger, och där jag är svag. Det sista är underlaget för motsägelsekartan.
+
+Panelerna är två eftersom vaultet har två domäner. För pedagogik: Praktikern, Forskaren, Skeptikern, Systemblicken, Ämnesdidaktikern. För historia och samhällskunskap: Forskningsläget, Historiografen, Källkritikern, Didaktikern, Historiebruket. STORM:s Economist är utbytt mot Systemblicken - i skolan följer man mandatet och timplanen snarare än pengarna, även om läromedelsförlag och edtech finns med i den lensen. Ämnesdidaktikern finns för att den allmänpedagogiska forskningen nästan alltid är gjord i matematik och läsförståelse; frågan om vad som överlever översättningen till SO är den som gör panelen värd besväret.
+
+Motsägelsekartan är nu en egen fas med fem bestämda utfall i stället för en uppmaning att redovisa motsägelser. Blindfläcken - vad ingen lens tog upp, läst ur deras egna svaghetsavsnitt - fanns inte alls tidigare.
+
+**Verifieringen är den tyngsta importen.** Ny agent `claim-verifier`: prövar ett påståendekluster mot sin primärkälla, med regeln att sekundärkällor inte räknas. Returnerar dom (BEKRÄFTAT / DELVIS / OVERIFIERAT / FALSKT), rättad citering, författarnas egna förbehåll, peer review-status, finansiär och starkaste motkälla. Domarna tillämpas hårt: falskt stryks, delvis rättas innan extraktionen läser rapporten, overifierat märks `Andrahand` och `evidence-level: low`.
+
+Detta var det verkliga hålet. Vaultet hade länkverifiering mot disk - att `[[wikilänkarna]]` träffar något - men ingenting som kontrollerade att en effektstorlek faktiskt stod i studien. Det interna hade en kontroll, det externa hade ingen, och det externa är det som citeras i klassrummet.
+
+**En rättelse av mig själv.** Förmiddagens version skrev att fem agenter som inte läst varandras rapporter och landar i samma mönster ger ett starkt fynd. STORM:s vakt formulerar problemet: panelen är författarbyggd. Alla lenser är samma modell med olika instruktion, och fem lenser som delar träningsmängd kan dela ett fel. Konvergens visar robusthet mot perspektivbyte, inte oberoende bekräftelse och inte konsensus i forskarsamhället. Varningen ska nu stå utskriven i varje syntes.
+
+**Påståendeguiden är tillägget som gör sessionen användbar.** Tre listor byggda ur domarna: säg rakt ut, säg med förbehåll, säg inte. Förbehållen ska vara färdigformulerade - inte "det är osäkert" utan vad osäkerheten består i. Det här är skillnaden mellan en forskningsöversikt och något man kan gå in i ett klassrum med.
+
+**Kostnaden är utskriven.** Full körning startar 12-16 agenter. Skillen har nu en skalningsregel: full panel för öppna frågor där hållningar strider, två lenser för avgränsade faktafrågor, och en enkel `research-specialist` för "vad finns det att läsa" - vilket inte är deep research. Verifieringen körs oavsett.
+
+**Faller verifieringen skrivs inga noter.** Alla andra faser får leverera delresultat om något går fel. Fas 4 är undantaget: hellre rapporter i `resources/research/` och orörd wiki än overifierade påståenden inne i vaultet.
+
+**Kvarstår.** Skillen är fortfarande inte körd skarpt. Panelvalet mellan A och B är beskrivet men oprövat, och en fråga som ligger mitt emellan domänerna - historiedidaktik hör hemma i båda - har ingen regel. Nästa riktiga forskningsfråga får avgöra om panelerna ska slås ihop eller om ett blandat urval fungerar.

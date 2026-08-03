@@ -305,6 +305,7 @@ These tests are INTENTIONALLY SKIPPED to avoid side effects:
 | /graduate-insights | Flyttar filer i wikin |
 | auto-discovery | Creates changelog files |
 | research-specialist | Webbsökning - kostar |
+| claim-verifier | Webbsökning mot primärkällor - kostar |
 | insight-extractor | Skapar noter i wiki/sources/[session]/ |
 | document-insight-extractor | Skapar noter i wiki/sources/[session]/ |
 

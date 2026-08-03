@@ -189,7 +189,8 @@ Wrapper-skript:
 ### Sub-agents
 Definitioner i `.claude/agents/`. Detta är hela listan - finns namnet inte här finns agenten inte.
 
-- **research-specialist** — webb-research och syntes; producerar forskningsöversikt i `resources/research/`
+- **research-specialist** — webb-research och syntes; producerar forskningsöversikt i `resources/research/`. Har ett **lensläge**: får den en roll (Skeptikern, Ämnesdidaktikern, Historiografen …) intar den den fullt ut och redovisar sin position, det bara den lensen ser, och var den är svag
+- **claim-verifier** — prövar ett påstående mot dess **primärkälla**. Sekundärkällor räknas inte. Returnerar dom (BEKRÄFTAT / DELVIS / OVERIFIERAT / FALSKT), rättad citering och evidensnivå 1-7
 - **document-insight-extractor** — extraherar insikter ur **externa** källor (forskningsöversikter, böcker, artiklar) till `wiki/sources/[session]/`
 - **insight-extractor** — extraherar insikter ur **användarens eget** material (reflektioner, samtal, egna planer)
 - **connection-finder** — kopplar in nya noter i wikin; skriver korslänkar och changelog i `meta/changelogs/`

@@ -18,6 +18,15 @@ This is a **summary index**. For detailed session logs, see `meta/changelogs/CHA
 - **Nio mall-skills arkiverade** till `meta/archive/skills-arvegods/` med README om vad de gjorde och hur de tas tillbaka.
 - **Regressionsskydd:** `/self-diagnostic` har nytt test 2b som fångar döda `Brain/`-sökvägar och anrop till agenter som saknas. Det var frånvaron av en sådan kontroll som lät lagret ruttna tyst i över ett år.
 
+**`/deep-research` byggd om efter STORM-principerna** (samma dag, andra passet)
+
+- **Lenspanel.** Fem namngivna roller researchar samma fråga blint för varandra. Två paneler eftersom vaultet har två domäner: pedagogik (Praktikern, Forskaren, Skeptikern, Systemblicken, Ämnesdidaktikern) och sakinnehåll (Forskningsläget, Historiografen, Källkritikern, Didaktikern, Historiebruket). `research-specialist` har fått ett lensläge som kräver position, det bara lensen ser, och var den är svag.
+- **Motsägelsekartan** är egen fas med fem bestämda utfall, inklusive blindfläcken - vad ingen lens tog upp, läst ur deras egna svaghetsavsnitt.
+- **Källverifiering, ny agent `claim-verifier`.** Varje bärande påstående prövas mot sin **primärkälla**; sekundärkällor räknas inte. Dom (BEKRÄFTAT / DELVIS / OVERIFIERAT / FALSKT), rättad citering, författarnas förbehåll, peer review-status, finansiär, starkaste motkälla. Detta var det verkliga hålet: vaultet kontrollerade att wikilänkar träffade något, men aldrig att en effektstorlek faktiskt stod i studien.
+- **Rättelse av förmiddagens version:** konvergens mellan lenser är **inte** oberoende bekräftelse. Panelen är författarbyggd - samma modell med olika instruktion - och fem lenser som delar träningsmängd kan dela ett fel. Varningen ska stå utskriven i varje syntes.
+- **Påståendeguide** som ny leverans: säg rakt ut / säg med förbehåll / säg inte, med färdigformulerade förbehåll. Skillnaden mellan en forskningsöversikt och något man kan gå in i ett klassrum med.
+- Kostnad utskriven (12-16 agenter) med skalningsregel. Faller verifieringen skrivs inga noter alls.
+
 ---
 
 ## 2026-07
