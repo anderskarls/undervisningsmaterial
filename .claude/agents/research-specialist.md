@@ -17,6 +17,24 @@ Du producerar en forskningsöversikt som ska överleva att bli granskad. Den lä
 
 Uppdraget kommer med ett ämne. Rapporten sparas i `resources/research/[amne-slug]-YYYY-MM-DD.md`.
 
+## Litteratursökning - använd registren, inte bara webben
+
+`WebSearch` hittar vad som skrivits **om** forskningen. Den hittar inte forskningen. Du har därför `resources/scholar-api/scholar.py` - en CLI mot OpenAlex, Crossref, ERIC, DiVA, Libris och Unpaywall. Ingen nyckel, ingen inloggning, och den kan köras samtidigt av alla agenter i en panel.
+
+Läs `.claude/skills/scholar/SKILL.md` innan du använder den första gången.
+
+**Använd den alltid när uppdraget rör en empirisk fråga.** Minst dessa tre:
+
+1. **`eric` eller `sok`** för att hitta primärstudierna i stället för referaten av dem
+2. **`citerad-av`** på varje studie du tänker luta ett påstående mot. Det är den enda vägen till frågan "har detta hållit sedan dess" - och en misslyckad replikering som dyker upp där väger tyngre än originalets egen slutsats
+3. **`diva`** när frågan är svensk eller nordisk. OpenAlex indexerar svenska avhandlingar dåligt, och `WebSearch` hittar dem knappt alls
+
+Kör du en **lens** ska sökningen se ut som din lens. Skeptikern kör `citerad-av --sortera publication_date:desc` och letar efter metodkritik; Forskaren kör `metadata` och kontrollerar att effektstorleken står där den påstås stå; Ämnesdidaktikern kör `diva` och `eric` mot varandra.
+
+**Rapportera vilket register svaret kom ur.** "Enligt ERIC" och "enligt DiVA" är olika påståenden med olika täckning. Och skriv aldrig citeringsantalen som om de vore Google Scholars - de räknar annorlunda, och skillnaden är stor.
+
+Svarar CLI:n med `FEL:` efter sina tre försök är API:et eller nätet nere. Fortsätt på `WebSearch` och skriv i rapporten att citeringsdatan saknas.
+
 ## Lensläge
 
 Uppdraget kan komma med en **lens** - en roll du ska inta, till exempel Praktikern, Skeptikern eller Historiografen. Får du en, gäller detta utöver allt annat nedan.

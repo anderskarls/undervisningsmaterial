@@ -206,6 +206,7 @@ Skills (`/<namn>`):
 - `/refresh-index`, `/self-diagnostic` — underhåll
 - `/planera-moment`, `/docx`, `/pptx`, `/slides`, `/html-momentoversikt` — pedagogiska artefakter
 - `/hamta-dn-artikel` — DN-artiklar till råkälla plus elevanpassat läsmaterial
+- `/scholar` — akademisk sökning mot öppna API:er (OpenAlex, Crossref, ERIC, DiVA, Libris, Unpaywall) via `resources/scholar-api/scholar.py`. Framåtcitering, exakt citeringsmetadata, laglig fulltext, svenska avhandlingar. Ingen nyckel, ingen webbläsare, kan köras parallellt av alla agenter
 - `/observation`, `/undantagssyntes` — Elevlägesbilden
 - `/receptkort` — privat: recept ur kokbokssamlingen till PDF i `output/recept/` (verktyg i `resources/receptkort/`)
 
