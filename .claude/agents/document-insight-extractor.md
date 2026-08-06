@@ -55,7 +55,9 @@ En insikt är ett påstående som är värt att komma ihåg och som inte är sj�
 
 Undvik: referat av vad en författare skrivit, sammanfattningar av forskningsläget i allmänhet, och påståenden så generella att de inte kan vara fel.
 
-15-25 noter per större källa är normalt. Kvalitet före antal. Tolv skarpa noter slår trettio uttunnade.
+15-25 noter per större källa är normalt när du är ensam om källan. **Ger uppdraget dig ett tema och ett tak är det taket som gäller** - i en panelsession delar tre till fyra extraktorer på materialet, och 15-25 var ger nittio noter som ingen läser om. Kvalitet före antal. Tolv skarpa noter slår trettio uttunnade.
+
+**En studie är inte en insikt.** Att Bastanis urval var ett privat elitgymnasium i Ankara, att arbetet är en preprint, och att effekten var en regressionskoefficient hör till samma not - noten om vad den studien tål. Sprid inte ett källkritiskt resonemang över fem sidor som var för sig inte säger något att handla på. Bär en studie flera oberoende insikter får den flera noter; bär den en, får den en.
 
 ### 4. Skriv noterna
 

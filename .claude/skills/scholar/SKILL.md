@@ -98,6 +98,10 @@ Skriv aldrig något som förutsätter motsatsen.
 
 **Registren är inte överens.** OpenAlex daterar Sweller-svaret till 2023, Crossref till 2024. Kör `metadata` när årtalet bär vikt, och rapportera skillnaden i stället för att välja tyst.
 
+**OpenAlex och Crossref räknar också citeringar olika.** 753 mot 779, 532 mot 546, 1618 mot 1106 för tre studier i körningen 2026-08-05. Talen får aldrig blandas i samma tabell - ange vilket register talet kom ur.
+
+**Kvoten är delad per maskin.** Att verktyget "kan köras parallellt" gäller **samtidighet, inte kvot**: alla agenter som kör samtidigt tär på samma tak. Fem lenser som var för sig körde `citerad-av` slog i 429 redan efter en timme 2026-08-05. Fördela därför inte framåtcitering på en panel - samla den. `/deep-research` gör det i sitt citeringssvep.
+
 ---
 
 ## Fulltext
@@ -120,6 +124,8 @@ Innan du ger upp: `diva` för svenska verk (fulltextlänk följer med i träffen
 ## När det går fel
 
 **`FEL: Anropet misslyckades`.** CLI:n försöker om tre gånger med paus. Kvarstår felet är API:et nere eller nätet borta - säg det, gå vidare med `WebSearch`, och skriv i rapporten att citeringsdatan saknas.
+
+**429 från OpenAlex är kvoten, inte driftstopp - och den släpper delvis.** Direktuppslag på DOI mot `api.openalex.org` kan gå igenom medan titelsökningen fortfarande 429:ar; testa den vägen innan du ger upp. `eric`, `diva`, `libris` och `fulltext` (Unpaywall) ligger utanför OpenAlex-kvoten och fungerar oberoende av den.
 
 **Semantic Scholar.** Medvetet inte med. Den strypte oss direkt på delad kvot och kräver en gratis API-nyckel för att vara användbar. Vill du ha den senare är det en nyckel och ett kommando till.
 

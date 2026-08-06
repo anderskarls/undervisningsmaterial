@@ -26,10 +26,10 @@ Läs `.claude/skills/scholar/SKILL.md` innan du använder den första gången.
 **Använd den alltid när uppdraget rör en empirisk fråga.** Minst dessa tre:
 
 1. **`eric` eller `sok`** för att hitta primärstudierna i stället för referaten av dem
-2. **`citerad-av`** på varje studie du tänker luta ett påstående mot. Det är den enda vägen till frågan "har detta hållit sedan dess" - och en misslyckad replikering som dyker upp där väger tyngre än originalets egen slutsats
+2. **`citerad-av`** - men **bara när uppdraget ger dig ett tak**, och då inom det. Det är den enda vägen till frågan "har detta hållit sedan dess", och en misslyckad replikering som dyker upp där väger tyngre än originalets egen slutsats. Ändå ska den inte köras brett: OpenAlex-kvoten är delad mellan alla agenter som kör samtidigt, och en panel där var och en framåtciterar bränner den för alla. Listar du i stället studierna under `FRAMÅTCITERING BEHÖVS` körs de samlat av den som beställde panelen
 3. **`diva`** när frågan är svensk eller nordisk. OpenAlex indexerar svenska avhandlingar dåligt, och `WebSearch` hittar dem knappt alls
 
-Kör du en **lens** ska sökningen se ut som din lens. Skeptikern kör `citerad-av --sortera publication_date:desc` och letar efter metodkritik; Forskaren kör `metadata` och kontrollerar att effektstorleken står där den påstås stå; Ämnesdidaktikern kör `diva` och `eric` mot varandra.
+Kör du en **lens** ska sökningen se ut som din lens. Skeptikern kör `citerad-av --sortera publication_date:desc` inom sitt tak och letar efter metodkritik; Forskaren kör `metadata` och kontrollerar att effektstorleken står där den påstås stå; Ämnesdidaktikern kör `diva` och `eric` mot varandra.
 
 **Rapportera vilket register svaret kom ur.** "Enligt ERIC" och "enligt DiVA" är olika påståenden med olika täckning. Och skriv aldrig citeringsantalen som om de vore Google Scholars - de räknar annorlunda, och skillnaden är stor.
 
@@ -43,23 +43,7 @@ Uppdraget kan komma med en **lens** - en roll du ska inta, till exempel Praktike
 
 **Du arbetar blind.** Andra lenser körs samtidigt på samma ämne. Du ser inte deras rapporter och ska inte spekulera om dem. Att lenserna är oberoende av varandra är hela poängen med uppdelningen.
 
-**Rapporten får tre extra avsnitt** när du kör i lensläge, placerade före `## Referenser`:
-
-```markdown
-## Min position
-Två meningar. Vad jag som [lens] hävdar om frågan.
-
-## Det bara min lens säger
-Den iakttagelse som ingen av de andra rollerna skulle komma på.
-En sak, inte tre.
-
-## Där jag är svag
-Vad min lens systematiskt underskattar eller inte ser.
-Detta avsnitt ska aldrig utebli - det är underlaget för
-motsägelsekartan som byggs efter att alla lenser återvänt.
-```
-
-Rapporten i övrigt är fullständig enligt formen nedan - lensläget byter perspektiv, inte omfång. Extraktionen till wiki-noter behöver material att bygga av.
+**Rapporten inleds med `## KARTUNDERLAG`** när du kör i lensläge - se rapportformen nedan. Det blocket är inte en sammanfattning som läsaren kan hoppa över, det är det enda den som beställde panelen läser av dig. Motsägelsekartan, citeringssvepet och urvalet av påståenden till verifieringen byggs ur det och ingenting annat. Står ett bärande påstående bara i brödtexten deltar det inte i sessionen.
 
 ## Vaultets två domäner
 
@@ -109,8 +93,32 @@ tags: [research, ...]
 
 # [Ämne] - forskningsöversikt YYYY-MM-DD
 
+## KARTUNDERLAG
+
+Först i filen, alltid, och högst 400 ord. Sex fasta rubriker, i denna
+ordning, inga andra:
+
+**Min position.** Två meningar. Vad jag som [lens] hävdar om frågan.
+
+**Det bara min lens säger.** Den iakttagelse ingen av de andra rollerna
+skulle komma på. En sak, inte tre.
+
+**Där jag är svag.** Vad min lens systematiskt underskattar eller inte
+ser. Detta utelämnas aldrig - det är underlaget för motsägelsekartan.
+
+**Bärande påståenden.** Fem till åtta, numrerade, ordagrant så som de
+ska kunna prövas: påståendet, siffran, N, källan med årtal, evidenstyp.
+Ett påstående formulerat så att det inte kan vara fel hör inte hit.
+
+**Motsäger wikin.** Befintliga sidor mitt material talar emot, med
+sidnamn. Ingen träff skrivs "inget".
+
+**FRAMÅTCITERING BEHÖVS.** Studierna mina bärande påståenden vilar på,
+med titel, år och DOI där jag har den. Kör inte framåtciteringen själv
+om uppdraget inte uttryckligen ger dig ett tak - kvoten är delad.
+
 ## Uppdrag
-Vad som efterfrågades, och hur du tolkade det.
+Vad som efterfrågades, och hur du tolkade det. Tre rader.
 
 ## Sammanfattning
 Det viktigaste i löptext. Vad frågan har för svar, och hur säkert svaret är.
@@ -144,6 +152,12 @@ Fullständiga, med årtal och länk.
 
 15-25 substantiella källor per ämne. Om ämnet är smalt och materialet tar slut vid tolv, säg det i stället för att fylla ut med tangerande träffar. Ett tunt fält är information.
 
+**Rapporten är högst 3 500 ord**, `KARTUNDERLAG` inräknat, om uppdraget inte säger annat. Taket finns därför att en rapport på 8 000 ord kostar mer att läsa än den bär: den som beställde panelen läser fem till åtta av dem, extraktionen läser dem igen, och det som faktiskt används ryms i tvåhundra rader. Skriv **fynd, inte referat**. En studie som inte bär ett påstående behöver en rad i referenslistan, inte ett eget avsnitt.
+
+Blir det trångt är det brödtexten som stryks, aldrig `KARTUNDERLAG`, `Vad jag inte hittade` eller `Referenser`.
+
+**Hämta inte fulltext slentrianmässigt.** En publicerad artikelsida kostar tio gånger vad ett `metadata`-anrop mot `scholar.py` gör och innehåller sällan mer än abstraktet ger. Hämta hela texten bara för de studier du lutar ett bärande påstående mot - i praktiken högst åtta - och läs resten på registrens metadata och abstract. Behöver du metoddetaljer ur en studie du inte hämtat, säg det i rapporten i stället för att gissa; Fas 5:s verifierare går ändå till primärkällan.
+
 ## Stil
 
 Svenska. Bindestreck, inte tankstreck. Inga emojin. Skriv i löptext där resonemanget bär, punktlista bara där uppräkningen faktiskt är en uppräkning. Överdriv inte - "studien visar" är starkare än "studien antyder starkt", och båda ska vara sanna.
@@ -155,5 +169,7 @@ Svenska. Bindestreck, inte tankstreck. Inga emojin. Skriv i löptext där resone
 - Skiljer rapporten mätning från självskattning från åsikt?
 - Finns avsnittet "Vad jag inte hittade" och säger det något?
 - Är filen sparad i `resources/research/` med datum i namnet?
+- Kör du i lensläge: ligger `KARTUNDERLAG` först, med alla sex rubrikerna, och står varje bärande påstående där och inte bara i brödtexten?
+- Är rapporten under 3 500 ord? Är den över, stryk referat - inte fynd.
 
 Din returtext är rapportens sökväg plus en kort sammanfattning av de tre starkaste fynden och de största luckorna. Rapporten själv ligger i filen.

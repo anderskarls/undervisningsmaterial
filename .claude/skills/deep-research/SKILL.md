@@ -32,6 +32,21 @@ Full körning startar ungefär 14-19 agenter. Det är avsett, men inte alltid be
 
 Fanar aldrig ut bredare än fem lenser. Fler perspektiv ger inte mer täckning, bara mer text som säger samma sak.
 
+**Skriv ut valet på en rad innan panelen startar** - "full panel, för att X strider" eller "två lenser, frågan har ett förväntat svar". Tabellen ovan är verkningslös om den läses och sedan förbigås. Körningen 2026-08-05 startade full panel plus alla tre runda 2-agenterna utan att nedväxlingen prövades, och det var rätt för just den frågan - men det syntes inte att någon valt.
+
+### Budgetarna, och varför de finns
+
+Fasernas tak är inte trivsel. Materialet skrivs en gång och läses fem till tio gånger - av dig i tre faser, av extraktorerna, av inkopplingen - och varje ord kostar därför om.
+
+| Vad | Tak | Var det står |
+|-----|-----|--------------|
+| Lensrapport | 3 500 ord, `KARTUNDERLAG` först | `research-specialist.md` |
+| Fulltexthämtningar per lens | ~8, resten på registrens metadata | `research-specialist.md` |
+| Påståenden till verifiering | 25 | Fas 5 |
+| Noter per extraktor | 6-8, alltså ~30 per session | Fas 6 |
+
+Sprängs ett tak ska det synas i syntesen med skälet. 2026-08-05 gav 8 rapporter på 71 000 ord, 47 verifierade påståenden och 91 noter - dubbelt till tredubbelt mot vad skillen förutsatte, utan att någon fas märkte det.
+
 ---
 
 ## Fas 1: Ämnesval och avgränsning
@@ -110,7 +125,7 @@ Ge varje lens en **registerinstruktion som passar dess roll** - annars kör alla
 | Lens | Registerinstruktion |
 |------|---------------------|
 | Forskaren | `metadata` på varje effektstorlek hon tänker citera; `sok --typ article` |
-| Skeptikern | `citerad-av --sortera publication_date:desc` på det gängse - metodkritik och misslyckade replikeringar ligger i framåtciteringen |
+| Skeptikern | `citerad-av --sortera publication_date:desc` på **högst tre** studier - de som ditt huvudangrepp vilar på. Metodkritik och misslyckade replikeringar ligger i framåtciteringen och ingen annanstans. Resten listar du under FRAMÅTCITERING BEHÖVS |
 | Ämnesdidaktikern | `diva` och `eric` mot varandra; de överlappar nästan inte |
 | Praktikern | `eric` med ED-nummer (praktikerrapporter är nästan alltid fria) |
 | Systemblicken | `libris` för svensk facklitteratur och läromedel |
@@ -130,13 +145,33 @@ HÅLLNING SOM SKA PRÖVAS: [användarens position, om det finns en]
 
 REGISTER: läs .claude/skills/scholar/SKILL.md och använd
    resources/scholar-api/scholar.py. Din lens ska särskilt köra:
-   [registerinstruktionen ur tabellen ovan]. Kör citerad-av på varje
-   studie du lutar ett bärande påstående mot - har fyndet motsagts
-   sedan dess ligger det där och ingen annanstans. Ange alltid vilket
-   register ett svar kom ur.
+   [registerinstruktionen ur tabellen ovan].
+
+   KÖR INTE citerad-av brett. OpenAlex-kvoten är delad mellan alla
+   agenter på maskinen, och en femlenspanel som var för sig kör
+   framåtcitering bränner den innan Fas 4 hinner göra svepet. Det
+   hände 2026-08-05 och kostade fyra verifieringskluster deras
+   replikeringskontroll.
+
+   Lista dem i stället under KARTUNDERLAG-rubriken FRAMÅTCITERING
+   BEHÖVS, med titel, år och DOI där du har den. Fas 4:s citeringssvep
+   kör dem samlat.
+
+   Ange alltid vilket register ett svar kom ur.
+
+RAPPORTEN: högst 3 500 ord, och den inleds med KARTUNDERLAG enligt
+   din agentdefinition - position, det bara din lens ser, där du är
+   svag, fem till åtta bärande påståenden ordagrant med siffra och
+   källa, vad du motsäger i wikin, och FRAMÅTCITERING BEHÖVS.
+
+   Det blocket är det enda jag läser av dig. Kartan, citeringssvepet
+   och urvalet till verifieringen byggs ur det. Ett bärande påstående
+   som bara står i brödtexten deltar inte i sessionen.
 
 SPARA SOM: resources/research/[amne-slug]-[lens]-YYYY-MM-DD.md
 ```
+
+**Varför framåtciteringen ligger hos svepet och inte hos panelen.** Kvoten är delad per maskin, så det är billigare att samla anropen på ett ställe än att fördela dem - och svepet måste ändå göras inline i Fas 4 eftersom du skriver runda 2-prompterna utifrån det. En egen svepagent skulle avlasta din kontext men bryta den kopplingen, och kvotproblemet satt i panelen, inte i svepet.
 
 ### Panel A - pedagogik och lärandevetenskap
 
@@ -164,9 +199,24 @@ SPARA SOM: resources/research/[amne-slug]-[lens]-YYYY-MM-DD.md
 
 ### När lenserna återvänder
 
-Skriv två till tre rader i chatten: åt vilket håll de konvergerar och var den skarpaste oenigheten går. Klistra inte in rapporterna - de ligger i filerna.
+**Läs `KARTUNDERLAG`, inte rapporterna.** Agenten returnerar sökvägen och sina tre starkaste fynd; blocket hämtar du så här:
 
-Kontrollera varje rapport innan den går vidare. Har den årtal, effektstorlekar där de finns, avsnittet "Vad jag inte hittade", och de tre lensavsnitten? Saknas "Där jag är svag" ska agenten tillbaka - det avsnittet är underlaget för nästa fas.
+```bash
+for f in resources/research/[amne-slug]-*-YYYY-MM-DD.md; do
+  echo "=== $f"
+  awk '/^## /{ if (seen) exit; if ($0 ~ /KARTUNDERLAG/) seen=1 } seen' "$f"
+done
+```
+
+`awk` och inte `sed -n '/KARTUNDERLAG/,/Uppdrag/p'`: den senare skriver ut **hela rapporten** om agenten döpt om nästa rubrik, vilket är precis det du försökte undvika. Varianten ovan stannar vid nästa `##` oavsett vad den heter, och ger tom output när blocket saknas - vilket är det svar du vill ha.
+
+Åtta rapporter är omkring 25 000 ord. Deras `KARTUNDERLAG` är omkring 3 000, och de innehåller allt Fas 3, 4 och 5 använder - position, blindfläcksunderlag, bärande påståenden och citeringslistor. Läser du rapporterna i sin helhet ligger de kvar i kontexten sessionen ut och kostar om vid varje senare steg, utan att tillföra något förrän syntesen. Gå in i brödtexten när ett enskilt påstående behöver sin kontext, inte som rutin.
+
+Kontrollera varje rapport innan den går vidare. Ligger `KARTUNDERLAG` först, med alla sex rubrikerna? Har den bärande påståenden med siffra, N och källa - inte formuleringar som inte kan vara fel? Finns `FRAMÅTCITERING BEHÖVS`, och `Vad jag inte hittade` i brödtexten?
+
+Saknas `Där jag är svag` ska agenten tillbaka; det avsnittet är underlaget för blindfläcken. Saknas `FRAMÅTCITERING BEHÖVS` får citeringssvepet gissa vilka studier som bär vikt. Båda är billiga att lämna i efterhand - lensen vet redan svaret.
+
+Skriv sedan två till tre rader i chatten: åt vilket håll de konvergerar och var den skarpaste oenigheten går. Klistra inte in rapporterna - de ligger i filerna.
 
 Kontrollera också att rapporterna faktiskt **använt registren**. En rapport där varje källa är en blogg, en myndighetssammanfattning eller en tidningsartikel har refererat referaten - skicka tillbaka den med en uttrycklig registerinstruktion. Det är billigare att göra om här än att låta Fas 5 fälla halva materialet.
 
@@ -174,7 +224,7 @@ Kontrollera också att rapporterna faktiskt **använt registren**. En rapport d�
 
 ## Fas 3: Motsägelsekartan
 
-Görs **inline, utan agenter**, enbart ur lensrapporterna. Fem utfall:
+Görs **inline, utan agenter**, ur lensernas `KARTUNDERLAG`-block. De är skrivna för den här fasen: positionerna ger konflikterna, de bärande påståendena ger evidensrangordningen, och svaghetsavsnitten lästa mot varandra ger blindfläcken. Fem utfall:
 
 1. **Direkta konflikter.** Var två eller flera lenser hävdar motsatta saker. Namnge de kolliderande påståendena, inte bara ämnet de rör.
 
@@ -210,6 +260,8 @@ Runda 2 körs automatiskt enligt beslutsregeln nedan. Du frågar inte om lov; ä
 
 Gör **du**, innan agenterna startar. Inte för att de inte kan - de har samma verktyg - utan för att svepet ska bli **ett gemensamt underlag** i stället för tre överlappande sökningar, och för att du behöver se det innan du skriver deras uppdrag.
 
+Det är också **enda stället där framåtcitering körs brett**. Panelen listar bara sina studier under `FRAMÅTCITERING BEHÖVS`; efter svepet finns bara riktade enskilda anrop kvar - konsensusangriparens och Fas 5:s verifierares. Utgå från lensernas samlade listor - de ligger sist i varje `KARTUNDERLAG` och du har dem redan i kontexten. Slå ihop dem, stryk dubbletterna, och lägg de studier som flera lenser lutar sig mot först. En studie som tre lenser bygger på och som motsagts 2024 är det dyraste felet sessionen kan göra.
+
 ```bash
 S="resources/scholar-api/scholar.py"
 python3 $S citerad-av "[studien kartpunkt 4 vilar på]" --sortera publication_date:desc --antal 20
@@ -226,6 +278,8 @@ Skriv resultatet till `resources/research/[amne-slug]-CITERINGAR-YYYY-MM-DD.md` 
 **Filen har tre konsumenter:** runda 2:s agenter, verifierarna i Fas 5, och syntesen. Skriv den så att alla tre kan läsa den. Agenterna får söka vidare på egen hand - filen är en startpunkt, inte en ranson.
 
 Svarar CLI:n `FEL:` efter sina försök är API:et nere. Skriv det i syntesen och kör runda 2 på webbsökning.
+
+**429 från OpenAlex släpper delvis.** Direktuppslag på DOI mot `api.openalex.org` kan fungera medan `scholar.py`:s titelsökning fortfarande 429:ar. Testa DOI-vägen innan du ger upp - det är ett av skälen till att lensernas `FRAMÅTCITERING BEHÖVS` ska innehålla DOI där de har den. ERIC, DiVA, Libris och Unpaywall är oberoende av OpenAlex-kvoten och fungerar även när den är slut.
 
 ### Steg 2: Beslutsregeln
 
@@ -319,7 +373,9 @@ motsäger. Sök specifikt efter:
 FRAMÅTCITERING: resources/research/[amne]-CITERINGAR-YYYY-MM-DD.md
 innehåller vilka som citerat nyckelstudierna och vad de gjorde med
 dem. Läs den först - misslyckade replikeringar syns där. Kör sedan
-citerad-av själv på de studier svepet inte hann med.
+citerad-av själv på de studier svepet inte hann med, men riktat och
+i liten skala: OpenAlex-kvoten är delad mellan alla agenter på
+maskinen och Fas 5:s verifierare kommer efter dig.
 
 HITTAR DU INGENTING är det ett starkt resultat och du ska säga det
 rakt ut. Konstruera inte motevidens som inte finns; ett ärligt
@@ -346,7 +402,11 @@ Runda 2:s påståenden går in i verifieringspoolen på exakt samma villkor som 
 
 **Denna fas hoppas inte över.** Utan den är sessionen ett välskrivet referat av vad sex instanser av samma modell trodde.
 
-Plocka ut de bärande påståendena ur samtliga rapporter - panelens och runda 2:s - de som bär ett fynd, en siffra eller en rekommendation. Typiskt 12-25 stycken. Gruppera dem i **4-6 kluster** efter källa eller studie, så att relaterade påståenden verifieras tillsammans.
+Påståendena är redan utplockade: de står under `Bärande påståenden` i varje `KARTUNDERLAG`, ordagrant och med siffra, N och källa. Slå ihop panelens och runda 2:s listor och stryk dubbletterna - fem lenser som lutar sig mot samma RCT ger ett påstående att pröva, inte fem.
+
+**Taket är 25 påståenden**, och det är ett tak och inte en observation. Blir de fler har urvalet släppt in påståenden som inte bär något - eller så har dubbletterna inte strukits. Prioritera i den ordningen: det som går in i påståendeguiden, det som en wiki-not kommer vila på, det som motsäger en befintlig sida. Det som blir över får stå i syntesen som oprövat, med skälet. 2026-08-05 prövades 47 påståenden i sju kluster; det var dubbelt mot budgeten och en del av skälet till att kvoten inte räckte.
+
+Gruppera dem i **4-6 kluster** efter källa eller studie, så att relaterade påståenden verifieras tillsammans.
 
 Starta en Task med `subagent_type='claim-verifier'` per kluster, alla i **ett meddelande**:
 
@@ -365,6 +425,8 @@ gäller - och skillnaden ska rapporteras.
 ```
 
 Agenten kan hierarkin, domarna och returformatet, och den har registren - `metadata` mot Crossref och OpenAlex avgör en omtvistad årtals- eller siffruppgift på ett anrop.
+
+**Verifierarna får köra framåtcitering.** Begränsningen i Fas 2 gäller panelen, inte dem. Det är här domarna avgörs, och de körs sent nog att kvoten hunnit återhämta sig - har ett fynd motsagts av en senare replikering är det skillnaden mellan `BEKRÄFTAT` och `DELVIS`.
 
 ### Tillämpa domarna
 
@@ -403,6 +465,10 @@ nohup ./resources/local-brain-search/run_index.sh > /tmp/index.log 2>&1 &
 
 Per-rapport-uppdelning gäller bara när spåren är genuint oberoende - som när fem lenser undersökt fem olika aktörer.
 
+**Ge varje extraktor ett tak: 6-8 noter.** Agentens egen normalsiffra är 15-25, men den gäller när den är ensam om en källa. Fyra extraktorer utan tak gav 91 noter 2026-08-05 - tre gånger vad de två föregående sessionerna gav, och till en median på 600 ord styck. Kostnaden är inte bara skrivandet: inkopplingen i Fas 7 ska läsa varje not, och varje framtida `/recall` söker igenom dem.
+
+Det som fälls av taket är nästan alltid **studiefakta som splittrats**. Att urvalet var ett elitgymnasium, att arbetet är en preprint och att effekten var en regressionskoefficient är samma insikt - vad den studien tål - och hör till en not. Säg det i uppdraget.
+
 Starta Task med `subagent_type='document-insight-extractor'` per tema, alla i ett meddelande. Agenten kan notformatet, evidensmarkeringarna och dedupliceringen.
 
 ```
@@ -415,6 +481,11 @@ SESSIONSMAPP: wiki/sources/[YYYY-MM-DD Ämne]
 
 DITT TEMA: [tydligt avgränsat]
 DE ANDRA TAR: [så att ingen skriver in på någon annans område]
+
+TAK: 6-8 noter. Vi är [N] extraktorer på samma material och sessionen
+ska landa runt trettio noter, inte nittio. Samla studiefakta - urval,
+publikationstyp, effektmått, vad studien tål - i en not per studie i
+stället för en not per faktum.
 
 VERIFIERINGSRESULTAT: [domarna som rör detta tema, med rättade
 siffror. Rapporternas ursprungliga formuleringar är redan rättade,
@@ -551,16 +622,21 @@ Kort, i löptext: huvudfyndet i två meningar, verifieringstallyn, vad runda 2 �
 - **Evidensnivå är källkvalitet, inte övertygelse.** En välskriven enkätrapport är fortfarande en enkät.
 - **Panelen är författarbyggd.** Konvergens är hypotes, inte konsensus. Sägs alltid ut - och prövas av konsensusangriparen.
 - **En runda 2, aldrig fler.** Fynd ur runda 2 som förtjänar egen research blir noter och frontfråga, inte en runda 3.
-- **Registren används, inte bara webben.** En rapport vars källor är bloggar, myndighetssammanfattningar och tidningsartiklar har refererat referaten. Skicka tillbaka den. Citeringsantal som hämtats ur registren får aldrig presenteras som Google Scholars - de räknar annorlunda, och skillnaden är stor.
+- **Registren används, inte bara webben.** En rapport vars källor är bloggar, myndighetssammanfattningar och tidningsartiklar har refererat referaten. Skicka tillbaka den. Citeringsantal som hämtats ur registren får aldrig presenteras som Google Scholars - de räknar annorlunda, och skillnaden är stor. **OpenAlex och Crossref räknar dessutom olika sinsemellan** - 753 mot 779, 532 mot 546, 1618 mot 1106 i körningen 2026-08-05. De får aldrig blandas i samma tabell; ange vilket register talet kom ur.
+- **Registerkvoten är delad.** Att `/scholar` kan köras parallellt betyder att anropen kan ske samtidigt, inte att varje agent har en egen kvot - den sitter på maskinen. Framåtcitering samlas därför i citeringssvepet i stället för att spridas på panelen. 2026-08-05 brände fem lenser kvoten i Fas 3 och svepets huvudfråga, *har någon motsagt det panelen var enigast om*, kunde inte köras alls.
+- **Budgetarna är tak, inte riktvärden.** Rapportlängd, påståendeantal och notantal har siffror därför att materialet skrivs en gång och läses många. Spränger en fas sitt tak ska det stå i syntesen med skälet - tyst överskridande är hur 2026-08-05 blev tre gånger så dyrt som 2026-08-03 utan att ge tre gånger så mycket.
+- **`KARTUNDERLAG` läses, rapporterna slås upp.** Du drar in en 3 500-ordsrapport i kontexten för att komma åt tvåhundra ord, och sedan bär du den sessionen ut. Gå in i brödtexten när ett enskilt påstående behöver sin kontext, inte som rutin.
 - **Aktualitet mäts mot fältet.** Rosenshine 2012 och Reichenberg 2000 är fortfarande det bästa som finns i sina frågor. Gå till primärstudien bakom påståendet; sök det allra senaste bara i fält som faktiskt rör sig - AI i undervisning, examinationsformer, digital källkritik.
 
 ## När något går fel
 
 **En lens kommer tomhänt.** Fältet kan sakna det perspektivet helt - det är ett fynd och blir en not, inte en tomrad. Kör inte om lensen med uppmjukad instruktion.
 
+**En rapport saknar `KARTUNDERLAG` eller har det ofullständigt.** Skicka tillbaka den med de sex rubrikerna utskrivna. Bygg inte kartan genom att läsa brödtexten i stället - då är blocket meningslöst från och med nästa körning, och du har dragit in hela rapporten i kontexten. Undantag: en enda rapport av åtta, sent i sessionen, får läsas manuellt om omkörningen kostar mer än den sparar.
+
 **Alla lenser säger samma sak.** Antingen är frågan avgjord, eller så var den för snävt ställd för att rymma oenighet. Kontrollera vilket genom att läsa Skeptikerns "Där jag är svag" - kom den inte åt något att angripa var frågan för smal. Kör konsensusangriparen oavsett; det är precis det läget den finns för.
 
-**Registren svarar inte.** CLI:n försöker om tre gånger med paus innan den ger `FEL:`. Kvarstår felet är API:et eller nätet nere. Skriv det i syntesen och kör vidare på webbsökning - allt utom framåtciteringen går att göra så, och verifieringen i Fas 5 får då märka fler påståenden `OVERIFIERAT`. Det är rätt utfall, inte ett fel att dölja.
+**Registren svarar inte.** CLI:n försöker om tre gånger med paus innan den ger `FEL:`. Skilj först på nere och strypt: **429 är kvoten, inte driftstopp**, och den släpper delvis - direktuppslag på DOI mot `api.openalex.org` kan gå igenom medan titelsökningen fortfarande 429:ar, och ERIC, DiVA, Libris och Unpaywall ligger utanför OpenAlex-kvoten helt. Kvarstår felet även där är API:et eller nätet nere. Skriv det i syntesen och kör vidare på webbsökning - allt utom framåtciteringen går att göra så, och verifieringen i Fas 5 får då märka fler påståenden `OVERIFIERAT`. Det är rätt utfall, inte ett fel att dölja.
 
 **Kartan ger ingen blindfläck som går att formulera som roll.** Då var lensernas "Där jag är svag" för vaga. Blindfläckslensen uteblir, och det ska stå i syntesen. Hitta inte på en blindfläck för att fylla platsen.
 
@@ -579,14 +655,18 @@ Kort, i löptext: huvudfyndet i två meningar, verifieringstallyn, vad runda 2 �
 ## Checklista
 
 - [ ] Frågan skärpt till något som går att ha fel om
+- [ ] Panelens storlek vald mot kostnadstabellen och motiverad på en rad
 - [ ] Lenspanelen vald efter frågans struktur och startad i ett meddelande
-- [ ] Varje lensrapport har position, det bara den säger, och där den är svag
+- [ ] Varje lensrapport under 3 500 ord, med `KARTUNDERLAG` först och alla sex rubrikerna
+- [ ] Kartan byggd ur `KARTUNDERLAG`-blocken, inte ur fulltextläsning av rapporterna
 - [ ] Motsägelsekartans fem utfall gjorda, punkt 3-5 formulerade som beställningar
 - [ ] Citeringssvepet gjort och skrivet till fil, eller frånvaron motiverad
 - [ ] Runda 2 körd enligt beslutsregeln, uteblivna agenter motiverade
 - [ ] Kartan reviderad efter runda 2, konsensuspunktens status avgjord
+- [ ] Högst 25 påståenden till verifiering, dubbletterna strukna, det oprövade motiverat
 - [ ] Varje bärande påstående verifierat mot primärkälla - panelens och runda 2:s
 - [ ] Domarna tillämpade: falskt struket, delvis rättat, overifierat märkt
+- [ ] Extraktorerna fick nottak och sessionen landade runt trettio noter
 - [ ] Verifieringsbannern sann och med i syntesen
 - [ ] Varningen om den författarbyggda panelen utskriven, med angreppets utfall
 - [ ] Index ombyggt före inkopplingen
